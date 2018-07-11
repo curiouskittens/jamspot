@@ -25,11 +25,11 @@ app.get("*", (req, res) => {
 mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/jamspot",
-  {
-    useMongoClient: true
-  },
-);
+  process.env.MONGODB_URI || "mongodb://localhost:27017/jamspot", {
+    useNewUrlParser: true
+  }
+).then(() => console.log("🥞 ==> Database connection established!"))
+.catch(error => console.log(error))
 
 // Start the API server
 app.listen(PORT, () => {
