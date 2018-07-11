@@ -1,14 +1,13 @@
 {
-  "name": "client",
+  "name": "jamspot",
   "version": "0.1.0",
+  "description": "Find and connect with fellow musicians to set up a jam session, collaborate and create the next big hit.",
   "private": true,
-  "proxy": "http://localhost:3001",
+  "proxy": "http://localhost:3001/",
   "dependencies": {
-    "axios": "^0.18.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4"
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "1.0.14"
   },
   "scripts": {
     "start": "react-scripts start",
