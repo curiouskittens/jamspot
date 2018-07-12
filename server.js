@@ -14,6 +14,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
+require("./routes/apiRoutes")(app);
 
 // Send every other request to the React app
 // Define any API routes before this runs
@@ -29,7 +30,7 @@ mongoose.connect(
     useNewUrlParser: true
   }
 ).then(() => console.log("🥞 ==> Database connection established!"))
-.catch(error => console.log(error))
+.catch(err => console.log(err))
 
 // Start the API server
 app.listen(PORT, () => {
