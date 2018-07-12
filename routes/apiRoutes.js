@@ -14,12 +14,19 @@ module.exports = function(app){
             username: request.body.username,
             password: request.body.password,
             name: request.body.name,
-            email: request.body.email
+            email: request.body.email,
+            instruments: request.body.instruments
+        })
+        .then(result => {
+            console.log(result),
+            response.send(result)
+        })
+        .catch(error => {
+            console.log(error)
+            response.send(error)
         })
 
-        response.send(
-            "it worked!!"
-        )
+        
     });
 
 }

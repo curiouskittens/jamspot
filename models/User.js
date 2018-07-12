@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     username: {
         type: String,
-        required: true 
+        required: true,
+        unique: true 
     },
     password: {
         type: String,
@@ -17,7 +18,12 @@ const userSchema = new Schema({
     email: {
         type: String,
         required: true 
-    },   
+    },
+    instruments: [{
+        name: String,
+        skill: Number,
+        _id: false
+    }],   
     dateCreated: { type: Date, default: Date.now },
     dateModified: { type: Date, default: Date.now }
   });
