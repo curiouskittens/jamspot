@@ -20,8 +20,8 @@ const userSchema = new Schema({
     },   
     dateCreated: { type: Date, default: Date.now },
     dateModified: { type: Date, default: Date.now }
-  }, { _id: false });
+  });
   
-  const User = mongoose.model("Article", userSchema);
+  const User = mongoose.model("User", userSchema);
   
   module.exports = User;
