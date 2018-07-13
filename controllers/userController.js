@@ -38,7 +38,7 @@ module.exports = {
     findOne: function(req, res) {
         db.User
             .findOne({
-                username: req.params.username
+                username: req.query.username
              })
             .then(result => {
                 console.log(result);

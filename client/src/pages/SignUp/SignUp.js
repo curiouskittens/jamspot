@@ -7,7 +7,8 @@ class SignUp extends Component {
         name: "",
         email: "",
         username: "",
-        password: "",
+        usernameTaken: false,
+        password: ""
     }
 
     handleInputChange = event => {
@@ -21,8 +22,14 @@ class SignUp extends Component {
             .then(result => {
                 if (result.data) {
                     console.log("Sorry, this username is not available.")
+                    this.setState({
+                        usernameTaken: true
+                    })
                 } else {
                     console.log("That username is up for grabs.");
+                    this.setState({
+                        usernameTaken: false
+                    })
                 }
             })
             .catch(err => console.log(err));
@@ -36,7 +43,7 @@ class SignUp extends Component {
             console.log("Please enter your name.");
         } else if (!this.validateEmail(this.state.email)) { 
             console.log("Please enter a valid email address.")
-        } else if (!this.state.username) {
+        } else if (!this.state.username || this.state.usernameTaken) {
             console.log("Please enter a valid username.");
         } else if (this.state.password.length < 6) {
             console.log("Please enter a valid password.");
