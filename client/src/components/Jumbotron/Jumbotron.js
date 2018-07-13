@@ -4,7 +4,7 @@ import "./Jumbotron.css"
 
 const Jumbotron = () => (
     <div className="jumbotron jumbotron-fluid">
-        <div className="container">
+        <div className="container align-items-center">
             <h1 className="display-4 jumbotron-title-style text-center">Jamspot</h1>
             <p className="lead jumbotron-lead-style text-center">Find and connect with fellow musicians to set up a jam session, collaborate and create the next big hit!</p>
             <div className="container text-center">

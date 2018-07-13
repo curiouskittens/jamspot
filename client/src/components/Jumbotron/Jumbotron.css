@@ -7,6 +7,8 @@ font-family: 'Merriweather', serif;
 
 .jumbotron{
     background-color: transparent;
+    padding-top: 10%;
+    padding-bottom: 10%;
 }
 
 .jumbotron-title-style{
