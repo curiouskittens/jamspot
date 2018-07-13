@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Shrikhand');
+
+/* 
+font-family: 'Shrikhand', cursive;
+font-family: 'Merriweather', serif;
+*/
+
+.jumbotron{
+    background-color: transparent;
+}
+
+.jumbotron-title-style{
+    font-family: 'Shrikhand', cursive;
+    font-weight: bold;
+    color: lightcoral;
+}
+
+.jumbotron-lead-style{
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+    color: lightcoral;
+}
+
+.jumbotron-button-style{
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+    margin:10px;
+    background-color: lightcoral;
+    border: whitesmoke;
+}
+
+.jumbotron-button-style:hover{
+    border-color: whitesmoke;
+    background-color:whitesmoke;
+    color: lightcoral;
+}
+

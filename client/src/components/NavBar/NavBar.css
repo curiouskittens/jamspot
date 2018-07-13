@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Shrikhand');
+
+.navbar-height {
+    min-height: 80px;
+}
+
+.navbar-semi-transparent {
+    background-color: rgba(0,0,0,.5);
+}
+
+.navbar-text-style1{
+    color: whitesmoke;
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+    font-size: 150%;
+}
+
+.navbar-text-style2 {
+    color: whitesmoke;
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+}
+
+.navbar-text-style1:hover,.navbar-text-style2:hover{
+    color: lightcoral;
+}
+
+
+
