@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default {
-    checkUsername: username => axios.get(`/api/user/create/${username}`),
-    createUser: userInfo => axios.post("/api/user/create", userInfo)
+    checkUsername: username => axios.get(`/api/users/create/${username}`),
+    createUser: userInfo => axios.post("/api/users/create", userInfo)
 }
 
