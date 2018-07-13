@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather|Shrikhand');
 
+.navbar-config{
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
 .navbar-height {
     min-height: 80px;
 }
