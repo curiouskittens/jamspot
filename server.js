@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3001;
+const routes = require("./routes");
 const app = express();
 
 // Define middleware here
@@ -14,6 +15,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Define API routes here
+app.use(routes)
 
 // Send every other request to the React app
 // Define any API routes before this runs
@@ -29,7 +31,7 @@ mongoose.connect(
     useNewUrlParser: true
   }
 ).then(() => console.log("🥞 ==> Database connection established!"))
-.catch(error => console.log(error))
+.catch(err => console.log(err))
 
 // Start the API server
 app.listen(PORT, () => {
