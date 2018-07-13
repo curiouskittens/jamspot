@@ -2,14 +2,13 @@ const db = require("../models");
 
 module.exports = {
     create: function(req, res) {
-        const newUser = {
-            username: req.body.username,
-            password: req.body.password,
-            name: req.body.name,
-            email: req.body.email
-        }
         db.User
-            .create(newUser)
+            .create({
+                username: req.body.username,
+                password: req.body.password,
+                name: req.body.name,
+                email: req.body.email
+            })
             .then(result => {
                 console.log(result),
                 res.json(result)
@@ -35,6 +34,20 @@ module.exports = {
                 res.status(422).json(err)
             })
 
+    },
+    findOne: function(req, res) {
+        db.User
+            .findOne({
+                username: req.params.username
+             })
+            .then(result => {
+                console.log(result);
+                res.send(result);
+            })
+            .catch(err => {
+                console.log(err);
+                res.send(err);
+            })
     }
 
 };

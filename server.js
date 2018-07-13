@@ -31,7 +31,7 @@ mongoose.connect(
     useNewUrlParser: true
   }
 ).then(() => console.log("🥞 ==> Database connection established!"))
-.catch(error => console.log(error))
+.catch(err => console.log(err))
 
 // Start the API server
 app.listen(PORT, () => {

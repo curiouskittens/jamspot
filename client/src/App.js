@@ -1,18 +1,12 @@
 import React, { Component } from "react";
-import logo from "./logo.png";
-import "./App.css";
+import SignUp from "./pages/SignUp";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Jamspot</h2>
-        </div>
-        <p className="App-intro">
-          Hi, Rich!
-        </p>
+      <div>
+        <h2>Jamspot</h2>
+        <SignUp />
       </div>
     );
   }
