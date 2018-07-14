@@ -7,6 +7,8 @@ router.route("/")
 
 router.route("/:id")
     .put(postController.update)
+    .get(postController.findOne)
+    .delete(postController.remove)
 
 
 

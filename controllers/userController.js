@@ -2,9 +2,6 @@ const db = require("../models");
 
 module.exports = {
     create: function(req, res) {
-        console.log("inside user controller:")
-        console.log("request body:")
-        console.log(req.body)
         db.User
             .create(
                 // {
@@ -15,9 +12,9 @@ module.exports = {
                 // }
                 req.body
             )
-            .then(result => {
-                console.log(result),
-                res.json(result)
+            .then(dbUser => {
+                console.log(dbUser),
+                res.json(dbUser)
             })
             .catch(err => {
                 console.log(err)
@@ -31,9 +28,9 @@ module.exports = {
                 { $set: req.body },
                 { new: true }
             )
-            .then(result => {
-                console.log(result),
-                res.json(result)
+            .then(dbUser => {
+                console.log(dbUser),
+                res.json(dbUser)
             })
             .catch(err => {
                 console.log(err)
@@ -42,14 +39,48 @@ module.exports = {
 
     },
     findOne: function(req, res) {
-        console.log("inside user controller:")
-        console.log("request query:")
-        console.log(req.query)
         db.User
             .findOne(req.query)
-            .then(result => {
-                console.log(result);
-                res.send(result);
+            .then(dbUser => {
+                console.log(dbUser);
+                res.send(dbUser);
+            })
+            .catch(err => {
+                console.log(err);
+                res.send(err);
+            })
+    },
+    findOnePopulate: function(req, res) {
+        db.User
+            .findOne({ _id: req.params.id})
+            .populate("jams")
+            .then(dbUser => {
+                console.log(dbUser);
+                res.send(dbUser);
+            })
+            .catch(err => {
+                console.log(err);
+                res.send(err);
+            })
+    },
+    findAll: function(req, res) {
+        db.User
+            .find({})
+            .then(dbAllUsers => {
+                console.log(dbAllUsers);
+                res.send(dbAllUsers);
+            })
+            .catch(err => {
+                console.log(err);
+                res.send(err);
+            })
+    },
+    remove: function(req, res) {
+        db.User
+            .findByIdAndRemove({ _id: req.params.id})
+            .then(dbUser => {
+                console.log(dbUser);
+                res.send(dbUser);
             })
             .catch(err => {
                 console.log(err);

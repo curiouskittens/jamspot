@@ -13,9 +13,9 @@ module.exports = {
                 // }
                 req.body
             )
-            .then(result => {
-                console.log(result),
-                res.json(result)
+            .then(dbJam => {
+                console.log(dbJam),
+                res.json(dbJam)
             })
             .catch(err => {
                 console.log(err)
@@ -29,9 +29,9 @@ module.exports = {
                 { $set: req.body },
                 { new: true }
             )
-            .then(result => {
-                console.log(result),
-                res.json(result)
+            .then(dbJam => {
+                console.log(dbJam),
+                res.json(dbJam)
             })
             .catch(err => {
                 console.log(err)
@@ -41,10 +41,39 @@ module.exports = {
     },
     findOne: function(req, res) {
         db.Jam
-            .findOne(req.query)
-            .then(result => {
-                console.log(result);
-                res.send(result);
+            .findOne({ _id: req.params.id})
+            .populate("creator")
+            .populate("admins")
+            .populate("members")
+            .populate("joinRequests")
+            .populate("posts")
+            .then(dbJam => {
+                console.log(dbJam);
+                res.send(dbJam);
+            })
+            .catch(err => {
+                console.log(err);
+                res.send(err);
+            })
+    },
+    findAll: function(req, res) {
+        db.Jam
+            .find({})
+            .then(dbAllJams => {
+                console.log(dbAllJams);
+                res.send(dbAllJams);
+            })
+            .catch(err => {
+                console.log(err);
+                res.send(err);
+            })
+    },
+    remove: function(req, res) {
+        db.Jam
+            .findByIdAndRemove({ _id: req.params.id})
+            .then(dbJam => {
+                console.log(dbJam);
+                res.send(dbJam);
             })
             .catch(err => {
                 console.log(err);
