@@ -5,10 +5,11 @@ module.exports = {
         db.Jam
             .create(
                 // {
-                // username: req.body.username,
-                // password: req.body.password,
                 // name: req.body.name,
-                // email: req.body.email
+                // location: req.body.location,
+                // date: req.body.date,
+                // creator: req.body.creator,
+                // admins: req.body.admins
                 // }
                 req.body
             )
