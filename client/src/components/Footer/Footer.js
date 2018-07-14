@@ -3,7 +3,7 @@ import "./Footer.css";
 
 const Footer = () => (
     <footer className="footer">
-        <div className="footer-trigger-button footer-trigger-text-style text-center">                    
+        <div className="footer-trigger-text-style text-center">                    
             Made by<a href="https://github.com/orgs/curiouskittens" className="" target="react/jsx-no-target-blank"> curiouskittens <i className="fas fa-paw"></i></a>
         </div>
         <div className="footer-wrapper">

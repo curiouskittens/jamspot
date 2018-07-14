@@ -12,10 +12,14 @@ font-family: 'Merriweather', serif;
     color: rgba(0, 0, 0, 0.5);
 }
 
-.footer-link-text-style:hover, .footer-trigger-text-style a:hover{
+.footer-link-text-style:hover{
     color: lightcoral;
     text-decoration: none;
 }
+
+/* .footer-trigger-text-style:hover, .footer-trigger-text-style a:hover{
+    color: whitesmoke;
+} */
 
 .footer-title-wrapper{
     padding-top: 2.2vh;
@@ -59,13 +63,13 @@ font-family: 'Merriweather', serif;
     -ms-transition: all 1s ease;
     transition: all 1s ease;
     height: 15em;
+    background: rgb(0, 0, 0, 0.5);
 }
 
 .footer-wrapper{
-	margin-top: 1vh;
+    margin-top: 1vh;
 	width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-	background: rgb(0, 0, 0, 0.5);
 }
