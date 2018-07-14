@@ -29,8 +29,6 @@ const UserSchema = new Schema({
     dateModified: { type: Date, default: Date.now }
 });
 
-const User = mongoose.model("User", UserSchema);
-
 UserSchema.pre("save", function(next) {
     const user = this;
     if (!user.isModified("password")) return next();
@@ -46,5 +44,15 @@ UserSchema.pre("save", function(next) {
         })
     })
 })
+
+UserSchema.methods.validatePassword = function(password, callback) {
+    bcrypt.compare(password, this.password, function(err, isMatch) {
+        if (err) return callback(err);
+
+        callback(null, isMatch);
+    });
+};
+
+const User = mongoose.model("User", UserSchema);
 
 module.exports = User;

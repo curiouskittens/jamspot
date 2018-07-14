@@ -48,6 +48,16 @@ module.exports = {
                 console.log(err);
                 res.send(err);
             })
+    },
+    login: function(req, res) {
+        db.User
+            .findOne({ username: req.body.username})
+            .then(dbUser => {
+                dbUser.validatePassword(req.body.password, function(err, isMatch) {
+                    if (err) throw err;
+                    res.send(isMatch);
+                })
+            })
+            .catch(err => res.status(422).json(err))
     }
-
 };
