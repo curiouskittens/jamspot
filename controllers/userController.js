@@ -3,20 +3,9 @@ const db = require("../models");
 module.exports = {
     create: function(req, res) {
         db.User
-            .create({
-                username: req.body.username,
-                password: req.body.password,
-                name: req.body.name,
-                email: req.body.email
-            })
-            .then(result => {
-                console.log(result),
-                res.json(result)
-            })
-            .catch(err => {
-                console.log(err)
-                res.status(422).json(err)
-            })
+            .create(req.body)
+            .then(dbUser => res.json(dbUser))
+            .catch(err => res.status(422).json(err))
     },
     update: function(req, res) {
         db.User
@@ -24,30 +13,34 @@ module.exports = {
                 { _id: req.params.id},
                 { $set: req.body },
                 { new: true }
-
-            ).then(result => {
-                console.log(result),
-                res.json(result)
-            })
-            .catch(err => {
-                console.log(err)
-                res.status(422).json(err)
-            })
-
+            )
+            .then(dbUser => res.json(dbUser))
+            .catch(err => res.status(422).json(err))
     },
     findOne: function(req, res) {
         db.User
-            .findOne({
-                username: req.query.username
-             })
-            .then(result => {
-                console.log(result);
-                res.send(result);
-            })
-            .catch(err => {
-                console.log(err);
-                res.send(err);
-            })
+            .findOne(req.query)
+            .then(dbUser => res.send(dbUser))
+            .catch(err => res.send(err))
+    },
+    findOnePopulate: function(req, res) {
+        db.User
+            .findOne({ _id: req.params.id})
+            .populate("jams")
+            .then(dbUser => res.send(dbUser))
+            .catch(err => res.send(err))
+    },
+    findAll: function(req, res) {
+        db.User
+            .find({})
+            .then(dbAllUsers => res.send(dbAllUsers))
+            .catch(err => res.send(err))
+    },
+    remove: function(req, res) {
+        db.User
+            .findByIdAndRemove({ _id: req.params.id})
+            .then(dbUser => res.send(dbUser))
+            .catch(err => res.send(err))
     },
     login: function(req, res) {
         db.User
