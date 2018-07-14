@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Shrikhand');
+
+/* 
+font-family: 'Shrikhand', cursive;
+font-family: 'Merriweather', serif;
+*/
+
+.jumbotron-title-style{
+    font-family: 'Shrikhand', cursive;
+    font-weight: bold;
+    font-size: 8vh;
+    color: lightcoral;
+}
+
+.jumbotron-lead-style{
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+    font-size: 2.2vh;
+    color: lightcoral;
+}
+
+.jumbotron-button-style{
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+    margin:10px;
+    background-color: lightcoral;
+    border: whitesmoke;
+}
+
+.jumbotron-button-style:hover{
+    border-color: whitesmoke;
+    background-color:whitesmoke;
+    color: lightcoral;
+}
+
+@media only screen and (max-width: 600px) {
+    .jumbotron{
+    background-color: transparent;
+    padding-top: 29%;
+    padding-bottom: 10%;
+    }
+} 
+
+@media only screen and (min-width: 600px) {
+    .jumbotron{
+    background-color: transparent;
+    padding-top: 18.5%;
+    padding-bottom: 10%;
+    }
+} 
+
+@media only screen and (min-width: 768px) {
+    .jumbotron{
+    background-color: transparent;
+    padding-top: 18%;
+    padding-bottom: 10%;
+    }
+} 
+
+@media only screen and (min-width: 992px) {
+    .jumbotron{
+    background-color: transparent;
+    padding-top: 15%;
+    padding-bottom: 10%;
+    }
+} 
+
+@media only screen and (min-width: 1200px) {
+    .jumbotron{
+    background-color: transparent;
+    padding-top: 13.5%;
+    padding-bottom: 10%;
+    }
+}

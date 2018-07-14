@@ -54,12 +54,15 @@ class SignUp extends Component {
                 username: this.state.username,
                 password: this.state.password
             })
-            .then(() => this.setState({
-                name: "",
-                email: "",
-                username: "",
-                password: ""
-            }))
+            .then(() => {
+                console.log("User created.");
+                this.setState({
+                    name: "",
+                    email: "",
+                    username: "",
+                    password: ""
+                })
+            })
             .catch(err => console.log(err));
         }
     }

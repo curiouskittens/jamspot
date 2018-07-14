@@ -25,11 +25,24 @@ const UserSchema = new Schema({
         skill: Number,
         _id: false
     }],
+    genres: [String],
+    image: {
+        type: String,
+        default: "No Image"
+    },
+    bio: String,
+    location: {
+        lat: Number,
+        lng: Number,
+        address: String
+    },
+    jams: [{
+          type: Schema.Types.ObjectId,
+          ref: "Jam"
+    }],
     dateCreated: { type: Date, default: Date.now },
     dateModified: { type: Date, default: Date.now }
 });
-
-const User = mongoose.model("User", UserSchema);
 
 UserSchema.pre("save", function(next) {
     const user = this;
@@ -46,5 +59,15 @@ UserSchema.pre("save", function(next) {
         })
     })
 })
+
+UserSchema.methods.validatePassword = function(password, callback) {
+    bcrypt.compare(password, this.password, function(err, isMatch) {
+        if (err) return callback(err);
+
+        callback(null, isMatch);
+    });
+};
+
+const User = mongoose.model("User", UserSchema);
 
 module.exports = User;
