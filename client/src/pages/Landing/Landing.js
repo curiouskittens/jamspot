@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "../../components/Header";
 import AppIntro from "../../components/AppIntro";
+import Footer from "../../components/Footer";
 
 class Landing extends Component {
     render() {
@@ -8,6 +9,7 @@ class Landing extends Component {
             <React.Fragment>
                 <Header />
                 <AppIntro />
+                <Footer />
             </React.Fragment>
         )
     }

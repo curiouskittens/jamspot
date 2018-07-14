@@ -10,7 +10,7 @@ const AppIntro = () => (
             <p className="app-intro-body-text-style">Find the Best Original Music</p>
             <p className="app-intro-body-text-style">Create Your Own Masterpiece</p>
         </div>
-        <iframe className="col-xl-6 app-intro-iframe-style" title="Pentatonix Youtube" src="https://www.youtube.com/embed/_NWs7ntMRBA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <iframe className="col-xl-6 app-intro-iframe-style" title="Pentatonix Youtube" src="https://www.youtube.com/embed/_NWs7ntMRBA" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
     </div>
 )
 

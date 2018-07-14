@@ -8,7 +8,7 @@ font-family: 'Merriweather', serif;
 .app-intro-wrapper{
     min-height: 100%;
     padding-top: 5%;
-    padding-bottom: 5%;
+    padding-bottom: 6%;
 }
 
 .app-intro-title-style{
@@ -23,6 +23,24 @@ font-family: 'Merriweather', serif;
 }
 
 .app-intro-iframe-style{
-    width:100%;
+    width: 100%;
     height: 35vh;
+}
+
+@media only screen and (max-width: 1200px) {
+    .app-intro-iframe-style{
+    margin-top: 5vh;
+    width: 100%;
+    height: 35vh;
+    margin-bottom: 3vh;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .app-intro-iframe-style{
+    margin-top: 5vh;
+    width: 100%;
+    height: 35vh;
+    margin-bottom: 5vh;
+    }
 }

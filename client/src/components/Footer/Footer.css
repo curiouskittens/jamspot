@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Shrikhand');
+
+/* 
+font-family: 'Shrikhand', cursive;
+font-family: 'Merriweather', serif;
+*/
+
+.footer-trigger-text-style, .footer-trigger-text-style a{
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+    font-size: 2vh;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.footer-link-text-style:hover, .footer-trigger-text-style a:hover{
+    color: lightcoral;
+    text-decoration: none;
+}
+
+.footer-title-wrapper{
+    padding-top: 2.2vh;
+}
+
+.footer-project-text-style{
+    color: lightcoral;
+    font-family: 'Shrikhand', cursive;
+    font-size: 3vh;
+}
+
+.footer-link-text-style{
+    color: whitesmoke;
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+    font-size: 2.2vh;
+}
+
+.footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2em;
+    overflow: hidden;
+    margin: 0 auto;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+	z-index: 999;
+}
+
+.footer:hover {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+    height: 15em;
+}
+
+.footer-wrapper{
+	margin-top: 1vh;
+	width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+	background: rgb(0, 0, 0, 0.5);
+}
