@@ -21,8 +21,7 @@ module.exports = {
     findOne: function(req, res) {
         db.Jam
             .findOne({ _id: req.params.id})
-            .populate("creator")
-            .populate("admins")
+            .populate("admin")
             .populate("members")
             .populate("joinRequests")
             .populate("posts")

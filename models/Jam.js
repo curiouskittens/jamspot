@@ -29,16 +29,11 @@ const JamSchema = new Schema({
         _id: false
     }],
     genres: [String],
-    creator: {
+    admin: {
           type: Schema.Types.ObjectId,
           ref: "User",
           required: true
     },
-    admins: [{
-          type: Schema.Types.ObjectId,
-          ref: "User",
-          required: true
-    }],
     members: [{
           type: Schema.Types.ObjectId,
           ref: "User"
