@@ -25,6 +25,21 @@ const UserSchema = new Schema({
         skill: Number,
         _id: false
     }],
+    genres: [String],
+    image: {
+        type: String,
+        default: "No Image"
+    },
+    bio: String,
+    location: {
+        lat: Number,
+        lng: Number,
+        address: String
+    },
+    jams: [{
+          type: Schema.Types.ObjectId,
+          ref: "Jam"
+    }],
     dateCreated: { type: Date, default: Date.now },
     dateModified: { type: Date, default: Date.now }
 });

@@ -8,7 +8,7 @@ router.route("/create")
 
 router.route("/:id")
     .put(userController.update)
-    .get()
+    
 
 
 

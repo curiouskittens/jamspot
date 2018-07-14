@@ -1,5 +1,5 @@
 module.exports = {
     User: require("./User"),
-    //Jam: require("./Jam")
+    Jam: require("./Jam")
     //Post: require("./Post")
 };
