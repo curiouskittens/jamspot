@@ -11,6 +11,7 @@ class App extends Component {
                         <Route exact path="/" component={pages.Landing} />
                         <Route exact path="/signup" component={pages.SignUp} />
                         <Route exact path="/login" component={pages.Login} />
+                        <Route exact path="/create-jam" component={pages.CreateJam} />
                         <Route component={pages.NoMatch} />
                     </Switch>
                 </React.Fragment>
