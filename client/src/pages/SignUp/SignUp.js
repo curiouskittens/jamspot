@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import emailValidator from "../../utils/emailValidator";
 import api from "../../utils/api";
 
@@ -77,41 +78,44 @@ class SignUp extends Component {
 
     render() {
         return (
-            <form>
-                <label htmlFor="name">Name:</label>
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={this.state.name}
-                    onChange={this.handleInputChange}
-                />
-                <label htmlFor="email">Email:</label>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={this.state.email}
-                    onChange={this.handleInputChange}
-                />
-                <label htmlFor="username">Username:</label>
-                <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    value={this.state.username}
-                    onChange={this.handleInputChange}
-                />
-                <label htmlFor="password">Password:</label>
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.handleInputChange}
-                />
-                <button onClick={this.handleFormSubmit}>Sign Up</button>
-            </form>
+            <React.Fragment>
+                <form>
+                    <label htmlFor="name">Name:</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={this.state.name}
+                        onChange={this.handleInputChange}
+                    />
+                    <label htmlFor="email">Email:</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={this.state.email}
+                        onChange={this.handleInputChange}
+                    />
+                    <label htmlFor="username">Username:</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        value={this.state.username}
+                        onChange={this.handleInputChange}
+                    />
+                    <label htmlFor="password">Password:</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        value={this.state.password}
+                        onChange={this.handleInputChange}
+                    />
+                    <button onClick={this.handleFormSubmit}>Sign Up</button>
+                </form>
+                <p>Already have an account? Log in <Link to="/login">here</Link>.</p>
+            </React.Fragment>
         )
     }
 }

@@ -28,8 +28,19 @@ class NavBar extends Component {
         return (
             <nav className={this.state.navbarInitialClass.join(" ")}>
                 <Link to="/" className="nav-link active navbar-text-style1">Jamspot</Link>
-                <Link to="/login" className="nav-link navbar-text-style2">Log In</Link>
-                <Link to="/signup" className="nav-link navbar-text-style2">Sign Up</Link>
+                { this.props.loggedIn ? (
+                    <React.Fragment>
+                        <Link to="/profile" className="nav-link navbar-text-style2">Profile</Link>
+                        <Link to="/myjams" className="nav-link navbar-text-style2">My Jams</Link>
+                        <Link to="/createjam" className="nav-link navbar-text-style2">Create A Jam</Link>
+                        <Link to="/findjam" className="nav-link navbar-text-style2">Find A Jam</Link>
+                    </React.Fragment>
+                ) : (
+                    <React.Fragment>
+                        <Link to="/login" className="nav-link navbar-text-style2">Log In</Link>
+                        <Link to="/signup" className="nav-link navbar-text-style2">Sign Up</Link>
+                    </React.Fragment>
+                )}
             </nav>
         )
     }
