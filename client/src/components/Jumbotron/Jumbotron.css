@@ -1,42 +1,49 @@
-@import url('https://fonts.googleapis.com/css?family=Merriweather|Shrikhand');
-
-/* 
-font-family: 'Shrikhand', cursive;
-font-family: 'Merriweather', serif;
-*/
-
 .jumbotron-title-style{
-    font-family: 'Shrikhand', cursive;
-    font-weight: bold;
+    font-family: var(--frekoda);
     font-size: 8vh;
-    color: lightcoral;
+    color: var(--maincolor1);
 }
 
 .jumbotron-lead-style{
-    font-family: 'Merriweather', serif;
-    font-weight: bold;
-    font-size: 2.2vh;
-    color: lightcoral;
+    font-family: var(--merriweather);
+    font-size: 3vh;
+    color: var(--maincolor1);
 }
 
 .jumbotron-button-style{
-    font-family: 'Merriweather', serif;
-    font-weight: bold;
+    font-family: var(--merriweather);
     margin:10px;
-    background-color: lightcoral;
-    border: whitesmoke;
+    color: var(--maincolor2);
+    font-weight: bold;
+    font-size: 2.2vh;
+    background-color: var(--maincolor1);
+    border: 2px solid var(--maincolor1);
+    border-radius: 30px;
+    padding: 10px 40px; 
 }
 
 .jumbotron-button-style:hover{
-    border-color: whitesmoke;
-    background-color:whitesmoke;
-    color: lightcoral;
+    border-color: var(--maincolor1);
+    background-color: var(--maincolor2);
+    color: var(--maincolor1);
+}
+
+.jumbotron-button-style:active{
+    border-color: var(--maincolor1) !important;
+    background-color: var(--maincolor2) !important;
+    color: var(--maincolor1);
+}
+
+.jumbotron-button-style:focus{
+    border-color: var(--maincolor1);
+    background-color: var(--maincolor2);
+    color: var(--maincolor1);
 }
 
 @media only screen and (max-width: 600px) {
     .jumbotron{
     background-color: transparent;
-    padding-top: 29%;
+    padding-top: 24%;
     padding-bottom: 10%;
     }
 } 
@@ -44,7 +51,7 @@ font-family: 'Merriweather', serif;
 @media only screen and (min-width: 600px) {
     .jumbotron{
     background-color: transparent;
-    padding-top: 18.5%;
+    padding-top: 17%;
     padding-bottom: 10%;
     }
 } 
@@ -52,7 +59,7 @@ font-family: 'Merriweather', serif;
 @media only screen and (min-width: 768px) {
     .jumbotron{
     background-color: transparent;
-    padding-top: 18%;
+    padding-top: 16%;
     padding-bottom: 10%;
     }
 } 
@@ -60,7 +67,7 @@ font-family: 'Merriweather', serif;
 @media only screen and (min-width: 992px) {
     .jumbotron{
     background-color: transparent;
-    padding-top: 15%;
+    padding-top: 13%;
     padding-bottom: 10%;
     }
 } 
@@ -68,7 +75,7 @@ font-family: 'Merriweather', serif;
 @media only screen and (min-width: 1200px) {
     .jumbotron{
     background-color: transparent;
-    padding-top: 13.5%;
+    padding-top: 12.5%;
     padding-bottom: 10%;
     }
 }
