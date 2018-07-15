@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Jumbotron.css"
 
 const Jumbotron = () => (
-    <div className="jumbotron jumbotron-fluid">
+    <div className="jumbotron jumbotron-fluid jumbotron-bg">
         <div className="container align-items-center">
             <h1 className="display-4 jumbotron-title-style text-center">Jamspot</h1>
             <p className="lead jumbotron-lead-style text-center">Connect. Collaborate. Create.</p>

@@ -44,7 +44,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    position: fixed;
+    /* position: fixed; */
 	-webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
@@ -62,7 +62,7 @@
     left: 0;
 }
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
     .footer {
     bottom: 0;
     left: 0;
@@ -111,7 +111,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    position: fixed;
+    position: fixed; 
 	-webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
@@ -141,7 +141,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    position: fixed;
+    position: fixed; 
 	-webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
@@ -171,7 +171,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    position: fixed;
+    position: fixed; 
 	-webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
@@ -180,12 +180,13 @@
     height: 17.5em;
     background: rgb(0, 0, 0, 0.5);
     }
-} 
+}  */
 
 @media only screen and (min-width: 1200px) {
     .footer {
     bottom: 0;
     left: 0;
+    position: fixed;
     width: 100%;
     height: 2.2em;
     overflow: hidden;
@@ -201,12 +202,12 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    position: fixed;
-	-webkit-transition: all 1s ease;
+    /* position: fixed; */
+	/* -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
     -ms-transition: all 1s ease;
-    transition: all 1s ease;
+    transition: all 1s ease; */
     height: 13.5em;
     background: rgb(0, 0, 0, 0.5);
     }
