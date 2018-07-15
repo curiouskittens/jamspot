@@ -6,10 +6,9 @@ const Jumbotron = () => (
     <div className="jumbotron jumbotron-fluid">
         <div className="container align-items-center">
             <h1 className="display-4 jumbotron-title-style text-center">Jamspot</h1>
-            <p className="lead jumbotron-lead-style text-center">Find and connect with fellow musicians to set up a jam session, collaborate and create the next big hit!</p>
+            <p className="lead jumbotron-lead-style text-center">Connect. Collaborate. Create.</p>
             <div className="container text-center">
-                <Link to="/login"><button className="btn btn-primary btn-lg jumbotron-button-style">Log In</button></Link>
-                <Link to="/signup"><button className="btn btn-primary btn-lg jumbotron-button-style">Sign Up</button></Link>
+                <Link to="/login"><button className="btn btn-outline-primary btn-lg jumbotron-button-style">Let's Jam!</button></Link>
             </div>
         </div>
     </div>

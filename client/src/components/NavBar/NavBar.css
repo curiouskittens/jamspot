@@ -1,4 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Merriweather|Shrikhand');
+@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans|Fredoka+One');
+
+:root{
+    --maincolor1: #007bff;
+    --maincolor2: whitesmoke;
+    --maincolor3: rgb(164,255,126);
+    --frekoda: 'Fredoka One', cursive;
+    --merriweather: 'Merriweather Sans', serif;
+}
 
 .navbar-config{
     overflow: hidden;
@@ -12,24 +20,22 @@
 }
 
 .navbar-semi-transparent {
-    background-color: rgba(0,0,0,.5);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .navbar-text-style1{
-    color: whitesmoke;
-    font-family: 'Merriweather', serif;
-    font-weight: bold;
+    color: var(--maincolor2);
+    font-family: var(--frekoda);
     font-size: 150%;
 }
 
 .navbar-text-style2 {
-    color: whitesmoke;
-    font-family: 'Merriweather', serif;
-    font-weight: bold;
+    color: var(--maincolor2);
+    font-family: var(--merriweather);
 }
 
 .navbar-text-style1:hover,.navbar-text-style2:hover{
-    color: lightcoral;
+    color: var(--maincolor3);
 }
 
 

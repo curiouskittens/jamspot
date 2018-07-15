@@ -1,19 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Merriweather|Shrikhand');
-
-/* 
-font-family: 'Shrikhand', cursive;
-font-family: 'Merriweather', serif;
-*/
-
 .footer-trigger-text-style, .footer-trigger-text-style a{
-    font-family: 'Merriweather', serif;
-    font-weight: bold;
+    font-family: var(--merriweather);
     font-size: 2vh;
-    color: rgba(0, 0, 0, 0.5);
+    color: rgb(0, 0, 0);
 }
 
 .footer-link-text-style:hover{
-    color: lightcoral;
+    color: var(--maincolor3);
     text-decoration: none;
 }
 
@@ -26,14 +18,14 @@ font-family: 'Merriweather', serif;
 }
 
 .footer-project-text-style{
-    color: lightcoral;
-    font-family: 'Shrikhand', cursive;
+    color: var(--maincolor3);
+    font-family: var(--frekoda);
     font-size: 3vh;
 }
 
 .footer-link-text-style{
-    color: whitesmoke;
-    font-family: 'Merriweather', serif;
+    color: var(--maincolor2);
+    font-family: var(--merriweather);
     font-weight: bold;
     font-size: 2.2vh;
 }
