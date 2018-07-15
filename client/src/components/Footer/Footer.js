@@ -7,6 +7,7 @@ class Footer extends Component {
         footerTriggerStyles: "footer-trigger-text-style text-center",
         footerShown: false
     }
+
     toggleFooter = () => {
         if (this.state.footerShown === false) {
             this.setState({
@@ -22,6 +23,7 @@ class Footer extends Component {
             })
         }
     }
+
     render() {
         return (
             <footer className={this.state.footer}>

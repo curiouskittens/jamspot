@@ -10,9 +10,13 @@ class NavBar extends Component {
     handleScroll = () => {
         let st = window.pageYOffset;
         if (st > 0) {
-            this.setState({ navbarInitialClass: ["nav", "navbar-config", "navbar-height", "align-items-center", "navbar-semi-transparent"] })
+            this.setState({
+                navbarInitialClass: ["nav", "navbar-config", "navbar-height", "align-items-center", "navbar-semi-transparent"]
+            })
         } else if (st === 0) {
-            this.setState({ navbarInitialClass: ["nav", "navbar-config", "navbar-height", "align-items-center", "navbar-initial-color"] })
+            this.setState({
+                navbarInitialClass: ["nav", "navbar-config", "navbar-height", "align-items-center", "navbar-initial-color"]
+            })
         }
     }
 
