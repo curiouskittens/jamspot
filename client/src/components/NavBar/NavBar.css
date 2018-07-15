@@ -26,12 +26,13 @@
 .navbar-text-style1{
     color: var(--maincolor2);
     font-family: var(--frekoda);
-    font-size: 150%;
+    font-size: 3.2vh;
 }
 
 .navbar-text-style2 {
     color: var(--maincolor2);
     font-family: var(--merriweather);
+    font-size: 2vh;
 }
 
 .navbar-initial-color a{

@@ -2,16 +2,30 @@
     font-family: var(--merriweather);
     font-size: 2vh;
     color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+.footer-trigger-text-style > a:hover {
+    color: var(--maincolor1);
+    text-decoration: none;
+}
+
+.footer-trigger-text-style-clicked, .footer-trigger-text-style-clicked a {
+    font-family: var(--merriweather);
+    font-size: 2vh;
+    color: var(--maincolor2);
+    cursor: pointer;
+}
+
+.footer-trigger-text-style-clicked > a:hover {
+    color: var(--maincolor3);
+    text-decoration: none;
 }
 
 .footer-link-text-style:hover{
     color: var(--maincolor3);
     text-decoration: none;
 }
-
-/* .footer-trigger-text-style:hover, .footer-trigger-text-style a:hover{
-    color: whitesmoke;
-} */
 
 .footer-title-wrapper{
     padding-top: 2.2vh;
@@ -45,9 +59,10 @@
 	z-index: 999;
 }
 
-.footer:hover {
+.footer-click {
     bottom: 0;
     left: 0;
+    width: 100%;
     position: fixed;
 	-webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;

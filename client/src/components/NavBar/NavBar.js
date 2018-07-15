@@ -11,7 +11,7 @@ class NavBar extends Component {
         let st = window.pageYOffset;
         if (st > 0) {
             this.setState({ navbarInitialClass: ["nav", "navbar-config", "navbar-height", "align-items-center", "navbar-semi-transparent"] })
-        } else if (st == 0) {
+        } else if (st === 0) {
             this.setState({ navbarInitialClass: ["nav", "navbar-config", "navbar-height", "align-items-center", "navbar-initial-color"] })
         }
     }
