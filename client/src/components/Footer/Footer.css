@@ -1,6 +1,6 @@
 .footer-trigger-text-style, .footer-trigger-text-style a{
     font-family: var(--merriweather);
-    font-size: 2vh;
+    font-size: 2.4vh;
     color: rgb(0, 0, 0);
     cursor: pointer;
 }
@@ -12,7 +12,7 @@
 
 .footer-trigger-text-style-clicked, .footer-trigger-text-style-clicked a {
     font-family: var(--merriweather);
-    font-size: 2vh;
+    font-size: 2.4vh;
     color: var(--maincolor2);
     cursor: pointer;
 }
@@ -25,10 +25,6 @@
 .footer-link-text-style:hover{
     color: var(--maincolor3);
     text-decoration: none;
-}
-
-.footer-title-wrapper{
-    padding-top: 2.2vh;
 }
 
 .footer-project-text-style{
@@ -44,21 +40,6 @@
     font-size: 2.2vh;
 }
 
-.footer {
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2em;
-    overflow: hidden;
-    margin: 0 auto;
-	-webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-	z-index: 999;
-}
-
 .footer-click {
     bottom: 0;
     left: 0;
@@ -69,7 +50,7 @@
     -o-transition: all 1s ease;
     -ms-transition: all 1s ease;
     transition: all 1s ease;
-    height: 15em;
+    height: 13.5em;
     background: rgb(0, 0, 0, 0.5);
 }
 
@@ -80,3 +61,155 @@
     top: 0;
     left: 0;
 }
+
+@media only screen and (max-width: 600px) {
+    .footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1.8em;
+    overflow: hidden;
+    margin: 0 auto;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+	z-index: 999;
+    }
+    .footer-click {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+    height: 10.5em;
+    background: rgb(0, 0, 0, 0.5);
+    }
+} 
+
+@media only screen and (min-width: 600px) {
+    .footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2.1em;
+    overflow: hidden;
+    margin: 0 auto;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+	z-index: 999;
+    }
+    .footer-click {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+    height: 11.3em;
+    background: rgb(0, 0, 0, 0.5);
+    }
+} 
+
+@media only screen and (min-width: 768px) {
+    .footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2.5em;
+    overflow: hidden;
+    margin: 0 auto;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+	z-index: 999;
+    }
+    .footer-click {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+    height: 13.5em;
+    background: rgb(0, 0, 0, 0.5);
+    }
+} 
+
+@media only screen and (min-width: 992px) {
+    .footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3.4em;
+    overflow: hidden;
+    margin: 0 auto;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+	z-index: 999;
+    }
+    .footer-click {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+    height: 17.5em;
+    background: rgb(0, 0, 0, 0.5);
+    }
+} 
+
+@media only screen and (min-width: 1200px) {
+    .footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2.4em;
+    overflow: hidden;
+    margin: 0 auto;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+	z-index: 999;
+    }
+    .footer-click {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+    height: 13.5em;
+    background: rgb(0, 0, 0, 0.5);
+    }
+} 
+
+
