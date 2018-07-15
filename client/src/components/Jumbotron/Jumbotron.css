@@ -17,7 +17,7 @@
     font-weight: bold;
     font-size: 2.2vh;
     background-color: var(--maincolor1);
-    border: 1px solid var(--maincolor1);
+    border: 2px solid var(--maincolor1);
     border-radius: 30px;
     padding: 10px 40px; 
 }
@@ -26,21 +26,18 @@
     border-color: var(--maincolor1);
     background-color: var(--maincolor2);
     color: var(--maincolor1);
-    box-shadow: none !important;
 }
 
 .jumbotron-button-style:active{
     border-color: var(--maincolor1) !important;
     background-color: var(--maincolor2) !important;
     color: var(--maincolor1);
-    box-shadow: none !important;
 }
 
 .jumbotron-button-style:focus{
     border-color: var(--maincolor1);
     background-color: var(--maincolor2);
     color: var(--maincolor1);
-    box-shadow: none !important;
 }
 
 @media only screen and (max-width: 600px) {
