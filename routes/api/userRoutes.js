@@ -8,15 +8,11 @@ router.route("/create")
     .post(userController.create)
     .get(userController.findOne)
 
-router.route("/login")
-    .post(userController.login)
-
 router.route("/:id")
     .put(userController.update)
     .delete(userController.remove)
 
 router.route("/populated/:id")
     .get(userController.findOnePopulate)
-
 
 module.exports = router;

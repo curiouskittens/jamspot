@@ -24,6 +24,8 @@
     "body-parser": "^1.18.2",
     "express": "^4.15.4",
     "if-env": "^1.0.4",
-    "mongoose": "^5.2.2"
+    "mongoose": "^5.2.2",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
   }
 }

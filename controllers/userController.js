@@ -10,7 +10,7 @@ module.exports = {
     update: function(req, res) {
         db.User
             .findOneAndUpdate(
-                { _id: req.params.id},
+                { _id: req.params.id },
                 { $set: req.body },
                 { new: true }
             )
@@ -41,16 +41,5 @@ module.exports = {
             .findByIdAndRemove({ _id: req.params.id})
             .then(dbUser => res.send(dbUser))
             .catch(err => res.send(err))
-    },
-    login: function(req, res) {
-        db.User
-            .findOne({ username: req.body.username})
-            .then(dbUser => {
-                dbUser.validatePassword(req.body.password, function(err, isMatch) {
-                    if (err) throw err;
-                    res.send(isMatch);
-                })
-            })
-            .catch(err => res.status(422).json(err))
     }
 };

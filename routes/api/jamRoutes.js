@@ -11,6 +11,4 @@ router.route("/:id")
     .get(jamController.findOne)
     .delete(jamController.remove)
 
-
-
 module.exports = router;

@@ -26,12 +26,8 @@ class Login extends Component {
                 username: this.state.username,
                 password: this.state.password
             })
-            .then(passwordMatch => {
-                if (passwordMatch.data) {
-                    console.log("Login successful.");
-                } else {
-                    console.log("Sorry, your login information was incorrect.");
-                }
+            .then(loginResult => {
+                console.log(loginResult);
             })
             .catch(err => console.log(err));
         }

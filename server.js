@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const bodyParser = require("body-parser");
+const passport = require("passport");
 const PORT = process.env.PORT || 3001;
 const routes = require("./routes");
 const app = express();
@@ -14,8 +15,13 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+// Set up passport
+require("./utils/passport")(passport);
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Define API routes here
-app.use(routes)
+app.use(routes(passport));
 
 // Send every other request to the React app
 // Define any API routes before this runs
