@@ -34,6 +34,14 @@
     font-family: var(--merriweather);
 }
 
+.navbar-initial-color a{
+    color: var(--maincolor1) !important
+}
+
+.navbar-initial-color > a:hover{
+    color: darkgoldenrod !important;
+}
+
 .navbar-text-style1:hover,.navbar-text-style2:hover{
     color: var(--maincolor3);
 }
