@@ -6,7 +6,8 @@ class CreateJam extends Component {
         jamName: "",
         description: "",
         date: "",
-        location: ""
+        location: "",
+        instruments:[{ name: '', quantity: '' }]
     }
 
     handleInputChange = event => {
@@ -15,17 +16,48 @@ class CreateJam extends Component {
             [name]: value
         })
     }
+    handleInstrumentChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        })
+    }
+
+    handleInstrumentNameChange = (idx) => (evt) => {
+        const newinstruments = this.state.instruments.map((instrument, sidx) => {
+          if (idx !== sidx) return instrument;
+          return { ...instrument, name: evt.target.value };
+        });
+        
+        this.setState({ instruments: newinstruments });
+    }
+    handleInstrumentQuantityChange = (idx) => (evt) => {
+        const newinstruments = this.state.instruments.map((instrument, sidx) => {
+          if (idx !== sidx) return instrument;
+          return { ...instrument, quantity: evt.target.value };
+        });
+        
+        this.setState({ instruments: newinstruments });
+    }
+    
+    handleAddInstrument = () => {
+        this.setState({ instruments: this.state.instruments.concat([{ name: '', quantity: '' }]) });
+    }
+    
+    handleRemoveInstrument = (idx) => () => {
+        this.setState({ instruments: this.state.instruments.filter((s, sidx) => idx !== sidx) });
+    }
 
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log("hooray! you have submitted!!")
+        console.log(this.state)
         const newJam = {
             name: this.state.jamName,
             description: this.state.description,
             date: this.state.date,
             location: this.state.location
         }
-        console.log(newJam)
+        // console.log(newJam)
 
 
         // if (!this.state.username) {
@@ -50,7 +82,7 @@ class CreateJam extends Component {
     
     render() {
         return (
-            <form>
+            <form id="jamForm" action="localhost:3001/api/jams/test" method="post">
                 <label htmlFor="jam-name">Jam Name:</label>
                 <input
                     type="text"
@@ -83,6 +115,40 @@ class CreateJam extends Component {
                     value={this.state.location}
                     onChange={this.handleInputChange}
                 />
+                <br/><br/>
+
+
+
+                 <br/><br/>
+                <h4>instruments</h4>
+                {this.state.instruments.map((instrument, idx) => (
+                    <div className="instrument">
+                    <select
+                        placeholder={`instrument #${idx + 1} name`}
+                        value={instrument.name}
+                        onChange={this.handleInstrumentNameChange(idx)}
+                    >
+                        <option value="leadGuitar">Lead Guitar</option>
+                        <option value="rythmGuitar">Rythm Guitar</option>
+                        <option value="bass">Bass</option>
+                        <option value="keys">Keys</option>
+                        <option value="drums">Drums</option>
+                        <option value="percussion">Percussion</option>
+                        <option value="vocals">Vocals</option>
+                    </select>
+                    <input 
+                        type="number"
+                        placeholder="#"
+                        min="1" 
+                        max="10" 
+                        onChange={this.handleInstrumentQuantityChange(idx)}
+                    />
+                    <button type="button" onClick={this.handleRemoveInstrument(idx)} className="small">-</button>
+                    </div>
+                ))}
+                <button type="button" onClick={this.handleAddInstrument} className="small">Add instrument</button>
+
+                <br/><br/>
                 <button onClick={this.handleFormSubmit}>Create Jam</button>
             </form>
         )
