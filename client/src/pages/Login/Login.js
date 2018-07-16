@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
+import "./Login.css";
 import api from "../../utils/api";
 
 class Login extends Component {
@@ -46,7 +47,7 @@ class Login extends Component {
 
     render() {
         return (
-            <React.Fragment>
+            <div className="log-in-bg">
                 <form>
                     <label htmlFor="username">Username:</label>
                     <input
@@ -68,7 +69,7 @@ class Login extends Component {
                 </form>
                 <p>Don't have an account? Sign up <Link to="/signup">here</Link>.</p>
                 { this.state.loggedIn && <Redirect to="/" /> }
-            </React.Fragment>
+            </div>
         )
     }
 }

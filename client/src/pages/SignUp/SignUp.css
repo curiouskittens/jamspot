@@ -7,9 +7,9 @@
 }
 
 .sign-up-wrapper{
-    padding-top: 15vh;
-    padding-left: 30vh;
-    padding-right: 30vh;
+    padding-top: 10%;
+    padding-left: 20%;
+    padding-right: 20%;
 }
 
 .sign-up-form{
@@ -42,6 +42,7 @@
 .sign-up-btn{
     margin-top: 1vh;
     font-family: var(--merriweather);
+    font-size: 2.5vh;
 }
 
 .sign-up-btn:hover{
@@ -61,3 +62,47 @@
     background-color: var(--maincolor2);
     color: var(--maincolor1);
 }
+
+@media only screen and (max-width: 360px) {
+    .sign-up-form{
+    padding:2vh 2vh 1vh 2vh;
+    border: var(--maincolor2) 3px double;
+    }
+    .sign-up-wrapper{
+        padding-top: 15%;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+} 
+
+@media only screen and (min-width: 360px) {
+    .sign-up-wrapper{
+        padding-top: 18%;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+} 
+
+@media only screen and (min-width: 600px) {
+    .sign-up-wrapper{
+        padding-top: 25%;
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+} 
+
+@media only screen and (min-width: 768px) {
+    .sign-up-wrapper{
+        padding-top: 20%;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+} 
+
+@media only screen and (min-width: 1200px) {
+    .sign-up-wrapper{
+        padding-top: 10%;
+        padding-left: 18%;
+        padding-right: 18%;
+    }
+} 
