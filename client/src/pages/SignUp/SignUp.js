@@ -43,12 +43,48 @@ class SignUp extends Component {
 
         if (!this.state.name) {
             console.log("Please enter your name.");
-        } else if (!this.validateEmail(this.state.email)) { 
+            let infoMissingText = document.createElement("p");
+            infoMissingText.className += "swal-warning-text";
+            infoMissingText.innerHTML = "Please enter your name.";
+            window.swal({
+                content: infoMissingText,
+                buttons: false,
+                icon: "warning",
+                timer: "1500"
+            });
+        } else if (!this.validateEmail(this.state.email)) {
             console.log("Please enter a valid email address.")
+            let infoMissingText = document.createElement("p");
+            infoMissingText.className += "swal-warning-text";
+            infoMissingText.innerHTML = "Please enter a valid email address.";
+            window.swal({
+                content: infoMissingText,
+                buttons: false,
+                icon: "warning",
+                timer: "1500"
+            });
         } else if (!this.state.username || this.state.usernameTaken) {
             console.log("Please enter a valid username.");
+            let infoMissingText = document.createElement("p");
+            infoMissingText.className += "swal-warning-text";
+            infoMissingText.innerHTML = "Please enter a valid username.";
+            window.swal({
+                content: infoMissingText,
+                buttons: false,
+                icon: "warning",
+                timer: "1500"
+            });
         } else if (this.state.password.length < 6) {
             console.log("Please enter a valid password.");
+            let infoMissingText = document.createElement("p");
+            infoMissingText.className += "swal-warning-text";
+            infoMissingText.innerHTML = "Please enter a valid password.";
+            window.swal({
+                content: infoMissingText,
+                buttons: false,
+                icon: "warning",
+                timer: "1500"
+            });
         } else {
             api.createUser({
                 name: this.state.name,
@@ -58,6 +94,13 @@ class SignUp extends Component {
             })
             .then(() => {
                 console.log("User created.");
+                let userCreatedText = document.createElement("p");
+                userCreatedText.className += "swal-success-text animated tada";
+                userCreatedText.innerHTML = "User Created!";
+                window.swal({
+                    content: userCreatedText,
+                    timer: 2000,
+                });
                 this.setState({
                     name: "",
                     email: "",
@@ -74,6 +117,18 @@ class SignUp extends Component {
             return true;
         } else {
             return false;
+        }
+    }
+
+    renderUsernameStatus = () => {
+        if(this.state.usernameTaken === true) {
+            return(
+                <small className="not-available-username">&times; Sorry, this username is not available.</small>
+            )
+        } else if (this.state.username !== "" && this.state.usernameTaken === false) {
+            return(
+                <small className="available-username">✔ That username is up for grabs.</small>
+            )
         }
     }
 
@@ -116,6 +171,7 @@ class SignUp extends Component {
                                 value={this.state.username}
                                 onChange={this.handleInputChange}
                             />
+                            {this.renderUsernameStatus()}
                         </div>
                         <div className="form-group">
                             <label className="sign-up-label-text" htmlFor="password">Password:</label>
