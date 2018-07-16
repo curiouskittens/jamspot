@@ -1,14 +1,52 @@
-.log-in-bg{
-    background-image: url("./loginGradient/loginGradient.jpg");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh; 
-};
-
 .log-in-form{
     padding:5vh 5vh 2.5vh 5vh;
     border: var(--maincolor2) 5px double;
+}
+
+.log-in-title-style{
+    font-family: var(--frekoda);
+    font-size: 4vh;
+    color: var(--maincolor1);
+}
+
+.log-in-separator{
+    border: var(--maincolor2) 3.5px double;
+}
+
+.log-in-label-text{
+    font-family: var(--merriweather);
+    font-size: 2.2vh;
+    color: var(--maincolor1);
+}
+
+.login-to-sign-up-text{
+    margin-top: 1.5vh;
+    font-family: var(--merriweather);
+    font-size: 1.7vh;
+}
+
+.log-in-btn{
+    margin-top: 1vh;
+    font-family: var(--merriweather);
+    font-size: 2.5vh;
+}
+
+.log-in-btn:hover{
+    border-color: var(--maincolor1);
+    background-color: var(--maincolor2);
+    color: var(--maincolor1);
+}
+
+.log-in-btn:active{
+    border-color: var(--maincolor1) !important;
+    background-color: var(--maincolor2) !important;
+    color: var(--maincolor1) !important;
+}
+
+.log-in-btn:focus{
+    border-color: var(--maincolor1);
+    background-color: var(--maincolor2);
+    color: var(--maincolor1);
 }
 
 @media only screen and (max-width: 360px) {
@@ -54,3 +92,11 @@
         padding-right: 18%;
     }
 } 
+
+.log-in-bg{
+    background-image: url("./loginGradient/loginGradient.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh; 
+};
