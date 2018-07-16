@@ -8,6 +8,12 @@ class Footer extends Component {
         footerShown: false
     }
 
+    componentDidUpdate() {
+        if(this.state.footerShown === true) {
+            window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
+        }
+    }
+
     toggleFooter = () => {
         if (this.state.footerShown === false) {
             this.setState({
@@ -24,12 +30,26 @@ class Footer extends Component {
         }
     }
 
-    render() {
-        return (
-            <footer className={this.state.footer}>
+    renderFooter = () => {
+        if (this.state.footerShown === false) {
+            return(
+                <div className={this.state.footerTriggerStyles} onClick={this.toggleFooter}>
+                    Made by curiouskittens <i className="fas fa-paw"></i>
+                </div>
+            )
+        } else {
+            return(
                 <div className={this.state.footerTriggerStyles} onClick={this.toggleFooter}>
                     Made by<a href="https://github.com/orgs/curiouskittens" className="" target="react/jsx-no-target-blank"> curiouskittens <i className="fas fa-paw"></i></a>
                 </div>
+            )
+        }
+    }
+
+    render() {
+        return (
+            <footer className={this.state.footer}>
+                {this.renderFooter()}
                 <div className="footer-wrapper">
                     <div className="container text-center">
                         <div className="footer-title-wrapper">

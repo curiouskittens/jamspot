@@ -40,20 +40,6 @@
     font-size: 2.2vh;
 }
 
-.footer-click {
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    /* position: fixed; */
-	-webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-    height: 13.5em;
-    background: rgb(0, 0, 0, 0.5);
-}
-
 .footer-wrapper{
     margin-top: 1vh;
 	width: 100%;
@@ -62,7 +48,7 @@
     left: 0;
 }
 
-/* @media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
     .footer {
     bottom: 0;
     left: 0;
@@ -81,13 +67,12 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    position: fixed;
+    padding-bottom: 2vh;
 	-webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
     -ms-transition: all 1s ease;
     transition: all 1s ease;
-    height: 10.5em;
     background: rgb(0, 0, 0, 0.5);
     }
 } 
@@ -111,13 +96,12 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    position: fixed; 
+    padding-bottom: 2vh;
 	-webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
     -ms-transition: all 1s ease;
     transition: all 1s ease;
-    height: 11.3em;
     background: rgb(0, 0, 0, 0.5);
     }
 } 
@@ -141,13 +125,12 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    position: fixed; 
+    padding-bottom: 2vh;
 	-webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
     -ms-transition: all 1s ease;
     transition: all 1s ease;
-    height: 13.5em;
     background: rgb(0, 0, 0, 0.5);
     }
 } 
@@ -171,22 +154,20 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    position: fixed; 
+    padding-bottom: 2vh;
 	-webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
     -ms-transition: all 1s ease;
     transition: all 1s ease;
-    height: 17.5em;
     background: rgb(0, 0, 0, 0.5);
     }
-}  */
+} 
 
 @media only screen and (min-width: 1200px) {
     .footer {
     bottom: 0;
     left: 0;
-    position: fixed;
     width: 100%;
     height: 2.2em;
     overflow: hidden;
@@ -202,13 +183,12 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    /* position: fixed; */
-	/* -webkit-transition: all 1s ease;
+    padding-bottom: 2vh;
+	-webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
     -ms-transition: all 1s ease;
-    transition: all 1s ease; */
-    height: 13.5em;
+    transition: all 1s ease;
     background: rgb(0, 0, 0, 0.5);
     }
 } 
