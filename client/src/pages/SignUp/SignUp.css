@@ -6,12 +6,6 @@
     height: 100vh;
 }
 
-.sign-up-wrapper{
-    padding-top: 10%;
-    padding-left: 20%;
-    padding-right: 20%;
-}
-
 .sign-up-form{
     padding:5vh 5vh 2.5vh 5vh;
     border: var(--maincolor2) 5px double;

@@ -48,27 +48,29 @@ class Login extends Component {
     render() {
         return (
             <div className="log-in-bg">
-                <form>
-                    <label htmlFor="username">Username:</label>
-                    <input
-                        type="text"
-                        id="username"
-                        name="username"
-                        value={this.state.username}
-                        onChange={this.handleInputChange}
-                    />
-                    <label htmlFor="password">Password:</label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        value={this.state.password}
-                        onChange={this.handleInputChange}
-                    />
-                    <button onClick={this.handleFormSubmit}>Log In</button>
-                </form>
-                <p>Don't have an account? Sign up <Link to="/signup">here</Link>.</p>
-                { this.state.loggedIn && <Redirect to="/" /> }
+                <div className="log-in-wrapper container">
+                    <form className="log-in-form">
+                        <label htmlFor="username">Username:</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            value={this.state.username}
+                            onChange={this.handleInputChange}
+                        />
+                        <label htmlFor="password">Password:</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            value={this.state.password}
+                            onChange={this.handleInputChange}
+                        />
+                        <button onClick={this.handleFormSubmit}>Log In</button>
+                    </form>
+                    <p>Don't have an account? Sign up <Link to="/signup">here</Link>.</p>
+                    { this.state.loggedIn && <Redirect to="/" /> }
+                </div>
             </div>
         )
     }
