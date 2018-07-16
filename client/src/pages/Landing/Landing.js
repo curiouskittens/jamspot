@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import Header from "../../components/Header";
 import AppIntro from "../../components/AppIntro";
 import Footer from "../../components/Footer";
+import Jumbotron from "../../components/Jumbotron";
 
 class Landing extends Component {
     render() {
         return (
             <React.Fragment>
-                <Header />
+                <Jumbotron />
                 <AppIntro />
                 <Footer />
             </React.Fragment>

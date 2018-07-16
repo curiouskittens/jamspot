@@ -1,0 +1,162 @@
+.sign-up-form{
+    padding:5vh 5vh 2.5vh 5vh;
+    border: var(--maincolor2) 5px double;
+}
+
+.sign-up-title-style{
+    font-family: var(--frekoda);
+    font-size: 4vh;
+    color: var(--maincolor1);
+}
+
+.sign-up-separator{
+    border: var(--maincolor2) 3.5px double;
+}
+
+.sign-up-label-text{
+    font-family: var(--merriweather);
+    font-size: 2.2vh;
+    color: var(--maincolor1);
+}
+
+.sign-up-to-login-text{
+    margin-top: 1.5vh;
+    font-family: var(--merriweather);
+    font-size: 1.7vh;
+}
+
+.sign-up-btn{
+    margin-top: 1vh;
+    font-family: var(--merriweather);
+    font-size: 2.5vh;
+}
+
+.sign-up-btn:hover{
+    border-color: var(--maincolor1);
+    background-color: var(--maincolor2);
+    color: var(--maincolor1);
+}
+
+.sign-up-btn:active{
+    border-color: var(--maincolor1) !important;
+    background-color: var(--maincolor2) !important;
+    color: var(--maincolor1) !important;
+}
+
+.sign-up-btn:focus{
+    border-color: var(--maincolor1);
+    background-color: var(--maincolor2);
+    color: var(--maincolor1);
+}
+
+.swal-modal{
+    background: var(--maincolor2);
+}
+
+.swal-success-text{
+    font-size: 3vh;
+    font-family: var(--merriweather);
+    color: var(--maincolor1);
+}
+
+.swal-warning-text{
+    font-size: 3vh;
+    font-family: var(--merriweather);
+    color: rgb(245, 184, 80);
+}
+
+.swal-button--confirm{
+    font-size: 2vh;
+    font-family: var(--merriweather);
+    background: var(--maincolor1);
+    color: var(--maincolor2);
+    border: 1px solid var(--maincolor1);
+}
+
+.swal-button--confirm:hover{
+    border-color: var(--maincolor1);
+    background-color: var(--maincolor2);
+    color: var(--maincolor1);
+}
+
+.swal-button--confirm:active{
+    border-color: var(--maincolor1);
+    background-color: var(--maincolor2);
+    color: var(--maincolor1);
+}
+
+.swal-button--confirm:focus{
+    -webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.not-available-username{
+    color: rgba(255, 0, 0, 0.815);
+    font-family: var(--merriweather);
+    font-size: 1.5vh;
+}
+
+.available-username{
+    color: var(--maincolor1);
+    font-family: var(--merriweather);
+    font-size: 1.5vh;
+}
+
+@media only screen and (max-width: 376px) {
+    .sign-up-form{
+    padding:2vh 2vh 1vh 2vh;
+    border: var(--maincolor2) 3px double;
+    }
+    .sign-up-wrapper{
+        padding-top: 18%;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+    .sign-up-bg{
+    background-image: url("./signUpGradient/signUpGradient.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 106vh !important;
+}
+} 
+
+@media only screen and (min-width: 376px) {
+    .sign-up-wrapper{
+        padding-top: 18%;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+} 
+
+@media only screen and (min-width: 600px) {
+    .sign-up-wrapper{
+        padding-top: 25%;
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+} 
+
+@media only screen and (min-width: 768px) {
+    .sign-up-wrapper{
+        padding-top: 20%;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+} 
+
+@media only screen and (min-width: 1200px) {
+    .sign-up-wrapper{
+        padding-top: 10%;
+        padding-left: 18%;
+        padding-right: 18%;
+    }
+} 
+
+.sign-up-bg{
+    background-image: url("./signUpGradient/signUpGradient.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
