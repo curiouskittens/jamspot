@@ -1,0 +1,44 @@
+.sign-up-bg{
+    background-image: url("./signUpGradient/signUpGradient.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.sign-up-wrapper{
+    padding-top: 15vh;
+    padding-left: 30vh;
+    padding-right: 30vh;
+}
+
+.sign-up-form{
+    padding:5vh 5vh 2.5vh 5vh;
+    border: var(--maincolor2) 3px solid;
+}
+
+.sign-up-title-style{
+    font-family: var(--frekoda);
+    font-size: 4vh;
+    color: var(--maincolor1);
+}
+
+.sign-up-separator{
+    border: var(--maincolor2) 2px solid;
+}
+
+.sign-up-label-text{
+    font-family: var(--merriweather);
+    font-size: 2.2vh;
+    color: var(--maincolor1);
+}
+
+.sign-up-to-login-text{
+    margin-top: 1vh;
+    font-family: var(--merriweather);
+    font-size: 1.7vh;
+}
+
+.sign-up-btn{
+    margin-top: 1vh;
+}

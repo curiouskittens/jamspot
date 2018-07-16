@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import "./SignUp.css";
 import emailValidator from "../../utils/emailValidator";
 import api from "../../utils/api";
 
@@ -78,44 +79,60 @@ class SignUp extends Component {
 
     render() {
         return (
-            <React.Fragment>
-                <form>
-                    <label htmlFor="name">Name:</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={this.state.name}
-                        onChange={this.handleInputChange}
-                    />
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={this.state.email}
-                        onChange={this.handleInputChange}
-                    />
-                    <label htmlFor="username">Username:</label>
-                    <input
-                        type="text"
-                        id="username"
-                        name="username"
-                        value={this.state.username}
-                        onChange={this.handleInputChange}
-                    />
-                    <label htmlFor="password">Password:</label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        value={this.state.password}
-                        onChange={this.handleInputChange}
-                    />
-                    <button onClick={this.handleFormSubmit}>Sign Up</button>
-                </form>
-                <p>Already have an account? Log in <Link to="/login">here</Link>.</p>
-            </React.Fragment>
+            <div className="sign-up-bg">
+                <div className="sign-up-wrapper container">
+                    <form className="sign-up-form">
+                        <p className="sign-up-title-style text-center">Sign Up</p>
+                        <hr className="sign-up-separator"/>
+                        <div className="form-group">
+                            <label className="sign-up-label-text" htmlFor="name">Name:</label>
+                            <input
+                                className="form-control"
+                                type="text"
+                                id="name"
+                                name="name"
+                                value={this.state.name}
+                                onChange={this.handleInputChange}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label className="sign-up-label-text" htmlFor="email">Email:</label>
+                            <input
+                                className="form-control"
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={this.state.email}
+                                onChange={this.handleInputChange}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label className="sign-up-label-text" htmlFor="username">Username:</label>
+                            <input
+                                className="form-control"
+                                type="text"
+                                id="username"
+                                name="username"
+                                value={this.state.username}
+                                onChange={this.handleInputChange}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label className="sign-up-label-text" htmlFor="password">Password:</label>
+                            <input
+                                className="form-control"
+                                type="password"
+                                id="password"
+                                name="password"
+                                value={this.state.password}
+                                onChange={this.handleInputChange}
+                            />
+                        </div>
+                        <button className="sign-up-btn btn btn-lg btn-primary" onClick={this.handleFormSubmit}>Sign Up</button>
+                    </form>
+                    <p className="sign-up-to-login-text">Already have an account? Log in <Link to="/login">here</Link>.</p>
+                </div>
+            </div>
         )
     }
 }
