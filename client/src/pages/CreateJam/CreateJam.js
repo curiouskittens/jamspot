@@ -7,7 +7,7 @@ class CreateJam extends Component {
         description: "",
         date: "",
         location: "",
-        instruments:[{ name: '', quantity: '' }]
+        instruments:[{ name: "", quantity: "" }]
     }
 
     handleInputChange = event => {
@@ -57,7 +57,12 @@ class CreateJam extends Component {
             date: this.state.date,
             location: this.state.location
         }
-        // console.log(newJam)
+        const blankInstruments = this.state.instruments.filter((val) => val.name === "")
+        if(blankInstruments.length){
+            return console.log("delete blank instrument")
+        }else{
+            console.log("good to go")
+        }
 
 
         // if (!this.state.username) {
@@ -119,31 +124,32 @@ class CreateJam extends Component {
 
 
 
-                 <br/><br/>
+                <br/><br/>
                 <h4>instruments</h4>
                 {this.state.instruments.map((instrument, idx) => (
-                    <div className="instrument">
-                    <select
-                        placeholder={`instrument #${idx + 1} name`}
-                        value={instrument.name}
-                        onChange={this.handleInstrumentNameChange(idx)}
-                    >
-                        <option value="leadGuitar">Lead Guitar</option>
-                        <option value="rythmGuitar">Rythm Guitar</option>
-                        <option value="bass">Bass</option>
-                        <option value="keys">Keys</option>
-                        <option value="drums">Drums</option>
-                        <option value="percussion">Percussion</option>
-                        <option value="vocals">Vocals</option>
-                    </select>
-                    <input 
-                        type="number"
-                        placeholder="#"
-                        min="1" 
-                        max="10" 
-                        onChange={this.handleInstrumentQuantityChange(idx)}
-                    />
-                    <button type="button" onClick={this.handleRemoveInstrument(idx)} className="small">-</button>
+                    <div className="instrument" key={`${idx}`}>
+                        <select
+                            placeholder={`instrument #${idx + 1} name`}
+                            value={instrument.name}
+                            onChange={this.handleInstrumentNameChange(idx)}
+                        >
+                            <option defaultValue disabled value=""> -- select an instrument -- </option>
+                            <option value="leadGuitar">Lead Guitar</option>
+                            <option value="rythmGuitar">Rythm Guitar</option>
+                            <option value="bass">Bass</option>
+                            <option value="keys">Keys</option>
+                            <option value="drums">Drums</option>
+                            <option value="percussion">Percussion</option>
+                            <option value="vocals">Vocals</option>
+                        </select>
+                        <input 
+                            type="number"
+                            placeholder="#"
+                            min="1" 
+                            max="10" 
+                            onChange={this.handleInstrumentQuantityChange(idx)}
+                        />
+                        <button type="button" onClick={this.handleRemoveInstrument(idx)} className="small">-</button>
                     </div>
                 ))}
                 <button type="button" onClick={this.handleAddInstrument} className="small">Add instrument</button>
