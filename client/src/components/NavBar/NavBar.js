@@ -7,6 +7,10 @@ class NavBar extends Component {
         navbarInitialClass: ["nav", "navbar-config", "navbar-height", "align-items-center", "navbar-initial-color"],
     }
 
+    componentDidMount() {
+        window.addEventListener('scroll', this.handleScroll);
+    }
+
     handleScroll = () => {
         let st = window.pageYOffset;
         if (st > 0) {
@@ -20,14 +24,10 @@ class NavBar extends Component {
         }
     }
 
-    handleLogOut = () => {
+    handleLogout = () => {
         console.log("User logged out.")
         sessionStorage.clear();
         this.props.loggedIn = false;
-    }
-
-    componentDidMount() {
-        window.addEventListener('scroll', this.handleScroll);
     }
 
     render() {
@@ -44,7 +44,7 @@ class NavBar extends Component {
                             <Link to="/myjams" className="nav-link navbar-text-style2">My Jams</Link>
                             <Link to="/createjam" className="nav-link navbar-text-style2">Create A Jam</Link>
                             <Link to="/findjam" className="nav-link navbar-text-style2">Find A Jam</Link>
-                            <Link onClick={this.handleLogOut} to="/" className="nav-link navbar-text-style2">Log Out</Link>
+                            <Link onClick={this.handleLogout} to="/" className="nav-link navbar-text-style2">Log Out</Link>
                         </div>
                     </React.Fragment>
                 ) : (
