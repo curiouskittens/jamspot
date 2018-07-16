@@ -21,20 +21,20 @@ class SignUp extends Component {
 
         if (name === "username" && value) {
             api.checkUsername(value)
-            .then(result => {
-                if (result.data) {
-                    console.log("Sorry, this username is not available.")
-                    this.setState({
-                        usernameTaken: true
-                    })
-                } else {
-                    console.log("That username is up for grabs.");
-                    this.setState({
-                        usernameTaken: false
-                    })
-                }
-            })
-            .catch(err => console.log(err));
+                .then(result => {
+                    if (result.data) {
+                        console.log("Sorry, this username is not available.")
+                        this.setState({
+                            usernameTaken: true
+                        })
+                    } else {
+                        console.log("That username is up for grabs.");
+                        this.setState({
+                            usernameTaken: false
+                        })
+                    }
+                })
+                .catch(err => console.log(err));
         }
     }
 
@@ -92,23 +92,23 @@ class SignUp extends Component {
                 username: this.state.username,
                 password: this.state.password
             })
-            .then(() => {
-                console.log("User created.");
-                let userCreatedText = document.createElement("p");
-                userCreatedText.className += "swal-success-text animated tada";
-                userCreatedText.innerHTML = "User Created!";
-                window.swal({
-                    content: userCreatedText,
-                    timer: 2000,
-                });
-                this.setState({
-                    name: "",
-                    email: "",
-                    username: "",
-                    password: ""
+                .then(() => {
+                    console.log("User created.");
+                    let userCreatedText = document.createElement("p");
+                    userCreatedText.className += "swal-success-text animated tada";
+                    userCreatedText.innerHTML = "User Created.";
+                    window.swal({
+                        content: userCreatedText,
+                        timer: 2000,
+                    });
+                    this.setState({
+                        name: "",
+                        email: "",
+                        username: "",
+                        password: ""
+                    })
                 })
-            })
-            .catch(err => console.log(err));
+                .catch(err => console.log(err));
         }
     }
 
@@ -121,12 +121,12 @@ class SignUp extends Component {
     }
 
     renderUsernameStatus = () => {
-        if(this.state.usernameTaken === true) {
-            return(
+        if (this.state.usernameTaken === true) {
+            return (
                 <small className="not-available-username">&times; Sorry, this username is not available.</small>
             )
         } else if (this.state.username !== "" && this.state.usernameTaken === false) {
-            return(
+            return (
                 <small className="available-username">✔ That username is up for grabs.</small>
             )
         }
@@ -138,7 +138,7 @@ class SignUp extends Component {
                 <div className="sign-up-wrapper container">
                     <form className="sign-up-form">
                         <p className="sign-up-title-style text-center">Sign Up</p>
-                        <hr className="sign-up-separator"/>
+                        <hr className="sign-up-separator" />
                         <div className="form-group">
                             <label className="sign-up-label-text" htmlFor="name">Name:</label>
                             <input
