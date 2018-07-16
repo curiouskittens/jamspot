@@ -7,7 +7,8 @@ class CreateJam extends Component {
         description: "",
         date: "",
         location: "",
-        instruments:[{ name: "", quantity: "" }]
+        instruments:[{ name: "", quantity: "" }],
+        genres: [""]
     }
 
     handleInputChange = event => {
@@ -31,6 +32,8 @@ class CreateJam extends Component {
         
         this.setState({ instruments: newinstruments });
     }
+ 
+
     handleInstrumentQuantityChange = (idx) => (evt) => {
         const newinstruments = this.state.instruments.map((instrument, sidx) => {
           if (idx !== sidx) return instrument;
@@ -48,6 +51,22 @@ class CreateJam extends Component {
         this.setState({ instruments: this.state.instruments.filter((s, sidx) => idx !== sidx) });
     }
 
+    handleGenreNameChange = (idx) => (evt) => {
+        const newGenres = this.state.genres.map((genre, sidx) => {
+          if (idx !== sidx) return genre;
+          return evt.target.value;
+        });
+        
+        this.setState({ genres: newGenres});
+    }
+    handleAddGenre = () => {
+        this.setState({ genres: this.state.genres.concat([ "" ]) });
+    }
+    
+    handleRemoveGenre = (idx) => () => {
+        this.setState({ genres: this.state.genres.filter((s, sidx) => idx !== sidx) });
+    }
+
     handleFormSubmit = event => {
         event.preventDefault();
         console.log(this.state)
@@ -55,7 +74,9 @@ class CreateJam extends Component {
             name: this.state.jamName,
             description: this.state.description,
             date: this.state.date,
-            location: this.state.location
+            location: this.state.location,
+            instruments: this.state.instruments,
+            genres: this.state.genres
         }
         const blankInstruments = this.state.instruments.filter((val) => val.name === "")
         if(blankInstruments.length){
@@ -64,25 +85,8 @@ class CreateJam extends Component {
             console.log("good to go")
         }
 
+        api.createJam(newJam)
 
-        // if (!this.state.username) {
-        //     console.log("Please enter your username.");
-        // } else if (!this.state.password) {
-        //     console.log("Please enter your password.");
-        // } else {
-        //     api.login({
-        //         username: this.state.username,
-        //         password: this.state.password
-        //     })
-        //     .then(passwordMatch => {
-        //         if (passwordMatch.data) {
-        //             console.log("Login successful.");
-        //         } else {
-        //             console.log("Sorry, your login information was incorrect.");
-        //         }
-        //     })
-        //     .catch(err => console.log(err));
-        // }
     }
     
     render() {
@@ -153,7 +157,38 @@ class CreateJam extends Component {
                     </div>
                 ))}
                 <button type="button" onClick={this.handleAddInstrument} className="small">Add instrument</button>
+                
 
+                <br/><br/>
+                <h4>Genres</h4>
+                {this.state.genres.map((genre, idx) => (
+                    <div className="genre" key={`${idx}`}>
+                        <select
+                            placeholder={`genre #${idx + 1} name`}
+                            value={genre}
+                            onChange={this.handleGenreNameChange(idx)}
+                        >
+                            <option defaultValue disabled value=""> -- select a genre -- </option>
+                            <option value="hiphop">Hip Hop</option>
+                            <option value="rock">Rock</option>
+                            <option value="bluegrass">Bluegrass</option>
+                            <option value="country">Country</option>
+                            <option value="folk">Folk</option>
+                            <option value="indie">Indie</option>
+                            <option value="punk">Punk</option>
+                            <option value="alternative">Alternative</option>
+                            <option value="classical">Classical</option>
+                            <option value="jazz">Jazz</option>
+                            <option value="randb">R&B</option>
+                            <option value="blues">Blues</option>
+                            <option value="electronic">Electronic</option>
+                        </select>
+                        <button type="button" onClick={this.handleRemoveGenre(idx)} className="small">-</button>
+                    </div>
+                ))}
+                <button type="button" onClick={this.handleAddGenre} className="small">Add genre</button>
+                
+                
                 <br/><br/>
                 <button onClick={this.handleFormSubmit}>Create Jam</button>
             </form>
