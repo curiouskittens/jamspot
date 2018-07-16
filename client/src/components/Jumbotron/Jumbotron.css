@@ -41,7 +41,7 @@
 .jumbotron-button-style:active{
     border-color: var(--maincolor1) !important;
     background-color: var(--maincolor2) !important;
-    color: var(--maincolor1);
+    color: var(--maincolor1) !important;
 }
 
 .jumbotron-button-style:focus{

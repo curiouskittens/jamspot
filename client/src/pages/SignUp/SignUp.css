@@ -14,7 +14,7 @@
 
 .sign-up-form{
     padding:5vh 5vh 2.5vh 5vh;
-    border: var(--maincolor2) 3px solid;
+    border: var(--maincolor2) 5px double;
 }
 
 .sign-up-title-style{
@@ -24,7 +24,7 @@
 }
 
 .sign-up-separator{
-    border: var(--maincolor2) 2px solid;
+    border: var(--maincolor2) 3.5px double;
 }
 
 .sign-up-label-text{
@@ -34,11 +34,30 @@
 }
 
 .sign-up-to-login-text{
-    margin-top: 1vh;
+    margin-top: 1.5vh;
     font-family: var(--merriweather);
     font-size: 1.7vh;
 }
 
 .sign-up-btn{
     margin-top: 1vh;
+    font-family: var(--merriweather);
+}
+
+.sign-up-btn:hover{
+    border-color: var(--maincolor1);
+    background-color: var(--maincolor2);
+    color: var(--maincolor1);
+}
+
+.sign-up-btn:active{
+    border-color: var(--maincolor1) !important;
+    background-color: var(--maincolor2) !important;
+    color: var(--maincolor1) !important;
+}
+
+.sign-up-btn:focus{
+    border-color: var(--maincolor1);
+    background-color: var(--maincolor2);
+    color: var(--maincolor1);
 }
