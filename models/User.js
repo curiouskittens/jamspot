@@ -18,7 +18,8 @@ const UserSchema = new Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     instruments: [{
         name: String,
@@ -26,11 +27,10 @@ const UserSchema = new Schema({
         _id: false
     }],
     genres: [String],
-    image: {
+    bio: {
         type: String,
-        default: "No Image"
+        default: ""
     },
-    bio: String,
     location: {
         lat: Number,
         lng: Number,

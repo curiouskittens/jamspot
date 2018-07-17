@@ -5,11 +5,14 @@ router.route("/")
     .get(userController.findAll)
 
 router.route("/create")
-    .post(userController.create)
     .get(userController.findOne)
+    .post(userController.create)
 
 router.route("/login")
     .post(userController.login)
+
+router.route("/profile")
+    .get(userController.findOne)
 
 router.route("/:id")
     .put(userController.update)

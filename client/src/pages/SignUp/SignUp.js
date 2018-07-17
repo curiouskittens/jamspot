@@ -51,7 +51,7 @@ class SignUp extends Component {
                 username: this.state.username,
                 password: this.state.password
             })
-                .then(() => {
+                .then(createdUser => {
                     sweetAlert("success", "success-text", "Account created!");
                     this.setState({
                         name: "",
@@ -60,6 +60,8 @@ class SignUp extends Component {
                         password: "",
                         signedUp: true
                     })
+                    sessionStorage.setItem("userId", createdUser.data._id);
+                    this.props.loginUser(true);
                 })
                 .catch(err => console.log(err));
         }
