@@ -14,6 +14,12 @@ class SignUp extends Component {
         password: ""
     }
 
+    componentDidMount() {
+        let htmlBody = document.getElementsByTagName("html");
+        console.log(htmlBody)
+        htmlBody[0].style.height = "100%";
+    }
+
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({

@@ -110,7 +110,7 @@
     left: 50%;
     padding-top: 40px !important;
     padding-bottom: 0 !important;
-    line-height: 1;
+    line-height: 0.2;
     margin-bottom: 0 !important;
     -ms-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translate(-50%,-50%);

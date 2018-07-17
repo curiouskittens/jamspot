@@ -4,7 +4,7 @@ import "./Footer.css";
 class Footer extends Component {
     state = {
         footer: "footer",
-        footerTriggerStyles: "footer-trigger-text-style text-center",
+        footerTriggerStyles: "footer-trigger-text-style text-center wow animated tada",
         footerShown: false
     }
 
@@ -18,7 +18,7 @@ class Footer extends Component {
         if (this.state.footerShown === false) {
             let htmlBody = document.getElementsByTagName("html");
             console.log(htmlBody)
-            htmlBody[0].style.height = "120%";
+            htmlBody[0].style.height = "116%";
             this.setState({
                 footer: "footer-click",
                 footerTriggerStyles: "footer-trigger-text-style-clicked text-center",
@@ -30,7 +30,7 @@ class Footer extends Component {
             htmlBody[0].style.height = "100%";
             this.setState({
                 footer: "footer",
-                footerTriggerStyles: "footer-trigger-text-style text-center",
+                footerTriggerStyles: "footer-trigger-text-style text-center wow animated tada",
                 footerShown: false
             })
         } 
