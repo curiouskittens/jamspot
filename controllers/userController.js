@@ -19,7 +19,7 @@ module.exports = {
     },
     findOne: function(req, res) {
         db.User
-            .findOne(req.query)
+            .findOne(req.query, { password: 0 })
             .then(dbUser => res.status(200).json(dbUser))
             .catch(err => res.status(422).json(err))
     },
