@@ -40,7 +40,7 @@ class Footer extends Component {
         } else {
             return(
                 <div className={this.state.footerTriggerStyles} onClick={this.toggleFooter}>
-                    Made by<a href="https://github.com/orgs/curiouskittens" className="" target="react/jsx-no-target-blank"> curiouskittens <i className="fas fa-paw"></i></a>
+                    Made by<a href="https://github.com/orgs/curiouskittens" target="react/jsx-no-target-blank"> curiouskittens <i className="fas fa-paw"></i></a>
                 </div>
             )
         }
