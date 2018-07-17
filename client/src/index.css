@@ -1,3 +1,25 @@
-html, body, #root {
-    height: 100vh !important;
+[data-reactroot]{
+    height: 100% !important;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+.footer {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    z-index: 1;
+}
+
+.footer-click {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    z-index: 1;
 }

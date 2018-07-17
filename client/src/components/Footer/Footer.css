@@ -2,11 +2,15 @@
     font-family: var(--merriweather);
     font-size: 2.4vh;
     color: rgb(0, 0, 0);
-    background: transparent;
     cursor: pointer;
 }
 
 .footer-trigger-text-style:hover, .footer-trigger-text-style > a:hover {
+    color: var(--maincolor1);
+    text-decoration: none;
+}
+
+.footer-trigger-text-style:active, .footer-trigger-text-style > a:active {
     color: var(--maincolor1);
     text-decoration: none;
 }

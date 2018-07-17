@@ -122,10 +122,12 @@ transform: translate(-50%, -50%);
 }
 
 .log-in-bg{
-    background-image: url("./loginGradient/loginGradient.jpg");
+    background-image: url("./loginGradient/loginGradient.jpg") !important;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100%; 
+    display: grid;
+    grid-template-rows: 1fr auto;
 };
 

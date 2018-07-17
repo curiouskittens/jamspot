@@ -180,4 +180,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto;
 }

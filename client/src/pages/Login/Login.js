@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
 import "./Login.css";
 import api from "../../utils/api";
+import Footer from "../../components/Footer"
 
 class Login extends Component {
     state = {
@@ -143,6 +144,7 @@ class Login extends Component {
                     <p className="login-to-sign-up-text">Don't have an account? Sign up <Link to="/signup">here</Link>.</p>
                     {this.state.loggedIn && <Redirect to="/" />}
                 </div>
+                <Footer />
             </div>
         )
     }

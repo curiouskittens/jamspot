@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./SignUp.css";
 import emailValidator from "../../utils/emailValidator";
 import api from "../../utils/api";
+import Footer from "../../components/Footer";
 
 class SignUp extends Component {
     state = {
@@ -188,6 +189,7 @@ class SignUp extends Component {
                     </form>
                     <p className="sign-up-to-login-text">Already have an account? Log in <Link to="/login">here</Link>.</p>
                 </div>
+                <Footer />
             </div>
         )
     }

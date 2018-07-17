@@ -16,18 +16,24 @@ class Footer extends Component {
 
     toggleFooter = () => {
         if (this.state.footerShown === false) {
+            let htmlBody = document.getElementsByTagName("html");
+            console.log(htmlBody)
+            htmlBody[0].style.height = "120%";
             this.setState({
                 footer: "footer-click",
                 footerTriggerStyles: "footer-trigger-text-style-clicked text-center",
                 footerShown: true
             });
         } else {
+            let htmlBody = document.getElementsByTagName("html");
+            console.log(htmlBody)
+            htmlBody[0].style.height = "100%";
             this.setState({
                 footer: "footer",
                 footerTriggerStyles: "footer-trigger-text-style text-center",
                 footerShown: false
             })
-        }
+        } 
     }
 
     renderFooter = () => {
