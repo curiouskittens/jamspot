@@ -22,6 +22,12 @@ class FindJam extends Component {
         console.log("join jam!\nJam ID: ", jamId)
         if(this.state.loggedIn){
             console.log("you are logged in\nYour user ID is: ", sessionStorage.getItem("userId"))
+            api.joinJamRequest({
+              jamId: jamId,
+              userId: sessionStorage.getItem("userId")
+            }).then(result =>{
+                console.log("success")
+            }).catch(err => console.log(err))
         }else{
             console.log("you are not logged in")
         }
@@ -31,7 +37,7 @@ class FindJam extends Component {
         return (
             <React.Fragment>
                 <div style={{position: "relative", top: "100px"}}>
-                <h4>My Jams</h4>
+                <h4>Find a Jam</h4>
                 {this.state.jams.map((jam,idx)=>(
                     <Jam key={idx} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={()=>this.joinJamEventHandler(jam._id)}/>
                 ))}

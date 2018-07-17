@@ -5,6 +5,7 @@ export default {
     createUser: userInfo => axios.post("/api/users/create", userInfo),
     login: userInfo => axios.post("/api/users/login", userInfo),
     createJam: jamInfo => axios.post("/api/jams", jamInfo),
-    getAllJams: () => axios.get("api/jams")
+    getAllJams: () => axios.get("api/jams"),
+    joinJamRequest: requestInfo => axios.post("api/jams/join", requestInfo)
 }
 
