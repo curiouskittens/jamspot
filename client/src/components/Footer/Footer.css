@@ -6,7 +6,7 @@
     cursor: pointer;
 }
 
-.footer-trigger-text-style > a:hover {
+.footer-trigger-text-style:hover, .footer-trigger-text-style > a:hover {
     color: var(--maincolor1);
     text-decoration: none;
 }
