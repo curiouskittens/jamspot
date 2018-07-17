@@ -15,17 +15,13 @@
     grid-template-rows: 1fr auto;
 }
 
-.jam-section-wrapper{
-    border: var(--maincolor2) 3px double;
-}
-
 .user-simple-profile-section{
-    border: var(--maincolor2) 3px double;
+    border: var(--maincolor2) 5px double;
 }
 
 .suggested-jams-section{
     margin-top: 5%;
-    border: var(--maincolor2) 3px double;
+    border: var(--maincolor2) 5px double;
 }
 
 @media only screen and (max-width: 600px) {
@@ -36,7 +32,7 @@
     }
     .user-simple-profile-section{
     margin-top: 5%;
-    border: var(--maincolor2) 3px double;
+    border: var(--maincolor2) 5px double;
     }
 } 
 
@@ -62,4 +58,13 @@
     margin-bottom: 6%;
     padding: 15px;
     }
+}
+
+.next-jam-section{
+    border: var(--maincolor2) 5px double;
+}
+
+.most-recent-jam-section{
+    margin-top: 5%;
+    border: var(--maincolor2) 5px double;
 }
