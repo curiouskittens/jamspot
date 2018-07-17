@@ -3,34 +3,27 @@ import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
 import "./Login.css";
 import api from "../../utils/api";
+import sweetAlert from "../../utils/sweetAlert";
 
 class Login extends Component {
     state = {
         username: "",
         password: "",
-        usernameExist: false,
+        usernameExists: false,
         loggedIn: false
     }
 
     handleInputChange = event => {
         const { name, value } = event.target;
-        this.setState({
-            [name]: value
-        })
+        this.setState({ [name]: value })
 
         if (name === "username" && value) {
             api.checkUsername(value)
                 .then(result => {
                     if (result.data) {
-                        console.log("This username is found.");
-                        this.setState({
-                            usernameExist: true
-                        })
+                        this.setState({ usernameExists: true })
                     } else {
-                        console.log("This username is not found.");
-                        this.setState({
-                            usernameExist: false
-                        })
+                        this.setState({ usernameExists: false })
                     }
                 })
                 .catch(err => console.log(err));
@@ -41,38 +34,11 @@ class Login extends Component {
         event.preventDefault();
 
         if (!this.state.username) {
-            console.log("Please enter your username.");
-            let infoMissingText = document.createElement("p");
-            infoMissingText.className += "swal-warning-text";
-            infoMissingText.innerHTML = "Please enter your username.";
-            window.swal({
-                content: infoMissingText,
-                buttons: false,
-                icon: "warning",
-                timer: "1500"
-            });
+            sweetAlert("error", "warning-text", "Please enter your username.");
         } else if (!this.state.password) {
-            console.log("Please enter your password.");
-            let infoMissingText = document.createElement("p");
-            infoMissingText.className += "swal-warning-text";
-            infoMissingText.innerHTML = "Please enter your password.";
-            window.swal({
-                content: infoMissingText,
-                buttons: false,
-                icon: "warning",
-                timer: "1500"
-            });
-        } else if (this.state.username !== "" && this.state.usernameExist === false) {
-            console.log("User account does not exist.")
-            let infoWrongText = document.createElement("p");
-            infoWrongText.className += "swal-warning-text";
-            infoWrongText.innerHTML = "User account does not exist";
-            window.swal({
-                content: infoWrongText,
-                buttons: false,
-                icon: "warning",
-                timer: "1500"
-            });
+            sweetAlert("error", "warning-text", "Please enter your password.");
+        } else if (this.state.username && this.state.usernameExists === false) {
+            sweetAlert("error", "warning-text", "Sorry, this username does not exist.");
         } else {
             api.login({
                 username: this.state.username,
@@ -83,26 +49,10 @@ class Login extends Component {
                     this.props.loginUser(loginResult.data.isMatch);
 
                     if (loginResult.data.isMatch) {
-                        console.log("Login successful.");
-                        let userLoggedInText = document.createElement("p");
-                        userLoggedInText.className += "swal-success-text animated tada";
-                        userLoggedInText.innerHTML = "Login successful.";
-                        window.swal({
-                            content: userLoggedInText,
-                            timer: 2000,
-                        });
+                        sweetAlert("success", "success-text", "Login successful!");
                         sessionStorage.setItem("userId", loginResult.data.userId);
                     } else {
-                        console.log("Sorry, your login password was incorrect.");
-                        let infoWrongText = document.createElement("p");
-                        infoWrongText.className += "swal-warning-text";
-                        infoWrongText.innerHTML = "Sorry, your login password was incorrect.";
-                        window.swal({
-                            content: infoWrongText,
-                            buttons: false,
-                            icon: "warning",
-                            timer: "1500"
-                        });
+                        sweetAlert("error", "warning-text", "Sorry, your password was incorrect.");
                     }
                 })
                 .catch(err => console.log(err));
