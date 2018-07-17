@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
 import "./Login.css";
 import api from "../../utils/api";
-import Footer from "../../components/Footer"
+import Footer from "../../components/Footer";
 
 class Login extends Component {
     state = {
@@ -93,7 +93,7 @@ class Login extends Component {
                         console.log("Login successful.");
                         let userLoggedInText = document.createElement("p");
                         userLoggedInText.className += "swal-success-text animated tada";
-                        userLoggedInText.innerHTML = "Login successful.";
+                        userLoggedInText.innerHTML = "Welcome Back!";
                         window.swal({
                             content: userLoggedInText,
                             timer: 2000,
