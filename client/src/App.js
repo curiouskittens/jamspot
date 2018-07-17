@@ -20,6 +20,7 @@ class App extends Component {
                         <Route exact path="/signup" component={pages.SignUp} />
                         <Route exact path="/login" render={() => <pages.Login loginUser={this.loginUser} />} />
                         <Route exact path="/createjam" render={() => this.state.loggedIn ? <pages.CreateJam /> : <pages.Login />} />
+                        <Route exact path="/findjam" component={pages.FindJam} />
                         <Route component={pages.NoMatch} />
                     </Switch>
                 </React.Fragment>
