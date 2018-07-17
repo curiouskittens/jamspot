@@ -1,3 +1,10 @@
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .home-bg{
     background-image: url("./homeGradient/homeGradient.jpg") !important;
     background-position: center center;
@@ -6,4 +13,53 @@
     min-height: 100%; 
     display: grid;
     grid-template-rows: 1fr auto;
+}
+
+.jam-section-wrapper{
+    border: var(--maincolor2) 3px double;
+}
+
+.user-simple-profile-section{
+    border: var(--maincolor2) 3px double;
+}
+
+.suggested-jams-section{
+    margin-top: 5%;
+    border: var(--maincolor2) 3px double;
+}
+
+@media only screen and (max-width: 600px) {
+    .home-page-content{
+    margin-bottom: 6%;
+    height: 100%;
+    padding: 60px 15px 15px 15px;
+    }
+    .user-simple-profile-section{
+    margin-top: 5%;
+    border: var(--maincolor2) 3px double;
+    }
+} 
+
+@media only screen and (min-width: 768px) {
+    .home-page-content{
+    margin-top: 10%;
+    margin-bottom: 6%;
+    padding: 15px;
+    }
+} 
+
+@media only screen and (min-width: 992px) {
+    .home-page-content{
+    margin-top: 10%;
+    margin-bottom: 6%;
+    padding: 15px;
+    }
+} 
+
+@media only screen and (min-width: 1200px) {
+    .home-page-content{
+    margin-top: 10%;
+    margin-bottom: 6%;
+    padding: 15px;
+    }
 }
