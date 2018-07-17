@@ -13,6 +13,7 @@
     min-height: 100%; 
     display: grid;
     grid-template-rows: 1fr auto;
+    font-family: var(--merriweather);
 }
 
 .user-simple-profile-section{
@@ -67,4 +68,22 @@
 .most-recent-jam-section{
     margin-top: 5%;
     border: var(--maincolor2) 5px double;
+}
+
+.next-jam-title-text{
+    color: var(--maincolor1);
+    font-size: 2.8vh;
+    font-weight: bold;
+    margin-top: 1.5vh;
+}
+
+.recent-jam-title-text{
+    color: var(--maincolor1);
+    font-size: 2.8vh;
+    font-weight: bold;
+    margin-top: 1.5vh;
+}
+
+.home-page-separator{
+    border: var(--maincolor2) 3.5px double;
 }

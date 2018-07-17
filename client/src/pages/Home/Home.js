@@ -10,7 +10,8 @@ class Home extends Component {
                     <div className="d-md-flex justify-content-around">
                         <div className="jam-section-wrapper d-block col-md-8">
                             <div className="next-jam-section">
-                                <p className="text-center">Your Next Jam</p>
+                                <p className="text-center next-jam-title-text">Your Next Jam</p>
+                                <hr className="home-page-separator"/>
                                 <div className="d-flex container-fluid">
                                     <div className="next-jam-info col-6">
                                         <p>Jam Name</p>
@@ -26,7 +27,8 @@ class Home extends Component {
                                 </div>
                             </div>
                             <div className="most-recent-jam-section">
-                                <p className="text-center">Your Most Recent Jam</p>
+                                <p className="text-center recent-jam-title-text">Your Most Recent Jam</p>
+                                <hr className="home-page-separator" />
                                 <div className="d-flex container-fluid">
                                     <div className="most-recent-jam-info col-6">
                                         <p>Jam Name</p>
