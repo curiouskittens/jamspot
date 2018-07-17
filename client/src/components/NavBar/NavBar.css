@@ -40,12 +40,9 @@
 }
 
 .navbar-initial-color > a:hover{
-    color: yellowgreen !important;
+    text-decoration: underline;
 }
 
 .navbar-text-style1:hover,.navbar-text-style2:hover{
     color: var(--maincolor3);
 }
-
-
-

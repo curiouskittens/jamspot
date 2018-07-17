@@ -10,7 +10,7 @@ const JamSchema = new Schema({
     description: String,
     date: {
         type: Date,
-        required: true,
+        // required: true,
         default: Date.now
     },
     status: {
@@ -32,7 +32,7 @@ const JamSchema = new Schema({
     admin: {
           type: Schema.Types.ObjectId,
           ref: "User",
-          required: true
+          //required: true
     },
     members: [{
           type: Schema.Types.ObjectId,
