@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Jam from "../../components/Jam";
+import "./FindJam.css";
 import api from "../../utils/api";
+import Footer from "../../components/Footer";
 
 class FindJam extends Component {
     state = {
@@ -36,11 +38,14 @@ class FindJam extends Component {
     render() {
         return (
             <React.Fragment>
-                <div style={{position: "relative", top: "100px"}}>
-                <h4>Find a Jam</h4>
-                {this.state.jams.map((jam,idx)=>(
-                    <Jam key={idx} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={()=>this.joinJamEventHandler(jam._id)}/>
-                ))}
+                <div className="find-jam-page-bg">
+                    <div className="find-jam-page-content container-fluid">
+                        <h4>Find a Jam</h4>
+                        {this.state.jams.map((jam,idx)=>(
+                            <Jam key={idx} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={()=>this.joinJamEventHandler(jam._id)}/>
+                        ))}
+                    </div>
+                    <Footer />
                 </div>
             </React.Fragment>
         )

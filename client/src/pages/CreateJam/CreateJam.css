@@ -1,0 +1,41 @@
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.create-jam-page-bg{
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%; 
+    display: grid;
+    grid-template-rows: 1fr auto;
+    font-family: var(--merriweather);
+    background: lightgray;
+}
+
+@media only screen and (min-width: 768px) {
+    .create-jam-page-content{
+    margin-top: 10%;
+    margin-bottom: 6%;
+    padding: 15px;
+    }
+} 
+
+@media only screen and (min-width: 992px) {
+    .create-jam-page-content{
+    margin-top: 10%;
+    margin-bottom: 6%;
+    padding: 15px;
+    }
+} 
+
+@media only screen and (min-width: 1200px) {
+    .create-jam-page-content{
+    margin-top: 10%;
+    margin-bottom: 6%;
+    padding: 15px;
+    }
+}
