@@ -5,7 +5,7 @@ class Footer extends Component {
     state = {
         footer: "footer",
         footerTriggerStyles: "footer-trigger-text-style text-center " + this.props.animate,
-        footerShown: false
+        footerShown: false,
     }
 
     componentDidUpdate() {
@@ -13,7 +13,7 @@ class Footer extends Component {
             window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
         }
     }
-
+    
     toggleFooter = () => {
         if (this.state.footerShown === false) {
             let htmlBody = document.getElementsByTagName("html");
@@ -31,7 +31,7 @@ class Footer extends Component {
             this.setState({
                 footer: "footer",
                 footerTriggerStyles: "footer-trigger-text-style text-center",
-                footerShown: false
+                footerShown: false,
             })
         } 
     }

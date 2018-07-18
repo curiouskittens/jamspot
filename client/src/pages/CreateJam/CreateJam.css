@@ -16,26 +16,24 @@
     background: lightgray;
 }
 
+@media only screen and (max-width: 600px) {
+    .create-jam-page-content{
+    margin-top: 6%;
+    margin-bottom: 6%;
+    padding: 60px 15px 15px 15px;
+    }
+} 
+
+@media only screen and (min-width: 600px) {
+    .create-jam-page-content{
+    margin-top: 10%;
+    margin-bottom: 6%;
+    padding: 60px 15px 15px 15px;
+    }
+} 
+
 @media only screen and (min-width: 768px) {
     .create-jam-page-content{
-    margin-top: 10%;
-    margin-bottom: 6%;
     padding: 15px;
     }
 } 
-
-@media only screen and (min-width: 992px) {
-    .create-jam-page-content{
-    margin-top: 10%;
-    margin-bottom: 6%;
-    padding: 15px;
-    }
-} 
-
-@media only screen and (min-width: 1200px) {
-    .create-jam-page-content{
-    margin-top: 10%;
-    margin-bottom: 6%;
-    padding: 15px;
-    }
-}
