@@ -33,6 +33,7 @@
     color: var(--maincolor2);
     font-family: var(--merriweather);
     font-size: 2vh;
+    cursor: pointer;
 }
 
 .navbar-initial-color a{

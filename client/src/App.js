@@ -14,11 +14,11 @@ class App extends Component {
         return (
             <Router>
                 <React.Fragment>
-                    <NavBar loggedIn={this.state.loggedIn} />
+                    <NavBar loggedIn={this.state.loggedIn} loginUser={this.loginUser} />
                     <Switch>
                         <Route exact path="/" render={() => this.state.loggedIn ? <pages.Home /> : <pages.Landing />} />
-                        <Route exact path="/signup" render={() => <pages.SignUp loginUser={this.loginUser} />} />
-                        <Route exact path="/login" render={() => <pages.Login loginUser={this.loginUser} />} />
+                        <Route exact path="/signup" render={() => this.state.loggedIn ? <pages.Home /> : <pages.SignUp loginUser={this.loginUser} />} />
+                        <Route exact path="/login" render={() => this.state.loggedIn ? <pages.Home /> : <pages.Login loginUser={this.loginUser} />} />
                         <Route exact path="/profile" render={() => this.state.loggedIn ? <pages.Profile /> : <pages.Login />} />
                         <Route exact path="/createjam" render={() => this.state.loggedIn ? <pages.CreateJam /> : <pages.Login />} />
                         <Route component={pages.NoMatch} />
