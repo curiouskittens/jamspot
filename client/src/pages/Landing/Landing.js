@@ -9,7 +9,7 @@ class Landing extends Component {
             <React.Fragment>
                 <Jumbotron />
                 <AppIntro />
-                <Footer />
+                <Footer animate={"wow animated tada"}/>
             </React.Fragment>
         )
     }
