@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import api from "../../utils/api";
 import md5 from "js-md5";
 import moment from "moment";
+import "./Profile.css";
+import Footer from "../../components/Footer";
 
 class Profile extends Component {
     state = {
@@ -35,14 +37,17 @@ class Profile extends Component {
 
     render() {
         return (
-            <div>
-                <img src={this.state.image} alt="Gravatar" />
-                <p>{this.state.name}</p>
-                <p>@{this.state.username}</p>
-                <p>Member since {moment(this.state.memberSince).format("MMMM D, YYYY")}</p>
-                <p>{this.state.bio}</p>
-                <p>{this.state.instruments}</p>
-                <p>{this.state.genres}</p>
+            <div className="profile-page-bg">
+                <div className="profile-page-content container-fluid">
+                    <img src={this.state.image} alt="Gravatar" />
+                    <p>{this.state.name}</p>
+                    <p>@{this.state.username}</p>
+                    <p>Member since {moment(this.state.memberSince).format("MMMM D, YYYY")}</p>
+                    <p>{this.state.bio}</p>
+                    <p>{this.state.instruments}</p>
+                    <p>{this.state.genres}</p>
+                </div>
+                <Footer />
             </div>
         )
     }
