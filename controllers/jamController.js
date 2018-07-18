@@ -39,5 +39,16 @@ module.exports = {
             .findByIdAndRemove({ _id: req.params.id})
             .then(dbJam => res.send(dbJam))
             .catch(err => res.send(err))
+    },
+    joinRequest: function(req, res){
+        console.log("join request controller method hit")
+        db.Jam
+            .findOneAndUpdate(
+                { _id: req.body.jamId},
+                { $push: { joinRequests: req.body.userId } },
+                { new: true }
+            )
+            .then(dbJam => res.json(dbJam))
+            .catch(err => res.status(422).json(err))
     }
 };

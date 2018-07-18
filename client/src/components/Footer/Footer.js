@@ -4,7 +4,7 @@ import "./Footer.css";
 class Footer extends Component {
     state = {
         footer: "footer",
-        footerTriggerStyles: "footer-trigger-text-style text-center",
+        footerTriggerStyles: "footer-trigger-text-style text-center wow animated tada",
         footerShown: false
     }
 
@@ -16,18 +16,24 @@ class Footer extends Component {
 
     toggleFooter = () => {
         if (this.state.footerShown === false) {
+            let htmlBody = document.getElementsByTagName("html");
+            console.log(htmlBody)
+            htmlBody[0].style.height = "116%";
             this.setState({
                 footer: "footer-click",
                 footerTriggerStyles: "footer-trigger-text-style-clicked text-center",
                 footerShown: true
             });
         } else {
+            let htmlBody = document.getElementsByTagName("html");
+            console.log(htmlBody)
+            htmlBody[0].style.height = "100%";
             this.setState({
                 footer: "footer",
-                footerTriggerStyles: "footer-trigger-text-style text-center",
+                footerTriggerStyles: "footer-trigger-text-style text-center wow animated tada",
                 footerShown: false
             })
-        }
+        } 
     }
 
     renderFooter = () => {
@@ -40,7 +46,7 @@ class Footer extends Component {
         } else {
             return(
                 <div className={this.state.footerTriggerStyles} onClick={this.toggleFooter}>
-                    Made by<a href="https://github.com/orgs/curiouskittens" className="" target="react/jsx-no-target-blank"> curiouskittens <i className="fas fa-paw"></i></a>
+                    Made by<a href="https://github.com/orgs/curiouskittens" target="react/jsx-no-target-blank"> curiouskittens <i className="fas fa-paw"></i></a>
                 </div>
             )
         }

@@ -5,6 +5,7 @@ import "./SignUp.css";
 import emailValidator from "../../utils/emailValidator";
 import api from "../../utils/api";
 import sweetAlert from "../../utils/sweetAlert";
+import Footer from "../../components/Footer";
 
 class SignUp extends Component {
     state = {
@@ -14,6 +15,12 @@ class SignUp extends Component {
         usernameTaken: false,
         password: "",
         signedUp: false
+    }
+
+    componentDidMount() {
+        let htmlBody = document.getElementsByTagName("html");
+        console.log(htmlBody)
+        htmlBody[0].style.height = "100%";
     }
 
     handleInputChange = event => {
@@ -144,6 +151,7 @@ class SignUp extends Component {
                     <p className="sign-up-to-login-text">Already have an account? Log in <Link to="/login">here</Link>.</p>
                     {this.state.signedUp && <Redirect to="/profile" />}
                 </div>
+                <Footer />
             </div>
         )
     }

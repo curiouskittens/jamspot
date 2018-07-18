@@ -5,7 +5,12 @@
     cursor: pointer;
 }
 
-.footer-trigger-text-style > a:hover {
+.footer-trigger-text-style:hover, .footer-trigger-text-style > a:hover {
+    color: var(--maincolor1);
+    text-decoration: none;
+}
+
+.footer-trigger-text-style:active, .footer-trigger-text-style > a:active {
     color: var(--maincolor1);
     text-decoration: none;
 }
@@ -28,6 +33,7 @@
 }
 
 .footer-project-text-style{
+    margin: 0;
     color: var(--maincolor3);
     font-family: var(--frekoda);
     font-size: 3vh;
@@ -41,14 +47,41 @@
 }
 
 .footer-wrapper{
-    margin-top: 1vh;
 	width: 100%;
     height: 100%;
     top: 0;
     left: 0;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 374px) {
+    .footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1.4em;
+    overflow: hidden;
+    margin: 0 auto;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+	z-index: 999;
+    }
+    .footer-click {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+    background: rgb(0, 0, 0, 0.5);
+    }
+} 
+
+@media only screen and (min-width: 374px) {
     .footer {
     bottom: 0;
     left: 0;
@@ -67,7 +100,6 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    padding-bottom: 2vh;
 	-webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
@@ -96,7 +128,6 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    padding-bottom: 2vh;
 	-webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
@@ -125,7 +156,6 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    padding-bottom: 2vh;
 	-webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
@@ -154,7 +184,6 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    padding-bottom: 2vh;
 	-webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
@@ -169,7 +198,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 2.2em;
+    height: 2.3em;
     overflow: hidden;
     margin: 0 auto;
 	-webkit-transition: all 1s ease;
@@ -183,7 +212,6 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    padding-bottom: 2vh;
 	-webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
