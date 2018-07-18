@@ -19,8 +19,8 @@ class App extends Component {
                         <Route exact path="/" render={() => this.state.loggedIn ? <pages.Home /> : <pages.Landing />} />
                         <Route exact path="/signup" render={() => this.state.loggedIn ? <pages.Home /> : <pages.SignUp loginUser={this.loginUser} />} />
                         <Route exact path="/login" render={() => this.state.loggedIn ? <pages.Home /> : <pages.Login loginUser={this.loginUser} />} />
-                        <Route exact path="/profile" render={() => this.state.loggedIn ? <pages.Profile /> : <pages.Login />} />
-                        <Route exact path="/createjam" render={() => this.state.loggedIn ? <pages.CreateJam /> : <pages.Login />} />
+                        <Route exact path="/profile" render={() => this.state.loggedIn ? <pages.Profile /> : <pages.Landing />} />
+                        <Route exact path="/createjam" render={() => this.state.loggedIn ? <pages.CreateJam /> : <pages.Landing />} />
                         <Route component={pages.NoMatch} />
                     </Switch>
                 </React.Fragment>
