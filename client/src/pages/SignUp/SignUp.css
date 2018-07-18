@@ -23,6 +23,7 @@
     margin-top: 1.5vh;
     font-family: var(--merriweather);
     font-size: 1.7vh;
+    margin-bottom: 0 !important;
 }
 
 .sign-up-btn{
@@ -102,61 +103,83 @@
     font-size: 1.5vh;
 }
 
-@media only screen and (max-width: 376px) {
-    .sign-up-form{
-    padding:2vh 2vh 1vh 2vh;
-    border: var(--maincolor2) 3px double;
-    }
+@media only screen and (max-width: 374px) {
     .sign-up-wrapper{
-        padding-top: 18%;
-        padding-left: 2%;
-        padding-right: 2%;
-    }
-    .sign-up-bg{
-    background-image: url("./signUpGradient/signUpGradient.jpg");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 106vh !important;
-}
-} 
-
-@media only screen and (min-width: 376px) {
-    .sign-up-wrapper{
-        padding-top: 18%;
-        padding-left: 2%;
-        padding-right: 2%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding-top: 40px !important;
+    padding-bottom: 0 !important;
+    line-height: 0.2;
+    margin-bottom: 0 !important;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
     }
 } 
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 374px) {
     .sign-up-wrapper{
-        padding-top: 25%;
-        padding-left: 6%;
-        padding-right: 6%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    line-height: 1;
+    padding: 15px;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
     }
 } 
 
 @media only screen and (min-width: 768px) {
     .sign-up-wrapper{
-        padding-top: 20%;
-        padding-left: 10%;
-        padding-right: 10%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    line-height: 1;
+    padding: 15px;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    }
+} 
+
+@media only screen and (min-width: 992px) {
+    .sign-up-wrapper{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    line-height: 1;
+    padding: 15px;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
     }
 } 
 
 @media only screen and (min-width: 1200px) {
     .sign-up-wrapper{
-        padding-top: 10%;
-        padding-left: 18%;
-        padding-right: 18%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    padding: 15px;
+    line-height: 1;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
     }
-} 
+}
 
 .sign-up-bg{
     background-image: url("./signUpGradient/signUpGradient.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto;
 }

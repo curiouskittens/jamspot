@@ -13,6 +13,7 @@
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 1;
 }
 
 .navbar-height {
@@ -44,6 +45,79 @@
     text-decoration: underline;
 }
 
+.navbar-initial-color > div > ul > li > a:hover{
+    text-decoration: underline !important;
+}
+
 .navbar-text-style1:hover,.navbar-text-style2:hover{
+    color: var(--maincolor3);
+}
+
+.navbar-toggler:hover, .navbar-toggler:focus, .navbar-toggler:active{
+    border: none !important;
+    outline: none !important;
+}
+
+.to-the-right{
+    float: right !important;
+}
+
+@media only screen and (max-width: 375px) {
+    .navbar-toggler-text{
+    color: var(--maincolor1);
+    font-family: var(--frekoda);
+    font-size: 3.2vh;
+    font-weight: bold;
+    margin-right: 1.7vh;
+    }
+    .navbar-toggler-text-clicked{
+    color: var(--maincolor2);
+    font-family: var(--frekoda);
+    font-size: 3.2vh;
+    font-weight: bold;
+    margin-right: 1.5vh;
+    }
+}
+
+@media only screen and (min-width: 375px) {
+    .navbar-toggler-text{
+    color: var(--maincolor1);
+    font-family: var(--frekoda);
+    font-size: 3.2vh;
+    font-weight: bold;
+    margin-right: 1.9vh;
+    }
+    .navbar-toggler-text-clicked{
+    color: var(--maincolor2);
+    font-family: var(--frekoda);
+    font-size: 3.2vh;
+    font-weight: bold;
+    margin-right: 1.9vh;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .navbar-toggler-text{
+    color: var(--maincolor1);
+    font-family: var(--frekoda);
+    font-size: 3.2vh;
+    font-weight: bold;
+    margin-right: 2.2vh;
+    }
+    .navbar-toggler-text-clicked{
+    color: var(--maincolor2);
+    font-family: var(--frekoda);
+    font-size: 3.2vh;
+    font-weight: bold;
+    margin-right: 2.2vh;
+    }
+}
+
+.navbar-toggler-text:active, .navbar-toggler-text:focus, .navbar-toggler-text:hover{
+    border: var(--maincolor1) 2px inset !important;
+    box-shadow: 1px 2px var(--maincolor1);
+}
+
+.navbar-toggler-text-clicked:active, .navbar-toggler-text-clicked:focus .navbar-toggler-text-clicked:hover{
     color: var(--maincolor3);
 }
