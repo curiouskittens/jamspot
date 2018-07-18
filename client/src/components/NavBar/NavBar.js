@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
+import sweetAlert from "../../utils/sweetAlert";
 
 class NavBar extends Component {
     state = {
-        navbarInitialClass: ["nav", "navbar-config", "navbar-height", "align-items-center", "navbar-initial-color"],
+        navbarInitialClass: ["nav", "navbar-config", "navbar-height", "align-items-center", "navbar-initial-color"]
     }
 
     componentDidMount() {
@@ -25,9 +26,9 @@ class NavBar extends Component {
     }
 
     handleLogout = () => {
-        console.log("User logged out.")
         sessionStorage.clear();
-        this.props.loggedIn = false;
+        this.props.loginUser(false);
+        sweetAlert("success", "success-text", "Logout successful!")
     }
 
     render() {
@@ -44,7 +45,7 @@ class NavBar extends Component {
                             <Link to="/myjams" className="nav-link navbar-text-style2">My Jams</Link>
                             <Link to="/createjam" className="nav-link navbar-text-style2">Create A Jam</Link>
                             <Link to="/findjam" className="nav-link navbar-text-style2">Find A Jam</Link>
-                            <Link onClick={this.handleLogout} to="/" className="nav-link navbar-text-style2">Log Out</Link>
+                            <a onClick={this.handleLogout} className="nav-link navbar-text-style2">Log Out</a>
                         </div>
                     </React.Fragment>
                 ) : (
