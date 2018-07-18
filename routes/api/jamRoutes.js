@@ -11,11 +11,15 @@ router.route("/test")
         res.json(req.body)
     })
 
-
+router.route("/join")
+    .post(jamController.joinRequest)
+    
 router.route("/:id")
     .put(jamController.update)
     .get(jamController.findOne)
     .delete(jamController.remove)
+
+
 
 
 
