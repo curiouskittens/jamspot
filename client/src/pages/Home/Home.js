@@ -12,7 +12,7 @@ class Home extends Component {
                             <div className="next-jam-section">
                                 <p className="text-center next-jam-title-text">Your Next Jam</p>
                                 <hr className="home-page-separator"/>
-                                <div className="d-flex container-fluid">
+                                <div className="next-jam-wrapper d-flex container-fluid">
                                     <div className="next-jam-info col-6">
                                         <p>Jam Name</p>
                                         <p>Jam Location</p>
@@ -29,7 +29,7 @@ class Home extends Component {
                             <div className="most-recent-jam-section">
                                 <p className="text-center recent-jam-title-text">Your Most Recent Jam</p>
                                 <hr className="home-page-separator" />
-                                <div className="d-flex container-fluid">
+                                <div className="most-recent-jam-wrapper d-flex container-fluid">
                                     <div className="most-recent-jam-info col-6">
                                         <p>Jam Name</p>
                                         <p>Jam Location</p>

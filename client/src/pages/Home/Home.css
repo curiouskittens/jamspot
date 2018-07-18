@@ -6,7 +6,7 @@
 }
 
 .home-bg{
-    background-image: url("./homeGradient/homeGradient.jpg") !important;
+    /* background-image: url("./homeGradient/homeGradient.jpg") !important; */
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -14,15 +14,22 @@
     display: grid;
     grid-template-rows: 1fr auto;
     font-family: var(--merriweather);
+    background: lightgray;
 }
 
 .user-simple-profile-section{
-    border: var(--maincolor2) 5px double;
+    border: var(--maincolor2) 1px solid;
+    border-radius: 10px; 
+    box-shadow: 2px 3px var(--maincolor2);
+    background: rgb(245, 245, 245, 0.6);
 }
 
 .suggested-jams-section{
     margin-top: 5%;
-    border: var(--maincolor2) 5px double;
+    border: var(--maincolor2) 1px solid;
+    border-radius: 10px; 
+    box-shadow: 2px 3px var(--maincolor2);
+    background: rgb(245, 245, 245, 0.6);
 }
 
 @media only screen and (max-width: 600px) {
@@ -62,12 +69,26 @@
 }
 
 .next-jam-section{
-    border: var(--maincolor2) 5px double;
+    border: var(--maincolor2) 1px solid;
+    border-radius: 10px; 
+    box-shadow: 2px 3px var(--maincolor2);
+    background: rgb(245, 245, 245, 0.6);
 }
 
 .most-recent-jam-section{
     margin-top: 5%;
-    border: var(--maincolor2) 5px double;
+    border: var(--maincolor2) 1px solid;
+    border-radius: 10px; 
+    box-shadow: 2px 3px var(--maincolor2);
+    background: rgb(245, 245, 245, 0.6);
+}
+
+.most-recent-jam-wrapper{
+    margin-top: 1.2vh;
+}
+
+.next-jam-wrapper{
+    margin-top: 1.2vh;
 }
 
 .next-jam-title-text{
@@ -85,5 +106,6 @@
 }
 
 .home-page-separator{
-    border: var(--maincolor2) 3.5px double;
+    border: var(--maincolor2) 1px solid;
+    margin-bottom: 0 !important;
 }
