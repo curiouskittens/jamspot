@@ -3,6 +3,7 @@ import api from "../../utils/api";
 import "./CreateJam.css";
 import Footer from "../../components/Footer";
 import InstrumentInput from "../../components/InstrumentInput"
+import GenreInput from "../../components/GenreInput"
 
 class CreateJam extends Component {
     state = {
@@ -144,29 +145,12 @@ class CreateJam extends Component {
                         <br/><br/>
                         <h4>Genres</h4>
                         {this.state.genres.map((genre, idx) => (
-                            <div className="genre" key={`${idx}`}>
-                                <select
-                                    placeholder={`genre #${idx + 1} name`}
-                                    value={genre}
-                                    onChange={this.handleGenreNameChange(idx)}
-                                >
-                                    <option defaultValue disabled value=""> -- select a genre -- </option>
-                                    <option value="hiphop">Hip Hop</option>
-                                    <option value="rock">Rock</option>
-                                    <option value="bluegrass">Bluegrass</option>
-                                    <option value="country">Country</option>
-                                    <option value="folk">Folk</option>
-                                    <option value="indie">Indie</option>
-                                    <option value="punk">Punk</option>
-                                    <option value="alternative">Alternative</option>
-                                    <option value="classical">Classical</option>
-                                    <option value="jazz">Jazz</option>
-                                    <option value="randb">R&B</option>
-                                    <option value="blues">Blues</option>
-                                    <option value="electronic">Electronic</option>
-                                </select>
-                                <button type="button" onClick={this.handleRemoveGenre(idx)} className="small">-</button>
-                            </div>
+                            <GenreInput
+                                genre={genre} 
+                                nameChangeHandler={this.handleGenreNameChange(idx)}
+                                removeHandler={this.handleRemoveGenre(idx)}
+                                key={`${idx}`}
+                            />
                         ))}
                         <button type="button" onClick={this.handleAddGenre} className="small">Add genre</button>
                         <br/><br/>
