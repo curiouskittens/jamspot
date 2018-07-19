@@ -21,12 +21,6 @@ class CreateJam extends Component {
             [name]: value
         })
     }
-    handleInstrumentChange = event => {
-        const { name, value } = event.target;
-        this.setState({
-            [name]: value
-        })
-    }
 
     handleInstrumentNameChange = (idx) => (evt) => {
         const newinstruments = this.state.instruments.map((instrument, sidx) => {
