@@ -129,11 +129,11 @@
 
 @media only screen and (min-width: 1200px) {
     .footer {
-    height: 2.1em;
+    height: 2.2em;
     }
 } 
 
-@media only screen and (min-width: 1500px) {
+@media only screen and (min-width: 1505px) {
     .footer {
     height: 1.9em;
     }
