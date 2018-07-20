@@ -37,7 +37,6 @@ class FindJam extends Component {
     
     render() {
         return (
-            <React.Fragment>
                 <div className="find-jam-page-bg">
                     <div className="find-jam-page-content container-fluid">
                         <h4>Find a Jam</h4>
@@ -47,7 +46,6 @@ class FindJam extends Component {
                     </div>
                     <Footer />
                 </div>
-            </React.Fragment>
         )
     }
 

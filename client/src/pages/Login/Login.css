@@ -95,29 +95,13 @@ transform: translate(-50%, -50%);
 
 @media only screen and (min-width: 992px) {
     .log-in-wrapper{
-    position: absolute;
-    top:50%;
-    left:50%;
     width: 70%;
-    line-height: 1;
-    padding:15px;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
     }
 } 
 
 @media only screen and (min-width: 1200px) {
     .log-in-wrapper{
-    position: absolute;
-    top:50%;
-    left:50%;
     width: 50%;
-    line-height: 1;
-    padding:15px;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
     }
 }
 

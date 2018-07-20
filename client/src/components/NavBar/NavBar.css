@@ -31,7 +31,7 @@
 }
 
 .navbar-text-style2 {
-    color: var(--maincolor2);
+    color: var(--maincolor2) !important;
     font-family: var(--merriweather);
     font-size: 2vh;
     cursor: pointer;
@@ -98,18 +98,18 @@
 
 @media only screen and (min-width: 600px) {
     .navbar-toggler-text{
-    color: var(--maincolor1);
-    font-family: var(--frekoda);
-    font-size: 3.2vh;
-    font-weight: bold;
     margin-right: 2.2vh;
     }
     .navbar-toggler-text-clicked{
-    color: var(--maincolor2);
-    font-family: var(--frekoda);
-    font-size: 3.2vh;
-    font-weight: bold;
     margin-right: 2.2vh;
+    }
+}
+
+@media only screen and (min-width: 992px){
+    .log-out-option{
+    position:fixed;
+    right:10px;
+    top:15px;
     }
 }
 

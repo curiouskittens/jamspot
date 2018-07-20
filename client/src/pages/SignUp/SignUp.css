@@ -103,6 +103,18 @@
     font-size: 1.5vh;
 }
 
+.not-available-email{
+    color: rgba(255, 0, 0, 0.815);
+    font-family: var(--merriweather);
+    font-size: 1.5vh;
+}
+
+.available-email{
+    color: var(--maincolor1);
+    font-family: var(--merriweather);
+    font-size: 1.5vh;
+}
+
 @media only screen and (max-width: 374px) {
     .sign-up-wrapper{
     position: absolute;
@@ -134,43 +146,19 @@
 
 @media only screen and (min-width: 768px) {
     .sign-up-wrapper{
-    position: absolute;
-    top: 50%;
-    left: 50%;
     width: 80%;
-    line-height: 1;
-    padding: 15px;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
     }
 } 
 
 @media only screen and (min-width: 992px) {
     .sign-up-wrapper{
-    position: absolute;
-    top: 50%;
-    left: 50%;
     width: 70%;
-    line-height: 1;
-    padding: 15px;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
     }
 } 
 
 @media only screen and (min-width: 1200px) {
     .sign-up-wrapper{
-    position: absolute;
-    top: 50%;
-    left: 50%;
     width: 50%;
-    padding: 15px;
-    line-height: 1;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
     }
 }
 

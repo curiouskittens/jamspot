@@ -68,24 +68,18 @@
 
 @media only screen and (min-width: 768px) {
     .jumbotron{
-    background-color: transparent;
     padding-top: 16%;
-    padding-bottom: 10%;
     }
 } 
 
 @media only screen and (min-width: 992px) {
     .jumbotron{
-    background-color: transparent;
     padding-top: 13%;
-    padding-bottom: 10%;
     }
 } 
 
 @media only screen and (min-width: 1200px) {
     .jumbotron{
-    background-color: transparent;
     padding-top: 12.5%;
-    padding-bottom: 10%;
     }
 }
