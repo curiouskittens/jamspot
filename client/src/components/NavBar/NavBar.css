@@ -105,6 +105,14 @@
     }
 }
 
+@media only screen and (min-width: 992px){
+    .log-out-option{
+    position:fixed;
+    right:10px;
+    top:15px;
+    }
+}
+
 .navbar-toggler-text:active, .navbar-toggler-text:focus, .navbar-toggler-text:hover{
     border: var(--maincolor1) 2px inset !important;
     box-shadow: 1px 2px var(--maincolor1);
