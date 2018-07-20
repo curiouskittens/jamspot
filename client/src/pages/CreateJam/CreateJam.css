@@ -16,6 +16,12 @@
     background: lightgray;
 }
 
+.create-jam-form-title{
+    font-family: var(--frekoda);
+    font-size: 4vh;
+    color: var(--maincolor1);
+}
+
 @media only screen and (max-width: 600px) {
     .create-jam-page-content{
     margin-top: 6%;
@@ -30,10 +36,36 @@
     margin-bottom: 6%;
     padding: 60px 15px 15px 15px;
     }
+    .create-general-info-wrapper{
+    width: 80%;
+    margin: 0 auto;
+    }
+
+    .create-instruments-wrapper{
+    width: 80%;
+    margin: 0 auto;
+    }
+
+    .create-genres-wrapper{
+    width: 80%;
+    margin: 0 auto;
+    }
 } 
 
 @media only screen and (min-width: 768px) {
     .create-jam-page-content{
     padding: 15px;
+    }
+
+    .create-general-info-wrapper{
+    width: 60%;
+    }
+
+    .create-instruments-wrapper{
+    width: 60%;
+    }
+
+    .create-genres-wrapper{
+    width: 60%;
     }
 } 

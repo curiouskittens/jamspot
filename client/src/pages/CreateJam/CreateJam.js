@@ -121,64 +121,92 @@ class CreateJam extends Component {
             <div className="create-jam-page-bg">
                 <div className="create-jam-page-content container-fluid">
                     <form>
-                        <label htmlFor="jam-name">Jam Name:</label>
-                        <input
-                            type="text"
-                            id="jam-name"
-                            name="jamName"
-                            value={this.state.jamName}
-                            onChange={this.handleInputChange}
-                        />
-                        <label htmlFor="description">Description:</label>
-                        <input
-                            type="text"
-                            id="description"
-                            name="description"
-                            value={this.state.description}
-                            onChange={this.handleInputChange}
-                        />
-                        <label htmlFor="date">Date:</label>
-                        <input
-                            type="date"
-                            id="date"
-                            name="date"
-                            value={this.state.date}
-                            onChange={this.handleInputChange}
-                        />
-                        <label htmlFor="location">Location:</label>
-                        <input
-                            type="text"
-                            id="location"
-                            name="location"
-                            value={this.state.location}
-                            onChange={this.handleInputChange}
-                        />
+                        <p className="create-jam-form-title text-center">Create a Jam</p>
                         <br/><br/>
+                        <div className="create-general-info-wrapper">
+                            <h4 className="text-center">General Info</h4>
+                            <hr/>
+                            <div className="form-group">
+                                <label htmlFor="jam-name">Jam Name:</label>
+                                <input
+                                    className="form-control create-jam-input-width"
+                                    type="text"
+                                    id="jam-name"
+                                    name="jamName"
+                                    value={this.state.jamName}
+                                    onChange={this.handleInputChange}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="description">Description:</label>
+                                <textarea
+                                    className="form-control create-jam-input-width"
+                                    type="text"
+                                    rows="5"
+                                    id="description"
+                                    name="description"
+                                    value={this.state.description}
+                                    onChange={this.handleInputChange}
+                                ></textarea>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="date">Date:</label>
+                                <input
+                                    className="form-control create-jam-input-width"
+                                    type="date"
+                                    id="date"
+                                    name="date"
+                                    value={this.state.date}
+                                    onChange={this.handleInputChange}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="location">Location:</label>
+                                <input
+                                    className="form-control create-jam-input-width"
+                                    type="text"
+                                    id="location"
+                                    name="location"
+                                    value={this.state.location}
+                                    onChange={this.handleInputChange}
+                                />
+                            </div>
+                        </div>
                         <br/><br/>
-                        <h4>instruments</h4>
-                        {this.state.instruments.map((instrument, idx) => (
-                            <InstrumentInput 
-                                instrument={instrument} 
-                                nameChangeHandler={this.handleInstrumentNameChange(idx)}
-                                quantityChangeHandler={this.handleInstrumentQuantityChange(idx)} 
-                                removeHandler={this.handleRemoveInstrument(idx)}
-                                key={`${idx}`}
-                            />
-                        ))}
-                        <button type="button" onClick={this.handleAddInstrument} className="small">Add instrument</button>
+                        <div className="create-instruments-wrapper">
+                            <h4 className="text-center">Instruments</h4>
+                            <hr/>
+                            {this.state.instruments.map((instrument, idx) => (
+                                <div className="form-group" key={`${idx}`}>
+                                    <InstrumentInput 
+                                        instrument={instrument} 
+                                        nameChangeHandler={this.handleInstrumentNameChange(idx)}
+                                        quantityChangeHandler={this.handleInstrumentQuantityChange(idx)} 
+                                        removeHandler={this.handleRemoveInstrument(idx)}
+                                    />
+                                </div>
+                            ))}
+                            <button type="button" onClick={this.handleAddInstrument} className="btn btn-secondary btn-sm">Add instrument</button>
+                        </div>
                         <br/><br/>
-                        <h4>Genres</h4>
-                        {this.state.genres.map((genre, idx) => (
-                            <GenreInput
-                                genre={genre} 
-                                nameChangeHandler={this.handleGenreNameChange(idx)}
-                                removeHandler={this.handleRemoveGenre(idx)}
-                                key={`${idx}`}
-                            />
-                        ))}
-                        <button type="button" onClick={this.handleAddGenre} className="small">Add genre</button>
+                        <div className="create-genres-wrapper">
+                            <h4 className="text-center">Genres</h4>
+                            <hr/>
+                            {this.state.genres.map((genre, idx) => (
+                                <div className="form-group" key={`${idx}`}>
+                                <GenreInput
+                                    genre={genre} 
+                                    nameChangeHandler={this.handleGenreNameChange(idx)}
+                                    removeHandler={this.handleRemoveGenre(idx)}
+                                />
+                                </div>
+                            ))}
+                            <button type="button" onClick={this.handleAddGenre} className="btn btn-secondary btn-sm">Add genre</button>
+                        </div>
                         <br/><br/>
-                        <button onClick={this.handleFormSubmit}>Create Jam</button>
+                        <div className="text-center">
+                        <button className="btn btn-primary btn-lg" onClick={this.handleFormSubmit}>Create Jam</button>
+                        </div>
                     </form>
                 </div>
                 <Footer />

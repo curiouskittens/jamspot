@@ -1,0 +1,30 @@
+.instrument{
+    width:100%;
+}
+
+.instrument .instrument-select-width{
+    width:60%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.instrument .instrument-input-width{
+    width:3em;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.instrument .instrument-button-width{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+@media only screen and (min-width: 600px) {
+    .instrument .instrument-select-width{
+    width:70%;
+    }
+
+    .instrument .instrument-input-width{
+    width:5em;
+    }
+} 

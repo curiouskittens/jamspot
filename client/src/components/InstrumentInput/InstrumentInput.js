@@ -1,12 +1,13 @@
 import React, { Component } from "react";
+import "./InstrumentInput.css";
 
 class InstrumentInput extends Component {
 
     render() {
         return (
-            <div className="instrument" >
-                Instrument
+            <div className="instrument">
                 <select
+                    className="form-control instrument-select-width"
                     value={this.props.instrument.name}
                     onChange={this.props.nameChangeHandler}
                 >
@@ -19,16 +20,18 @@ class InstrumentInput extends Component {
                     <option value="percussion">Percussion</option>
                     <option value="vocals">Vocals</option>
                 </select>
-                <input 
+                <input
+                    className="form-control instrument-input-width"
                     type="number"
                     placeholder="#"
                     min="1" 
-                    max="10" 
+                    max="10"
+                    onKeyPress={this.handleKeyPress}
                     value={this.props.instrument.quantity}
                     onChange={this.props.quantityChangeHandler}
+                    required
                 />
-                <span className="validity"></span>
-                <button type="button" onClick={this.props.removeHandler} className="small">✖</button>
+                <button type="button" onClick={this.props.removeHandler} className="btn btn-sm btn-outline-secondary instrument-button-width">✖</button>
             </div>
         )
     }

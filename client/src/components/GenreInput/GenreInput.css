@@ -1,0 +1,14 @@
+.genre{
+    width:100%;
+}
+
+.genre .genre-select-width{
+    width:70%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.genre .genre-button-width{
+    display: inline-block;
+    vertical-align: middle;
+}

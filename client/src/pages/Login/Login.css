@@ -50,21 +50,6 @@
     color: var(--maincolor1);
 }
 
-
-.log-in-wrapper{
-position: absolute;
-top:50%;
-left:50%;
-width: 100%;
-padding:15px;
-transform: translate(-50%, -50%);
--webkit-transform: translate(-50%, -50%);
--moz-transform: translate(-50%, -50%);
--o-transform: translate(-50%, -50%);
--ms-transform: translate(-50%, -50%);
-}
-
-
 @media only screen and (max-width: 600px) {
     .log-in-wrapper{
     position: absolute;

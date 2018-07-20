@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./GenreInput.css";
 
 class GenreInput extends Component {
 
@@ -6,6 +7,7 @@ class GenreInput extends Component {
         return (
             <div className="genre" >
                 <select
+                    className="form-control genre-select-width"
                     value={this.props.genre}
                     onChange={this.props.nameChangeHandler}
                 >
@@ -24,7 +26,7 @@ class GenreInput extends Component {
                     <option value="blues">Blues</option>
                     <option value="electronic">Electronic</option>
                 </select>
-                <button type="button" onClick={this.props.removeHandler} className="small">✖</button>
+                <button type="button" onClick={this.props.removeHandler} className="btn btn-sm btn-outline-secondary genre-button-width">✖</button>
             </div>
         )
     }
