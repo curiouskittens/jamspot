@@ -31,7 +31,7 @@
 }
 
 .navbar-text-style2 {
-    color: var(--maincolor2);
+    color: var(--maincolor2) !important;
     font-family: var(--merriweather);
     font-size: 2vh;
     cursor: pointer;
