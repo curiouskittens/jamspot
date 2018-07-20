@@ -44,6 +44,9 @@ class MyJams extends Component {
         //     console.log("you are not logged in")
         // }
     }
+    joinRequestHandler = (userId) => {
+        console.log("Join Request Handler!!\nUser ID: ", userId)
+    }
     
     render() {
         return (
@@ -57,7 +60,16 @@ class MyJams extends Component {
                                 <div className="card-body" >
                                     <h5 className="card-title">{jam.name}</h5>
                                     <p className="card-text">{jam.description}</p>
-                                    <button onClick={()=>this.clickHandler(jam._id)} data-jamid={jam._id} className="btn btn-primary">Join Jam</button>
+                                    <button onClick={()=>this.clickHandler(jam._id)} data-jamid={jam._id} className="btn btn-primary">See Jam</button>
+                                    <br/><br/>
+                                    <h6 className="card-subtitle mb-2 text-muted">Join Requests</h6>
+                                    {jam.joinRequests.map((joinRequest, idx)=>(
+                                        <React.Fragment key={idx}>
+                                        <br/>
+                                        <br/>
+                                        <button  onClick={()=>this.joinRequestHandler(joinRequest._id)}  className="btn btn-secondary" data-userid={joinRequest._id}>{joinRequest.name}</button>
+                                        </React.Fragment>
+                                    ))}
                                 </div>
                             </div>
                         ))}
