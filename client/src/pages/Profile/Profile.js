@@ -71,31 +71,34 @@ class Profile extends Component {
 
     render() {
         return (
-            <div>
-                <a href="https://en.gravatar.com/" target="react/jsx-no-target-blank"><img src={this.state.image} alt="Gravatar" /></a>
-                <p>{this.state.name}</p>
-                <p>@{this.state.username}</p>
-                <p>Member since {moment(this.state.memberSince).format("MMMM D, YYYY")}</p>
+            <div className="profile-page-bg">
+                <div className="profile-page-content container-fluid">
+                    <a href="https://en.gravatar.com/" target="react/jsx-no-target-blank"><img src={this.state.image} alt="Gravatar" /></a>
+                    <p>{this.state.name}</p>
+                    <p>@{this.state.username}</p>
+                    <p>Member since {moment(this.state.memberSince).format("MMMM D, YYYY")}</p>
 
-                <h3>Bio
-                {this.state.bioDisable ? (
-                    <i className="fas fa-edit" id="bioDisable" onClick={this.toggleEdit}></i>
-                ) : (
-                    <button id="bioDisable" onClick={this.toggleEdit}>Save</button>
-                )}</h3>
-                {!this.state.bio && <p>Hmm, looks like there's nothing here. Why don't you tell us a bit about yourself?</p>}
-                <textarea 
-                    id="bio" 
-                    name="bio" 
-                    value={this.state.bio}
-                    disabled={this.state.bioDisable} 
-                    onChange={this.handleInputChange}
-                />
+                    <h3>Bio
+                    {this.state.bioDisable ? (
+                        <i className="fas fa-edit" id="bioDisable" onClick={this.toggleEdit}></i>
+                    ) : (
+                        <button id="bioDisable" onClick={this.toggleEdit}>Save</button>
+                    )}</h3>
+                    {!this.state.bio && <p>Hmm, looks like there's nothing here. Why don't you tell us a bit about yourself?</p>}
+                    <textarea 
+                        id="bio" 
+                        name="bio" 
+                        value={this.state.bio}
+                        disabled={this.state.bioDisable} 
+                        onChange={this.handleInputChange}
+                    />
 
-                <h3>Instruments<i className="fas fa-edit"></i></h3>
-                <p>{this.state.instruments}</p>
-                <h3>Genres<i className="fas fa-edit"></i></h3>
-                <p>{this.state.genres}</p>
+                    <h3>Instruments<i className="fas fa-edit"></i></h3>
+                    <p>{this.state.instruments}</p>
+                    <h3>Genres<i className="fas fa-edit"></i></h3>
+                    <p>{this.state.genres}</p>
+                </div>
+                <Footer />
             </div>
         )
     }
