@@ -141,13 +141,13 @@
 
 @media only screen and (min-width: 1200px) {
     .footer {
-    height: 2.3em;
+    height: 1.8em;
     }
 } 
 
 @media only screen and (min-width: 1505px) {
     .footer {
-    height: 2em;
+    height: 1.8em;
     }
 } 
 
