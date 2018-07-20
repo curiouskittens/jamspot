@@ -77,7 +77,9 @@ class CreateJam extends Component {
             date: this.state.date,
             location: this.state.location,
             instruments: this.state.instruments,
-            genres: this.state.genres
+            genres: this.state.genres,
+            admin: sessionStorage.getItem("userId"),
+            members: [sessionStorage.getItem("userId")]
         }
         const blankInstruments = this.state.instruments.filter((val) => val.name === "")
         if (blankInstruments.length) {

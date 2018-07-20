@@ -7,6 +7,7 @@ export default {
     createJam: jamInfo => axios.post("/api/jams", jamInfo),
     getProfile: userId => axios.get(`/api/users/profile/?_id=${userId}`),
     getAllJams: () => axios.get("api/jams"),
+    getMyJams: userId => axios.get("api/users/populated/"+userId),
     joinJamRequest: requestInfo => axios.post("api/jams/join", requestInfo)
 }
 
