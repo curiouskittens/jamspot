@@ -95,7 +95,7 @@ class SignUp extends Component {
     renderEmailStatus = () => {
         if (this.state.email && (this.state.emailTaken || !this.validateEmail(this.state.email))) {
             return (
-                <small className="not-available-email">&times; Sorry, this email is not available or invalid.</small>
+                <small className="not-available-email">✖ Sorry, this email is not available or invalid.</small>
             )
         } else if (this.state.email && this.state.emailTaken === false && this.validateEmail(this.state.email)) {
             return (
@@ -107,7 +107,7 @@ class SignUp extends Component {
     renderUsernameStatus = () => {
         if (this.state.usernameTaken) {
             return (
-                <small className="not-available-username">&times; Sorry, this username is not available.</small>
+                <small className="not-available-username">✖ Sorry, this username is not available.</small>
             )
         } else if (this.state.username && this.state.usernameTaken === false) {
             return (

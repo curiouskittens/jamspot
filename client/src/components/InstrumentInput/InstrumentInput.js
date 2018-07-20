@@ -24,9 +24,11 @@ class InstrumentInput extends Component {
                     placeholder="#"
                     min="1" 
                     max="10" 
+                    value={this.props.instrument.quantity}
                     onChange={this.props.quantityChangeHandler}
                 />
-                <button type="button" onClick={this.props.removeHandler} className="small">-</button>
+                <span className="validity"></span>
+                <button type="button" onClick={this.props.removeHandler} className="small">✖</button>
             </div>
         )
     }

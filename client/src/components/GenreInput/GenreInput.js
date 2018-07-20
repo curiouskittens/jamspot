@@ -24,7 +24,7 @@ class GenreInput extends Component {
                     <option value="blues">Blues</option>
                     <option value="electronic">Electronic</option>
                 </select>
-                <button type="button" onClick={this.props.removeHandler} className="small">-</button>
+                <button type="button" onClick={this.props.removeHandler} className="small">✖</button>
             </div>
         )
     }

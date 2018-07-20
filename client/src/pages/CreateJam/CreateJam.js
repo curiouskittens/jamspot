@@ -4,6 +4,7 @@ import "./CreateJam.css";
 import Footer from "../../components/Footer";
 import InstrumentInput from "../../components/InstrumentInput"
 import GenreInput from "../../components/GenreInput"
+import sweetAlert from "../../utils/sweetAlert";
 
 class CreateJam extends Component {
     state = {
@@ -67,25 +68,52 @@ class CreateJam extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         console.log(this.state)
-        const newJam = {
-            name: this.state.jamName,
-            description: this.state.description,
-            date: this.state.date,
-            location: this.state.location,
-            instruments: this.state.instruments,
-            genres: this.state.genres,
-            admin: sessionStorage.getItem("userId"),
-            members: [sessionStorage.getItem("userId")]
-        }
-        const blankInstruments = this.state.instruments.filter((val) => val.name === "")
-        if (blankInstruments.length) {
-            return console.log("delete blank instrument")
+        const blankInstruments = this.state.instruments.filter(val => val.name === "");
+        const blankInstrumentSkillLevel = this.state.instruments.filter(val => val.quantity === "");
+        const blankGenres = this.state.genres.filter(val => val === "");
+        if (!this.state.jamName) {
+            sweetAlert("error", "warning-text", "Please enter a jam name.")
+        } else if (!this.state.description) {
+            sweetAlert("error", "warning-text", "Please add a description to this jam.")
+        } else if (!this.state.date) {
+            sweetAlert("error", "warning-text", "Please add a date of the jam event.")
+        } else if (!this.state.location) {
+            sweetAlert("error", "warning-text", "Please add a location of the jam event.")
+        } else if (!this.state.instruments[0] || this.state.instruments[0].name === "" || this.state.instruments[0].quantity === "" || this.state.instruments[0].quantity === "#") {
+            sweetAlert("error", "warning-text", "Please add an instrument with skill level requirement.")
+        } else if (blankInstruments.length) {
+            sweetAlert("error", "warning-text", "Please delete the blank instrument.")
+        } else if (blankInstrumentSkillLevel.length) {
+            sweetAlert("error", "warning-text", "Please enter a skill level for the instrument.")
+        } else if (!this.state.genres[0] || this.state.genres[0] === "") {
+            sweetAlert("error", "warning-text", "Please add a genre for your jam.")
+        } else if (blankGenres.length) {
+            sweetAlert("error", "warning-text", "Please delete the blank genre.")
         } else {
-            console.log("good to go")
+            const newJam = {
+                name: this.state.jamName,
+                description: this.state.description,
+                date: this.state.date,
+                location: this.state.location,
+                instruments: this.state.instruments,
+                genres: this.state.genres,
+                admin: sessionStorage.getItem("userId"),
+                members: [sessionStorage.getItem("userId")]
+            }
+            api.createJam(newJam)
+                .then(() => {
+                    sweetAlert("success", "success-text", "Jam created!");
+                    this.setState({
+                        jamName: "",
+                        description: "",
+                        date: "",
+                        location: "",
+                        instruments: [{ name: "", quantity: "#" }],
+                        genres: [""]
+                    })
+                })
+                .catch(err => console.log(err));
         }
-
-        api.createJam(newJam)
-
     }
     
     render() {
