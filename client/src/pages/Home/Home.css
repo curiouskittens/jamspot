@@ -21,7 +21,7 @@
     border: var(--maincolor2) 1px solid;
     border-radius: 10px; 
     box-shadow: 2px 3px var(--maincolor2);
-    background: rgb(245, 245, 245, 0.6);
+    background: rgb(255, 255, 255);
 }
 
 .suggested-jams-section{
@@ -29,7 +29,7 @@
     border: var(--maincolor2) 1px solid;
     border-radius: 10px; 
     box-shadow: 2px 3px var(--maincolor2);
-    background: rgb(245, 245, 245, 0.6);
+    background: rgb(255, 255, 255);
 }
 
 @media only screen and (max-width: 600px) {
@@ -67,7 +67,7 @@
     border: var(--maincolor2) 1px solid;
     border-radius: 10px; 
     box-shadow: 2px 3px var(--maincolor2);
-    background: rgb(245, 245, 245, 0.6);
+    background: rgb(255, 255, 255);
 }
 
 .most-recent-jam-section{
@@ -75,7 +75,7 @@
     border: var(--maincolor2) 1px solid;
     border-radius: 10px; 
     box-shadow: 2px 3px var(--maincolor2);
-    background: rgb(245, 245, 245, 0.6);
+    background: rgb(255, 255, 255);
 }
 
 .most-recent-jam-wrapper{
