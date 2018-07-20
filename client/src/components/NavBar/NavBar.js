@@ -42,7 +42,7 @@ class NavBar extends Component {
                 {this.props.loggedIn ? (
                     <React.Fragment>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className={this.state.navtoggleInitialClass}><i class="fas fa-bars"></i></span>
+                            <span className={this.state.navtoggleInitialClass}><i className="fas fa-bars"></i></span>
                         </button>
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav to-the-right text-center">

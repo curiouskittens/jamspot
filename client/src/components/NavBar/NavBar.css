@@ -68,14 +68,14 @@
     font-family: var(--frekoda);
     font-size: 3.2vh;
     font-weight: bold;
-    margin-right: 1.7vh;
+    margin-right: 2.8vh;
     }
     .navbar-toggler-text-clicked{
     color: var(--maincolor2);
     font-family: var(--frekoda);
     font-size: 3.2vh;
     font-weight: bold;
-    margin-right: 1.5vh;
+    margin-right: 2.8vh;
     }
 }
 
@@ -85,23 +85,23 @@
     font-family: var(--frekoda);
     font-size: 3.2vh;
     font-weight: bold;
-    margin-right: 1.9vh;
+    margin-right: 3.3vh;
     }
     .navbar-toggler-text-clicked{
     color: var(--maincolor2);
     font-family: var(--frekoda);
     font-size: 3.2vh;
     font-weight: bold;
-    margin-right: 1.9vh;
+    margin-right: 3.3vh;
     }
 }
 
 @media only screen and (min-width: 600px) {
     .navbar-toggler-text{
-    margin-right: 2.2vh;
+    margin-right: 3.5vh;
     }
     .navbar-toggler-text-clicked{
-    margin-right: 2.2vh;
+    margin-right: 3.5vh;
     }
 }
 
@@ -113,9 +113,8 @@
     }
 }
 
-.navbar-toggler-text:active, .navbar-toggler-text:focus, .navbar-toggler-text:hover{
-    border: var(--maincolor1) 2px inset !important;
-    box-shadow: 1px 2px var(--maincolor1);
+.navbar-toggler-text:active, .navbar-toggler-text:focus .navbar-toggler-text:hover{
+    text-shadow: 2.5px 2.5px whitesmoke;
 }
 
 .navbar-toggler-text-clicked:active, .navbar-toggler-text-clicked:focus .navbar-toggler-text-clicked:hover{
