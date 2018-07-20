@@ -58,7 +58,7 @@ class NavBar extends Component {
                                 <li className="nav-item">
                                     <Link to="/findjam" className="nav-link navbar-text-style2">Find A Jam</Link>
                                 </li>
-                                <li className="nav-item">
+                                <li className="nav-item log-out-option">
                                     <a onClick={this.handleLogout} className="nav-link navbar-text-style2">Log Out</a>
                                 </li>
                             </ul>

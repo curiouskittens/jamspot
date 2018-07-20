@@ -12,6 +12,7 @@ class SignUp extends Component {
         name: "",
         email: "",
         username: "",
+        emailTaken: false,
         usernameTaken: false,
         password: "",
         signedUp: false
@@ -37,6 +38,15 @@ class SignUp extends Component {
                     }
                 })
                 .catch(err => console.log(err));
+        } else if (name === "email" && value) {
+            api.checkEmail(value)
+                .then(result => {
+                    if (result.data) {
+                        this.setState({ emailTaken: true })
+                    } else {
+                        this.setState({ emailTaken: false})
+                    }
+                })
         }
     }
 
@@ -45,7 +55,7 @@ class SignUp extends Component {
 
         if (!this.state.name) {
             sweetAlert("error", "warning-text", "Please enter your name.");
-        } else if (!this.validateEmail(this.state.email)) {
+        } else if (!this.validateEmail(this.state.email) || this.state.emailTaken) {
             sweetAlert("error", "warning-text", "Please enter a valid email address.");
         } else if (!this.state.username || this.state.usernameTaken) {
             sweetAlert("error", "warning-text", "Please enter a valid username.");
@@ -79,6 +89,18 @@ class SignUp extends Component {
             return true;
         } else {
             return false;
+        }
+    }
+
+    renderEmailStatus = () => {
+        if (this.state.email && (this.state.emailTaken || !this.validateEmail(this.state.email))) {
+            return (
+                <small className="not-available-email">&times; Sorry, this email is not available or invalid.</small>
+            )
+        } else if (this.state.email && this.state.emailTaken === false && this.validateEmail(this.state.email)) {
+            return (
+                <small className="available-email">✔ That email is up for grabs.</small>
+            )
         }
     }
 
@@ -122,6 +144,7 @@ class SignUp extends Component {
                                 value={this.state.email}
                                 onChange={this.handleInputChange}
                             />
+                            {this.renderEmailStatus()}
                         </div>
                         <div className="form-group">
                             <label className="sign-up-label-text" htmlFor="username">Username:</label>

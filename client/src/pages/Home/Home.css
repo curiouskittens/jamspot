@@ -21,7 +21,7 @@
     border: var(--maincolor2) 1px solid;
     border-radius: 10px; 
     box-shadow: 2px 3px var(--maincolor2);
-    background: rgb(245, 245, 245, 0.6);
+    background: rgb(255, 255, 255);
 }
 
 .suggested-jams-section{
@@ -29,50 +29,45 @@
     border: var(--maincolor2) 1px solid;
     border-radius: 10px; 
     box-shadow: 2px 3px var(--maincolor2);
-    background: rgb(245, 245, 245, 0.6);
+    background: rgb(255, 255, 255);
 }
 
 @media only screen and (max-width: 600px) {
     .home-page-content{
+    margin-top: 6%;
     margin-bottom: 6%;
-    height: 100%;
     padding: 60px 15px 15px 15px;
     }
     .user-simple-profile-section{
     margin-top: 5%;
-    border: var(--maincolor2) 5px double;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .home-page-content{
+    margin-top: 10%;
+    margin-bottom: 6%;
+    padding: 60px 15px 15px 15px;
+    }
+    .user-simple-profile-section{
+    margin-top: 5%;
     }
 } 
 
 @media only screen and (min-width: 768px) {
     .home-page-content{
-    margin-top: 10%;
-    margin-bottom: 6%;
     padding: 15px;
+    }
+    .user-simple-profile-section{
+    margin-top: 0;
     }
 } 
-
-@media only screen and (min-width: 992px) {
-    .home-page-content{
-    margin-top: 10%;
-    margin-bottom: 6%;
-    padding: 15px;
-    }
-} 
-
-@media only screen and (min-width: 1200px) {
-    .home-page-content{
-    margin-top: 10%;
-    margin-bottom: 6%;
-    padding: 15px;
-    }
-}
 
 .next-jam-section{
     border: var(--maincolor2) 1px solid;
     border-radius: 10px; 
     box-shadow: 2px 3px var(--maincolor2);
-    background: rgb(245, 245, 245, 0.6);
+    background: rgb(255, 255, 255);
 }
 
 .most-recent-jam-section{
@@ -80,7 +75,7 @@
     border: var(--maincolor2) 1px solid;
     border-radius: 10px; 
     box-shadow: 2px 3px var(--maincolor2);
-    background: rgb(245, 245, 245, 0.6);
+    background: rgb(255, 255, 255);
 }
 
 .most-recent-jam-wrapper{

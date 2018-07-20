@@ -8,9 +8,11 @@ module.exports = {
             .catch(err => res.status(422).json(err))
     },
     update: function(req, res) {
+        console.log(req.query._id);
+        console.log(req.body);
         db.User
             .findOneAndUpdate(
-                { _id: req.params.id },
+                { _id: req.query._id },
                 { $set: req.body },
                 { new: true }
             )
@@ -26,7 +28,7 @@ module.exports = {
     findOnePopulate: function(req, res) {
         db.User
             .findOne({ _id: req.params.id })
-            .populate("jams")
+            .populate({path: "jams", populate:{path:"joinRequests"}})
             .then(dbUser => res.status(200).json(dbUser))
             .catch(err => res.status(422).json(err))
     },

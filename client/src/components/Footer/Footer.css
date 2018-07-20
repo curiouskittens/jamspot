@@ -33,7 +33,7 @@
 }
 
 .footer-project-text-style{
-    margin: 0;
+    margin: 2vh 0 0 0;
     color: var(--maincolor3);
     font-family: var(--frekoda);
     font-size: 3vh;
@@ -111,141 +111,30 @@
 
 @media only screen and (min-width: 600px) {
     .footer {
-    bottom: 0;
-    left: 0;
-    width: 100%;
     height: 2.1em;
-    overflow: hidden;
-    margin: 0 auto;
-	-webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-	z-index: 999;
-    }
-    .footer-click {
-    bottom: 0;
-    left: 0;
-    width: 100%;
-	-webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-    background: rgb(0, 0, 0, 0.5);
     }
 } 
 
 @media only screen and (min-width: 768px) {
     .footer {
-    bottom: 0;
-    left: 0;
-    width: 100%;
     height: 2.5em;
-    overflow: hidden;
-    margin: 0 auto;
-	-webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-	z-index: 999;
-    }
-    .footer-click {
-    bottom: 0;
-    left: 0;
-    width: 100%;
-	-webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-    background: rgb(0, 0, 0, 0.5);
     }
 } 
 
 @media only screen and (min-width: 992px) {
     .footer {
-    bottom: 0;
-    left: 0;
-    width: 100%;
     height: 3.4em;
-    overflow: hidden;
-    margin: 0 auto;
-	-webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-	z-index: 999;
-    }
-    .footer-click {
-    bottom: 0;
-    left: 0;
-    width: 100%;
-	-webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-    background: rgb(0, 0, 0, 0.5);
     }
 } 
 
 @media only screen and (min-width: 1200px) {
     .footer {
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2.3em;
-    overflow: hidden;
-    margin: 0 auto;
-	-webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-	z-index: 999;
-    }
-    .footer-click {
-    bottom: 0;
-    left: 0;
-    width: 100%;
-	-webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-    background: rgb(0, 0, 0, 0.5);
-    }
-} 
-
-@media only screen and (min-width: 1450px) {
-    .footer {
-    bottom: 0;
-    left: 0;
-    width: 100%;
     height: 2.1em;
-    overflow: hidden;
-    margin: 0 auto;
-	-webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-	z-index: 999;
-    }
-    .footer-click {
-    bottom: 0;
-    left: 0;
-    width: 100%;
-	-webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-    background: rgb(0, 0, 0, 0.5);
     }
 } 
 
+@media only screen and (min-width: 1500px) {
+    .footer {
+    height: 1.9em;
+    }
+} 
