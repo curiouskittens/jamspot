@@ -16,7 +16,6 @@ class Login extends Component {
 
     componentDidMount() {
         let htmlBody = document.getElementsByTagName("html");
-        console.log(htmlBody)
         htmlBody[0].style.height = "100%";
     }
 
