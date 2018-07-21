@@ -116,6 +116,18 @@ class SignUp extends Component {
         }
     }
 
+    renderPasswordStatus = () => {
+        if (this.state.password && this.state.password.length < 6) {
+            return (
+                <small className="not-available-password">✖ Password must be at least 6 characters.</small>
+            )
+        } else if (this.state.password) {
+            return (
+                <small className="available-password">✔ Good to go.</small>
+            )
+        }
+    }
+
     render() {
         return (
             <div className="sign-up-bg">
@@ -168,6 +180,7 @@ class SignUp extends Component {
                                 value={this.state.password}
                                 onChange={this.handleInputChange}
                             />
+                            {this.renderPasswordStatus()}
                         </div>
                         <button className="sign-up-btn btn btn-lg btn-primary" onClick={this.handleFormSubmit}>Sign Up</button>
                     </form>
