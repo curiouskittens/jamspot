@@ -15,7 +15,7 @@ class Profile extends Component {
         image: "",
         memberSince: "",
         bio: "",
-        instruments:[{ name: "", skill: "" }],
+        instruments: [{ name: "", skill: "" }],
         genres: [""],
         bioDisabled: true,
         instrumentsDisabled: true,
@@ -37,15 +37,11 @@ class Profile extends Component {
                     memberSince: profile.data.dateCreated,
                 })
 
-                this.checkEditableInformation(profile.data.bio, profile.data.instruments, profile.data.genres);
+                if (profile.data.bio) this.setState({ bio: profile.data.bio })
+                if (profile.data.instruments.length) this.setState({ instruments: profile.data.instruments })
+                if (profile.data.genres.length) this.setState({ genres: profile.data.genres })
             })
             .catch(err => console.log(err));
-    }
-
-    checkEditableInformation = (bio, instruments, genres) => {
-        if (bio) this.setState({ bio: bio })
-        if (instruments.length) this.setState({ instruments: instruments })
-        if (genres.length) this.setState({ genres: genres })
     }
 
     toggleEdit = event => {
@@ -53,7 +49,8 @@ class Profile extends Component {
         const toggleComponent = toggler.split("D")[0];
 
         const togglerType = event.target.nodeName.toLowerCase();
-        if (togglerType === "button") {
+        const togglerText = event.target.innerHTML;
+        if (togglerType === "button" && togglerText === "Save") {
             if (toggleComponent === "instruments") {
                 const blankInstruments = this.state.instruments.filter(instrument => !instrument.name);
                 const blankInstrumentsSkill = this.state.instruments.filter(instrument => !instrument.skill);
@@ -66,9 +63,15 @@ class Profile extends Component {
             }
 
             this.saveProfile(toggleComponent);
+        } else if (togglerType === "button" && togglerText === "forceSave") {
+            this.saveProfile(toggleComponent);
         }
 
-        this.setState(prevState => ({ [toggler]: !prevState[toggler] }), () => this.focusInput(toggleComponent));
+        this.setState(prevState => ({ [toggler]: !prevState[toggler] }), () => {
+            if (!this.state[toggler]) {
+                this.focusInput(toggleComponent);
+            }
+        });
     }
 
     focusInput = inputId => {
@@ -103,7 +106,13 @@ class Profile extends Component {
     }
     
     handleRemoveInstrument = (idx) => () => {
-        this.setState({ instruments: this.state.instruments.filter((s, sidx) => idx !== sidx) });
+        if (this.state.instruments.length > 1) {
+            this.setState({ instruments: this.state.instruments.filter((s, sidx) => idx !== sidx) });
+        } else {
+            this.setState({ instruments: [{ name: "", skill: "" }] }, () => {
+                this.toggleEdit({ target: { id: "instrumentsDisabled", nodeName: "button", innerHTML: "forceSave" }});
+            })
+        }
     }
 
     saveProfile = updatedComponent => {
@@ -130,13 +139,15 @@ class Profile extends Component {
                         <button id="bioDisabled" onClick={this.toggleEdit}>Save</button>
                     )}</h3>
                     {!this.state.bio && <p>Hmm, looks like there's nothing here. Why don't you tell us a bit about yourself?</p>}
-                    <textarea 
-                        id="bio" 
-                        name="bio" 
-                        value={this.state.bio}
-                        disabled={this.state.bioDisabled} 
-                        onChange={this.handleInputChange}
-                    />
+                    {(this.state.bio || !this.state.bioDisabled) && ( 
+                        <textarea 
+                            id="bio" 
+                            name="bio" 
+                            value={this.state.bio}
+                            disabled={this.state.bioDisabled} 
+                            onChange={this.handleInputChange}
+                        /> 
+                    )}
 
                     <h3>Instruments
                     {this.state.instrumentsDisabled ? (
@@ -144,8 +155,8 @@ class Profile extends Component {
                     ) : (
                         <button id="instrumentsDisabled" onClick={this.toggleEdit}>Save</button>
                     )}</h3>
-                    {!this.state.instruments.length && <p>Hmm, looks like there's nothing here. Why don't you tell us what instruments you play?</p>}
-                    {this.state.instruments.map((instrument, idx) => (
+                    {!this.state.instruments[0].name && <p>Hmm, looks like there's nothing here. Why don't you tell us what instruments you play?</p>}
+                    {(this.state.instruments[0].name || !this.state.instrumentsDisabled) && this.state.instruments.map((instrument, idx) => (
                         <div key={`${idx}`} id="instruments">
                             <InstrumentInput 
                                 disabled={this.state.instrumentsDisabled}
@@ -159,7 +170,13 @@ class Profile extends Component {
                     ))}
                     {!this.state.instrumentsDisabled && <button disabled={this.state.instrumentsDisabled} type="button" onClick={this.handleAddInstrument} className="btn btn-secondary btn-sm add-buttons">Add instrument</button>}
 
-                    <h3>Genres<i className="fas fa-edit"></i></h3>
+                    <h3>Genres
+                    {this.state.genresDisabled ? (
+                        <i className="fas fa-edit" id="genresDisabled" onClick={this.toggleEdit}></i>
+                    ) : (
+                        <button id="genresDisabled" onClick={this.toggleEdit}>Save</button>
+                    )}</h3>
+                    {!this.state.genres.length && <p>Hmm, looks like there's nothing here. Why don't you tell us what instruments you play?</p>}
                     <p>{this.state.genres}</p>
                 </div>
                 <Footer />
