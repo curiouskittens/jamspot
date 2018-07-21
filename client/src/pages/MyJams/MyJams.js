@@ -2,8 +2,20 @@ import React, { Component } from "react";
 import Jam from "../../components/Jam";
 import api from "../../utils/api";
 import Footer from "../../components/Footer";
+import Modal from "react-modal";
 
-// const userId = sessionStorage.getItem("userId");
+// styling for modal
+const customStyles = {
+    content : {
+      top                   : '50%',
+      left                  : '50%',
+      right                 : 'auto',
+      bottom                : 'auto',
+      marginRight           : '-50%',
+      transform             : 'translate(-50%, -50%)'
+    }
+  };
+
 
 class MyJams extends Component {
     state = {
@@ -11,8 +23,26 @@ class MyJams extends Component {
         adminJams: [],
         loggedIn: sessionStorage.getItem("userId") ? true : false
     }
+    // this.openModal = this.openModal.bind(this);
+    // this.afterOpenModal = this.afterOpenModal.bind(this);
+    // this.closeModal = this.closeModal.bind(this);
+    openModal= () => {
+        this.setState({modalIsOpen: true});
+    }
+
+    afterOpenModal = () => {
+    // references are now sync'd and can be accessed.
+    this.subtitle.style.color = '#f00';
+    }
+
+    closeModal = () => {
+    this.setState({modalIsOpen: false});
+    }
+
+
     componentDidMount() {
         this.getJams();
+        // window.addEventListener("load", this.joinRequestHandler)
     }
 
     getJams = () => {
@@ -46,6 +76,7 @@ class MyJams extends Component {
     }
     joinRequestHandler = (userId) => {
         console.log("Join Request Handler!!\nUser ID: ", userId)
+        this.openModal()
     }
     
     render() {
@@ -78,8 +109,33 @@ class MyJams extends Component {
                             <Jam key={idx} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={()=>this.clickHandler(jam._id)}/>
                         ))}
                     </div>
+
+                    <div>
+                        <Modal
+                        isOpen={this.state.modalIsOpen}
+                        onAfterOpen={this.afterOpenModal}
+                        onRequestClose={this.closeModal}
+                        style={customStyles}
+                        contentLabel="Example Modal"
+                        >
+
+                            <h2 ref={subtitle => this.subtitle = subtitle}>Join Request</h2>
+                            <button onClick={this.closeModal}>close</button>
+                            <div>I am a modal</div>
+                            <form>
+                                <input />
+                                <button>tab navigation</button>
+                                <button>stays</button>
+                                <button>inside</button>
+                                <button>the modal</button>
+                            </form>
+                        </Modal>
+                    </div>
+
                     <Footer />
                 </div>
+
+                
             </React.Fragment>
         )
     }
