@@ -7,7 +7,7 @@ class InstrumentInput extends Component {
         return (
             <div className="instrument">
                 <select
-                    className="form-control instrument-select-width"
+                    className="form-control instrument-select-width create-jam-input-size"
                     value={this.props.instrument.name}
                     onChange={this.props.nameChangeHandler}
                 >

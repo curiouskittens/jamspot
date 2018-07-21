@@ -71,12 +71,16 @@ class CreateJam extends Component {
         const blankInstruments = this.state.instruments.filter(val => val.name === "");
         const blankInstrumentSkillLevel = this.state.instruments.filter(val => val.quantity === "");
         const blankGenres = this.state.genres.filter(val => val === "");
+        const selectedDate = new Date(this.state.date);
+        const now = new Date();
         if (!this.state.jamName) {
             sweetAlert("error", "warning-text", "Please enter a jam name.")
         } else if (!this.state.description) {
             sweetAlert("error", "warning-text", "Please add a description to this jam.")
         } else if (!this.state.date) {
             sweetAlert("error", "warning-text", "Please add a date of the jam event.")
+        } else if (selectedDate < now) {
+            sweetAlert("error", "warning-text", "Please enter a future date.")
         } else if (!this.state.location) {
             sweetAlert("error", "warning-text", "Please add a location of the jam event.")
         } else if (!this.state.instruments[0] || this.state.instruments[0].name === "" || this.state.instruments[0].quantity === "" || this.state.instruments[0].quantity === "#") {
@@ -122,11 +126,11 @@ class CreateJam extends Component {
                 <div className="create-jam-page-content container-fluid">
                     <form>
                         <p className="create-jam-form-title text-center">Create a Jam</p>
-                        <br/><br/>
+                        <br/>
                         <div className="create-general-info-wrapper">
-                            <h4 className="text-center">General Info</h4>
+                            <h4 className="text-center create-jam-section-title">General Info <i className="fas fa-info-circle"></i></h4>
                             <hr/>
-                            <div className="form-group">
+                            <div className="form-group create-jam-input-size">
                                 <label htmlFor="jam-name">Jam Name:</label>
                                 <input
                                     className="form-control create-jam-input-width"
@@ -137,7 +141,7 @@ class CreateJam extends Component {
                                     onChange={this.handleInputChange}
                                 />
                             </div>
-                            <div className="form-group">
+                            <div className="form-group create-jam-input-size">
                                 <label htmlFor="description">Description:</label>
                                 <textarea
                                     className="form-control create-jam-input-width"
@@ -149,10 +153,10 @@ class CreateJam extends Component {
                                     onChange={this.handleInputChange}
                                 ></textarea>
                             </div>
-                            <div className="form-group">
+                            <div className="form-group create-jam-input-size">
                                 <label htmlFor="date">Date:</label>
                                 <input
-                                    className="form-control create-jam-input-width"
+                                    className="form-control create-jam-input-width create-jam-input-size"
                                     type="date"
                                     id="date"
                                     name="date"
@@ -160,7 +164,7 @@ class CreateJam extends Component {
                                     onChange={this.handleInputChange}
                                 />
                             </div>
-                            <div className="form-group">
+                            <div className="form-group create-jam-input-size">
                                 <label htmlFor="location">Location:</label>
                                 <input
                                     className="form-control create-jam-input-width"
@@ -174,10 +178,10 @@ class CreateJam extends Component {
                         </div>
                         <br/><br/>
                         <div className="create-instruments-wrapper">
-                            <h4 className="text-center">Instruments</h4>
+                            <h4 className="text-center create-jam-section-title">Instruments <i className="fas fa-drum"></i></h4>
                             <hr/>
                             {this.state.instruments.map((instrument, idx) => (
-                                <div className="form-group" key={`${idx}`}>
+                                <div className="form-group create-jam-input-size" key={`${idx}`}>
                                     <InstrumentInput 
                                         instrument={instrument} 
                                         nameChangeHandler={this.handleInstrumentNameChange(idx)}
@@ -186,14 +190,14 @@ class CreateJam extends Component {
                                     />
                                 </div>
                             ))}
-                            <button type="button" onClick={this.handleAddInstrument} className="btn btn-secondary btn-sm">Add instrument</button>
+                            <button type="button" onClick={this.handleAddInstrument} className="btn btn-secondary btn-sm add-buttons">Add instrument</button>
                         </div>
                         <br/><br/>
                         <div className="create-genres-wrapper">
-                            <h4 className="text-center">Genres</h4>
+                            <h4 className="text-center create-jam-section-title">Genres <i className="fas fa-music"></i></h4>
                             <hr/>
                             {this.state.genres.map((genre, idx) => (
-                                <div className="form-group" key={`${idx}`}>
+                                <div className="form-group create-jam-input-size" key={`${idx}`}>
                                 <GenreInput
                                     genre={genre} 
                                     nameChangeHandler={this.handleGenreNameChange(idx)}
@@ -201,11 +205,11 @@ class CreateJam extends Component {
                                 />
                                 </div>
                             ))}
-                            <button type="button" onClick={this.handleAddGenre} className="btn btn-secondary btn-sm">Add genre</button>
+                            <button type="button" onClick={this.handleAddGenre} className="btn btn-secondary btn-sm add-buttons">Add genre</button>
                         </div>
                         <br/><br/>
                         <div className="text-center">
-                        <button className="btn btn-primary btn-lg" onClick={this.handleFormSubmit}>Create Jam</button>
+                        <button className="btn btn-primary btn-lg create-jam-button" onClick={this.handleFormSubmit}>Create Jam</button>
                         </div>
                     </form>
                 </div>

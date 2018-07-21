@@ -7,7 +7,7 @@ class GenreInput extends Component {
         return (
             <div className="genre" >
                 <select
-                    className="form-control genre-select-width"
+                    className="form-control genre-select-width create-jam-input-size"
                     value={this.props.genre}
                     onChange={this.props.nameChangeHandler}
                 >

@@ -22,6 +22,22 @@
     color: var(--maincolor1);
 }
 
+.create-jam-section-title{
+    font-size: 2.7vh;
+}
+
+.create-jam-input-size{
+    font-size: 1.8vh;
+}
+
+.add-buttons{
+    font-size: 1.5vh;
+}
+
+.create-jam-button{
+    font-size: 2.5vh;
+}
+
 @media only screen and (max-width: 600px) {
     .create-jam-page-content{
     margin-top: 6%;
