@@ -13,6 +13,9 @@ router.route("/test")
 
 router.route("/join")
     .post(jamController.joinRequest)
+
+router.route("/join/accept")
+    .put(jamController.acceptJoinRequest)
     
 router.route("/:id")
     .put(jamController.update)

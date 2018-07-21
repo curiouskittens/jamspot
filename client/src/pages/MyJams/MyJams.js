@@ -16,12 +16,18 @@ const customStyles = {
     }
   };
 
+  Modal.setAppElement('#root');
 
 class MyJams extends Component {
     state = {
         memberJams: [],
         adminJams: [],
-        loggedIn: sessionStorage.getItem("userId") ? true : false
+        loggedIn: sessionStorage.getItem("userId") ? true : false,
+        jamId: "",
+        requestName: "",
+        requestUsername: "",
+        requestId: "",
+
     }
     // this.openModal = this.openModal.bind(this);
     // this.afterOpenModal = this.afterOpenModal.bind(this);
@@ -74,9 +80,24 @@ class MyJams extends Component {
         //     console.log("you are not logged in")
         // }
     }
-    joinRequestHandler = (userId) => {
+    joinRequestHandler = (userId, name, userName, jamId) => {
         console.log("Join Request Handler!!\nUser ID: ", userId)
+        this.setState({ requestId: userId, requestUsername: userName, requestName: name, jamId: jamId });
         this.openModal()
+    }
+    
+    acceptJoinRequest = () => {
+        console.log("Accept: ",this.state.requestId)
+        api.acceptJoinRequest({
+            userId: this.state.requestId,
+            jamId: this.state.jamId
+        })
+        this.closeModal();
+    }
+    declineJoinRequest = () => {
+        console.log("Decline: ",this.state.requestId)
+        console.log("Jam Id: ",this.state.jamId)
+        this.closeModal();
     }
     
     render() {
@@ -98,7 +119,7 @@ class MyJams extends Component {
                                         <React.Fragment key={idx}>
                                         <br/>
                                         <br/>
-                                        <button  onClick={()=>this.joinRequestHandler(joinRequest._id)}  className="btn btn-secondary" data-userid={joinRequest._id}>{joinRequest.name}</button>
+                                        <button  onClick={()=>this.joinRequestHandler(joinRequest._id, joinRequest.name, joinRequest.username, jam._id)}  className="btn btn-secondary" data-jam-id={jam._id} data-user-name={joinRequest.name} data-userid={joinRequest._id}>{joinRequest.name}</button>
                                         </React.Fragment>
                                     ))}
                                 </div>
@@ -121,14 +142,11 @@ class MyJams extends Component {
 
                             <h2 ref={subtitle => this.subtitle = subtitle}>Join Request</h2>
                             <button onClick={this.closeModal}>close</button>
-                            <div>I am a modal</div>
-                            <form>
-                                <input />
-                                <button>tab navigation</button>
-                                <button>stays</button>
-                                <button>inside</button>
-                                <button>the modal</button>
-                            </form>
+                            <p>Name: {this.state.requestName}</p>
+                            <p>User Name: {this.state.requestUsername}</p>
+                            <p>User ID: {this.state.requestId}</p>
+                            <button onClick={this.acceptJoinRequest}>Accept</button>
+                            <button onClick={this.declineJoinRequest}>Decline</button>
                         </Modal>
                     </div>
 
