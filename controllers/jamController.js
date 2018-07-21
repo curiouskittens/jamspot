@@ -5,13 +5,11 @@ module.exports = {
         db.Jam
             .create(req.body)
             .then(dbJam => {
-                console.log("jam created!")
-                res.json(dbJam)
                 db.User.findOneAndUpdate(
                     { _id: req.body.admin},
                     { $push: { jams: dbJam._id } },
                     { new: true }
-                ).then(() => console.log("jam added to user"))
+                ).then(() => res.status(200).json(dbJam))
             })
             .catch(err => res.status(422).json(err))
     },
