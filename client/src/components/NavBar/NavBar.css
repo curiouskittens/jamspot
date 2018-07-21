@@ -28,10 +28,6 @@
     color: var(--maincolor3) !important;
 }
 
-.navbar-semi-transparent > div > ul > li > a:focus, .navbar-semi-transparent > a:focus{
-    color: var(--maincolor3) !important;
-}
-
 .navbar-semi-transparent > div > ul > li > a:active, .navbar-semi-transparent > a:active{
     color: var(--maincolor3) !important;
 }
