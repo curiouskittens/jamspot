@@ -67,7 +67,7 @@ class CreateJam extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log(this.state)
+
         const blankInstruments = this.state.instruments.filter(val => val.name === "");
         const blankInstrumentSkillLevel = this.state.instruments.filter(val => val.quantity === "");
         const blankGenres = this.state.genres.filter(val => val === "");
@@ -76,20 +76,20 @@ class CreateJam extends Component {
         if (!this.state.jamName) {
             sweetAlert("error", "warning-text", "Please enter a jam name.")
         } else if (!this.state.description) {
-            sweetAlert("error", "warning-text", "Please add a description to this jam.")
+            sweetAlert("error", "warning-text", "Please add a description.")
         } else if (!this.state.date) {
-            sweetAlert("error", "warning-text", "Please add a date of the jam event.")
+            sweetAlert("error", "warning-text", "Please add a date.")
         } else if (selectedDate < now) {
             sweetAlert("error", "warning-text", "Please enter a future date.")
         } else if (!this.state.location) {
-            sweetAlert("error", "warning-text", "Please add a location of the jam event.")
-        } else if (!this.state.instruments[0] || this.state.instruments[0].name === "" || this.state.instruments[0].quantity === "" || this.state.instruments[0].quantity === "#") {
-            sweetAlert("error", "warning-text", "Please add an instrument with skill level requirement.")
+            sweetAlert("error", "warning-text", "Please add a location.")
+        } else if (!this.state.instruments[0] || !this.state.instruments[0].name || !this.state.instruments[0].quantity || this.state.instruments[0].quantity === "#") {
+            sweetAlert("error", "warning-text", "Please add an instrument and the number of players needed.")
         } else if (blankInstruments.length) {
             sweetAlert("error", "warning-text", "Please delete the blank instrument.")
         } else if (blankInstrumentSkillLevel.length) {
-            sweetAlert("error", "warning-text", "Please enter a skill level for the instrument.")
-        } else if (!this.state.genres[0] || this.state.genres[0] === "") {
+            sweetAlert("error", "warning-text", "Please enter the number of players needed for each instrument.")
+        } else if (!this.state.genres[0] || !this.state.genres[0] ) {
             sweetAlert("error", "warning-text", "Please add a genre for your jam.")
         } else if (blankGenres.length) {
             sweetAlert("error", "warning-text", "Please delete the blank genre.")
