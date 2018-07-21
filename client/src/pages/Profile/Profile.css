@@ -37,3 +37,27 @@
     padding: 15px;
     }
 } 
+
+textarea {
+    resize: none;
+    height: 300px;
+    width: 200px;
+}
+
+textarea:disabled {
+    border: none;
+    background: lightgrey;
+}
+
+select:disabled {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    background: lightgray !important;
+}
+
+input[type=radio]:not(:checked):disabled,
+input[type=radio]:not(:checked):disabled + label {
+    display: none;
+}

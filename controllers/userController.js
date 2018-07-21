@@ -8,8 +8,6 @@ module.exports = {
             .catch(err => res.status(422).json(err))
     },
     update: function(req, res) {
-        console.log(req.query._id);
-        console.log(req.body);
         db.User
             .findOneAndUpdate(
                 { _id: req.query._id },

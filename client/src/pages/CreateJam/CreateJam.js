@@ -69,7 +69,7 @@ class CreateJam extends Component {
         event.preventDefault();
 
         const blankInstruments = this.state.instruments.filter(val => val.name === "");
-        const blankInstrumentSkillLevel = this.state.instruments.filter(val => val.quantity === "");
+        const blankInstrumentsQuantity = this.state.instruments.filter(val => val.quantity === "");
         const blankGenres = this.state.genres.filter(val => val === "");
         const selectedDate = new Date(this.state.date);
         const now = new Date();
@@ -86,13 +86,13 @@ class CreateJam extends Component {
         } else if (!this.state.instruments[0] || !this.state.instruments[0].name || !this.state.instruments[0].quantity || this.state.instruments[0].quantity === "#") {
             sweetAlert("error", "warning-text", "Please add an instrument and the number of players needed.")
         } else if (blankInstruments.length) {
-            sweetAlert("error", "warning-text", "Please delete the blank instrument.")
-        } else if (blankInstrumentSkillLevel.length) {
+            sweetAlert("error", "warning-text", "Please delete or fill out the blank instrument.")
+        } else if (blankInstrumentsQuantity.length) {
             sweetAlert("error", "warning-text", "Please enter the number of players needed for each instrument.")
         } else if (!this.state.genres[0] || !this.state.genres[0] ) {
             sweetAlert("error", "warning-text", "Please add a genre for your jam.")
         } else if (blankGenres.length) {
-            sweetAlert("error", "warning-text", "Please delete the blank genre.")
+            sweetAlert("error", "warning-text", "Please delete or fill out the blank genre.")
         } else {
             const newJam = {
                 name: this.state.jamName,
