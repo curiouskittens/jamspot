@@ -40,6 +40,8 @@
 
 textarea {
     resize: none;
+    height: 300px;
+    width: 200px;
 }
 
 textarea:disabled {
