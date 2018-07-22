@@ -16,6 +16,8 @@ router.route("/join")
 
 router.route("/join/accept")
     .put(jamController.acceptJoinRequest)
+router.route("/join/decline")
+    .put(jamController.declineJoinRequest)
     
 router.route("/:id")
     .put(jamController.update)

@@ -77,5 +77,17 @@ module.exports = {
                 ).then(() => console.log("jam added to user"))
             })
             .catch(err => res.status(422).json(err))
+    },
+    declineJoinRequest: function(req,res){
+        db.Jam
+            .findOneAndUpdate(
+                { _id: req.body.jamId},
+                { 
+                    $pull: { joinRequests: req.body.userId },
+                },
+                { new: true }
+            )
+            .then(dbJam => res.json(dbJam))
+            .catch(err => res.status(422).json(err))
     }
 };

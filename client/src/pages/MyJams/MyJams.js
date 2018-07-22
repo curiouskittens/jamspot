@@ -45,10 +45,8 @@ class MyJams extends Component {
     this.setState({modalIsOpen: false});
     }
 
-
     componentDidMount() {
         this.getJams();
-        // window.addEventListener("load", this.joinRequestHandler)
     }
 
     getJams = () => {
@@ -80,23 +78,51 @@ class MyJams extends Component {
         //     console.log("you are not logged in")
         // }
     }
-    joinRequestHandler = (userId, name, userName, jamId) => {
-        console.log("Join Request Handler!!\nUser ID: ", userId)
-        this.setState({ requestId: userId, requestUsername: userName, requestName: name, jamId: jamId });
+    joinRequestHandler = (event) => {
+        console.log("Join Request Handler!!User Name: ",event.target.getAttribute("data-user-name"));
+        this.setState({ 
+            requestId: event.target.getAttribute("data-user-id"), 
+            requestUsername: event.target.getAttribute("data-user-username"), 
+            requestName: event.target.getAttribute("data-user-name"), 
+            jamId: event.target.getAttribute("data-jam-id") 
+        });
         this.openModal()
+    }
+    reRender(){
+        this.forceUpdate();
     }
     
     acceptJoinRequest = () => {
         console.log("Accept: ",this.state.requestId)
+        console.log("Jam Id: ",this.state.jamId)
         api.acceptJoinRequest({
             userId: this.state.requestId,
             jamId: this.state.jamId
         })
         this.closeModal();
+        this.setState({ 
+            requestId: "", 
+            requestUsername: "", 
+            requestName: "", 
+            jamId: "" ,
+            memberJams: this.state.memberJams
+        });
     }
     declineJoinRequest = () => {
         console.log("Decline: ",this.state.requestId)
         console.log("Jam Id: ",this.state.jamId)
+        api.declineJoinRequest({
+            userId: this.state.requestId,
+            jamId: this.state.jamId
+        })
+        this.setState({ 
+            requestId: "", 
+            requestUsername: "", 
+            requestName: "", 
+            jamId: "" ,
+            memberJams: this.state.memberJams,
+            adminJams: this.state.adminJams
+        });
         this.closeModal();
     }
     
@@ -119,7 +145,16 @@ class MyJams extends Component {
                                         <React.Fragment key={idx}>
                                         <br/>
                                         <br/>
-                                        <button  onClick={()=>this.joinRequestHandler(joinRequest._id, joinRequest.name, joinRequest.username, jam._id)}  className="btn btn-secondary" data-jam-id={jam._id} data-user-name={joinRequest.name} data-userid={joinRequest._id}>{joinRequest.name}</button>
+                                        <button  
+                                            onClick={this.joinRequestHandler}  
+                                            className="btn btn-secondary" 
+                                            data-jam-id={jam._id} 
+                                            data-user-name={joinRequest.name} 
+                                            data-user-id={joinRequest._id}
+                                            data-user-username={joinRequest.username}
+                                        >
+                                            {joinRequest.name}
+                                        </button>
                                         </React.Fragment>
                                     ))}
                                 </div>
@@ -127,7 +162,12 @@ class MyJams extends Component {
                         ))}
                         <h6>I'm A Member</h6>
                         {this.state.memberJams.map((jam,idx)=>(
-                            <Jam key={idx} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={()=>this.clickHandler(jam._id)}/>
+                            <Jam 
+                                key={idx} 
+                                jamName={jam.name} 
+                                description={jam.description} 
+                                jamId={jam._id} clickHandler={()=>this.clickHandler(jam._id)}
+                            />
                         ))}
                     </div>
 
