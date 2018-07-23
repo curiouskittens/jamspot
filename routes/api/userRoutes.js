@@ -21,5 +21,8 @@ router.route("/:id")
 router.route("/populated/:id")
     .get(userController.findOnePopulate)
 
+router.route("/notification")
+    .get(userController.findOne)
+
 
 module.exports = router;

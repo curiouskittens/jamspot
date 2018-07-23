@@ -70,11 +70,15 @@ module.exports = {
                 { new: true }
             )
             .then(dbJam => {
+                const acceptedMessage = {
+                    name: "accepted",
+                    message: "You are accepted to jam" + req.body.jamId
+                }
                 db.User.findOneAndUpdate(
                     { _id: req.body.userId },
-                    { $push: { jams: dbJam._id } },
+                    { $push: { jams: dbJam._id, notifications: acceptedMessage} },
                     { new: true }
-                ).then(() => console.log("jam added to user"))
+                ).then(() => {console.log("jam added to user")})
             })
             .catch(err => res.status(422).json(err))
     },

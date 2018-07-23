@@ -5,6 +5,7 @@ export default {
     checkUsername: username => axios.get(`/api/users/create/?username=${username}`),
     createUser: userInfo => axios.post("/api/users/create", userInfo),
     login: userInfo => axios.post("/api/users/login", userInfo),
+    getNotifications: userId => axios.get(`/api/users/notification/?_id=${userId}`),
     createJam: jamInfo => axios.post("/api/jams", jamInfo),
     getProfile: userId => axios.get(`/api/users/profile/?_id=${userId}`),
     updateProfile: (userId, updates) => axios.put(`/api/users/profile/?_id=${userId}`, updates),
