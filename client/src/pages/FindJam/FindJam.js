@@ -16,36 +16,38 @@ class FindJam extends Component {
     getJams = () => {
         api.getAllJams().then(dbJams => {
             console.log(dbJams.data)
-            this.setState({ jams: dbJams.data });
+            const result = dbJams.data.filter(dbJam => dbJam.members.findIndex(member => member === sessionStorage.getItem("userId")) === -1)
+            console.log(result)
+            this.setState({ jams: result });
         })
     }
 
-    joinJamEventHandler = (jamId) => {
+    joinJamEventHandler = jamId => {
         console.log("join jam!\nJam ID: ", jamId)
-        if(this.state.loggedIn){
+        if (this.state.loggedIn) {
             console.log("you are logged in\nYour user ID is: ", sessionStorage.getItem("userId"))
             api.joinJamRequest({
-              jamId: jamId,
-              userId: sessionStorage.getItem("userId")
-            }).then(result =>{
+                jamId: jamId,
+                userId: sessionStorage.getItem("userId")
+            }).then(result => {
                 console.log("success")
             }).catch(err => console.log(err))
-        }else{
+        } else {
             console.log("you are not logged in")
         }
     }
-    
+
     render() {
         return (
-                <div className="find-jam-page-bg">
-                    <div className="find-jam-page-content container-fluid">
-                        <h4>Find a Jam</h4>
-                        {this.state.jams.map((jam,idx)=>(
-                            <Jam key={idx} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={()=>this.joinJamEventHandler(jam._id)}/>
-                        ))}
-                    </div>
-                    <Footer />
+            <div className="find-jam-page-bg">
+                <div className="find-jam-page-content container-fluid">
+                    <h4>Find a Jam</h4>
+                    {this.state.jams.map((jam, idx) => (
+                        <Jam key={idx} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={() => this.joinJamEventHandler(jam._id)} />
+                    ))}
                 </div>
+                <Footer />
+            </div>
         )
     }
 
