@@ -29,20 +29,17 @@ class MyJams extends Component {
         requestId: "",
 
     }
-    // this.openModal = this.openModal.bind(this);
-    // this.afterOpenModal = this.afterOpenModal.bind(this);
-    // this.closeModal = this.closeModal.bind(this);
     openModal= () => {
         this.setState({modalIsOpen: true});
     }
 
     afterOpenModal = () => {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00';
+        // references are now sync'd and can be accessed.
+        this.subtitle.style.color = '#f00';
     }
 
     closeModal = () => {
-    this.setState({modalIsOpen: false});
+        this.setState({modalIsOpen: false});
     }
 
     componentDidMount() {
@@ -50,6 +47,10 @@ class MyJams extends Component {
     }
 
     getJams = () => {
+        this.setState({ 
+            memberJams: [],
+            adminJams: []
+        });
         api.getMyJams(sessionStorage.getItem("userId")).then(dbUser => {
             console.log("Get My Jams")
             console.log(dbUser.data)
@@ -60,24 +61,13 @@ class MyJams extends Component {
                     this.setState({ memberJams: this.state.memberJams.concat([ jam ]) });
                 }
             })
-            // this.setState({ jams: dbJams.data });
         })
     }
 
     clickHandler = (jamId) => {
         console.log("See Jam ", jamId)
-        // if(this.state.loggedIn){
-        //     console.log("you are logged in\nYour user ID is: ", sessionStorage.getItem("userId"))
-        //     api.joinJamRequest({
-        //       jamId: jamId,
-        //       userId: sessionStorage.getItem("userId")
-        //     }).then(result =>{
-        //         console.log("success")
-        //     }).catch(err => console.log(err))
-        // }else{
-        //     console.log("you are not logged in")
-        // }
     }
+
     joinRequestHandler = (event) => {
         console.log("Join Request Handler!!User Name: ",event.target.getAttribute("data-user-name"));
         this.setState({ 
@@ -88,9 +78,6 @@ class MyJams extends Component {
         });
         this.openModal()
     }
-    reRender(){
-        this.forceUpdate();
-    }
     
     acceptJoinRequest = () => {
         console.log("Accept: ",this.state.requestId)
@@ -99,14 +86,14 @@ class MyJams extends Component {
             userId: this.state.requestId,
             jamId: this.state.jamId
         })
-        this.closeModal();
         this.setState({ 
             requestId: "", 
             requestUsername: "", 
             requestName: "", 
-            jamId: "" ,
-            memberJams: this.state.memberJams
+            jamId: "" 
         });
+        this.getJams();
+        this.closeModal();
     }
     declineJoinRequest = () => {
         console.log("Decline: ",this.state.requestId)
@@ -119,10 +106,9 @@ class MyJams extends Component {
             requestId: "", 
             requestUsername: "", 
             requestName: "", 
-            jamId: "" ,
-            memberJams: this.state.memberJams,
-            adminJams: this.state.adminJams
+            jamId: "" 
         });
+        this.getJams();
         this.closeModal();
     }
     
