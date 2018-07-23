@@ -3,6 +3,7 @@ import Jam from "../../components/Jam";
 import "./FindJam.css";
 import api from "../../utils/api";
 import Footer from "../../components/Footer";
+import sweetAlert from "../../utils/sweetAlert";
 
 class FindJam extends Component {
     state = {
@@ -41,8 +42,9 @@ class FindJam extends Component {
             api.joinJamRequest({
                 jamId: jamId,
                 userId: sessionStorage.getItem("userId")
-            }).then(result => {
+            }).then(() => {
                 console.log("success")
+                sweetAlert("success", "success-text", "You have requested to join this jam.");
             }).catch(err => console.log(err))
         } else {
             console.log("you are not logged in")
@@ -54,10 +56,12 @@ class FindJam extends Component {
             <div className="find-jam-page-bg">
                 <div className="find-jam-page-content container-fluid">
                     <h4>Find a Jam</h4>
-                    <h5>New Jams</h5>
+                    <h5>All Jams</h5>
                     {this.state.jams.map((jam, idx) => (
                         <Jam key={idx} requested={false} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={() => this.joinJamEventHandler(jam._id)} />
                     ))}
+                    <br />
+                    <br />
                     <h5>Requested Jams</h5>
                     {this.state.requestedJams.map((jam, idx) => (
                         <Jam key={idx} requested={true} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={() => this.joinJamEventHandler(jam._id)} />

@@ -106,7 +106,7 @@ class CreateJam extends Component {
             }
             api.createJam(newJam)
                 .then(() => {
-                    sweetAlert("success", "success-text", "Jam created!");
+                    sweetAlert("success", "success-text", "Jam created.");
                     this.setState({
                         jamName: "",
                         description: "",
