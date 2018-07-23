@@ -165,14 +165,13 @@ class MyJams extends Component {
                         style={customStyles}
                         contentLabel="Example Modal"
                         >
-
                             <h2 ref={subtitle => this.subtitle = subtitle}>Join Request</h2>
                             <button onClick={this.closeModal}>close</button>
                             <p>Name: {this.state.requestName}</p>
                             <p>User Name: {this.state.requestUsername}</p>
                             <p>User ID: {this.state.requestId}</p>
-                            <button onClick={this.acceptJoinRequest}>Accept</button>
-                            <button onClick={this.declineJoinRequest}>Decline</button>
+                            <button onClick={this.acceptJoinRequest} className="btn btn-success">Accept</button>
+                            <button onClick={this.declineJoinRequest} className="btn btn-danger">Decline</button>
                         </Modal>
                     </div>
 

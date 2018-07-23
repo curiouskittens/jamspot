@@ -11,13 +11,20 @@ router.route("/test")
         res.json(req.body)
     })
 
-router.route("/join")
-    .post(jamController.joinRequest)
-
-router.route("/join/accept")
-    .put(jamController.acceptJoinRequest)
-router.route("/join/decline")
-    .put(jamController.declineJoinRequest)
+router.route("/join/:action")
+    .put((req,res) => {
+        switch (req.params.action){
+            case "request": 
+                jamController.joinRequest(req,res)
+                break;
+            case "accept":
+                jamController.acceptJoinRequest(req,res)
+                break;
+            case "decline":
+                jamController.declineJoinRequest(req,res)
+                break;
+        }
+    })
     
 router.route("/:id")
     .put(jamController.update)

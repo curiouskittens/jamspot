@@ -10,7 +10,7 @@ export default {
     updateProfile: (userId, updates) => axios.put(`/api/users/profile/?_id=${userId}`, updates), 
     getAllJams: () => axios.get("api/jams"),
     getMyJams: userId => axios.get("api/users/populated/"+userId),
-    joinJamRequest: requestInfo => axios.post("api/jams/join", requestInfo),
+    joinJamRequest: requestInfo => axios.put("api/jams/join/request", requestInfo),
     acceptJoinRequest: requestInfo => axios.put("api/jams/join/accept", requestInfo),
     declineJoinRequest: requestInfo => axios.put("api/jams/join/decline", requestInfo)
 }
