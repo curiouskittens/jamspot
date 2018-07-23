@@ -11,8 +11,11 @@ router.route("/create")
 router.route("/login")
     .post(userController.login)
 
-router.route("/notification")
+router.route("/get/notification")
     .get(userController.findOne)
+
+router.route("/pull/notifications")
+    .put(userController.pullNotifications)
 
 router.route("/profile")
     .get(userController.findOne)
