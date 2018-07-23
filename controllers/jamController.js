@@ -71,12 +71,12 @@ module.exports = {
             )
             .then(dbJam => {
                 const acceptedMessage = {
-                    name: "accepted",
-                    message: "You are accepted to jam" + req.body.jamId
+                    messageType: "accepted",
+                    message: `You have been accepted to "${dbJam.name}", have fun!`
                 }
                 db.User.findOneAndUpdate(
                     { _id: req.body.userId },
-                    { $push: { jams: dbJam._id, notifications: acceptedMessage} },
+                    { $push: { jams: dbJam._id, notifications: acceptedMessage } },
                     { new: true }
                 ).then(() => {console.log("jam added to user")})
             })
@@ -91,7 +91,17 @@ module.exports = {
                 },
                 { new: true }
             )
-            .then(dbJam => res.json(dbJam))
+            .then(dbJam =>{
+                const rejectedMessage = {
+                    messageType: "rejected",
+                    message: `You have been rejected by "${dbJam.name}".`
+                }
+                db.User.findOneAndUpdate(
+                    { _id: req.body.userId },
+                    { $push: { notifications: rejectedMessage } },
+                    { new: true }
+                ).then(() => console.log("user removed from join request"))
+            })
             .catch(err => res.status(422).json(err))
     }
 };

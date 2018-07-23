@@ -41,7 +41,7 @@ const UserSchema = new Schema({
         ref: "Jam"
     }],
     notifications: [{
-        name: String,
+        messageType: String,
         message: String
     }],
     dateCreated: { type: Date, default: Date.now },

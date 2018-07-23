@@ -1,12 +1,46 @@
 import React, { Component } from "react";
 import "./Home.css";
+import api from "../../utils/api";
 import Footer from "../../components/Footer";
 
 class Home extends Component {
+    state = {
+
+    }
+
+    componentDidMount() {
+        if (sessionStorage.getItem("userId")) {
+            const userId = sessionStorage.getItem("userId");
+            this.getNotifications(userId);
+        } else {
+            setTimeout(() => {
+                const userId = sessionStorage.getItem("userId");
+                this.getNotifications(userId);
+            }, 100);
+        }
+    }
+
+    getNotifications = userId => {
+        api.getNotifications(userId)
+            .then(result => {
+                this.setState({
+                    userMessages: result.data.notifications
+                })
+            })
+            .catch(err => console.log(err));
+    }
+
+    renderNotifications = () => {
+        if (this.state.userMessages) {
+            return this.state.userMessages.map(userMessage => (<h5 key={userMessage._id}>{userMessage.message}</h5>))
+        }
+    }
+
     render() {
         return (
             <div className="home-bg">
                 <div className="home-page-content container-fluid">
+                    {this.renderNotifications()}
                     <div className="d-md-flex justify-content-around">
                         <div className="jam-section-wrapper d-block col-md-8">
                             <div className="next-jam-section">

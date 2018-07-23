@@ -11,6 +11,9 @@ router.route("/create")
 router.route("/login")
     .post(userController.login)
 
+router.route("/notification")
+    .get(userController.findOne)
+
 router.route("/profile")
     .get(userController.findOne)
 
@@ -20,9 +23,5 @@ router.route("/:id")
 
 router.route("/populated/:id")
     .get(userController.findOnePopulate)
-
-router.route("/notification")
-    .get(userController.findOne)
-
 
 module.exports = router;

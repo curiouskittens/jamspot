@@ -14,7 +14,6 @@ class FindJam extends Component {
 
     componentDidMount() {
         this.getJams();
-        this.getNotifications();
     }
 
     getJams = () => {
@@ -49,27 +48,10 @@ class FindJam extends Component {
         }
     }
 
-    getNotifications = () => {
-        api.getNotifications(sessionStorage.getItem("userId"))
-            .then(notification => {
-                this.setState({
-                    userMessages: notification.data.notifications
-                })
-            })
-            .catch(err => console.log(err));
-    }
-
-    renderNotifications = () => {
-        if(this.state.userMessages){
-            return this.state.userMessages.map(userMessage => (<h5 key={userMessage.name}>{userMessage.message}</h5>))
-        }
-    }
-
     render() {
         return (
             <div className="find-jam-page-bg">
                 <div className="find-jam-page-content container-fluid">
-                {this.renderNotifications()}
                     <h4>Find a Jam</h4>
                     <h5>All Jams</h5>
                     {this.state.jams.map((jam, idx) => (
