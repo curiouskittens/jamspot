@@ -7,9 +7,15 @@ import Footer from "../../components/Footer";
 class FindJam extends Component {
     state = {
         jams: [""],
+        requestedJams: [""],
         loggedIn: sessionStorage.getItem("userId") ? true : false
     }
+
     componentDidMount() {
+        this.getJams();
+    }
+
+    componentDidUpdate() {
         this.getJams();
     }
 
@@ -17,8 +23,14 @@ class FindJam extends Component {
         api.getAllJams().then(dbJams => {
             console.log(dbJams.data)
             const result = dbJams.data.filter(dbJam => dbJam.members.findIndex(member => member === sessionStorage.getItem("userId")) === -1)
-            console.log(result)
-            this.setState({ jams: result });
+            const jams = result.filter(jam => jam.joinRequests.findIndex(joinRequest => joinRequest === sessionStorage.getItem("userId")) === -1)
+            console.log(jams)
+            const requestedJams = result.filter(jam => jam.joinRequests.findIndex(joinRequest => joinRequest === sessionStorage.getItem("userId")) !== -1)
+            console.log(requestedJams)
+            this.setState({
+                jams: jams,
+                requestedJams: requestedJams
+            });
         })
     }
 
@@ -42,8 +54,13 @@ class FindJam extends Component {
             <div className="find-jam-page-bg">
                 <div className="find-jam-page-content container-fluid">
                     <h4>Find a Jam</h4>
+                    <h5>New Jams</h5>
                     {this.state.jams.map((jam, idx) => (
-                        <Jam key={idx} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={() => this.joinJamEventHandler(jam._id)} />
+                        <Jam key={idx} requested={false} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={() => this.joinJamEventHandler(jam._id)} />
+                    ))}
+                    <h5>Requested Jams</h5>
+                    {this.state.requestedJams.map((jam, idx) => (
+                        <Jam key={idx} requested={true} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={() => this.joinJamEventHandler(jam._id)} />
                     ))}
                 </div>
                 <Footer />

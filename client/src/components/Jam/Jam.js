@@ -8,7 +8,7 @@ class Jam extends Component {
                 <div className="card-body" >
                     <h5 className="card-title">{this.props.jamName}</h5>
                     <p className="card-text">{this.props.description}</p>
-                    <button onClick={this.props.clickHandler} data-jamid={this.props.jamId} className="btn btn-primary">Join Jam</button>
+                    {!this.props.requested && <button onClick={this.props.clickHandler} data-jamid={this.props.jamId} className="btn btn-primary">Join Jam</button>}
                 </div>
             </div>
         )
