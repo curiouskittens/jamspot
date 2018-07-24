@@ -18,12 +18,9 @@ class FindJam extends Component {
 
     getJams = () => {
         api.getAllJams().then(dbJams => {
-            console.log(dbJams.data)
             const result = dbJams.data.filter(dbJam => dbJam.members.findIndex(member => member === sessionStorage.getItem("userId")) === -1)
             const jams = result.filter(jam => jam.joinRequests.findIndex(joinRequest => joinRequest === sessionStorage.getItem("userId")) === -1)
-            console.log(jams)
             const requestedJams = result.filter(jam => jam.joinRequests.findIndex(joinRequest => joinRequest === sessionStorage.getItem("userId")) !== -1)
-            console.log(requestedJams)
             this.setState({
                 jams: jams,
                 requestedJams: requestedJams
