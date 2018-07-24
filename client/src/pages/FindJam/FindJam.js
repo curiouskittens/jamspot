@@ -49,18 +49,28 @@ class FindJam extends Component {
         return (
             <div className="find-jam-page-bg">
                 <div className="find-jam-page-content container-fluid">
-                    <h4>Find a Jam</h4>
-                    <hr />
-                    <h5>All Jams</h5>
-                    {this.state.jams.map((jam, idx) => (
-                        <Jam key={idx} requested={false} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={() => this.joinJamEventHandler(jam._id)} />
-                    ))}
+                    <p className="find-jam-page-title text-center">Find a Jam</p>
                     <br />
-                    <br />
-                    <h5>Requested Jams</h5>
-                    {this.state.requestedJams.map((jam, idx) => (
-                        <Jam key={idx} requested={true} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={() => this.joinJamEventHandler(jam._id)} />
-                    ))}
+                    <div className="d-md-flex justify-content-around">
+                        <div className="new-jam-section col-md-5">
+                            <p className="text-center find-jam-section-title">Check out these jams</p>
+                            <hr />
+                            <div className="row d-md-flex">
+                                {this.state.jams.map((jam, idx) => (
+                                    <Jam key={idx} unrequested={true} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={() => this.joinJamEventHandler(jam._id)} />
+                                ))}
+                            </div>
+                        </div>
+                        <div className="requested-jam-section col-md-5">
+                            <p className="text-center find-jam-section-title">Jams you have requested</p>
+                            <hr />
+                            <div className="row d-md-flex">
+                                {this.state.requestedJams.map((jam, idx) => (
+                                    <Jam key={idx} requested={true} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={() => this.joinJamEventHandler(jam._id)} />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <Footer />
             </div>

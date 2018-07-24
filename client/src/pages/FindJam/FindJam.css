@@ -16,6 +16,16 @@
     background: lightgray;
 }
 
+.find-jam-page-title{
+    font-family: var(--frekoda);
+    font-size: 4vh;
+    color: var(--maincolor1);
+}
+
+.find-jam-section-title{
+    font-size: 2.7vh;
+}
+
 @media only screen and (max-width: 600px) {
     .find-jam-page-content{
     margin-top: 6%;
