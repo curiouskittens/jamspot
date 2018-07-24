@@ -33,7 +33,10 @@ class Home extends Component {
 
     renderNotifications = () => {
         if (this.state.userMessages) {
-            return this.state.userMessages.map(userMessage => (<Notification key={userMessage._id} messageid={userMessage._id}>{userMessage.message}</Notification>))
+            return (
+            <div className="notification-home-page-wrapper">
+                {this.state.userMessages.map(userMessage => (<Notification key={userMessage._id} messageid={userMessage._id}>{userMessage.message}</Notification>))}
+            </div>)
         }
     }
 

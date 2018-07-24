@@ -32,6 +32,11 @@
     background: rgb(255, 255, 255);
 }
 
+.notification-home-page-wrapper{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
 @media only screen and (max-width: 600px) {
     .home-page-content{
     margin-top: 6%;
@@ -62,6 +67,12 @@
     margin-top: 0;
     }
 } 
+
+@media only screen and (min-width: 1200px) {
+    .home-page-content{
+        margin-top: 4.5%;
+    }
+}
 
 .next-jam-section{
     border: var(--maincolor2) 1px solid;
