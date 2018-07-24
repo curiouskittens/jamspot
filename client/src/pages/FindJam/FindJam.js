@@ -53,6 +53,7 @@ class FindJam extends Component {
             <div className="find-jam-page-bg">
                 <div className="find-jam-page-content container-fluid">
                     <h4>Find a Jam</h4>
+                    <hr />
                     <h5>All Jams</h5>
                     {this.state.jams.map((jam, idx) => (
                         <Jam key={idx} requested={false} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={() => this.joinJamEventHandler(jam._id)} />

@@ -27,7 +27,6 @@ class MyJams extends Component {
         requestName: "",
         requestUsername: "",
         requestId: "",
-
     }
 
     openModal = () => {
