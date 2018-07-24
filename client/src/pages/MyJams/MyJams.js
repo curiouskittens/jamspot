@@ -13,7 +13,8 @@ const customStyles = {
         right: 'auto',
         bottom: 'auto',
         marginRight: '-50%',
-        transform: 'translate(-50%, -50%)'
+        transform: 'translate(-50%, -50%)',
+        borderRadius: '15px',
     }
 };
 
@@ -181,13 +182,18 @@ class MyJams extends Component {
                             style={customStyles}
                             contentLabel="Example Modal"
                         >
-                            <h2 ref={subtitle => this.subtitle = subtitle}>Join Request</h2>
-                            <button onClick={this.closeModal}>close</button>
-                            <p>Name: {this.state.requestName}</p>
-                            <p>User Name: {this.state.requestUsername}</p>
-                            <p>User ID: {this.state.requestId}</p>
-                            <button onClick={this.acceptJoinRequest} className="btn btn-success">Accept</button>
-                            <button onClick={this.declineJoinRequest} className="btn btn-danger">Decline</button>
+                            <button onClick={this.closeModal} className="toggle-modal-button">✖</button>
+                            <div className="join-request-modal-wrapper">
+                                <p ref={subtitle => this.subtitle = subtitle} className="text-center join-request-modal-title">Join Request</p>
+                                <hr />
+                                <p className="join-request-modal-content-text">Name: {this.state.requestName}</p>
+                                <p className="join-request-modal-content-text">User Name: {this.state.requestUsername}</p>
+                                <p className="join-request-modal-content-text">User ID: {this.state.requestId}</p>
+                                <div className="d-flex justify-content-between">
+                                <button onClick={this.acceptJoinRequest} className="btn btn-primary">Accept</button>
+                                <button onClick={this.declineJoinRequest} className="btn btn-secondary">Decline</button>
+                                </div>
+                            </div>
                         </Modal>
                     </div>
 
