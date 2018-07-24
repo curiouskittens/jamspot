@@ -3,6 +3,7 @@ import Jam from "../../components/Jam";
 import api from "../../utils/api";
 import Footer from "../../components/Footer";
 import Modal from "react-modal";
+import "./MyJam.css";
 
 // styling for modal
 const customStyles = {
@@ -118,44 +119,58 @@ class MyJams extends Component {
             <React.Fragment>
                 <div className="find-jam-page-bg">
                     <div className="find-jam-page-content container-fluid">
-                        <h4>My Jams</h4>
-                        <h6>I'm An Admin</h6>
-                        {this.state.adminJams.map((jam, idx) => (
-                            <div className="card" style={{ width: "40rem" }} key={idx}>
-                                <div className="card-body" >
-                                    <h5 className="card-title">{jam.name}</h5>
-                                    <p className="card-text">{jam.description}</p>
-                                    <button onClick={() => this.clickHandler(jam._id)} data-jamid={jam._id} className="btn btn-primary">See Jam</button>
-                                    <br /><br />
-                                    <h6 className="card-subtitle mb-2 text-muted">Join Requests</h6>
-                                    {jam.joinRequests.map((joinRequest, idx) => (
-                                        <React.Fragment key={idx}>
-                                            <br />
-                                            <br />
-                                            <button
-                                                onClick={this.joinRequestHandler}
-                                                className="btn btn-secondary"
-                                                data-jam-id={jam._id}
-                                                data-user-name={joinRequest.name}
-                                                data-user-id={joinRequest._id}
-                                                data-user-username={joinRequest.username}
-                                            >
-                                                {joinRequest.name}
-                                            </button>
-                                        </React.Fragment>
+                        <p className="my-jam-page-title text-center">My Jams</p>
+                        <br />
+                        <div className="d-md-flex justify-content-around">
+                            <div className="admin-jam-section col-md-5">
+                                <p className="my-jam-section-title text-center">I'm An Admin</p>
+                                <hr />
+                                <div className="row d-md-flex">
+                                    {this.state.adminJams.map((jam, idx) => (
+                                        <div className="col-md-6 admin-jam-card-wrapper" key={idx}>
+                                            <div className="card admin-jam-card">
+                                                <div className="card-body" >
+                                                    <h5 className="card-title">{jam.name}</h5>
+                                                    <p className="card-text">{jam.description}</p>
+                                                    <button onClick={() => this.clickHandler(jam._id)} data-jamid={jam._id} className="btn btn-primary">See Jam</button>
+                                                    <br /><br />
+                                                    <h6 className="card-subtitle mb-2 text-muted">Join Requests</h6>
+                                                    {jam.joinRequests.map((joinRequest, idx) => (
+                                                        <React.Fragment key={idx}>
+                                                            <br />
+                                                            <br />
+                                                            <button
+                                                                onClick={this.joinRequestHandler}
+                                                                className="btn btn-secondary"
+                                                                data-jam-id={jam._id}
+                                                                data-user-name={joinRequest.name}
+                                                                data-user-id={joinRequest._id}
+                                                                data-user-username={joinRequest.username}
+                                                            >
+                                                                {joinRequest.name}
+                                                            </button>
+                                                        </React.Fragment>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
                                     ))}
                                 </div>
                             </div>
-                        ))}
-                        <h6>I'm A Member</h6>
-                        {this.state.memberJams.map((jam, idx) => (
-                            <Jam
-                                key={idx}
-                                jamName={jam.name}
-                                description={jam.description}
-                                jamId={jam._id} clickHandler={() => this.clickHandler(jam._id)}
-                            />
-                        ))}
+                            <div className="member-jam-section col-md-5">
+                                <p className="my-jam-section-title text-center">I'm A Member</p>
+                                <hr />
+                                {this.state.memberJams.map((jam, idx) => (
+                                    <Jam
+                                        key={idx}
+                                        jamName={jam.name}
+                                        description={jam.description}
+                                        memberjam={true}
+                                        jamId={jam._id} clickHandler={() => this.clickHandler(jam._id)}
+                                    />
+                                ))}
+                            </div>
+                        </div>
                     </div>
 
                     <div>

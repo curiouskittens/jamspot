@@ -1,0 +1,21 @@
+.my-jam-page-title{
+    font-family: var(--frekoda);
+    font-size: 4vh;
+    color: var(--maincolor1);
+}
+
+.admin-jam-card-wrapper{
+    padding: 3%;
+}
+
+.admin-jam-card{
+    border-radius: 15px;
+}
+
+.admin-jam-card:hover{
+    border: white 3px double;
+}
+
+.my-jam-section-title{
+    font-size: 2.7vh;
+}
