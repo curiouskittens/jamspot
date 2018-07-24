@@ -95,11 +95,11 @@ class SignUp extends Component {
     renderEmailStatus = () => {
         if (this.state.email && (this.state.emailTaken || !this.validateEmail(this.state.email))) {
             return (
-                <small className="not-available-email">✖ Sorry, this email is not available or invalid.</small>
+                <small className="not-available-email">✖ Sorry, this email has already been used or is invalid.</small>
             )
         } else if (this.state.email && this.state.emailTaken === false && this.validateEmail(this.state.email)) {
             return (
-                <small className="available-email">✔ That email is up for grabs.</small>
+                <small className="available-email">✔ That email is valid.</small>
             )
         }
     }
