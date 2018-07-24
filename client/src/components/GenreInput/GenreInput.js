@@ -10,6 +10,7 @@ class GenreInput extends Component {
                     className="form-control genre-select-width create-jam-input-size"
                     value={this.props.genre}
                     onChange={this.props.nameChangeHandler}
+                    disabled={this.props.disabled}
                 >
                     <option defaultValue disabled value=""> -- select a genre -- </option>
                     <option value="hiphop">Hip Hop</option>
@@ -26,7 +27,7 @@ class GenreInput extends Component {
                     <option value="blues">Blues</option>
                     <option value="electronic">Electronic</option>
                 </select>
-                <button type="button" onClick={this.props.removeHandler} className="btn btn-sm btn-outline-secondary genre-button-width">✖</button>
+                {!this.props.disabled && <button type="button" onClick={this.props.removeHandler} className="btn btn-sm btn-outline-secondary genre-button-width">✖</button>}
             </div>
         )
     }
