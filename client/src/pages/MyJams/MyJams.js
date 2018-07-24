@@ -121,7 +121,6 @@ class MyJams extends Component {
                 <div className="find-jam-page-bg">
                     <div className="find-jam-page-content container-fluid">
                         <p className="my-jam-page-title text-center">My Jams</p>
-                        <br />
                         <div className="d-md-flex justify-content-around">
                             <div className="admin-jam-section col-md-5">
                                 <p className="my-jam-section-title text-center">I'm An Admin</p>

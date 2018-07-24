@@ -50,7 +50,6 @@ class FindJam extends Component {
             <div className="find-jam-page-bg">
                 <div className="find-jam-page-content container-fluid">
                     <p className="find-jam-page-title text-center">Find a Jam</p>
-                    <br />
                     <div className="d-md-flex justify-content-around">
                         <div className="new-jam-section col-md-5">
                             <p className="text-center find-jam-section-title">Check out these jams</p>
