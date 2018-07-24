@@ -56,7 +56,21 @@ module.exports = {
                 { $push: { joinRequests: req.body.userId } },
                 { new: true }
             )
-            .then(dbJam => res.json(dbJam))
+            .then(dbJam => {
+                res.json(dbJam);
+                const joinRequestMessage = {
+                    messageType: "joinRequest",
+                    message: `A new user has requested to join "${dbJam.name}".`
+                }
+                const jamAdminId = dbJam.admin
+                db.User.findOneAndUpdate(
+                    {_id: jamAdminId},
+                    { $push: {notifications: joinRequestMessage} },
+                    { new: true }
+                ).then(() => {
+                    console.log("join request message sent.")
+                })
+            })
             .catch(err => res.status(422).json(err))
     },
     acceptJoinRequest: function (req, res) {
