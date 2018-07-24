@@ -37,8 +37,12 @@ const UserSchema = new Schema({
         address: String
     },
     jams: [{
-          type: Schema.Types.ObjectId,
-          ref: "Jam"
+        type: Schema.Types.ObjectId,
+        ref: "Jam"
+    }],
+    notifications: [{
+        messageType: String,
+        message: String
     }],
     dateCreated: { type: Date, default: Date.now },
     dateModified: { type: Date, default: Date.now }

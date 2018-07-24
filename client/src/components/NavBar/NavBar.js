@@ -47,6 +47,9 @@ class NavBar extends Component {
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav to-the-right text-center">
                                 <li className="nav-item active">
+                                    <Link to="/" className="nav-link navbar-text-style2">Home</Link>
+                                </li>
+                                <li className="nav-item">
                                     <Link to="/profile" className="nav-link navbar-text-style2">Profile</Link>
                                 </li>
                                 <li className="nav-item">

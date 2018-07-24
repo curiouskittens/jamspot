@@ -1,0 +1,34 @@
+.notification{
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 15px;
+    border: 1px solid whitesmoke;
+    height: 3vh;
+    line-height: 3vh;
+    padding: 0 25px;
+    margin-top: 1vh;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 1.5vh;
+}
+
+.delete-notification-button{
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.delete-notification-button:hover{
+    font-size: 1.8vh;
+    color: var(--maincolor1);
+}
+
+.delete-notification-button:active{
+    font-size: 1.8vh;
+    color: var(--maincolor1);
+}
+
+.delete-notification-button:focus{
+    outline: none !important;
+}

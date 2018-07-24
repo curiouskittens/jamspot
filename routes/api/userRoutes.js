@@ -11,6 +11,12 @@ router.route("/create")
 router.route("/login")
     .post(userController.login)
 
+router.route("/get/notification")
+    .get(userController.findOne)
+
+router.route("/pull/notifications")
+    .put(userController.pullNotifications)
+
 router.route("/profile")
     .get(userController.findOne)
 
@@ -20,6 +26,5 @@ router.route("/:id")
 
 router.route("/populated/:id")
     .get(userController.findOnePopulate)
-
 
 module.exports = router;

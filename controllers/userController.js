@@ -52,5 +52,14 @@ module.exports = {
                 })
             })
             .catch(err => res.status(422).json(err))
+    },
+    pullNotifications: function(req, res) {
+        db.User
+            .findOneAndUpdate(
+                { _id: req.body.userId },
+                { $pull: {notifications: { _id: req.body.messageid }} },
+                { new: true}
+            ).then(() => console.log("user messages removed"))
+            .catch(err => res.status(422).json(err))
     }
 };

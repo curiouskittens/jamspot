@@ -1,0 +1,11 @@
+.jam-card-wrapper{
+    padding: 3%;
+}
+
+.jam-card{
+    border-radius: 15px;
+}
+
+.jam-card:hover{
+    border: white 3px double;
+}

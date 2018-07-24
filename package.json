@@ -26,6 +26,7 @@
     "if-env": "^1.0.4",
     "js-md5": "^0.7.3",
     "moment": "^2.22.2",
-    "mongoose": "^5.2.2"
+    "mongoose": "^5.2.2",
+    "react-modal": "^3.5.1"
   }
 }
