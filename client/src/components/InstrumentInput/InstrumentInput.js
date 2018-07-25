@@ -42,7 +42,7 @@ class InstrumentInput extends Component {
                 {this.props.skillChangeHandler && (
                     <React.Fragment>
                         {!this.props.disabled && <button type="button" onClick={this.props.removeHandler} className="btn btn-sm btn-outline-secondary instrument-button-width">✖</button>}
-                        <div className="instrument-skill-change-section d-flex justify-content-around">
+                        <div className={this.props.instrumentBar}>
                             <div className="skill-change-input-width">
                                 <input disabled={this.props.disabled} type="radio" name={`instrument${this.props.radioIndex}`} value="1" onClick={this.props.skillChangeHandler} checked={parseInt(this.props.instrument.skill, 16) === 1} />
                                 <label>Beginner</label>

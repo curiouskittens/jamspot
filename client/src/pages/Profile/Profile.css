@@ -51,15 +51,30 @@
 select:disabled {
     -webkit-appearance: none;
     -moz-appearance: none;
-    text-indent: 0.01px;
+    padding: 0;
+    color: black;
     text-overflow: '';
+    border: none;
     background: lightgray !important;
 }
 
+input[type=radio]:checked:disabled,
 input[type=radio]:not(:checked):disabled,
 input[type=radio]:not(:checked):disabled + label {
     display: none;
 }
+
+/* input[type=radio]:checked:disabled + label {
+    background: linear-gradient(to right, #66ff99 0%, #ff5050 100%);
+} */
+
+.skillbar-background{
+    background: linear-gradient(to right, #66ff99 0%, #ffff66 50%, #ff5050 100%);
+    border-radius: 5px;
+    font-weight: bold;
+    text-shadow: 0.5px 0.5px whitesmoke;
+}
+
 
 .profile-photo-style{
     width: 100%;

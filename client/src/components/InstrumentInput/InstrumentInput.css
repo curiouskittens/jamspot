@@ -19,13 +19,11 @@
     vertical-align: middle;
 }
 
-.instrument-skill-change-section{
-    margin-top: 1vh;
-}
-
 .skill-change-input-width{
-    width: 30%;
+    width: 33%;
     font-size: 1.5vh;
+    text-align: center;
+    padding-top: 0.7vh;
 }
 
 @media only screen and (min-width: 600px) {

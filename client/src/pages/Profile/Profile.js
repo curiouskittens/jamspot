@@ -21,7 +21,8 @@ class Profile extends Component {
         genres: [""],
         bioDisabled: true,
         instrumentsDisabled: true,
-        genresDisabled: true
+        genresDisabled: true,
+        defaultInstrumentSkillBar: "instrument-skill-change-section d-flex justify-content-around skillbar-background",
     }
 
     componentDidMount() {
@@ -52,6 +53,7 @@ class Profile extends Component {
 
         const togglerType = event.target.nodeName.toLowerCase();
         const togglerText = event.target.innerHTML;
+        this.setState({ defaultInstrumentSkillBar: "instrument-skill-change-section d-flex justify-content-around" })
         if (togglerType === "button" && togglerText === "Save") {
             if (toggleComponent === "instruments") {
                 const blankInstruments = this.state.instruments.filter(instrument => !instrument.name);
@@ -62,6 +64,7 @@ class Profile extends Component {
                 } else if (blankInstrumentsSkill.length) {
                     return sweetAlert("error", "warning-text", "Please enter your skill level for each instrument.")
                 }
+                this.setState({ defaultInstrumentSkillBar: "instrument-skill-change-section d-flex justify-content-around skillbar-background" })
             } else if (toggleComponent === "genres") {
                 const blankGenres = this.state.genres.filter(val => val === "");
             
@@ -211,6 +214,7 @@ class Profile extends Component {
                                             nameChangeHandler={this.handleInstrumentNameChange(idx)}
                                             skillChangeHandler={this.handleInstrumentSkillChange(idx)}
                                             removeHandler={this.handleRemoveInstrument(idx)}
+                                            instrumentBar={this.state.defaultInstrumentSkillBar}
                                         />
                                     </div>
                                 ))}
