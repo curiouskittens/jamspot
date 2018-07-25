@@ -159,67 +159,87 @@ class Profile extends Component {
         return (
             <div className="profile-page-bg">
                 <div className="profile-page-content container-fluid">
-                    <a href="https://en.gravatar.com/" target="react/jsx-no-target-blank"><img src={this.state.image} alt="Gravatar" /></a>
-                    <p>{this.state.name}</p>
-                    <p>@{this.state.username}</p>
-                    <p>Member since {moment(this.state.memberSince).format("MMMM D, YYYY")}</p>
-
-                    <h3>Bio
-                    {this.state.bioDisabled ? (
-                            <i className="fas fa-edit" id="bioDisabled" onClick={this.toggleEdit}></i>
-                        ) : (
-                                <button id="bioDisabled" onClick={this.toggleEdit}>Save</button>
-                            )}</h3>
-                    {!this.state.bio && <p>Hmm, looks like there's nothing here. Why don't you tell us a bit about yourself?</p>}
-                    {(this.state.bio || !this.state.bioDisabled) && (
-                        <textarea
-                            id="bio"
-                            name="bio"
-                            value={this.state.bio}
-                            disabled={this.state.bioDisabled}
-                            onChange={this.handleInputChange}
-                        />
-                    )}
-
-                    <h3>Instruments
-                    {this.state.instrumentsDisabled ? (
-                            <i className="fas fa-edit" id="instrumentsDisabled" onClick={this.toggleEdit}></i>
-                        ) : (
-                                <button id="instrumentsDisabled" onClick={this.toggleEdit}>Save</button>
-                            )}</h3>
-                    {!this.state.instruments[0].name && <p>Hmm, looks like there's nothing here. Why don't you tell us what instruments you play?</p>}
-                    {(this.state.instruments[0].name || !this.state.instrumentsDisabled) && this.state.instruments.map((instrument, idx) => (
-                        <div key={`${idx}`} id="instruments">
-                            <InstrumentInput
-                                disabled={this.state.instrumentsDisabled}
-                                radioIndex={idx}
-                                instrument={instrument}
-                                nameChangeHandler={this.handleInstrumentNameChange(idx)}
-                                skillChangeHandler={this.handleInstrumentSkillChange(idx)}
-                                removeHandler={this.handleRemoveInstrument(idx)}
-                            />
+                    <div className="container d-md-flex justify-content-around">
+                        <div className="col-md-3 profile-page-photo-section">
+                            <a href="https://en.gravatar.com/" target="react/jsx-no-target-blank"><img src={this.state.image} className="profile-photo-style" alt="Gravatar" /></a>
+                            <br /><br />
+                            <p className="profile-photo-section-name">{this.state.name}</p>
+                            <p className="profile-photo-section-username">@{this.state.username}</p>
+                            <p className="profile-photo-section-since">Member since {moment(this.state.memberSince).format("MMMM D, YYYY")}</p>
                         </div>
-                    ))}
-                    {!this.state.instrumentsDisabled && <button disabled={this.state.instrumentsDisabled} type="button" onClick={this.handleAddInstrument} className="btn btn-secondary btn-sm add-buttons">Add instrument</button>}
 
-                    <h3>Genres
-                    {this.state.genresDisabled ? (
-                            <i className="fas fa-edit" id="genresDisabled" onClick={this.toggleEdit}></i>
-                        ) : (
-                                <button id="genresDisabled" onClick={this.toggleEdit}>Save</button>
-                            )}</h3>
-                    {!this.state.genres[0] && <p>Hmm, looks like there's nothing here. Why don't you tell us what instruments you play?</p>}
-                    {(this.state.genres[0] || !this.state.genresDisabled) && this.state.genres.map((genre, idx) => (
-                        <div key={`${idx}`} id="genres">
-                            <GenreInput
-                                disabled={this.state.genresDisabled}
-                                genre={genre}
-                                nameChangeHandler={this.handleGenreNameChange(idx)}
-                                removeHandler={this.handleRemoveGenre(idx)}
-                            />
+                        <div className="col-md-7 profile-page-info-section">
+                            <p className="text-center profile-info-title">Your Profile <i className="fas fa-user"></i></p>
+                            <div className="profile-bio-section">
+                                <h3>Bio{" "}
+                                {this.state.bioDisabled ? (
+                                        <i className="fas fa-edit" id="bioDisabled" onClick={this.toggleEdit}></i>
+                                    ) : (
+                                            <button id="bioDisabled" onClick={this.toggleEdit}>Save</button>
+                                        )}</h3>
+                                <hr />
+                                {!this.state.bio && <p>Hmm, looks like there's nothing here. Why don't you tell us a bit about yourself?</p>}
+                                {(this.state.bio || !this.state.bioDisabled) && (
+                                    <textarea
+                                        id="bio"
+                                        name="bio"
+                                        type="text"
+                                        value={this.state.bio}
+                                        disabled={this.state.bioDisabled}
+                                        onChange={this.handleInputChange}
+                                        className="form-control bio-textarea"
+                                    ></textarea>
+                                )}
+                            </div>
+
+                            <div className="profile-instrument-section">
+                                <h3>Instruments{" "}
+                                {this.state.instrumentsDisabled ? (
+                                        <i className="fas fa-edit" id="instrumentsDisabled" onClick={this.toggleEdit}></i>
+                                    ) : (
+                                            <button id="instrumentsDisabled" onClick={this.toggleEdit}>Save</button>
+                                        )}</h3>
+                                <hr />
+                                {!this.state.instruments[0].name && <p>Hmm, looks like there's nothing here. Why don't you tell us what instruments you play?</p>}
+                                {(this.state.instruments[0].name || !this.state.instrumentsDisabled) && this.state.instruments.map((instrument, idx) => (
+                                    <div key={`${idx}`} id="instruments">
+                                        <InstrumentInput
+                                            disabled={this.state.instrumentsDisabled}
+                                            radioIndex={idx}
+                                            instrument={instrument}
+                                            nameChangeHandler={this.handleInstrumentNameChange(idx)}
+                                            skillChangeHandler={this.handleInstrumentSkillChange(idx)}
+                                            removeHandler={this.handleRemoveInstrument(idx)}
+                                        />
+                                    </div>
+                                ))}
+                                {!this.state.instrumentsDisabled && <button disabled={this.state.instrumentsDisabled} type="button" onClick={this.handleAddInstrument} className="btn btn-secondary btn-sm add-buttons">Add instrument</button>}
+                            </div>
+
+                            <div className="profile-genre-section">
+                                <h3>Genres{" "}
+                                {this.state.genresDisabled ? (
+                                        <i className="fas fa-edit" id="genresDisabled" onClick={this.toggleEdit}></i>
+                                    ) : (
+                                            <button id="genresDisabled" onClick={this.toggleEdit}>Save</button>
+                                        )}</h3>
+                                <hr />
+                                {!this.state.genres[0] && <p>Hmm, looks like there's nothing here. Why don't you tell us what instruments you play?</p>}
+                                {(this.state.genres[0] || !this.state.genresDisabled) && this.state.genres.map((genre, idx) => (
+                                    <div key={`${idx}`} id="genres">
+                                        <GenreInput
+                                            disabled={this.state.genresDisabled}
+                                            genre={genre}
+                                            nameChangeHandler={this.handleGenreNameChange(idx)}
+                                            removeHandler={this.handleRemoveGenre(idx)}
+                                        />
+                                    </div>
+                                ))}
+                                {!this.state.genresDisabled && <button type="button" onClick={this.handleAddGenre} className="btn btn-secondary btn-sm add-buttons">Add genre</button>}
+                            </div>
+
                         </div>
-                    ))}
-                    {!this.state.genresDisabled && <button type="button" onClick={this.handleAddGenre} className="btn btn-secondary btn-sm add-buttons">Add genre</button>}
+                    </div>
                 </div>
                 <Footer />
             </div>

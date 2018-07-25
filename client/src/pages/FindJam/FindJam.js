@@ -17,15 +17,17 @@ class FindJam extends Component {
     }
 
     getJams = () => {
-        api.getAllJams().then(dbJams => {
-            const result = dbJams.data.filter(dbJam => dbJam.members.findIndex(member => member === sessionStorage.getItem("userId")) === -1)
-            const jams = result.filter(jam => jam.joinRequests.findIndex(joinRequest => joinRequest === sessionStorage.getItem("userId")) === -1)
-            const requestedJams = result.filter(jam => jam.joinRequests.findIndex(joinRequest => joinRequest === sessionStorage.getItem("userId")) !== -1)
-            this.setState({
-                jams: jams,
-                requestedJams: requestedJams
-            });
+        api.getAllJams()
+            .then(dbJams => {
+                const result = dbJams.data.filter(dbJam => dbJam.members.findIndex(member => member === sessionStorage.getItem("userId")) === -1)
+                const jams = result.filter(jam => jam.joinRequests.findIndex(joinRequest => joinRequest === sessionStorage.getItem("userId")) === -1)
+                const requestedJams = result.filter(jam => jam.joinRequests.findIndex(joinRequest => joinRequest === sessionStorage.getItem("userId")) !== -1)
+                this.setState({
+                    jams: jams,
+                    requestedJams: requestedJams
+                });
         })
+            .catch(err => console.log(err))
     }
 
     joinJamEventHandler = jamId => {

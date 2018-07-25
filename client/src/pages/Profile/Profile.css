@@ -36,6 +36,10 @@
     .profile-page-content{
     padding: 15px;
     }
+
+    .profile-page-photo-section{
+    border-right: 1px solid black;
+    }
 } 
 
 textarea {
@@ -60,4 +64,46 @@ select:disabled {
 input[type=radio]:not(:checked):disabled,
 input[type=radio]:not(:checked):disabled + label {
     display: none;
+}
+
+.profile-photo-style{
+    width: 100%;
+    border: 3px var(--maincolor2) double;
+}
+
+.profile-photo-section-name{
+    font-size: 3.5vh;
+    font-family: var(--frekoda);
+    color: var(--maincolor1);
+    line-height: 1;
+}
+
+.profile-photo-section-username{
+    font-size: 2.2vh;
+}
+
+.profile-photo-section-since{
+    font-size: 1.5vh;
+}
+
+.profile-info-title{
+    font-size: 3.5vh;
+    font-family: var(--frekoda);
+    color: var(--maincolor1);
+}
+
+.profile-bio-section{
+    margin-top: 6vh;
+}
+
+.profile-instrument-section{
+    margin-top: 6vh;
+}
+
+.profile-genre-section{
+    margin-top: 6vh;
+}
+
+.bio-textarea:disabled {
+    background: none !important;
 }
