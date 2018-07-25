@@ -14,6 +14,7 @@ export default {
     getMyJams: userId => axios.get("api/users/populated/" + userId),
     joinJamRequest: requestInfo => axios.put("api/jams/join/request", requestInfo),
     acceptJoinRequest: requestInfo => axios.put("api/jams/join/accept", requestInfo),
-    declineJoinRequest: requestInfo => axios.put("api/jams/join/decline", requestInfo)
+    declineJoinRequest: requestInfo => axios.put("api/jams/join/decline", requestInfo),
+    getOneJamById: jamId => axios.get(`/api/jams/${jamId}`)
 }
 
