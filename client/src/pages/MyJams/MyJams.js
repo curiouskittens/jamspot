@@ -137,7 +137,9 @@ class MyJams extends Component {
                                                         <Link to={{
                                                             pathname: ('/jam/'+jam._id),
                                                             state: {jamId: jam._id}
-                                                        }}>
+                                                        }}
+                                                        className="admin-jam-see-jam-button"
+                                                        >
                                                             See Jam
                                                         </Link>
                                                     </button>
