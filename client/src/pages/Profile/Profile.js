@@ -53,7 +53,11 @@ class Profile extends Component {
 
         const togglerType = event.target.nodeName.toLowerCase();
         const togglerText = event.target.innerHTML;
-        this.setState({ defaultInstrumentSkillBar: "instrument-skill-change-section d-flex justify-content-around" })
+        console.log(toggler)
+        if (toggler === "instrumentsDisabled") {
+            this.setState({ defaultInstrumentSkillBar: "instrument-skill-change-section d-flex justify-content-around" })
+        }
+        
         if (togglerType === "button" && togglerText === "Save") {
             if (toggleComponent === "instruments") {
                 const blankInstruments = this.state.instruments.filter(instrument => !instrument.name);

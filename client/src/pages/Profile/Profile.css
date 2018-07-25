@@ -64,17 +64,13 @@ input[type=radio]:not(:checked):disabled + label {
     display: none;
 }
 
-/* input[type=radio]:checked:disabled + label {
-    background: linear-gradient(to right, #66ff99 0%, #ff5050 100%);
-} */
-
 .skillbar-background{
     background: linear-gradient(to right, #66ff99 0%, #ffff66 50%, #ff5050 100%);
     border-radius: 5px;
     font-weight: bold;
     text-shadow: 0.5px 0.5px whitesmoke;
+    border: 1px var(--maincolor2) double;
 }
-
 
 .profile-photo-style{
     width: 100%;
