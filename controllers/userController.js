@@ -24,8 +24,9 @@ module.exports = {
             .catch(err => res.status(422).json(err))
     },
     findOnePopulate: function(req, res) {
+        const userId = req.params.id || req.query.id;
         db.User
-            .findOne({ _id: req.params.id })
+            .findOne({ _id: userId })
             .populate({path: "jams", populate:{path:"joinRequests"}})
             .then(dbUser => res.status(200).json(dbUser))
             .catch(err => res.status(422).json(err))

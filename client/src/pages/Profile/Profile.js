@@ -130,6 +130,7 @@ class Profile extends Component {
 
         this.setState({ genres: newGenres });
     }
+    
     handleAddGenre = () => {
         this.setState({ genres: this.state.genres.concat([""]) });
     }
@@ -145,9 +146,6 @@ class Profile extends Component {
     }
 
     saveProfile = updatedComponent => {
-        console.log("Hitting save");
-        console.log(updatedComponent);
-        console.log(this.state[updatedComponent]);
         api.updateProfile(sessionStorage.getItem("userId"), {
             [updatedComponent]: this.state[updatedComponent]
         })

@@ -13,13 +13,13 @@ class InstrumentInput extends Component {
                     disabled={this.props.disabled}
                 >
                     <option defaultValue disabled value=""> -- select an instrument -- </option>
-                    <option value="leadGuitar">Lead Guitar</option>
-                    <option value="rhythmGuitar">Rhythm Guitar</option>
-                    <option value="bass">Bass</option>
-                    <option value="keys">Keys</option>
-                    <option value="drums">Drums</option>
-                    <option value="percussion">Percussion</option>
-                    <option value="vocals">Vocals</option>
+                    <option value="Lead Guitar">Lead Guitar</option>
+                    <option value="Rhythm Guitar">Rhythm Guitar</option>
+                    <option value="Bass">Bass</option>
+                    <option value="Keys">Keys</option>
+                    <option value="Drums">Drums</option>
+                    <option value="Percussion">Percussion</option>
+                    <option value="Vocals">Vocals</option>
                 </select>
 
                 {this.props.quantityChangeHandler && (
