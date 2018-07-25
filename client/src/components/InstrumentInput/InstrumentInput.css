@@ -19,6 +19,15 @@
     vertical-align: middle;
 }
 
+.instrument-skill-change-section{
+    margin-top: 1vh;
+}
+
+.skill-change-input-width{
+    width: 30%;
+    font-size: 1.5vh;
+}
+
 @media only screen and (min-width: 600px) {
     .instrument .instrument-select-width{
     width:70%;
@@ -27,10 +36,4 @@
     .instrument .instrument-input-width{
     width:5em;
     }
-} 
-
-@media only screen and (min-width: 992px) {
-    .instrument .instrument-select-width{
-    width:65%;
-    }
-} 
+}

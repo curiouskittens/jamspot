@@ -5,7 +5,7 @@ import sweetAlert from "../../utils/sweetAlert";
 
 class NavBar extends Component {
     state = {
-        navbarInitialClass: ["nav", "navbar-config", "navbar-height", "align-items-center", "navbar-initial-color", "navbar", "navbar-expand-lg"],
+        navbarInitialClass: ["nav", "navbar-config", "navbar-height", "align-items-center", "navbar-initial-color", "navbar", "navbar-expand-xl"],
         navtoggleInitialClass: "navbar-toggler-text",
         activeTabStyle: "active-tab-style",
         collapsed: false
@@ -19,13 +19,13 @@ class NavBar extends Component {
         let st = window.pageYOffset;
         if (st > 0) {
             this.setState({
-                navbarInitialClass: ["nav", "navbar-config", "navbar-height", "navbar-semi-transparent", "navbar", "navbar-expand-lg"],
+                navbarInitialClass: ["nav", "navbar-config", "navbar-height", "navbar-semi-transparent", "navbar", "navbar-expand-xl"],
                 navtoggleInitialClass: "navbar-toggler-text-clicked",
                 activeTabStyle: "active-tab-style-scrolled"
             })
         } else if (st === 0) {
             this.setState({
-                navbarInitialClass: ["nav", "navbar-config", "navbar-height", "navbar-initial-color", "navbar", "navbar-expand-lg"],
+                navbarInitialClass: ["nav", "navbar-config", "navbar-height", "navbar-initial-color", "navbar", "navbar-expand-xl"],
                 navtoggleInitialClass: "navbar-toggler-text",
                 activeTabStyle: "active-tab-style"
             })

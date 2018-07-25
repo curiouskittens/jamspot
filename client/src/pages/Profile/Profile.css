@@ -22,6 +22,12 @@
     margin-bottom: 6%;
     padding: 60px 15px 15px 15px;
     }
+
+    .profile-page-info-section{
+    margin-top: 5vh;
+    padding-top: 6vh;
+    border-top: 1px ridge rgb(0, 0, 0, 0.5);
+    }
 }
 
 @media only screen and (min-width: 600px) {
@@ -38,19 +44,8 @@
     }
 
     .profile-page-photo-section{
-    border-right: 1px solid black;
+    border-right: 1px ridge rgb(0, 0, 0, 0.5);
     }
-} 
-
-textarea {
-    resize: none;
-    height: 300px;
-    width: 200px;
-}
-
-textarea:disabled {
-    border: none;
-    background: lightgrey;
 }
 
 select:disabled {
@@ -106,4 +101,19 @@ input[type=radio]:not(:checked):disabled + label {
 
 .bio-textarea:disabled {
     background: none !important;
+    padding: 0 !important;
+    color: black;
+}
+
+.fa-edit:hover{
+    color: var(--maincolor1);
+    cursor: pointer;
+}
+
+.profile-info-sub-title{
+    font-size: 2.8vh;
+}
+
+.profile-no-input-text{
+    font-size: 1.8vh;
 }

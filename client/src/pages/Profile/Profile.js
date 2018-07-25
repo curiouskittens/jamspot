@@ -7,6 +7,7 @@ import Footer from "../../components/Footer";
 import InstrumentInput from "../../components/InstrumentInput";
 import GenreInput from "../../components/GenreInput";
 import sweetAlert from "../../utils/sweetAlert";
+import TextareaAutosize from "react-autosize-textarea";
 
 class Profile extends Component {
     state = {
@@ -171,36 +172,36 @@ class Profile extends Component {
                         <div className="col-md-7 profile-page-info-section">
                             <p className="text-center profile-info-title">Your Profile <i className="fas fa-user"></i></p>
                             <div className="profile-bio-section">
-                                <h3>Bio{" "}
+                                <p className="profile-info-sub-title">Bio{" "}
                                 {this.state.bioDisabled ? (
                                         <i className="fas fa-edit" id="bioDisabled" onClick={this.toggleEdit}></i>
                                     ) : (
-                                            <button id="bioDisabled" onClick={this.toggleEdit}>Save</button>
-                                        )}</h3>
+                                            <button id="bioDisabled" className="btn btn-primary btn-responsive" onClick={this.toggleEdit}>Save</button>
+                                        )}</p>
                                 <hr />
-                                {!this.state.bio && <p>Hmm, looks like there's nothing here. Why don't you tell us a bit about yourself?</p>}
+                                {!this.state.bio && <p className="profile-no-input-text">Hmm, looks like there's nothing here. Why don't you tell us a bit about yourself?</p>}
                                 {(this.state.bio || !this.state.bioDisabled) && (
-                                    <textarea
+                                    <TextareaAutosize
                                         id="bio"
                                         name="bio"
-                                        type="text"
+                                        rows={1}
                                         value={this.state.bio}
                                         disabled={this.state.bioDisabled}
                                         onChange={this.handleInputChange}
                                         className="form-control bio-textarea"
-                                    ></textarea>
+                                    />
                                 )}
                             </div>
 
                             <div className="profile-instrument-section">
-                                <h3>Instruments{" "}
+                                <p className="profile-info-sub-title">Instruments{" "}
                                 {this.state.instrumentsDisabled ? (
                                         <i className="fas fa-edit" id="instrumentsDisabled" onClick={this.toggleEdit}></i>
                                     ) : (
-                                            <button id="instrumentsDisabled" onClick={this.toggleEdit}>Save</button>
-                                        )}</h3>
+                                            <button id="instrumentsDisabled" className="btn btn-primary btn-responsive" onClick={this.toggleEdit}>Save</button>
+                                        )}</p>
                                 <hr />
-                                {!this.state.instruments[0].name && <p>Hmm, looks like there's nothing here. Why don't you tell us what instruments you play?</p>}
+                                {!this.state.instruments[0].name && <p className="profile-no-input-text">Hmm, looks like there's nothing here. Why don't you tell us what instruments you play?</p>}
                                 {(this.state.instruments[0].name || !this.state.instrumentsDisabled) && this.state.instruments.map((instrument, idx) => (
                                     <div key={`${idx}`} id="instruments">
                                         <InstrumentInput
@@ -213,18 +214,18 @@ class Profile extends Component {
                                         />
                                     </div>
                                 ))}
-                                {!this.state.instrumentsDisabled && <button disabled={this.state.instrumentsDisabled} type="button" onClick={this.handleAddInstrument} className="btn btn-secondary btn-sm add-buttons">Add instrument</button>}
+                                {!this.state.instrumentsDisabled && <button disabled={this.state.instrumentsDisabled} type="button" onClick={this.handleAddInstrument} className="btn btn-secondary btn-sm add-buttons" style={{marginTop: "3vh"}}>Add instrument</button>}
                             </div>
 
                             <div className="profile-genre-section">
-                                <h3>Genres{" "}
+                                <p className="profile-info-sub-title">Genres{" "}
                                 {this.state.genresDisabled ? (
                                         <i className="fas fa-edit" id="genresDisabled" onClick={this.toggleEdit}></i>
                                     ) : (
-                                            <button id="genresDisabled" onClick={this.toggleEdit}>Save</button>
-                                        )}</h3>
+                                            <button id="genresDisabled" className="btn btn-primary btn-responsive" onClick={this.toggleEdit}>Save</button>
+                                        )}</p>
                                 <hr />
-                                {!this.state.genres[0] && <p>Hmm, looks like there's nothing here. Why don't you tell us what instruments you play?</p>}
+                                {!this.state.genres[0] && <p className="profile-no-input-text">Hmm, looks like there's nothing here. Why don't you tell us what instruments you play?</p>}
                                 {(this.state.genres[0] || !this.state.genresDisabled) && this.state.genres.map((genre, idx) => (
                                     <div key={`${idx}`} id="genres">
                                         <GenreInput
@@ -235,7 +236,7 @@ class Profile extends Component {
                                         />
                                     </div>
                                 ))}
-                                {!this.state.genresDisabled && <button type="button" onClick={this.handleAddGenre} className="btn btn-secondary btn-sm add-buttons">Add genre</button>}
+                                {!this.state.genresDisabled && <button type="button" onClick={this.handleAddGenre} className="btn btn-secondary btn-sm add-buttons" style={{ marginTop: "3vh" }}>Add genre</button>}
                             </div>
 
                         </div>

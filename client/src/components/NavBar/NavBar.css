@@ -121,7 +121,16 @@ ul > li > .navbar-text-style2:last-child{
     }
 }
 
-@media only screen and (min-width: 992px){
+@media only screen and (min-width: 992px) {
+    .navbar-toggler-text{
+    margin-right: 4vh;
+    }
+    .navbar-toggler-text-clicked{
+    margin-right: 4vh;
+    }
+}
+
+@media only screen and (min-width: 1200px){
     .log-out-option{
     position:fixed;
     right:25px;
