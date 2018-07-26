@@ -167,7 +167,7 @@ class Profile extends Component {
         return (
             <div className="profile-page-bg">
                 <div className="profile-page-content container-fluid">
-                    <div className="container d-md-flex justify-content-around">
+                    <div className="container d-md-flex justify-content-around profile-sections-wrapper">
                         <div className="col-md-3 profile-page-photo-section">
                             <a href="https://en.gravatar.com/" target="react/jsx-no-target-blank"><img src={this.state.image} className="profile-photo-style" alt="Gravatar" /></a>
                             <br /><br />
@@ -185,7 +185,7 @@ class Profile extends Component {
                                     ) : (
                                             <button id="bioDisabled" className="btn btn-primary btn-responsive" onClick={this.toggleEdit}>Save</button>
                                         )}</p>
-                                <hr />
+                                <hr className="profile-page-separator"/>
                                 {!this.state.bio && <p className="profile-no-input-text">Hmm, looks like there's nothing here. Why don't you tell us a bit about yourself?</p>}
                                 {(this.state.bio || !this.state.bioDisabled) && (
                                     <TextareaAutosize
@@ -207,7 +207,7 @@ class Profile extends Component {
                                     ) : (
                                             <button id="instrumentsDisabled" className="btn btn-primary btn-responsive" onClick={this.toggleEdit}>Save</button>
                                         )}</p>
-                                <hr />
+                                <hr className="profile-page-separator"/>
                                 {!this.state.instruments[0].name && <p className="profile-no-input-text">Hmm, looks like there's nothing here. Why don't you tell us what instruments you play?</p>}
                                 {(this.state.instruments[0].name || !this.state.instrumentsDisabled) && this.state.instruments.map((instrument, idx) => (
                                     <div key={`${idx}`} id="instruments">
@@ -232,7 +232,7 @@ class Profile extends Component {
                                     ) : (
                                             <button id="genresDisabled" className="btn btn-primary btn-responsive" onClick={this.toggleEdit}>Save</button>
                                         )}</p>
-                                <hr />
+                                <hr className="profile-page-separator"/>
                                 {!this.state.genres[0] && <p className="profile-no-input-text">Hmm, looks like there's nothing here. Why don't you tell us what instruments you play?</p>}
                                 {(this.state.genres[0] || !this.state.genresDisabled) && this.state.genres.map((genre, idx) => (
                                     <div key={`${idx}`} id="genres">

@@ -13,7 +13,7 @@
     display: grid;
     grid-template-rows: 1fr auto;
     font-family: var(--merriweather);
-    background-image: url("./Clouds.jpg");
+    background: var(--maincolor2);
 }
 
 @media only screen and (max-width: 600px) {
@@ -26,7 +26,7 @@
     .profile-page-info-section{
     margin-top: 5vh;
     padding-top: 6vh;
-    border-top: 1px ridge rgb(0, 0, 0, 0.5);
+    border-top: 1px solid lightgray;
     }
 }
 
@@ -44,7 +44,17 @@
     }
 
     .profile-page-photo-section{
-    border-right: 1px ridge rgb(0, 0, 0, 0.5);
+    border-right: 2px solid var(--maincolor2);
+    }
+
+    .profile-sections-wrapper{
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("./profileGradient/profileGradient.jpg");
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    border-radius: 10px;
     }
 }
 
@@ -74,11 +84,12 @@ input[type=radio]:not(:checked):disabled + label {
 
 .profile-photo-style{
     width: 100%;
-    border: 3px var(--maincolor2) double;
+    border: 1px var(--maincolor2) solid;
+    border-radius: 10px;
 }
 
 .profile-photo-section-name{
-    font-size: 3.5vh;
+    font-size: 3.8vh;
     font-family: var(--frekoda);
     color: var(--maincolor1);
     line-height: 1;
@@ -88,12 +99,16 @@ input[type=radio]:not(:checked):disabled + label {
     font-size: 2.2vh;
 }
 
+.profile-page-separator{
+    border: 1px solid var(--maincolor2);
+}
+
 .profile-photo-section-since{
     font-size: 1.5vh;
 }
 
 .profile-info-title{
-    font-size: 3.5vh;
+    font-size: 3.8vh;
     font-family: var(--frekoda);
     color: var(--maincolor1);
 }
