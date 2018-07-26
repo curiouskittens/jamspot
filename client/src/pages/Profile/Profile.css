@@ -13,7 +13,7 @@
     display: grid;
     grid-template-rows: 1fr auto;
     font-family: var(--merriweather);
-    background: lightgray;
+    background-image: url("./Clouds.jpg");
 }
 
 @media only screen and (max-width: 600px) {
@@ -55,7 +55,7 @@ select:disabled {
     color: black;
     text-overflow: '';
     border: none;
-    background: lightgray !important;
+    background: none !important;
 }
 
 input[type=radio]:checked:disabled,
@@ -113,6 +113,7 @@ input[type=radio]:not(:checked):disabled + label {
 .bio-textarea:disabled {
     background: none !important;
     padding: 0 !important;
+    border: none !important;
     color: black;
 }
 
