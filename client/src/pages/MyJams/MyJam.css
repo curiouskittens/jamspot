@@ -62,3 +62,8 @@
 .join-request-modal-wrapper{
     padding: 20px;
 }
+
+.admin-jam-see-jam-button{
+    color: var(--maincolor2) !important;
+    text-decoration: none !important;
+}

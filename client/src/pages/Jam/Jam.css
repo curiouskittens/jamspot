@@ -1,0 +1,122 @@
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.jam-bg{
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%; 
+    display: grid;
+    grid-template-rows: 1fr auto;
+    font-family: var(--merriweather);
+    background: lightgray;
+}
+
+.user-simple-profile-section{
+    border: var(--maincolor2) 1px solid;
+    border-radius: 10px; 
+    box-shadow: 2px 3px var(--maincolor2);
+    background: rgb(255, 255, 255);
+}
+
+.suggested-jams-section{
+    margin-top: 5%;
+    border: var(--maincolor2) 1px solid;
+    border-radius: 10px; 
+    box-shadow: 2px 3px var(--maincolor2);
+    background: rgb(255, 255, 255);
+}
+
+
+@media only screen and (max-width: 600px) {
+    .jam-page-content{
+    margin-top: 6%;
+    margin-bottom: 6%;
+    padding: 60px 15px 15px 15px;
+    }
+    .user-simple-profile-section{
+    margin-top: 5%;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .jam-page-content{
+    margin-top: 10%;
+    margin-bottom: 6%;
+    padding: 60px 15px 15px 15px;
+    }
+    .user-simple-profile-section{
+    margin-top: 5%;
+    }
+} 
+
+@media only screen and (min-width: 768px) {
+    .jam-page-content{
+    padding: 15px;
+    }
+    .user-simple-profile-section{
+    margin-top: 0;
+    }
+} 
+
+@media only screen and (min-width: 1200px) {
+    .jam-page-content{
+        margin-top: 4.5%;
+    }
+}
+
+.next-jam-section{
+    border: var(--maincolor2) 1px solid;
+    border-radius: 10px; 
+    box-shadow: 2px 3px var(--maincolor2);
+    background: rgb(255, 255, 255);
+}
+
+.most-recent-jam-section{
+    margin-top: 5%;
+    border: var(--maincolor2) 1px solid;
+    border-radius: 10px; 
+    box-shadow: 2px 3px var(--maincolor2);
+    background: rgb(255, 255, 255);
+}
+
+.most-recent-jam-wrapper{
+    margin-top: 1.2vh;
+}
+
+.next-jam-wrapper{
+    margin-top: 1.2vh;
+}
+
+.next-jam-title-text{
+    color: var(--maincolor1);
+    font-size: 2.8vh;
+    font-weight: bold;
+    margin-top: 1.5vh;
+}
+
+.recent-jam-title-text{
+    color: var(--maincolor1);
+    font-size: 2.8vh;
+    font-weight: bold;
+    margin-top: 1.5vh;
+}
+
+.jam-page-separator{
+    border: var(--maincolor2) 1px solid;
+    margin-bottom: 0 !important;
+}
+
+.user-mini-pic{
+    max-height: 50px;
+    max-width: 50px;
+}
+
+.instrument-mini-pic {
+    max-height: 100%;
+    max-width: 30%;
+}

@@ -51,12 +51,10 @@ class Login extends Component {
                 password: this.state.password
             })
                 .then(loginResult => {
-                    this.setState({ loggedIn: loginResult.data.isMatch });
-                    this.props.loginUser(loginResult.data.isMatch);
-
                     if (loginResult.data.isMatch) {
                         sweetAlert("success", "success-text", "Login successful!");
-                        sessionStorage.setItem("userId", loginResult.data.userId);
+                        sessionStorage.setItem("userId", loginResult.data.userId)
+                        this.setState({ loggedIn: loginResult.data.isMatch}, () => this.props.loginUser(loginResult.data.isMatch));
                     } else {
                         sweetAlert("error", "warning-text", "Sorry, your password was incorrect.");
                     }

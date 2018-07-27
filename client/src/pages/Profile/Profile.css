@@ -13,7 +13,7 @@
     display: grid;
     grid-template-rows: 1fr auto;
     font-family: var(--merriweather);
-    background: lightgray;
+    background-image: url("./profileGradient/profileGradient.jpg");
 }
 
 @media only screen and (max-width: 600px) {
@@ -21,6 +21,12 @@
     margin-top: 6%;
     margin-bottom: 6%;
     padding: 60px 15px 15px 15px;
+    }
+
+    .profile-page-info-section{
+    margin-top: 5vh;
+    padding-top: 6vh;
+    border-top: 1px solid lightgray;
     }
 }
 
@@ -36,28 +42,104 @@
     .profile-page-content{
     padding: 15px;
     }
-} 
 
-textarea {
-    resize: none;
-    height: 300px;
-    width: 200px;
-}
+    .profile-page-photo-section{
+    border-right: 2px solid rgb(226, 225, 225);
+    padding-right: 8vh;
+    }
 
-textarea:disabled {
-    border: none;
-    background: lightgrey;
+    .profile-sections-wrapper{
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    border-radius: 10px;
+    border: 5px double white;
+    background: white
+    }
 }
 
 select:disabled {
     -webkit-appearance: none;
     -moz-appearance: none;
-    text-indent: 0.01px;
+    padding: 0;
+    color: black;
     text-overflow: '';
-    background: lightgray !important;
+    border: none;
+    background: none !important;
 }
 
+input[type=radio]:checked:disabled,
 input[type=radio]:not(:checked):disabled,
 input[type=radio]:not(:checked):disabled + label {
     display: none;
+}
+
+.skillbar-background{
+    background: linear-gradient(to right, #66ff99 0%, #ffff66 50%, #ff5050 100%);
+    border-radius: 5px;
+    font-weight: bold;
+    text-shadow: 0.5px 0.5px whitesmoke;
+    border: 1px var(--maincolor2) double;
+}
+
+.profile-photo-style{
+    width: 100%;
+    border: 1px var(--maincolor2) solid;
+    border-radius: 10px;
+}
+
+.profile-photo-section-name{
+    font-size: 3.8vh;
+    font-family: var(--frekoda);
+    color: var(--maincolor1);
+    line-height: 1;
+}
+
+.profile-photo-section-username{
+    font-size: 2.2vh;
+}
+
+.profile-page-separator{
+    border: 1px solid rgb(226, 225, 225);
+}
+
+.profile-photo-section-since{
+    font-size: 1.5vh;
+}
+
+.profile-info-title{
+    font-size: 3.8vh;
+    font-family: var(--frekoda);
+    color: var(--maincolor1);
+}
+
+.profile-bio-section{
+    margin-top: 6vh;
+}
+
+.profile-instrument-section{
+    margin-top: 6vh;
+}
+
+.profile-genre-section{
+    margin-top: 6vh;
+}
+
+.bio-textarea:disabled {
+    background: none !important;
+    padding: 0 !important;
+    border: none !important;
+    color: black;
+}
+
+.fa-edit:hover{
+    color: var(--maincolor1);
+    cursor: pointer;
+}
+
+.profile-info-sub-title{
+    font-size: 2.8vh;
+}
+
+.profile-no-input-text{
+    font-size: 1.8vh;
 }

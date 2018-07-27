@@ -11,6 +11,9 @@ router.route("/create")
 router.route("/login")
     .post(userController.login)
 
+router.route("/home")
+    .get(userController.findOnePopulate)
+
 router.route("/get/notification")
     .get(userController.findOne)
 

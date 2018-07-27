@@ -39,14 +39,26 @@
 }
 
 .navbar-text-style2 {
-    color: var(--maincolor2) !important;
+    color: var(--maincolor2);
     font-family: var(--merriweather);
     font-size: 2vh;
     cursor: pointer;
 }
 
+ul > li > .navbar-text-style2:last-child{
+    color: var(--maincolor2);
+}
+
 .navbar-initial-color a{
-    color: var(--maincolor1) !important
+    color: var(--maincolor1)
+}
+
+.navbar-initial-color > div > ul > li > a:last-child{
+    color: var(--maincolor1)
+}
+
+.navbar-initial-color > div > ul > li > a:last-child:hover{
+    color: var(--maincolor1)
 }
 
 .navbar-initial-color > a:hover{
@@ -109,7 +121,16 @@
     }
 }
 
-@media only screen and (min-width: 992px){
+@media only screen and (min-width: 992px) {
+    .navbar-toggler-text{
+    margin-right: 4vh;
+    }
+    .navbar-toggler-text-clicked{
+    margin-right: 4vh;
+    }
+}
+
+@media only screen and (min-width: 1200px){
     .log-out-option{
     position:fixed;
     right:25px;
@@ -123,4 +144,13 @@
 
 .navbar-toggler-text-clicked:active, .navbar-toggler-text-clicked:focus .navbar-toggler-text-clicked:hover{
     color: var(--maincolor3);
+}
+
+.active-tab-style{
+    color: lightgray !important;
+    background: var(--maincolor1) !important;
+}
+
+.active-tab-style-scrolled{
+    color: var(--maincolor3) !important;
 }

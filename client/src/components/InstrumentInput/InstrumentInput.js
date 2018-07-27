@@ -13,17 +13,17 @@ class InstrumentInput extends Component {
                     disabled={this.props.disabled}
                 >
                     <option defaultValue disabled value=""> -- select an instrument -- </option>
-                    <option value="leadGuitar">Lead Guitar</option>
-                    <option value="rhythmGuitar">Rhythm Guitar</option>
-                    <option value="bass">Bass</option>
-                    <option value="keys">Keys</option>
-                    <option value="drums">Drums</option>
-                    <option value="percussion">Percussion</option>
-                    <option value="vocals">Vocals</option>
+                    <option value="Lead Guitar">Lead Guitar</option>
+                    <option value="Rhythm Guitar">Rhythm Guitar</option>
+                    <option value="Bass">Bass</option>
+                    <option value="Keys">Keys</option>
+                    <option value="Drums">Drums</option>
+                    <option value="Percussion">Percussion</option>
+                    <option value="Vocals">Vocals</option>
                 </select>
 
                 {this.props.quantityChangeHandler && (
-                    <div>
+                    <React.Fragment>
                         <input
                             className="form-control instrument-input-width"
                             type="number"
@@ -36,22 +36,27 @@ class InstrumentInput extends Component {
                             required
                         />
                         <button type="button" onClick={this.props.removeHandler} className="btn btn-sm btn-outline-secondary instrument-button-width">✖</button>
-                    </div>
+                    </React.Fragment>
                 )}
 
                 {this.props.skillChangeHandler && (
-                    <div>
-                        <input disabled={this.props.disabled} type="radio" name={`instrument${this.props.radioIndex}`} value="1" onClick={this.props.skillChangeHandler} checked={parseInt(this.props.instrument.skill, 16) === 1} />
-                        <label>Beginner</label>
-                    
-                        <input disabled={this.props.disabled} type="radio" name={`instrument${this.props.radioIndex}`} value="2" onClick={this.props.skillChangeHandler} checked={parseInt(this.props.instrument.skill, 16) === 2} />
-                        <label>Intermediate</label>
-                    
-                        <input disabled={this.props.disabled} type="radio" name={`instrument${this.props.radioIndex}`} value="3" onClick={this.props.skillChangeHandler} checked={parseInt(this.props.instrument.skill, 16) === 3} />
-                        <label>Expert</label>
-
+                    <React.Fragment>
                         {!this.props.disabled && <button type="button" onClick={this.props.removeHandler} className="btn btn-sm btn-outline-secondary instrument-button-width">✖</button>}
-                    </div>
+                        <div className={this.props.instrumentBar}>
+                            <div className="skill-change-input-width">
+                                <input disabled={this.props.disabled} type="radio" name={`instrument${this.props.radioIndex}`} value="1" onClick={this.props.skillChangeHandler} checked={parseInt(this.props.instrument.skill, 16) === 1} />
+                                <label>Beginner</label>
+                            </div>
+                            <div className="skill-change-input-width">
+                                <input disabled={this.props.disabled} type="radio" name={`instrument${this.props.radioIndex}`} value="2" onClick={this.props.skillChangeHandler} checked={parseInt(this.props.instrument.skill, 16) === 2} />
+                                <label>Intermediate</label>
+                            </div>
+                            <div className="skill-change-input-width">
+                                <input disabled={this.props.disabled} type="radio" name={`instrument${this.props.radioIndex}`} value="3" onClick={this.props.skillChangeHandler} checked={parseInt(this.props.instrument.skill, 16) === 3} />
+                                <label>Expert</label>
+                            </div>
+                        </div>
+                    </React.Fragment>
                 )}
             </div>
         )
