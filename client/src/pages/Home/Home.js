@@ -15,11 +15,13 @@ class Home extends Component {
         instruments: [{ name: "", skill: "" }],
         userMessages: [],
         nextJam: { name: "", location: "", date: "", members: [] },
-        mostRecentJam: { name: "", location: "", date: "", members: [] }
+        mostRecentJam: { name: "", location: "", date: "", members: [] },
+        searchJams: [{ name: "", location: "", date: "", members: [] }]
     }
 
     componentDidMount() {
         this.populateHomePage(sessionStorage.getItem("userId"));
+        this.getJams();
 
         if (sessionStorage.getItem("userId")) {
             const userId = sessionStorage.getItem("userId");
@@ -40,11 +42,21 @@ class Home extends Component {
                     name: user.data.name,
                     username: user.data.username,
                     image: `https://www.gravatar.com/avatar/${gravatarHash}?d=mp&s=200`,
-                    genres: user.data.genres,
-                    instruments: user.data.instruments,
-                    jams: user.data.jams
-                }, () => this.sortJams(this.state.jams))
+                })
+
+                if (user.data.genres[0]) this.setState({ genres: user.data.genres })
+                if (user.data.instruments[0]) this.setState({ instruments: user.data.instruments })
+                if (user.data.jams[0]) this.setState({ jams: user.data.jams }, () => this.sortJams(this.state.jams));
             })
+    }
+
+    getJams = () => {
+        api.getAllJams().then(dbJams => {
+            const result = dbJams.data.filter(dbJam => dbJam.members.findIndex(member => member === sessionStorage.getItem("userId")) === -1)
+            const searchJams = result.filter(jam => jam.joinRequests.findIndex(joinRequest => joinRequest === sessionStorage.getItem("userId")) === -1)
+            if (searchJams.length) this.setState({ searchJams: searchJams });
+            console.log(searchJams);
+        })
     }
 
     sortJams = jams => {
@@ -54,13 +66,11 @@ class Home extends Component {
             return timeDifferenceOne - timeDifferenceTwo;
         })
 
-        const pastJams = sortedJams.filter(jam => moment(jam.date) - moment() < 0);
         const upcomingJams = sortedJams.filter(jam => moment(jam.date) - moment() > 0);
+        if (upcomingJams.length) this.setState({ nextJam: upcomingJams[0] })
 
-        this.setState({
-            nextJam: upcomingJams[0],
-            mostRecentJam: pastJams[0]
-        });
+        const pastJams = sortedJams.filter(jam => moment(jam.date) - moment() < 0);
+        if (pastJams.length) this.setState({ mostRecentJam: pastJams.slice(-1)[0] });
     }
 
     getNotifications = userId => {
@@ -94,7 +104,7 @@ class Home extends Component {
                                 <p className="text-center next-jam-title-text">Your Next Jam</p>
                                 <hr className="home-page-separator" />
                                 <div className="next-jam-wrapper d-flex container-fluid">
-                                    {this.state.nextJam ? (
+                                    {this.state.nextJam.name ? (
                                         <React.Fragment>
                                             <div className="next-jam-info col-6">
                                                 <p>{this.state.nextJam.name}</p>
@@ -103,7 +113,7 @@ class Home extends Component {
                                             </div>
                                             <div className="next-jam-members col-6">
                                                 {this.state.nextJam.members.map((member, index) => (
-                                                    <p key={index}>{member}</p>
+                                                    <p key={index}>{member.name} {!index && <span>(Host)</span>}</p>
                                                 ))}
                                             </div>
                                         </React.Fragment>
@@ -117,18 +127,17 @@ class Home extends Component {
                                 <p className="text-center recent-jam-title-text">Your Most Recent Jam</p>
                                 <hr className="home-page-separator" />
                                 <div className="most-recent-jam-wrapper d-flex container-fluid">
-                                    {this.state.mostRecentJam ? (
+                                    {this.state.mostRecentJam.name ? (
                                         <React.Fragment>
                                             <div className="most-recent-jam-info col-6">
                                                 <p>{this.state.mostRecentJam.name}</p>
                                                 <p>{this.state.mostRecentJam.location}</p>
-                                                <p>{moment(this.state.nextJam.date).format("LLL")}</p>
+                                                <p>{moment(this.state.mostRecentJam.date).format("LLL")}</p>
                                             </div>
                                             <div className="most-recent-jam-members col-6">
-                                                <p>You</p>
-                                                <p>Person 1</p>
-                                                <p>Person 2</p>
-                                                <p>Person 3</p>
+                                                {this.state.mostRecentJam.members.map((member, index) => (
+                                                    <p key={index}>{member.name} {!index && <span>(Host)</span>}</p>
+                                                ))}
                                             </div>
                                         </React.Fragment>
                                     ) : (
@@ -178,27 +187,19 @@ class Home extends Component {
                         </div>
                     </div>
                     <div className="suggested-jams-section d-flex justify-content-around container-fluid">
-                        <div className="suggested-jam-box col-3">
-                            <p>Jam Name1</p>
-                            <p>Location</p>
-                            <p>Date</p>
-                            <p>Genre</p>
-                            <p>Intrument</p>
-                        </div>
-                        <div className="suggested-jam-box col-3">
-                            <p>Jam Name2</p>
-                            <p>Location</p>
-                            <p>Date</p>
-                            <p>Genre</p>
-                            <p>Intrument</p>
-                        </div>
-                        <div className="suggested-jam-box col-3">
-                            <p>Jam Name3</p>
-                            <p>Location</p>
-                            <p>Date</p>
-                            <p>Genre</p>
-                            <p>Intrument</p>
-                        </div>
+                        {this.state.searchJams[0].name && this.state.searchJams.map((jam, index) => (
+                            <div className="suggested-jam-box col-3" key={index}>
+                                <p>{jam.name}</p>
+                                <p>{jam.location}</p>
+                                <p>{moment(jam.date).format("LLL")}</p>
+                                {jam.genres.map((genre, index) => (
+                                    <p key={index}>{genre}</p>
+                                ))}
+                                {jam.instruments.map((instrument, index) => (
+                                    <p key={index}>{instrument.name}: {instrument.quantity}</p>
+                                ))}
+                            </div>
+                        ))}
                     </div>
                 </div>
 

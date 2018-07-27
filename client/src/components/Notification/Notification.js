@@ -9,7 +9,7 @@ class Notification extends Component {
 
     handleClick = event => {
         event.preventDefault();
-        console.log(event.target.id);
+
         const clickedId = event.target.id;
         api.pullNotifications({
             userId: sessionStorage.getItem("userId"),
