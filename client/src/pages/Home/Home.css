@@ -6,7 +6,7 @@
 }
 
 .home-bg{
-    /* background-image: url("./homeGradient/homeGradient.jpg") !important; */
+    background-image: url("./homeGradient/homeGradient.jpg") !important;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -14,7 +14,7 @@
     display: grid;
     grid-template-rows: 1fr auto;
     font-family: var(--merriweather);
-    background: lightgray;
+    /* background: lightgray; */
 }
 
 .user-simple-profile-section{
@@ -114,4 +114,12 @@
 .home-page-separator{
     border: var(--maincolor2) 1px solid;
     margin-bottom: 0 !important;
+}
+
+.suggested-jam-box-wrapper{
+    padding: 1vh 4vh;
+}
+
+.suggested-jam-box{
+    border: 1px solid black;
 }

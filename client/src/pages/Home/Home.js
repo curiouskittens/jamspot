@@ -16,7 +16,7 @@ class Home extends Component {
         userMessages: [],
         nextJam: { name: "", location: "", date: "", members: [] },
         mostRecentJam: { name: "", location: "", date: "", members: [] },
-        searchJams: [{ name: "", location: "", date: "", members: [] }]
+        searchJamsSubsets: [],
     }
 
     componentDidMount() {
@@ -54,8 +54,26 @@ class Home extends Component {
         api.getAllJams().then(dbJams => {
             const result = dbJams.data.filter(dbJam => dbJam.members.findIndex(member => member === sessionStorage.getItem("userId")) === -1)
             const searchJams = result.filter(jam => jam.joinRequests.findIndex(joinRequest => joinRequest === sessionStorage.getItem("userId")) === -1)
-            if (searchJams.length) this.setState({ searchJams: searchJams });
-            console.log(searchJams);
+            if (searchJams.length) {
+                let j = searchJams.length,
+                    chunk = 3,
+                    subsets = [];
+
+                for (let i = 0; i < j; i += chunk) {
+                    let subset
+                    if (i + chunk < j) {
+                        subset = searchJams.slice(i, i + chunk);
+                    } else {
+                        subset = searchJams.slice(i, j);
+                    }
+                    if (subset[0].name) {
+                        subsets.push(subset);
+                    }
+                }
+                
+                this.setState({searchJamsSubsets: subsets})
+            }
+            
         })
     }
 
@@ -92,10 +110,54 @@ class Home extends Component {
         }
     }
 
+    renderSuggestedJams = () => {
+        if (this.state.searchJamsSubsets !== []) {
+            return this.state.searchJamsSubsets.map((subset, idx) => {
+                return (
+                    <div className="d-flex carousel-element" key={idx}>
+                        {subset.map((jam, sidx) => (
+                            <div className="suggested-jam-box-wrapper col-4" key={jam.name}>
+                                <div className="suggested-jam-box">
+                                    <p>{jam.name}</p>
+                                    <p>{jam.location}</p>
+                                    <p>{moment(jam.date).format("LLL")}</p>
+                                    {jam.genres.map((genre, index) => (
+                                        <p key={index}>{genre}</p>
+                                    ))}
+                                    {jam.instruments.map((instrument, index) => (
+                                        <p key={index}>{instrument.name}: {instrument.quantity}</p>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                )
+            })
+        }
+    }
+
+// {
+//     this.state.searchJams[0].name && this.state.searchJams.map((jam, index) => (
+        // <div className="suggested-jam-box-wrapper col-3">
+        //     <div className="suggested-jam-box" key={index}>
+        //         <p>{jam.name}</p>
+        //         <p>{jam.location}</p>
+        //         <p>{moment(jam.date).format("LLL")}</p>
+        //         {jam.genres.map((genre, index) => (
+        //             <p key={index}>{genre}</p>
+        //         ))}
+        //         {jam.instruments.map((instrument, index) => (
+        //             <p key={index}>{instrument.name}: {instrument.quantity}</p>
+        //         ))}
+        //     </div>
+        // </div>
+//     ))
+// }
+
     render() {
         return (
             <div className="home-bg">
-                <div className="home-page-content container-fluid">
+                <div className="home-page-content container">
                     {this.renderNotifications()}
                     <br />
                     <div className="d-md-flex justify-content-around">
@@ -186,20 +248,8 @@ class Home extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="suggested-jams-section d-flex justify-content-around container-fluid">
-                        {this.state.searchJams[0].name && this.state.searchJams.map((jam, index) => (
-                            <div className="suggested-jam-box col-3" key={index}>
-                                <p>{jam.name}</p>
-                                <p>{jam.location}</p>
-                                <p>{moment(jam.date).format("LLL")}</p>
-                                {jam.genres.map((genre, index) => (
-                                    <p key={index}>{genre}</p>
-                                ))}
-                                {jam.instruments.map((instrument, index) => (
-                                    <p key={index}>{instrument.name}: {instrument.quantity}</p>
-                                ))}
-                            </div>
-                        ))}
+                    <div className="suggested-jams-section d-flex-wrap justify-content-around container-fluid">
+                        {this.renderSuggestedJams()}
                     </div>
                 </div>
 
