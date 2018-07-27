@@ -5,6 +5,14 @@ import "./Home.css";
 import api from "../../utils/api";
 import Footer from "../../components/Footer";
 import Notification from "../../components/Notification";
+import Slider from 'react-slick';
+
+const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToScroll: 3,
+    responsive: [{ breakpoint: 767, settings: { slidesToShow: 1, slidesToScroll: 1,} }, { breakpoint: 1024, settings: { slidesToShow: 2 } }, { breakpoint: 100000, settings: { slidesToShow: 3 } }]
+};
 
 class Home extends Component {
     state = {
@@ -17,6 +25,7 @@ class Home extends Component {
         nextJam: { name: "", location: "", date: "", members: [] },
         mostRecentJam: { name: "", location: "", date: "", members: [] },
         searchJamsSubsets: [],
+        searchJams: [{ name: "", location: "", date: "", members: [] }]
     }
 
     componentDidMount() {
@@ -55,25 +64,8 @@ class Home extends Component {
             const result = dbJams.data.filter(dbJam => dbJam.members.findIndex(member => member === sessionStorage.getItem("userId")) === -1)
             const searchJams = result.filter(jam => jam.joinRequests.findIndex(joinRequest => joinRequest === sessionStorage.getItem("userId")) === -1)
             if (searchJams.length) {
-                let j = searchJams.length,
-                    chunk = 3,
-                    subsets = [];
-
-                for (let i = 0; i < j; i += chunk) {
-                    let subset
-                    if (i + chunk < j) {
-                        subset = searchJams.slice(i, i + chunk);
-                    } else {
-                        subset = searchJams.slice(i, j);
-                    }
-                    if (subset[0].name) {
-                        subsets.push(subset);
-                    }
-                }
-                
-                this.setState({searchJamsSubsets: subsets})
+                this.setState({searchJams: searchJams})
             }
-            
         })
     }
 
@@ -111,12 +103,9 @@ class Home extends Component {
     }
 
     renderSuggestedJams = () => {
-        if (this.state.searchJamsSubsets !== []) {
-            return this.state.searchJamsSubsets.map((subset, idx) => {
-                return (
-                    <div className="d-flex carousel-element" key={idx}>
-                        {subset.map((jam, sidx) => (
-                            <div className="suggested-jam-box-wrapper col-4" key={jam.name}>
+        if(this.state.searchJams[0].name) {
+            return this.state.searchJams.map((jam, idx) => (
+                            <div className="suggested-jam-box-wrapper" key={jam.name}>
                                 <div className="suggested-jam-box">
                                     <p>{jam.name}</p>
                                     <p>{jam.location}</p>
@@ -129,30 +118,9 @@ class Home extends Component {
                                     ))}
                                 </div>
                             </div>
-                        ))}
-                    </div>
-                )
-            })
+            ))
         }
     }
-
-// {
-//     this.state.searchJams[0].name && this.state.searchJams.map((jam, index) => (
-        // <div className="suggested-jam-box-wrapper col-3">
-        //     <div className="suggested-jam-box" key={index}>
-        //         <p>{jam.name}</p>
-        //         <p>{jam.location}</p>
-        //         <p>{moment(jam.date).format("LLL")}</p>
-        //         {jam.genres.map((genre, index) => (
-        //             <p key={index}>{genre}</p>
-        //         ))}
-        //         {jam.instruments.map((instrument, index) => (
-        //             <p key={index}>{instrument.name}: {instrument.quantity}</p>
-        //         ))}
-        //     </div>
-        // </div>
-//     ))
-// }
 
     render() {
         return (
@@ -248,8 +216,10 @@ class Home extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="suggested-jams-section d-flex-wrap justify-content-around container-fluid">
-                        {this.renderSuggestedJams()}
+                    <div className="suggested-jams-section">
+                        <Slider className="suggested-jam-slider" {...settings}>
+                            {this.renderSuggestedJams()}
+                        </Slider>
                     </div>
                 </div>
 

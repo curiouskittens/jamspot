@@ -46,6 +46,10 @@
     .user-simple-profile-section{
     margin-top: 5%;
     }
+    .suggested-jam-slider{
+    width: 70vw;
+    margin: 0 auto;
+    }
 }
 
 @media only screen and (min-width: 600px) {
@@ -57,6 +61,10 @@
     .user-simple-profile-section{
     margin-top: 5%;
     }
+    .suggested-jam-slider{
+    width: 50vw;
+    margin: 0 auto;
+    }
 } 
 
 @media only screen and (min-width: 768px) {
@@ -66,11 +74,17 @@
     .user-simple-profile-section{
     margin-top: 0;
     }
+    .suggested-jam-slider{
+    width: 80%;
+    }
 } 
 
 @media only screen and (min-width: 1200px) {
     .home-page-content{
         margin-top: 4.5%;
+    }
+    .suggested-jam-slider{
+    width: 90%;
     }
 }
 
@@ -117,9 +131,41 @@
 }
 
 .suggested-jam-box-wrapper{
-    padding: 1vh 4vh;
+    padding: 2vh;
 }
 
 .suggested-jam-box{
     border: 1px solid black;
+}
+
+.slick-prev:before {
+    content: none;
+    background: none;
+}
+
+.slick-next:before {
+    content: none;
+    background: none;
+}
+
+.slick-prev:after {
+    content: "<";
+    color: var(--maincolor2);
+    font-size: 4vh;
+    font-weight: bold;
+    background: rgb(0,0,0,0.3);
+    border-radius: 100px
+}
+
+.slick-next:after {
+    content: ">";
+    color: var(--maincolor2);
+    font-size: 4vh;
+    font-weight: bold;
+    background: rgb(0,0,0,0.3);
+    border-radius: 100px
+}
+
+.slick-prev:hover:after, .slick-next:hover:after{
+    color: var(--maincolor3)
 }
