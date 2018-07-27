@@ -58,7 +58,7 @@ module.exports = {
                 res.json(dbJam);
                 const joinRequestMessage = {
                     messageType: "joinRequest",
-                    message: `A new user has requested to join "${dbJam.name}".`
+                    message: `A new user has requested to join "${dbJam.name}."`
                 }
                 const jamAdminId = dbJam.admin
                 db.User.findOneAndUpdate(
@@ -84,7 +84,7 @@ module.exports = {
             .then(dbJam => {
                 const acceptedMessage = {
                     messageType: "accepted",
-                    message: `You have been accepted to "${dbJam.name}", have fun!`
+                    message: `You have been accepted to "${dbJam.name}." Have fun!`
                 }
                 db.User.findOneAndUpdate(
                     { _id: req.body.userId },

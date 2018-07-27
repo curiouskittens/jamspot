@@ -157,7 +157,7 @@ class CreateJam extends Component {
                                 <label htmlFor="date">Date:</label>
                                 <input
                                     className="form-control create-jam-input-width create-jam-input-size"
-                                    type="date"
+                                    type="datetime-local"
                                     id="date"
                                     name="date"
                                     value={this.state.date}
