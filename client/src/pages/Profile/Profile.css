@@ -13,7 +13,7 @@
     display: grid;
     grid-template-rows: 1fr auto;
     font-family: var(--merriweather);
-    background: var(--maincolor2);
+    background-image: url("./profileGradient/profileGradient.jpg");
 }
 
 @media only screen and (max-width: 600px) {
@@ -44,17 +44,16 @@
     }
 
     .profile-page-photo-section{
-    border-right: 2px solid var(--maincolor2);
+    border-right: 2px solid rgb(226, 225, 225);
+    padding-right: 8vh;
     }
 
     .profile-sections-wrapper{
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url("./profileGradient/profileGradient.jpg");
     padding-top: 10vh;
     padding-bottom: 10vh;
     border-radius: 10px;
+    border: 5px double white;
+    background: white
     }
 }
 
@@ -100,7 +99,7 @@ input[type=radio]:not(:checked):disabled + label {
 }
 
 .profile-page-separator{
-    border: 1px solid var(--maincolor2);
+    border: 1px solid rgb(226, 225, 225);
 }
 
 .profile-photo-section-since{

@@ -168,7 +168,7 @@ class Profile extends Component {
             <div className="profile-page-bg">
                 <div className="profile-page-content container-fluid">
                     <div className="container d-md-flex justify-content-around profile-sections-wrapper">
-                        <div className="col-md-3 profile-page-photo-section">
+                        <div className="col-md-4 profile-page-photo-section">
                             <a href="https://en.gravatar.com/" target="react/jsx-no-target-blank"><img src={this.state.image} className="profile-photo-style" alt="Gravatar" /></a>
                             <br /><br />
                             <p className="profile-photo-section-name">{this.state.name}</p>
