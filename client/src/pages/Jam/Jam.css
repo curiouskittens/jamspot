@@ -110,3 +110,13 @@
     border: var(--maincolor2) 1px solid;
     margin-bottom: 0 !important;
 }
+
+.user-mini-pic{
+    max-height: 50px;
+    max-width: 50px;
+}
+
+.instrument-mini-pic {
+    max-height: 100%;
+    max-width: 30%;
+}
