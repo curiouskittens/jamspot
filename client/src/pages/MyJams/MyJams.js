@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Jam from "../../components/Jam";
+// import Jam from "../../components/Jam";
 import api from "../../utils/api";
 import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
@@ -171,13 +171,22 @@ class MyJams extends Component {
                                 <p className="my-jam-section-title text-center">I'm A Member</p>
                                 <hr />
                                 {this.state.memberJams.map((jam, idx) => (
-                                    <Jam
-                                        key={idx}
-                                        jamName={jam.name}
-                                        description={jam.description}
-                                        memberjam={true}
-                                        jamId={jam._id} clickHandler={() => this.clickHandler(jam._id)}
-                                    />
+                                    <div className="col-md-6 admin-jam-card-wrapper" key={idx}>
+                                    <div className="card admin-jam-card">
+                                        <div className="card-body" >
+                                            <h5 className="card-title">{jam.name}</h5>
+                                            <p className="card-text">{jam.description}</p>
+                                            <button onClick={() => this.clickHandler(jam._id)} data-jamid={jam._id} className="btn btn-primary">
+                                                <Link to={{
+                                                    pathname: ('/jam/'+jam._id),
+                                                    state: {jamId: jam._id}
+                                                }}>
+                                                    See Jam
+                                                </Link>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                                 ))}
                             </div>
                         </div>
