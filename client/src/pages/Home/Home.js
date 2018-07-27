@@ -216,13 +216,19 @@ class Home extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="suggested-jams-section">
+                    {this.state.searchJams.length > 3 ? 
+                        (<div className="suggested-jams-section">
                         <Slider className="suggested-jam-slider" {...settings}>
                             {this.renderSuggestedJams()}
                         </Slider>
-                    </div>
+                        </div>
+                        ) : (
+                        <div className="suggested-jams-section d-md-flex justify-content-around">
+                                {this.renderSuggestedJams()}
+                        </div>
+                        )
+                    }
                 </div>
-
                 <Footer />
             </div>
         )
