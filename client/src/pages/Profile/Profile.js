@@ -36,7 +36,7 @@ class Profile extends Component {
                 this.setState({
                     name: profile.data.name,
                     username: profile.data.username,
-                    image: `https://www.gravatar.com/avatar/${gravatarHash}?d=mp&s=200`,
+                    image: `https://www.gravatar.com/avatar/${gravatarHash}?d=mp&s=300`,
                     memberSince: profile.data.dateCreated,
                 })
 
