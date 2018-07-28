@@ -84,8 +84,9 @@ module.exports = {
             )
             .then(dbJam => {
                 const acceptedMessage = {
+                    acceptedJamId: dbJam._id,
                     messageType: "accepted",
-                    message: `You have been accepted to "${dbJam.name}." Have fun!`
+                    message: `You have been accepted to "${dbJam.name}." `
                 }
                 db.User.findOneAndUpdate(
                     { _id: req.body.userId },
