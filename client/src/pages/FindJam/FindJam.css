@@ -13,7 +13,8 @@
     display: grid;
     grid-template-rows: 1fr auto;
     font-family: var(--merriweather);
-    background: lightgray;
+    /* background: lightgray; */;
+    background-image: url("../Home/homeGradient/homeGradient.jpg")
 }
 
 .find-jam-page-title{

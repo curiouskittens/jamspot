@@ -45,6 +45,7 @@
     }
     .user-simple-profile-section{
     margin-top: 5%;
+    font-size: 1.9vh;
     }
     .suggested-jam-slider{
     width: 70vw;
@@ -60,6 +61,7 @@
     }
     .user-simple-profile-section{
     margin-top: 5%;
+    font-size: 1.9vh;
     }
     .suggested-jam-slider{
     width: 50vw;
@@ -95,6 +97,22 @@
     background: rgb(255, 255, 255);
 }
 
+.next-jam-info{
+    font-size: 1.9vh;
+}
+
+.next-jam-members{
+    font-size: 1.9vh;
+}
+
+.most-recent-jam-info{
+    font-size: 1.9vh;
+}
+
+.most-recent-jam-members{
+    font-size: 1.9vh;
+}
+
 .most-recent-jam-section{
     margin-top: 5%;
     border: var(--maincolor2) 1px solid;
@@ -113,16 +131,22 @@
 
 .next-jam-title-text{
     color: var(--maincolor1);
-    font-size: 2.8vh;
-    font-weight: bold;
+    font-family: var(--frekoda);
+    font-size: 3.5vh !important;
     margin-top: 1.5vh;
+    font-weight: normal !important;
 }
 
 .recent-jam-title-text{
     color: var(--maincolor1);
-    font-size: 2.8vh;
-    font-weight: bold;
+    font-family: var(--frekoda);
+    font-size: 3.5vh !important;
     margin-top: 1.5vh;
+    font-weight: normal !important;
+}
+
+.no-info-yet-text{
+    font-size: 1.9vh;
 }
 
 .home-page-separator{
@@ -138,6 +162,11 @@
     border: 2px solid lightgreen;
     border-radius: 15px;
     padding: 2vh;
+    font-size: 1.9vh;
+}
+
+.suggested-jam-title-text{
+    font-size: 2.5vh;
 }
 
 .slick-prev:before {
@@ -170,4 +199,14 @@
 
 .slick-prev:hover:after, .slick-next:hover:after{
     color: var(--maincolor3)
+}
+
+.user-simple-profile-title{
+    font-family: var(--frekoda);
+    font-size: 3.5vh;
+    color: var(--maincolor1);
+}
+
+.user-simple-profile-pic-style{
+    width: 100%;
 }

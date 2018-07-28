@@ -107,7 +107,7 @@ class Home extends Component {
             return this.state.searchJams.map((jam, idx) => (
                             <div className="suggested-jam-box-wrapper" key={jam.name}>
                                 <div className="suggested-jam-box">
-                                    <p>{jam.name}</p>
+                                    <p className="suggested-jam-title-text">{jam.name}</p>
                                     <p>{jam.location}</p>
                                     <p>{moment(jam.date).format("LLL")}</p>
                                     {jam.genres.map((genre, index) => (
@@ -128,7 +128,7 @@ class Home extends Component {
                 <div className="home-page-content container">
                     {this.renderNotifications()}
                     <br />
-                    <div className="d-md-flex justify-content-around">
+                    <div className="d-md-flex justify-content-around align-items-between">
                         <div className="jam-section-wrapper d-block col-md-8">
                             <div className="next-jam-section">
                                 <p className="text-center next-jam-title-text">Your Next Jam</p>
@@ -136,19 +136,19 @@ class Home extends Component {
                                 <div className="next-jam-wrapper d-flex container-fluid">
                                     {this.state.nextJam.name ? (
                                         <React.Fragment>
-                                            <div className="next-jam-info col-6">
+                                            <div className="next-jam-info col-6 text-center">
                                                 <p>{this.state.nextJam.name}</p>
                                                 <p>{this.state.nextJam.location}</p>
                                                 <p>{moment(this.state.nextJam.date).format("LLL")}</p>
                                             </div>
-                                            <div className="next-jam-members col-6">
+                                            <div className="next-jam-members col-6 text-center">
                                                 {this.state.nextJam.members.map((member, index) => (
                                                     <p key={index}>{member.name} {!index && <span>(Host)</span>}</p>
                                                 ))}
                                             </div>
                                         </React.Fragment>
                                     ) : (
-                                            <p>You don't have any upcoming jams.</p>
+                                            <p className="text-center no-info-yet-text col-12">You don't have any upcoming jams.</p>
                                         )}
 
                                 </div>
@@ -159,27 +159,28 @@ class Home extends Component {
                                 <div className="most-recent-jam-wrapper d-flex container-fluid">
                                     {this.state.mostRecentJam.name ? (
                                         <React.Fragment>
-                                            <div className="most-recent-jam-info col-6">
+                                            <div className="most-recent-jam-info col-6 text-center">
                                                 <p>{this.state.mostRecentJam.name}</p>
                                                 <p>{this.state.mostRecentJam.location}</p>
                                                 <p>{moment(this.state.mostRecentJam.date).format("LLL")}</p>
                                             </div>
-                                            <div className="most-recent-jam-members col-6">
+                                            <div className="most-recent-jam-members col-6 text-center">
                                                 {this.state.mostRecentJam.members.map((member, index) => (
                                                     <p key={index}>{member.name} {!index && <span>(Host)</span>}</p>
                                                 ))}
                                             </div>
                                         </React.Fragment>
                                     ) : (
-                                            <p>You don't have any past jams.</p>
+                                            <p className="col-12 text-center no-info-yet-text">You don't have any past jams.</p>
                                         )}
                                 </div>
                             </div>
                         </div>
                         <div className="user-simple-profile-section col-md-3">
-                            <p>{this.state.name}</p>
-                            <p>@{this.state.username}</p>
-                            <img className="img-fluid" src={this.state.image} alt="profile snapshot" />
+                            <p className="user-simple-profile-title text-center">{this.state.name}</p>
+                            <p className="text-center">@{this.state.username}</p>
+                            <img className="img-fluid user-simple-profile-pic-style" src={this.state.image} alt="profile snapshot" />
+                            <br/> <br/>
                             <p>Location</p>
                             <p>Genres</p>
                             <ul>
