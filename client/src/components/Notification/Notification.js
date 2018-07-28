@@ -23,8 +23,8 @@ class Notification extends Component {
     renderMessage = () => {
         if(this.state.clickedId !== this.props.messageid) {
             return(
-                <div className="notification d-flex justify-content-between" id={this.props.messageid} onClick={this.handleClick}>
-                    <p id={this.props.messageid} onClick={this.handleClick}><i className="animated infinite pulse fas fa-bell"></i> {this.props.children}</p>
+                <div className="notification d-flex justify-content-between">
+                    <p><i className="fas fa-bell"></i>  {this.props.children}</p>
                     <button className="delete-notification-button" id={this.props.messageid} onClick={this.handleClick}>✖</button>
                 </div>
             )

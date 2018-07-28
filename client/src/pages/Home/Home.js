@@ -101,9 +101,11 @@ class Home extends Component {
                         {this.state.userMessages.map(
                             userMessage => {
                                 if (userMessage.messageType === "accepted") {
-                                    return (<Notification key={userMessage._id} messageid={userMessage._id}>{userMessage.message} <Link to={`/jam/${userMessage.acceptedJamId}`}>Check the jam!</Link></Notification>)
+                                    return (<Notification key={userMessage._id} messageid={userMessage._id}>You have been accepted to <Link to={`/jam/${userMessage.jamId}`}>{userMessage.jamName}</Link>. Have fun!</Notification>)
+                                } else if (userMessage.messageType === "joinRequest") {
+                                    return (<Notification key={userMessage._id} messageid={userMessage._id}>A new user has requested to join <Link to={`/jam/${userMessage.jamId}`}>{userMessage.jamName}</Link>.</Notification>)
                                 } else {
-                                    return (<Notification key={userMessage._id} messageid={userMessage._id}>{userMessage.message}</Notification>)
+                                    return (<Notification key={userMessage._id} messageid={userMessage._id}>You have not been accepted into {userMessage.jamName}. Why don't you <Link to="/findjam">look for another jam</Link>?</Notification>)
                                 }
                             }
                     )}

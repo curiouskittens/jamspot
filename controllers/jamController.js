@@ -58,8 +58,9 @@ module.exports = {
             .then(dbJam => {
                 res.json(dbJam);
                 const joinRequestMessage = {
+                    jamId: dbJam._id,
+                    jamName: dbJam.name,
                     messageType: "joinRequest",
-                    message: `A new user has requested to join "${dbJam.name}."`
                 }
                 const jamAdminId = dbJam.admin
                 db.User.findOneAndUpdate(
@@ -84,9 +85,9 @@ module.exports = {
             )
             .then(dbJam => {
                 const acceptedMessage = {
-                    acceptedJamId: dbJam._id,
+                    jamId: dbJam._id,
+                    jamName: dbJam.name,
                     messageType: "accepted",
-                    message: `You have been accepted to "${dbJam.name}." `
                 }
                 db.User.findOneAndUpdate(
                     { _id: req.body.userId },
@@ -107,8 +108,8 @@ module.exports = {
             )
             .then(dbJam =>{
                 const rejectedMessage = {
+                    jamName: dbJam.name,
                     messageType: "rejected",
-                    message: `You have been rejected by "${dbJam.name}".`
                 }
                 db.User.findOneAndUpdate(
                     { _id: req.body.userId },
