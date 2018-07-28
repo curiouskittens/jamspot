@@ -57,6 +57,12 @@
     }
 }
 
+@media only screen and (min-width: 1200px) {
+    .profile-page-content{
+        margin-top: 6.8%;
+    }
+}
+
 select:disabled {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -124,11 +130,16 @@ input[type=radio]:not(:checked):disabled + label {
     margin-top: 6vh;
 }
 
+.bio-textarea{
+    font-size: 1.8vh;
+}
+
 .bio-textarea:disabled {
     background: none !important;
     padding: 0 !important;
     border: none !important;
     color: black;
+    font-size: 1.8vh;
 }
 
 .fa-edit:hover{

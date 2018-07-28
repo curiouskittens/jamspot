@@ -6,6 +6,7 @@ import api from "../../utils/api";
 import Footer from "../../components/Footer";
 import Notification from "../../components/Notification";
 import Slider from 'react-slick';
+import { Link } from "react-router-dom";
 
 const settings = {
     infinite: true,
@@ -95,10 +96,18 @@ class Home extends Component {
 
     renderNotifications = () => {
         if (this.state.userMessages) {
-            return (
-                <div className="notification-home-page-wrapper">
-                    {this.state.userMessages.map(userMessage => (<Notification key={userMessage._id} messageid={userMessage._id}>{userMessage.message}</Notification>))}
-                </div>)
+                return (
+                    <div className="notification-home-page-wrapper">
+                        {this.state.userMessages.map(
+                            userMessage => {
+                                if (userMessage.messageType === "accepted") {
+                                    return (<Notification key={userMessage._id} messageid={userMessage._id}>{userMessage.message} <Link to={`/jam/${userMessage.acceptedJamId}`}>Check the jam!</Link></Notification>)
+                                } else {
+                                    return (<Notification key={userMessage._id} messageid={userMessage._id}>{userMessage.message}</Notification>)
+                                }
+                            }
+                    )}
+                    </div>)
         }
     }
 
@@ -217,16 +226,23 @@ class Home extends Component {
                             </div>
                         </div>
                     </div>
-                    {this.state.searchJams.length > 3 ? 
-                        (<div className="suggested-jams-section">
-                        <Slider className="suggested-jam-slider" {...settings}>
-                            {this.renderSuggestedJams()}
-                        </Slider>
-                        </div>
+                    {
+                        this.state.searchJams[0].name ? 
+                        (
+                            this.state.searchJams.length > 3 ? 
+                            (
+                            <div className="suggested-jams-section">
+                                <Slider className="suggested-jam-slider" {...settings}>
+                                    {this.renderSuggestedJams()}
+                                </Slider>
+                            </div>
+                            ) : (
+                            <div className="suggested-jams-section d-md-flex justify-content-around">
+                                    {this.renderSuggestedJams()}
+                            </div>
+                            )
                         ) : (
-                        <div className="suggested-jams-section d-md-flex justify-content-around">
-                                {this.renderSuggestedJams()}
-                        </div>
+                            <div className="no-suggested-jam-section"><p className="text-center">There has been no jam in your area yet, why don't you <Link to="/createjam">create the first one?</Link></p></div>
                         )
                     }
                 </div>

@@ -49,23 +49,23 @@ class NavBar extends Component {
                         </button>
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav to-the-right text-center">
-                                <li className="nav-item active">
+                                <li className="nav-item active" data-toggle="collapse" data-target=".navbar-collapse.show">
                                     <NavLink to="/" exact activeClassName={this.state.activeTabStyle} className="nav-link navbar-text-style2">Home</NavLink>
                                 </li>
-                                <li className="nav-item">
+                                <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
                                     <NavLink to="/profile" activeClassName={this.state.activeTabStyle} className="nav-link navbar-text-style2">Profile</NavLink>
                                 </li>
-                                <li className="nav-item">
+                                <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
                                     <NavLink to="/myjams" activeClassName={this.state.activeTabStyle} className="nav-link navbar-text-style2">My Jams</NavLink>
                                 </li>
-                                <li className="nav-item">
+                                <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
                                     <NavLink to="/createjam" activeClassName={this.state.activeTabStyle} className="nav-link navbar-text-style2">Create A Jam</NavLink>
                                 </li>
-                                <li className="nav-item">
+                                <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
                                     <NavLink to="/findjam" activeClassName={this.state.activeTabStyle} className="nav-link navbar-text-style2">Find A Jam</NavLink>
                                 </li>
                                 <li className="nav-item log-out-option">
-                                    <a onClick={this.handleLogout} activeClassName={this.state.activeTabStyle} className="nav-link navbar-text-style2">Log Out</a>
+                                    <a onClick={this.handleLogout} className="nav-link navbar-text-style2">Log Out</a>
                                 </li>
                             </ul>
                         </div>

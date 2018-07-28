@@ -41,6 +41,7 @@ const UserSchema = new Schema({
         ref: "Jam"
     }],
     notifications: [{
+        acceptedJamId: String,
         messageType: String,
         message: String
     }],
