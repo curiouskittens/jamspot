@@ -86,7 +86,7 @@ class CreateJam extends Component {
             sweetAlert("error", "warning-text", "Please enter a future date.")
         } else if (!this.state.location) {
             sweetAlert("error", "warning-text", "Please add a location.")
-        } else if (!this.state.instruments[0] || !this.state.instruments[0].name || !this.state.instruments[0].quantity || this.state.instruments[0].quantity === "#") {
+        } else if (!this.state.instruments[0] || !this.state.instruments[0].name || !this.state.instruments[0].quantity ) {
             sweetAlert("error", "warning-text", "Please add an instrument and the number of players needed.")
         } else if (blankInstruments.length) {
             sweetAlert("error", "warning-text", "Please delete or fill out the blank instrument.")
@@ -115,7 +115,7 @@ class CreateJam extends Component {
                         description: "",
                         date: "",
                         location: "",
-                        instruments: [{ name: "", quantity: "#" }],
+                        instruments: [{ name: "", quantity: "" }],
                         genres: [""],
                         jamCreated: true,
                         createdJamId: createdJam.data._id
