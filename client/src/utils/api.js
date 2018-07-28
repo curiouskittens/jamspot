@@ -14,7 +14,8 @@ export default {
 
     getProfile: userId => axios.get(`/api/users/profile/?_id=${userId}`),
     updateProfile: (userId, updates) => axios.put(`/api/users/profile/?_id=${userId}`, updates),
-    
+    getProfileView: username => axios.get(`/api/users/profile/?username=${username}`),
+
     getAllJams: () => axios.get("api/jams"),
     getMyJams: userId => axios.get("api/users/populated/" + userId),
     joinJamRequest: requestInfo => axios.put("api/jams/join/request", requestInfo),

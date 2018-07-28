@@ -41,9 +41,14 @@ const UserSchema = new Schema({
         ref: "Jam"
     }],
     notifications: [{
+        jamId: String,
+        jamName: String,
         messageType: String,
-        message: String
     }],
+    soundcloud: {
+        type: String,
+        default: ""
+    },
     dateCreated: { type: Date, default: Date.now },
     dateModified: { type: Date, default: Date.now }
 });

@@ -19,9 +19,11 @@ class Profile extends Component {
         bio: "",
         instruments: [{ name: "", skill: "" }],
         genres: [""],
+        soundcloud: "",
         bioDisabled: true,
         instrumentsDisabled: true,
         genresDisabled: true,
+        soundcloudDisabled: true,
         defaultInstrumentSkillBar: "instrument-skill-change-section d-flex justify-content-around skillbar-background",
     }
 
@@ -40,9 +42,10 @@ class Profile extends Component {
                     memberSince: profile.data.dateCreated,
                 })
 
-                if (profile.data.bio) this.setState({ bio: profile.data.bio })
-                if (profile.data.instruments[0].name) this.setState({ instruments: profile.data.instruments })
-                if (profile.data.genres[0]) this.setState({ genres: profile.data.genres })
+                if (profile.data.bio) this.setState({ bio: profile.data.bio });
+                if (profile.data.instruments[0].name) this.setState({ instruments: profile.data.instruments });
+                if (profile.data.genres[0]) this.setState({ genres: profile.data.genres });
+                if (profile.data.soundcloud) this.setState({ soundcloud: profile.data.soundcloud });
             })
             .catch(err => console.log(err));
     }
@@ -53,11 +56,10 @@ class Profile extends Component {
 
         const togglerType = event.target.nodeName.toLowerCase();
         const togglerText = event.target.innerHTML;
-        console.log(toggler)
         if (toggler === "instrumentsDisabled") {
             this.setState({ defaultInstrumentSkillBar: "instrument-skill-change-section d-flex justify-content-around" })
         }
-        
+
         if (togglerType === "button" && togglerText === "Save") {
             if (toggleComponent === "instruments") {
                 const blankInstruments = this.state.instruments.filter(instrument => !instrument.name);
@@ -71,7 +73,7 @@ class Profile extends Component {
                 this.setState({ defaultInstrumentSkillBar: "instrument-skill-change-section d-flex justify-content-around skillbar-background" })
             } else if (toggleComponent === "genres") {
                 const blankGenres = this.state.genres.filter(val => val === "");
-            
+
                 if (blankGenres.length) {
                     return sweetAlert("error", "warning-text", "Please delete or fill out the blank genre.");
                 }
@@ -138,7 +140,7 @@ class Profile extends Component {
 
         this.setState({ genres: newGenres });
     }
-    
+
     handleAddGenre = () => {
         this.setState({ genres: this.state.genres.concat([""]) });
     }
@@ -148,7 +150,7 @@ class Profile extends Component {
             this.setState({ genres: this.state.genres.filter((s, sidx) => idx !== sidx) });
         } else {
             this.setState({ genres: [""] }, () => {
-                this.toggleEdit({ target: { id: "genresDisabled", nodeName: "button", innerHTML: "forceSave" }});
+                this.toggleEdit({ target: { id: "genresDisabled", nodeName: "button", innerHTML: "forceSave" } });
             })
         }
     }
@@ -172,18 +174,43 @@ class Profile extends Component {
                             <p className="profile-photo-section-name">{this.state.name}</p>
                             <p className="profile-photo-section-username">@{this.state.username}</p>
                             <p className="profile-photo-section-since">Member since {moment(this.state.memberSince).format("MMMM D, YYYY")}</p>
+
+                            <p className="profile-info-sub-title">Soundcloud{" "}
+                                {this.state.soundcloudDisabled ? (
+                                    <i className="fas fa-edit" id="soundcloudDisabled" onClick={this.toggleEdit}></i>
+                                ) : (
+                                        <button id="soundcloudDisabled" className="btn btn-primary btn-responsive" onClick={this.toggleEdit}>Save</button>
+                                    )}
+                            </p>
+                            <hr className="profile-page-separator" />
+                            {!this.state.soundcloud && <p>Add your username so others can hear your music!</p>}
+                            {!this.state.soundcloudDisabled && (
+                                <input
+                                    id="soundcloud"
+                                    name="soundcloud"
+                                    value={this.state.soundcloud}
+                                    disabled={this.state.soundcloudDisabled}
+                                    onChange={this.handleInputChange}
+                                />
+                            )}
+                            {(this.state.soundcloud && this.state.soundcloudDisabled) && (
+                                <iframe title="soundcloud" width="100%" height="300" scrolling="no" frameBorder="no"
+                                    src={`https://w.soundcloud.com/player/?url=https://soundcloud.com/${this.state.soundcloud}`}>
+                                </iframe>
+                            )}
+                            
                         </div>
 
                         <div className="col-md-7 profile-page-info-section">
                             <p className="text-center profile-info-title">Your Profile <i className="fas fa-user"></i></p>
                             <div className="profile-bio-section">
                                 <p className="profile-info-sub-title">Bio{" "}
-                                {this.state.bioDisabled ? (
+                                    {this.state.bioDisabled ? (
                                         <i className="fas fa-edit" id="bioDisabled" onClick={this.toggleEdit}></i>
                                     ) : (
                                             <button id="bioDisabled" className="btn btn-primary btn-responsive" onClick={this.toggleEdit}>Save</button>
                                         )}</p>
-                                <hr className="profile-page-separator"/>
+                                <hr className="profile-page-separator" />
                                 {!this.state.bio && <p className="profile-no-input-text">Hmm, looks like there's nothing here. Why don't you tell us a bit about yourself?</p>}
                                 {(this.state.bio || !this.state.bioDisabled) && (
                                     <TextareaAutosize
@@ -200,12 +227,12 @@ class Profile extends Component {
 
                             <div className="profile-instrument-section">
                                 <p className="profile-info-sub-title">Instruments{" "}
-                                {this.state.instrumentsDisabled ? (
+                                    {this.state.instrumentsDisabled ? (
                                         <i className="fas fa-edit" id="instrumentsDisabled" onClick={this.toggleEdit}></i>
                                     ) : (
                                             <button id="instrumentsDisabled" className="btn btn-primary btn-responsive" onClick={this.toggleEdit}>Save</button>
                                         )}</p>
-                                <hr className="profile-page-separator"/>
+                                <hr className="profile-page-separator" />
                                 {!this.state.instruments[0].name && <p className="profile-no-input-text">Hmm, looks like there's nothing here. Why don't you tell us what instruments you play?</p>}
                                 {(this.state.instruments[0].name || !this.state.instrumentsDisabled) && this.state.instruments.map((instrument, idx) => (
                                     <div key={`${idx}`} id="instruments">
@@ -220,17 +247,17 @@ class Profile extends Component {
                                         />
                                     </div>
                                 ))}
-                                {!this.state.instrumentsDisabled && <button disabled={this.state.instrumentsDisabled} type="button" onClick={this.handleAddInstrument} className="btn btn-secondary btn-sm add-buttons" style={{marginTop: "3vh"}}>Add instrument</button>}
+                                {!this.state.instrumentsDisabled && <button disabled={this.state.instrumentsDisabled} type="button" onClick={this.handleAddInstrument} className="btn btn-secondary btn-sm add-buttons" style={{ marginTop: "3vh" }}>Add instrument</button>}
                             </div>
 
                             <div className="profile-genre-section">
                                 <p className="profile-info-sub-title">Genres{" "}
-                                {this.state.genresDisabled ? (
+                                    {this.state.genresDisabled ? (
                                         <i className="fas fa-edit" id="genresDisabled" onClick={this.toggleEdit}></i>
                                     ) : (
                                             <button id="genresDisabled" className="btn btn-primary btn-responsive" onClick={this.toggleEdit}>Save</button>
                                         )}</p>
-                                <hr className="profile-page-separator"/>
+                                <hr className="profile-page-separator" />
                                 {!this.state.genres[0] && <p className="profile-no-input-text">Hmm, looks like there's nothing here. Why don't you tell us what instruments you play?</p>}
                                 {(this.state.genres[0] || !this.state.genresDisabled) && this.state.genres.map((genre, idx) => (
                                     <div key={`${idx}`} id="genres">
@@ -244,7 +271,6 @@ class Profile extends Component {
                                 ))}
                                 {!this.state.genresDisabled && <button type="button" onClick={this.handleAddGenre} className="btn btn-secondary btn-sm add-buttons" style={{ marginTop: "3vh" }}>Add genre</button>}
                             </div>
-
                         </div>
                     </div>
                 </div>

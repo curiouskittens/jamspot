@@ -49,3 +49,9 @@
     padding: 15px;
     }
 }
+
+@media only screen and (min-width: 1200px) {
+    .find-jam-page-content{
+        margin-top: 6.8%;
+    }
+}

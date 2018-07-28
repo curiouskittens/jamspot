@@ -27,9 +27,9 @@ module.exports = {
     findOne: function (req, res) {
         db.Jam
             .findOne({ _id: req.params.id })
-            .populate("admin")
-            .populate("members")
-            .populate("joinRequests")
+            .populate({ path: "admin", select: "-password" })
+            .populate({ path: "members", select: "-password" })
+            .populate({ path: "joinRequests", select: "-password" })
             // .populate("posts")
             .populate({ path: "posts", populate: { path:"creator", select: "-password" } })
             .then(dbJam => res.send(dbJam))
@@ -58,8 +58,9 @@ module.exports = {
             .then(dbJam => {
                 res.json(dbJam);
                 const joinRequestMessage = {
+                    jamId: dbJam._id,
+                    jamName: dbJam.name,
                     messageType: "joinRequest",
-                    message: `A new user has requested to join "${dbJam.name}."`
                 }
                 const jamAdminId = dbJam.admin
                 db.User.findOneAndUpdate(
@@ -84,8 +85,9 @@ module.exports = {
             )
             .then(dbJam => {
                 const acceptedMessage = {
+                    jamId: dbJam._id,
+                    jamName: dbJam.name,
                     messageType: "accepted",
-                    message: `You have been accepted to "${dbJam.name}." Have fun!`
                 }
                 db.User.findOneAndUpdate(
                     { _id: req.body.userId },
@@ -106,8 +108,8 @@ module.exports = {
             )
             .then(dbJam =>{
                 const rejectedMessage = {
+                    jamName: dbJam.name,
                     messageType: "rejected",
-                    message: `You have been rejected by "${dbJam.name}".`
                 }
                 db.User.findOneAndUpdate(
                     { _id: req.body.userId },

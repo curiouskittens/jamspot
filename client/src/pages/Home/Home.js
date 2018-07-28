@@ -6,6 +6,7 @@ import api from "../../utils/api";
 import Footer from "../../components/Footer";
 import Notification from "../../components/Notification";
 import Slider from 'react-slick';
+import { Link } from "react-router-dom";
 
 const settings = {
     infinite: true,
@@ -95,10 +96,20 @@ class Home extends Component {
 
     renderNotifications = () => {
         if (this.state.userMessages) {
-            return (
-                <div className="notification-home-page-wrapper">
-                    {this.state.userMessages.map(userMessage => (<Notification key={userMessage._id} messageid={userMessage._id}>{userMessage.message}</Notification>))}
-                </div>)
+                return (
+                    <div className="notification-home-page-wrapper">
+                        {this.state.userMessages.map(
+                            userMessage => {
+                                if (userMessage.messageType === "accepted") {
+                                    return (<Notification key={userMessage._id} messageid={userMessage._id}>You have been accepted to <Link to={`/jam/${userMessage.jamId}`}>{userMessage.jamName}</Link>. Have fun!</Notification>)
+                                } else if (userMessage.messageType === "joinRequest") {
+                                    return (<Notification key={userMessage._id} messageid={userMessage._id}>A new user has requested to join <Link to={`/jam/${userMessage.jamId}`}>{userMessage.jamName}</Link>.</Notification>)
+                                } else {
+                                    return (<Notification key={userMessage._id} messageid={userMessage._id}>You have not been accepted into {userMessage.jamName}. Why don't you <Link to="/findjam">look for another jam</Link>?</Notification>)
+                                }
+                            }
+                    )}
+                    </div>)
         }
     }
 
@@ -217,16 +228,23 @@ class Home extends Component {
                             </div>
                         </div>
                     </div>
-                    {this.state.searchJams.length > 3 ? 
-                        (<div className="suggested-jams-section">
-                        <Slider className="suggested-jam-slider" {...settings}>
-                            {this.renderSuggestedJams()}
-                        </Slider>
-                        </div>
+                    {
+                        this.state.searchJams[0].name ? 
+                        (
+                            this.state.searchJams.length > 3 ? 
+                            (
+                            <div className="suggested-jams-section">
+                                <Slider className="suggested-jam-slider" {...settings}>
+                                    {this.renderSuggestedJams()}
+                                </Slider>
+                            </div>
+                            ) : (
+                            <div className="suggested-jams-section d-md-flex justify-content-around">
+                                    {this.renderSuggestedJams()}
+                            </div>
+                            )
                         ) : (
-                        <div className="suggested-jams-section d-md-flex justify-content-around">
-                                {this.renderSuggestedJams()}
-                        </div>
+                            <div className="no-suggested-jam-section"><p className="text-center">There are no jams for you to join right now. Why don't you <Link to="/createjam">create one</Link>?</p></div>
                         )
                     }
                 </div>
