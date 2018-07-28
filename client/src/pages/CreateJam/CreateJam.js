@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router";
 import api from "../../utils/api";
 import "./CreateJam.css";
 import Footer from "../../components/Footer";
@@ -13,7 +14,9 @@ class CreateJam extends Component {
         date: "",
         location: "",
         instruments:[{ name: "", quantity: "" }],
-        genres: [""]
+        genres: [""],
+        jamCreated: false,
+        createdJamId: ""
     }
 
     handleInputChange = event => {
@@ -105,7 +108,7 @@ class CreateJam extends Component {
                 members: [sessionStorage.getItem("userId")]
             }
             api.createJam(newJam)
-                .then(() => {
+                .then(createdJam => {
                     sweetAlert("success", "success-text", "Jam created.");
                     this.setState({
                         jamName: "",
@@ -113,7 +116,9 @@ class CreateJam extends Component {
                         date: "",
                         location: "",
                         instruments: [{ name: "", quantity: "#" }],
-                        genres: [""]
+                        genres: [""],
+                        jamCreated: true,
+                        createdJamId: createdJam.data._id
                     })
                 })
                 .catch(err => console.log(err));
@@ -212,6 +217,7 @@ class CreateJam extends Component {
                         <button className="btn btn-primary btn-lg create-jam-button" onClick={this.handleFormSubmit}>Create Jam</button>
                         </div>
                     </form>
+                    {this.state.jamCreated && <Redirect to={`/jam/${this.state.createdJamId}`} />}
                 </div>
                 <Footer />
             </div>
