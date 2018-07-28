@@ -27,9 +27,9 @@ module.exports = {
     findOne: function (req, res) {
         db.Jam
             .findOne({ _id: req.params.id })
-            .populate("admin")
-            .populate("members")
-            .populate("joinRequests")
+            .populate({ path: "admin", select: "-password" })
+            .populate({ path: "members", select: "-password" })
+            .populate({ path: "joinRequests", select: "-password" })
             // .populate("posts")
             .populate({ path: "posts", populate: { path:"creator", select: "-password" } })
             .then(dbJam => res.send(dbJam))

@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router";
 import "./Jam.css";
 import md5 from "js-md5";
 import api from "../../utils/api";
 import Footer from "../../components/Footer";
 import TextareaAutosize from "react-autosize-textarea";
+import sweetAlert from "../../utils/sweetAlert";
 
 class Jam extends Component {
     state = {
@@ -12,7 +14,8 @@ class Jam extends Component {
         jamDate:"",
         members: "",
         postInput: "",
-        posts:[]
+        posts:[],
+        isMember: true
     }
 
     componentDidMount() {
@@ -22,17 +25,32 @@ class Jam extends Component {
     getJam = () => {
         api.getOneJamById(this.props.jamId)
             .then(dbJam => {
-                console.log(dbJam.data)
-                this.setState({
-                    jamName: dbJam.data.name,
-                    jamDate: dbJam.data.date,
-                    jamCreator: dbJam.data.admin.name,
-                    members: dbJam.data.members,
-                    posts: dbJam.data.posts
-                })
-
+                if (this.validateUser(dbJam.data.members)) {
+                    this.setState({
+                        jamName: dbJam.data.name,
+                        jamDate: dbJam.data.date,
+                        jamCreator: dbJam.data.admin.name,
+                        members: dbJam.data.members,
+                        posts: dbJam.data.posts
+                    })
+                } else {
+                    sweetAlert("error", "warning-text", "Sorry, you are not a member of that jam.")
+                    this.setState({ isMember: false });
+                }
             })
             .catch(err=>console.log(err))
+    }
+
+    validateUser = members => {
+        const found = members.find(member => {
+            if (member._id === sessionStorage.getItem("userId")) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+        return found;
     }
 
     getProfilePic = (email)=>{
@@ -185,8 +203,8 @@ class Jam extends Component {
                             </div>
                         </div>
                     </div>
+                    {!this.state.isMember && <Redirect to="/" />}
                 </div>
-            
                 <Footer />
             </div>
         )
