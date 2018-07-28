@@ -101,7 +101,7 @@ class CreateJam extends Component {
                 name: this.state.jamName,
                 description: this.state.description,
                 date: this.state.date,
-                location: this.state.location,
+                location: { address: this.state.location },
                 instruments: this.state.instruments,
                 genres: this.state.genres,
                 admin: sessionStorage.getItem("userId"),
