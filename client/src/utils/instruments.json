@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Lead Guitar",
+        "value": "Lead Guitar",
+        "icon": "/instrument_icons/guitar-black-shape.png"
+    },
+    {
+        "name": "Rhythm Guitar",
+        "value": "Rhythm Guitar",
+        "icon": "/instrument_icons/guitar.png"
+    },
+    {
+        "name": "Bass",
+        "value": "Bass",
+        "icon": "/instrument_icons/bass.png"
+    },
+    {
+        "name": "Keys",
+        "value": "Keys",
+        "icon": "/instrument_icons/piano.png"
+    },
+    {
+        "name": "Drums",
+        "value": "Drums",
+        "icon":  "/instrument_icons/drummer-set.png"
+    },
+    {
+        "name": "Percussion",
+        "value": "Percussion",
+        "icon":  "/instrument_icons/voice.png"
+    },
+    {
+        "name": "Vocals",
+        "value": "Vocals",
+        "icon": "/instrument_icons/no-waiting.png"
+    }
+]

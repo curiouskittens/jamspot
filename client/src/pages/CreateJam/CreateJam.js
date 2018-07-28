@@ -6,6 +6,8 @@ import Footer from "../../components/Footer";
 import InstrumentInput from "../../components/InstrumentInput"
 import GenreInput from "../../components/GenreInput"
 import sweetAlert from "../../utils/sweetAlert";
+import instrumentList from "../../utils/instruments.json";
+
 
 class CreateJam extends Component {
     state = {
@@ -13,10 +15,11 @@ class CreateJam extends Component {
         description: "",
         date: "",
         location: "",
-        instruments:[{ name: "", quantity: "" }],
+        instruments:[{ name: "", quantity: ""}],
         genres: [""],
         jamCreated: false,
-        createdJamId: ""
+        createdJamId: "",
+        instrumentOptions: instrumentList.slice()
     }
 
     handleInputChange = event => {
@@ -31,8 +34,31 @@ class CreateJam extends Component {
           if (idx !== sidx) return instrument;
           return { ...instrument, name: evt.target.value };
         });
-        
-        this.setState({ instruments: newinstruments });
+
+        const newInstrumentOptions = instrumentList.filter(option=>{
+            for(let i=0; i< newinstruments.length;i++){
+                if (newinstruments[i].name === option.name){
+                    return false
+                }
+            }
+            return true
+    
+        })
+        this.setState({ instruments: newinstruments, instrumentOptions: newInstrumentOptions });
+    }
+
+    updateInstrumentOptions = () => {
+        const newInstrumentOptions = instrumentList.filter(option=>{
+            for(let i=0; i< this.state.instruments.length;i++){
+                if (this.state.instruments[i].name === option.name){
+                    return false
+                }
+            }
+            return true
+    
+        })
+        console.log(newInstrumentOptions)
+        this.setState({ instrumentOptions: newInstrumentOptions})
     }
 
     handleInstrumentQuantityChange = (idx) => (evt) => {
@@ -45,11 +71,39 @@ class CreateJam extends Component {
     }
     
     handleAddInstrument = () => {
-        this.setState({ instruments: this.state.instruments.concat([{ name: '', quantity: '' }]) });
+        let instrumentSelected = true
+        this.state.instruments.forEach((instrument)=>{
+            if(!instrument.name){
+                console.log("no instrument selected")
+                instrumentSelected = false
+                return
+            }else if(!instrument.quantity){
+                console.log("no instrument quantity selected")
+                instrumentSelected = false
+                return
+            }
+        })
+        if(instrumentSelected){
+            this.updateInstrumentOptions()
+            this.setState({ instruments: this.state.instruments.concat([{ name: '', quantity: ''}]) });
+        }
+
     }
     
     handleRemoveInstrument = (idx) => () => {
-        this.setState({ instruments: this.state.instruments.filter((s, sidx) => idx !== sidx) });
+        const newinstruments = this.state.instruments.filter((s, sidx) => idx !== sidx)
+  
+        const newInstrumentOptions = instrumentList.filter(option=>{
+            for(let i=0; i< newinstruments.length;i++){
+                if (newinstruments[i].name === option.name){
+                    return false
+                }
+            }
+            return true
+    
+        })
+        this.setState({ instruments: newinstruments, instrumentOptions: newInstrumentOptions });
+        
     }
 
     handleGenreNameChange = (idx) => (evt) => {
@@ -187,11 +241,13 @@ class CreateJam extends Component {
                             <hr/>
                             {this.state.instruments.map((instrument, idx) => (
                                 <div className="form-group create-jam-input-size" key={`${idx}`}>
+                                    {console.log(instrument.disabled)}
                                     <InstrumentInput 
                                         instrument={instrument} 
                                         nameChangeHandler={this.handleInstrumentNameChange(idx)}
                                         quantityChangeHandler={this.handleInstrumentQuantityChange(idx)} 
                                         removeHandler={this.handleRemoveInstrument(idx)}
+                                        instrumentOptions={this.state.instrumentOptions}
                                     />
                                 </div>
                             ))}

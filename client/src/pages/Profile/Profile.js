@@ -8,6 +8,7 @@ import InstrumentInput from "../../components/InstrumentInput";
 import GenreInput from "../../components/GenreInput";
 import sweetAlert from "../../utils/sweetAlert";
 import TextareaAutosize from "react-autosize-textarea";
+import instrumentList from "../../utils/instruments.json";
 
 class Profile extends Component {
     state = {
@@ -23,6 +24,7 @@ class Profile extends Component {
         instrumentsDisabled: true,
         genresDisabled: true,
         defaultInstrumentSkillBar: "instrument-skill-change-section d-flex justify-content-around skillbar-background",
+        instrumentOptions: instrumentList.slice()
     }
 
     componentDidMount() {
@@ -107,6 +109,20 @@ class Profile extends Component {
         this.setState({ instruments: newinstruments });
     }
 
+    updateInstrumentOptions = () => {
+        const newInstrumentOptions = instrumentList.filter(option=>{
+            for(let i=0; i< this.state.instruments.length;i++){
+                if (this.state.instruments[i].name === option.name){
+                    return false
+                }
+            }
+            return true
+    
+        })
+        console.log(newInstrumentOptions)
+        this.setState({ instrumentOptions: newInstrumentOptions})
+    }
+
     handleInstrumentSkillChange = (idx) => (evt) => {
         const newinstruments = this.state.instruments.map((instrument, sidx) => {
             if (idx !== sidx) return instrument;
@@ -117,7 +133,26 @@ class Profile extends Component {
     }
 
     handleAddInstrument = () => {
-        this.setState({ instruments: this.state.instruments.concat([{ name: '', skill: '' }]) });
+        let instrumentSelected = true
+        this.state.instruments.forEach((instrument)=>{
+            if(!instrument.name){
+                console.log("no instrument selected")
+                instrumentSelected = false
+                return
+            }else if(!instrument.skill){
+                console.log("no instrument skill selected")
+                instrumentSelected = false
+                return
+            }
+        })
+        if(instrumentSelected){
+            const selectedInstruments = this.state.instruments.map((instrument) => {
+                return { ...instrument, disabled: true };
+            });
+            console.log(selectedInstruments)
+            this.updateInstrumentOptions()
+            this.setState({ instruments: selectedInstruments.concat([{ name: '', skill: ''}]) });
+        }
     }
 
     handleRemoveInstrument = (idx) => () => {
@@ -217,6 +252,7 @@ class Profile extends Component {
                                             skillChangeHandler={this.handleInstrumentSkillChange(idx)}
                                             removeHandler={this.handleRemoveInstrument(idx)}
                                             instrumentBar={this.state.defaultInstrumentSkillBar}
+                                            instrumentOptions={this.state.instrumentOptions}
                                         />
                                     </div>
                                 ))}
