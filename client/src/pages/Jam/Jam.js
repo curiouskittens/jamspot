@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router";
 import "./Jam.css";
 import md5 from "js-md5";
+import moment from "moment";
 import api from "../../utils/api";
 import Footer from "../../components/Footer";
 import TextareaAutosize from "react-autosize-textarea";
@@ -147,7 +148,7 @@ class Jam extends Component {
                                             <div className="next-jam-info col-12">
                                                 <p>Jam Name: {this.state.jamName}</p>
                                                 <p>Creator: {this.state.jamCreator}</p>
-                                                <p>Date: {this.state.jamDate}</p>
+                                                <p>Date: {moment(this.state.jamDate).format("LLL")}</p>
                                             </div>
                                         </div>
                                     </div>
