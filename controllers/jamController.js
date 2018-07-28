@@ -30,7 +30,8 @@ module.exports = {
             .populate("admin")
             .populate("members")
             .populate("joinRequests")
-            .populate("posts")
+            // .populate("posts")
+            .populate({ path: "posts", populate: { path:"creator", select: "-password" } })
             .then(dbJam => res.send(dbJam))
             .catch(err => res.send(err))
     },

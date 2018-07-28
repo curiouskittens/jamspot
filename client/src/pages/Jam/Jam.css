@@ -16,12 +16,22 @@
     background: lightgray;
 }
 
-.user-simple-profile-section{
+.post-display-section{
     border: var(--maincolor2) 1px solid;
     border-radius: 10px; 
+    height: 400px;
     box-shadow: 2px 3px var(--maincolor2);
     background: rgb(255, 255, 255);
 }
+.post-content-wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+}
+/* .post-textarea {
+    align-self: flex-end;
+} */
 
 .suggested-jams-section{
     margin-top: 5%;
@@ -119,4 +129,20 @@
 .instrument-mini-pic {
     max-height: 100%;
     max-width: 30%;
+}
+
+.user-post-pic {
+    max-height: 25px;
+    max-width: 25px; 
+}
+
+.post {
+    /* border: 1px solid black; */
+    margin: 2px;
+    background-color:rgb(164,255,126);
+}
+
+.posts-wrapper{
+    max-height: 90%;
+    overflow-y: scroll;
 }

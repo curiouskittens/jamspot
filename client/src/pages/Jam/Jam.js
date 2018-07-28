@@ -3,13 +3,16 @@ import "./Jam.css";
 import md5 from "js-md5";
 import api from "../../utils/api";
 import Footer from "../../components/Footer";
+import TextareaAutosize from "react-autosize-textarea";
 
 class Jam extends Component {
     state = {
         jamName:"",
         jamCreator:"",
         jamDate:"",
-        members: ""
+        members: "",
+        postInput: "",
+        posts:[]
     }
 
     componentDidMount() {
@@ -24,7 +27,8 @@ class Jam extends Component {
                     jamName: dbJam.data.name,
                     jamDate: dbJam.data.date,
                     jamCreator: dbJam.data.admin.name,
-                    members: dbJam.data.members
+                    members: dbJam.data.members,
+                    posts: dbJam.data.posts
                 })
 
             })
@@ -39,7 +43,6 @@ class Jam extends Component {
     }
     getInstrumentIcon = (instruments) =>{
         // return "/instrument_icons/guitar.png"
-        console.log(instruments)
         let imgSrc = ""
         if(instruments.length>0) {
             return (instruments.map((instrument,idx) => {
@@ -69,7 +72,6 @@ class Jam extends Component {
                         imgSrc = "/instrument_icons/no-waiting.png"
                         break;
                     }
-                    console.log(imgSrc)
                 return <img key={idx} className="instrument-mini-pic px-1" src={imgSrc} alt="instrument"/>
             })
         )
@@ -78,6 +80,29 @@ class Jam extends Component {
             return <img className="instrument-mini-pic " src="/instrument_icons/no-waiting.png" alt="instrument"/>
         }
 
+    }
+
+    getPosts = () => {
+        
+    }
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({ [name]: value })
+    }
+
+    handleSubmitPost = event => {
+        console.log("yay you clicked post!!")
+        api.addPost({
+            content: this.state.postInput,
+            creator: sessionStorage.getItem("userId"),
+            jamId: this.props.jamId
+        }).then(dbPost => {
+            this.setState({
+                postInput: ""
+            })
+            this.getJam();
+        }).catch(err => console.log(err))
     }
 
 
@@ -122,8 +147,42 @@ class Jam extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="user-simple-profile-section col-md-6">
-                            <p>Posts</p>
+                        <div className="col-md-6">
+                            <div className="post-content-wrapper">
+                                <div className="post-display-section">
+                                    <p>Posts</p>
+                                    <div className="col-12 posts-wrapper">
+                                    {this.state.posts ?
+                                            this.state.posts.map((post,idx)=>(
+                                            <div className="row post" key={idx}>
+                                                <img className="user-post-pic col-1 mx-0 px-0" src={this.getProfilePic(post.creator.email)} alt="Gravatar" />
+                                                <div className="col-2 mx-0 px-1" key={idx}>{post.creator.name}</div>
+                                                {/* <div className="jampage-instrument-wrapper col-3">
+                                                    {this.getInstrumentIcon(member.instruments)}
+                                                </div> */}
+                                                <div className="col-9">{post.content}</div>
+                                        
+                                            </div>
+                                            ))
+
+                                            : <p>Loading...</p>
+                                    }
+                                    </div>
+                                </div>
+                                    <div>               
+                                    <TextareaAutosize
+                                        id="post-input"
+                                        name="postInput"
+                                        rows={1}
+                                        value={this.state.postInput}
+                                        placeholder="write something"
+                                        // disabled={this.state.bioDisabled}
+                                        onChange={this.handleInputChange}
+                                        className="form-control post-textarea"
+                                    />
+                                    <button className="btn btn-primary" onClick={this.handleSubmitPost}>Post</button>
+                                    </div>
+                            </div>
                         </div>
                     </div>
                 </div>
