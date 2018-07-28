@@ -9,6 +9,7 @@
     white-space: nowrap;
     overflow: hidden;
     font-size: 1.5vh;
+    cursor: pointer;
 }
 
 .delete-notification-button{
