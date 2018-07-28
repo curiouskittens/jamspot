@@ -244,7 +244,7 @@ class Home extends Component {
                             </div>
                             )
                         ) : (
-                            <div className="no-suggested-jam-section"><p className="text-center">There has been no jam in your area yet, why don't you <Link to="/createjam">create the first one?</Link></p></div>
+                            <div className="no-suggested-jam-section"><p className="text-center">There are no jams for you to join right now. Why don't you <Link to="/createjam">create one</Link>?</p></div>
                         )
                     }
                 </div>

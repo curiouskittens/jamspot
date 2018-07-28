@@ -133,16 +133,16 @@ class MyJams extends Component {
                                                 <div className="card-body" >
                                                     <h5 className="card-title">{jam.name}</h5>
                                                     <p className="card-text">{jam.description}</p>
-                                                    <button onClick={() => this.clickHandler(jam._id)} data-jamid={jam._id} className="btn btn-primary">
-                                                        <Link to={{
+                                                    <Link to={{
                                                             pathname: ('/jam/'+jam._id),
                                                             state: {jamId: jam._id}
                                                         }}
                                                         className="admin-jam-see-jam-button"
-                                                        >
+                                                    >
+                                                        <button onClick={() => this.clickHandler(jam._id)} data-jamid={jam._id} className="btn btn-primary">
                                                             See Jam
-                                                        </Link>
-                                                    </button>
+                                                        </button>
+                                                    </Link>
                                                     <br /><br />
                                                     <h6 className="card-subtitle mb-2 text-muted">Join Requests</h6>
                                                     {jam.joinRequests.map((joinRequest, idx) => (
@@ -176,16 +176,16 @@ class MyJams extends Component {
                                         <div className="card-body" >
                                             <h5 className="card-title">{jam.name}</h5>
                                             <p className="card-text">{jam.description}</p>
-                                            <button onClick={() => this.clickHandler(jam._id)} data-jamid={jam._id} className="btn btn-primary">
-                                                <Link to={{
+                                            <Link to={{
                                                     pathname: ('/jam/'+jam._id),
                                                     state: {jamId: jam._id}
                                                 }}
-                                                    className="admin-jam-see-jam-button"
-                                                >
+                                                className="admin-jam-see-jam-button"
+                                            >
+                                                <button onClick={() => this.clickHandler(jam._id)} data-jamid={jam._id} className="btn btn-primary">
                                                     See Jam
-                                                </Link>
-                                            </button>
+                                                </button>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
