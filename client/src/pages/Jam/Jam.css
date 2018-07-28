@@ -29,9 +29,9 @@
     flex-flow: column nowrap;
     justify-content: space-between;
 }
-.post-textarea {
-    /* align-self: flex-end; */
-}
+/* .post-textarea {
+    align-self: flex-end;
+} */
 
 .suggested-jams-section{
     margin-top: 5%;
@@ -143,6 +143,6 @@
 }
 
 .posts-wrapper{
-    max-height: 90%;
+    max-height: 90;
     overflow-y: scroll;
 }
