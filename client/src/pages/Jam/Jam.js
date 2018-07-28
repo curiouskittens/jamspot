@@ -3,13 +3,15 @@ import "./Jam.css";
 import md5 from "js-md5";
 import api from "../../utils/api";
 import Footer from "../../components/Footer";
+import TextareaAutosize from "react-autosize-textarea";
 
 class Jam extends Component {
     state = {
         jamName:"",
         jamCreator:"",
         jamDate:"",
-        members: ""
+        members: "",
+        postInput: ""
     }
 
     componentDidMount() {
@@ -80,6 +82,11 @@ class Jam extends Component {
 
     }
 
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({ [name]: value })
+    }
+
 
     render() {
         return (
@@ -122,8 +129,22 @@ class Jam extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="user-simple-profile-section col-md-6">
-                            <p>Posts</p>
+                        <div className="col-md-6">
+                            <div className="post-content-wrapper">
+                                <div className="post-display-section">
+                                    <p>Posts</p>
+                                </div>
+                                    <TextareaAutosize
+                                        id="post-input"
+                                        name="postInput"
+                                        rows={1}
+                                        value={this.state.postInput}
+                                        placeholder="write something"
+                                        // disabled={this.state.bioDisabled}
+                                        onChange={this.handleInputChange}
+                                        className="form-control post-textarea"
+                                    />
+                            </div>
                         </div>
                     </div>
                 </div>

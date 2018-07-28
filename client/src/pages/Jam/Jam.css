@@ -16,11 +16,21 @@
     background: lightgray;
 }
 
-.user-simple-profile-section{
+.post-display-section{
     border: var(--maincolor2) 1px solid;
     border-radius: 10px; 
+    height: 50%;
     box-shadow: 2px 3px var(--maincolor2);
     background: rgb(255, 255, 255);
+}
+.post-content-wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+}
+.post-textarea{
+    /* align-self: flex-end; */
 }
 
 .suggested-jams-section{
