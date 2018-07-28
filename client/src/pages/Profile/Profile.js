@@ -271,7 +271,6 @@ class Profile extends Component {
                                 ))}
                                 {!this.state.genresDisabled && <button type="button" onClick={this.handleAddGenre} className="btn btn-secondary btn-sm add-buttons" style={{ marginTop: "3vh" }}>Add genre</button>}
                             </div>
-
                         </div>
                     </div>
                 </div>
