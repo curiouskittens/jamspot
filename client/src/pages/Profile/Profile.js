@@ -194,7 +194,7 @@ class Profile extends Component {
                                 />
                             )}
                             {(this.state.soundcloud && this.state.soundcloudDisabled) && (
-                                <iframe title="soundcloud" width="100%" height="300" scrolling="no" frameborder="no"
+                                <iframe title="soundcloud" width="100%" height="300" scrolling="no" frameBorder="no"
                                     src={`https://w.soundcloud.com/player/?url=https://soundcloud.com/${this.state.soundcloud}`}>
                                 </iframe>
                             )}

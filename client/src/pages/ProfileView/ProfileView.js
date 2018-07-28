@@ -67,7 +67,7 @@ class ProfileView extends Component {
                                     <p className="profile-info-sub-title">Soundcloud</p>
                                     <hr className="profile-page-separator" />
                                     {this.state.soundcloud ? (
-                                        <iframe title="soundcloud" width="100%" height="300" scrolling="no" frameborder="no"
+                                        <iframe title="soundcloud" width="100%" height="300" scrolling="no" frameBorder="no"
                                             src={`https://w.soundcloud.com/player/?url=https://soundcloud.com/${this.state.soundcloud}`}>
                                         </iframe>
                                     ) : (
