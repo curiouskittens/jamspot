@@ -146,3 +146,7 @@
     max-height: 90%;
     overflow-y: scroll;
 }
+
+.post-content-style{
+    white-space: pre-wrap;
+}
