@@ -174,31 +174,31 @@ class Profile extends Component {
                             <p className="profile-photo-section-name">{this.state.name}</p>
                             <p className="profile-photo-section-username">@{this.state.username}</p>
                             <p className="profile-photo-section-since">Member since {moment(this.state.memberSince).format("MMMM D, YYYY")}</p>
-
-                            <p className="profile-info-sub-title">Soundcloud{" "}
-                                {this.state.soundcloudDisabled ? (
-                                    <i className="fas fa-edit" id="soundcloudDisabled" onClick={this.toggleEdit}></i>
-                                ) : (
-                                        <button id="soundcloudDisabled" className="btn btn-primary btn-responsive" onClick={this.toggleEdit}>Save</button>
-                                    )}
-                            </p>
-                            <hr className="profile-page-separator" />
-                            {!this.state.soundcloud && <p>Add your username so others can hear your music!</p>}
-                            {!this.state.soundcloudDisabled && (
-                                <input
-                                    id="soundcloud"
-                                    name="soundcloud"
-                                    value={this.state.soundcloud}
-                                    disabled={this.state.soundcloudDisabled}
-                                    onChange={this.handleInputChange}
-                                />
-                            )}
-                            {(this.state.soundcloud && this.state.soundcloudDisabled) && (
-                                <iframe title="soundcloud" width="100%" height="300" scrolling="no" frameBorder="no"
-                                    src={`https://w.soundcloud.com/player/?url=https://soundcloud.com/${this.state.soundcloud}`}>
-                                </iframe>
-                            )}
-                            
+                            <div className="profile-instrument-section">
+                                <p className="profile-info-sub-title">Soundcloud{" "}
+                                    {this.state.soundcloudDisabled ? (
+                                        <i className="fas fa-edit" id="soundcloudDisabled" onClick={this.toggleEdit}></i>
+                                    ) : (
+                                            <button id="soundcloudDisabled" className="btn btn-primary btn-responsive" onClick={this.toggleEdit}>Save</button>
+                                        )}
+                                </p>
+                                <hr className="profile-page-separator" />
+                                {!this.state.soundcloud && <p className="profile-no-input-text">Add your username so others can hear your music!</p>}
+                                {!this.state.soundcloudDisabled && (
+                                    <input
+                                        id="soundcloud"
+                                        name="soundcloud"
+                                        value={this.state.soundcloud}
+                                        disabled={this.state.soundcloudDisabled}
+                                        onChange={this.handleInputChange}
+                                    />
+                                )}
+                                {(this.state.soundcloud && this.state.soundcloudDisabled) && (
+                                    <iframe title="soundcloud" width="100%" height="300" scrolling="no" frameBorder="no"
+                                        src={`https://w.soundcloud.com/player/?url=https://soundcloud.com/${this.state.soundcloud}`}>
+                                    </iframe>
+                                )}
+                            </div>
                         </div>
 
                         <div className="col-md-7 profile-page-info-section">
