@@ -137,7 +137,7 @@ class Jam extends Component {
             <React.Fragment>
                 {this.state.jamFound ? (
                     <div className="jam-bg">
-                        <div className="jam-page-content container-fluid">
+                        <div className="jam-page-content container">
                             <br />
                             <div className="d-md-flex justify-content-around">
                                 <div className="jam-section-wrapper d-block col-md-6">
@@ -175,10 +175,11 @@ class Jam extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-md-6">
+                                <div className="col-md-6 post-mobile-responsive">
                                     <div className="post-content-wrapper">
                                         <div className="post-display-section">
-                                            <p>Posts</p>
+                                            <p className="text-center recent-jam-title-text">Posts</p>
+                                            <hr className="jam-page-separator" />
                                             <div className="col-12 posts-wrapper">
                                             {this.state.posts ?
                                                     this.state.posts.map((post,idx)=>(
@@ -197,7 +198,7 @@ class Jam extends Component {
                                             }
                                             </div>
                                         </div>
-                                            <div>               
+                                        <div className="d-flex align-items-end posting-function-wrapper">
                                             <TextareaAutosize
                                                 id="post-input"
                                                 name="postInput"
@@ -209,7 +210,7 @@ class Jam extends Component {
                                                 className="form-control post-textarea"
                                             />
                                             <button className="btn btn-primary" onClick={this.handleSubmitPost}>Post</button>
-                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

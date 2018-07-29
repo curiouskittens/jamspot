@@ -13,14 +13,13 @@
     display: grid;
     grid-template-rows: 1fr auto;
     font-family: var(--merriweather);
-    background: lightgray;
+    /* background: lightgray; */
+    background-image: url("../Home/homeGradient/homeGradient.jpg")
 }
 
 .post-display-section{
     border: var(--maincolor2) 1px solid;
-    border-radius: 10px; 
-    height: 400px;
-    box-shadow: 2px 3px var(--maincolor2);
+    height: 500px;
     background: rgb(255, 255, 255);
 }
 .post-content-wrapper {
@@ -28,6 +27,10 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
+    border: var(--maincolor2) 1px solid;
+    border-radius: 10px; 
+    box-shadow: 2px 3px var(--maincolor2);
+    background: rgb(255, 255, 255);
 }
 /* .post-textarea {
     align-self: flex-end;
@@ -51,6 +54,9 @@
     .user-simple-profile-section{
     margin-top: 5%;
     }
+    .post-mobile-responsive{
+    margin-top: 5%;
+    }
 }
 
 @media only screen and (min-width: 600px) {
@@ -62,6 +68,9 @@
     .user-simple-profile-section{
     margin-top: 5%;
     }
+    .post-mobile-responsive{
+    margin-top: 5%;
+    }
 } 
 
 @media only screen and (min-width: 768px) {
@@ -69,6 +78,9 @@
     padding: 15px;
     }
     .user-simple-profile-section{
+    margin-top: 0;
+    }
+    .post-mobile-responsive{
     margin-top: 0;
     }
 } 
@@ -143,10 +155,15 @@
 }
 
 .posts-wrapper{
-    max-height: 90%;
+    max-height: 83.7%;
     overflow-y: scroll;
 }
 
 .post-content-style{
     white-space: pre-wrap;
+}
+
+.posting-function-wrapper{
+    margin-top: 5.2%;
+    background: rgb(255, 255, 255);
 }

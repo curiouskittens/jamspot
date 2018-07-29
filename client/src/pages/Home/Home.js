@@ -214,7 +214,7 @@ class Home extends Component {
                                                 skillLevel = "Beginner";
                                                 return (
                                                     <div key={index}>
-                                                        <p className="home-no-margin-bottom">{instrument.name}: </p>
+                                                        <p className="user-simple-profile-small-text home-no-margin-bottom">{instrument.name}: </p>
                                                         <div className="home-skillbar-background text-left">{skillLevel}</div>
                                                     </div>
                                                 )
@@ -222,7 +222,7 @@ class Home extends Component {
                                                 skillLevel = "Intermediate";
                                                 return (
                                                     <div key={index}>
-                                                        <p className="home-no-margin-bottom">{instrument.name}: </p>
+                                                        <p className="user-simple-profile-small-text home-no-margin-bottom">{instrument.name}: </p>
                                                         <div className="home-skillbar-background text-center">{skillLevel}</div>
                                                     </div>
                                                 )
@@ -230,9 +230,13 @@ class Home extends Component {
                                                 skillLevel = "Expert";
                                                 return (
                                                     <div key={index}>
-                                                        <p className="home-no-margin-bottom">{instrument.name}: </p>
+                                                        <p className="user-simple-profile-small-text home-no-margin-bottom">{instrument.name}: </p>
                                                         <div className="home-skillbar-background text-right">{skillLevel}</div>
                                                     </div>
+                                                )
+                                            } else {
+                                                return (
+                                                    <p className="user-simple-profile-small-text">Looks like there might be an error...</p>
                                                 )
                                             }
                                         }) : (
