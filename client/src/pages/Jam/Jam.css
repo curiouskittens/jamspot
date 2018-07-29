@@ -157,8 +157,8 @@
 }
 
 .instrument-mini-pic {
-    max-height: 100%;
-    max-width: 30%;
+    width: 3.5vh;
+    height: 3.5vh;
 }
 
 .user-post-pic {

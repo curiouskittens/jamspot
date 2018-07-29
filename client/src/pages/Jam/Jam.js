@@ -13,12 +13,12 @@ import instrumentList from "../../utils/instruments.json";
 
 class Jam extends Component {
     state = {
-        jamName:"",
-        jamCreator:"",
-        jamDate:"",
+        jamName: "",
+        jamCreator: "",
+        jamDate: "",
         members: "",
         postInput: "",
-        posts:[],
+        posts: [],
         isMember: true,
         jamFound: true
     }
@@ -48,7 +48,7 @@ class Jam extends Component {
                     }
                 }
             })
-            .catch(err=>console.log(err))
+            .catch(err => console.log(err))
     }
 
     validateUser = members => {
@@ -63,36 +63,35 @@ class Jam extends Component {
         return found;
     }
 
-    getProfilePic = (email)=>{
+    getProfilePic = (email) => {
         // console.log(email.trim())
         const gravatarHash = md5(email.trim().toLowerCase());
         // console.log(gravatarHash)
         return `https://www.gravatar.com/avatar/${gravatarHash}?d=mp&s=200`
     }
-    getInstrumentIcon = (instruments) =>{
+    getInstrumentIcon = (instruments) => {
         // return "/instrument_icons/guitar.png"
-        
-        if(instruments.length>0) {
-            return (instruments.map((instrument,idx) => {
+        if (instruments.length > 0) {
+            return (instruments.map((instrument, idx) => {
                 let imgSrc = "/instrument_icons/none.png"
-                for(let i=0; i<instrumentList.length; i++){
-                    if(instrumentList[i].name === instrument.name){
+                for (let i = 0; i < instrumentList.length; i++) {
+                    if (instrumentList[i].name === instrument.name) {
                         console.log("match")
                         imgSrc = instrumentList[i].icon
                     }
                 }
                 console.log(imgSrc)
-                return <img key={idx} className="instrument-mini-pic px-1" src={imgSrc} alt="instrument"/>
+                return <img key={idx} className="instrument-mini-pic px-1 col-2" src={imgSrc} alt="instrument" />
             }))
-        }else{
+        } else {
             console.log("else")
-            return <img className="instrument-mini-pic " src="/instrument_icons/none.png" alt="instrument"/>
+            return <img className="instrument-mini-pic" src="/instrument_icons/none.png" alt="instrument" />
         }
 
     }
 
     getPosts = () => {
-        
+
     }
 
     handleInputChange = event => {
@@ -130,7 +129,7 @@ class Jam extends Component {
                                 <div className="jam-section-wrapper d-block col-md-6">
                                     <div className="next-jam-section">
                                         <p className="text-center next-jam-title-text">{this.state.jamName}</p>
-                                        <hr className="jam-page-separator"/>
+                                        <hr className="jam-page-separator" />
                                         <div className="next-jam-wrapper d-flex container-fluid">
                                             <div className="next-jam-info col-12 jam-page-text-size">
                                                 <p>Jam Name: {this.state.jamName}</p>
@@ -145,17 +144,19 @@ class Jam extends Component {
                                         <div className="most-recent-jam-wrapper d-flex container-fluid">
                                             <div className="most-recent-jam-info col-12">
                                                 {this.state.members ?
-                                                    this.state.members.map((member,idx)=>(
-                                                    <div className="row" key={idx}>
-                                                        <img className="user-mini-pic col-3 mx-0 px-0" src={this.getProfilePic(member.email)} alt="Gravatar" />
-                                                        <div className="col-6" key={idx}>{member.name}</div>
-                                                        <div className="jampage-instrument-wrapper col-3">
-                                                            {this.getInstrumentIcon(member.instruments)}
-                                                        </div>
-                                                    
-                                                    </div>
+                                                    this.state.members.map((member, idx) => (
+                                                        <React.Fragment>
+                                                            <div className="row d-flex align-items-center justify-content-between" key={idx}>
+                                                                <img className="user-mini-pic col-3 mx-0 px-0" src={this.getProfilePic(member.email)} alt="Gravatar" />
+                                                                <div className="col-3 mx-0 px-0" key={idx}>{member.name}</div>
+                                                                <div className="jampage-instrument-wrapper col-6 d-flex flex-wrap mx-0 px-0">
+                                                                    {this.getInstrumentIcon(member.instruments)}
+                                                                </div>
+                                                            </div>
+                                                            <hr />
+                                                        </React.Fragment>
                                                     ))
-                                                
+
                                                     : <p>Loading...</p>
                                                 }
                                             </div>
@@ -168,7 +169,7 @@ class Jam extends Component {
                                             <p className="text-center recent-jam-title-text">Posts</p>
                                             <div className="col-12 posts-wrapper">
                                                 {this.state.posts ?
-                                                        this.state.posts.map((post,idx)=>(
+                                                    this.state.posts.map((post, idx) => (
                                                         <div className="row post" key={idx}>
                                                             <img className="user-post-pic col-1 mx-0 px-0" src={this.getProfilePic(post.creator.email)} alt="Gravatar" />
                                                             <div className="col-2 mx-0 px-1" key={idx}>{post.creator.name}</div>
@@ -176,11 +177,11 @@ class Jam extends Component {
                                                                 {this.getInstrumentIcon(member.instruments)}
                                                             </div> */}
                                                             <div className="col-8 col-lg-9 post-content-style"><Linkify>{post.content}</Linkify></div>
-                                                        
+
                                                         </div>
-                                                        ))
-                                                    
-                                                        : <p>Loading...</p>
+                                                    ))
+
+                                                    : <p>Loading...</p>
                                                 }
                                             </div>
                                         </div>
@@ -205,8 +206,8 @@ class Jam extends Component {
                         <Footer />
                     </div>
                 ) : (
-                    <NoMatch />
-                )}
+                        <NoMatch />
+                    )}
             </React.Fragment>
         )
     }
