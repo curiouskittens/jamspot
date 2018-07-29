@@ -27,11 +27,11 @@
     {
         "name": "Percussion",
         "value": "Percussion",
-        "icon":  "/instrument_icons/voice.png"
+        "icon":  "/instrument_icons/drummer.png"
     },
     {
         "name": "Vocals",
         "value": "Vocals",
-        "icon": "/instrument_icons/no-waiting.png"
+        "icon": "/instrument_icons/voice.png"
     }
 ]

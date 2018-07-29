@@ -7,8 +7,8 @@ import sweetAlert from "../../utils/sweetAlert";
 
 class FindJam extends Component {
     state = {
-        jams: [""],
-        requestedJams: [""],
+        jams: [],
+        requestedJams: [],
         loggedIn: sessionStorage.getItem("userId") ? true : false
     }
 
@@ -19,6 +19,7 @@ class FindJam extends Component {
     getJams = () => {
         api.getAllJams()
             .then(dbJams => {
+                console.log(dbJams)
                 const result = dbJams.data.filter(dbJam => dbJam.members.findIndex(member => member === sessionStorage.getItem("userId")) === -1)
                 const jams = result.filter(jam => jam.joinRequests.findIndex(joinRequest => joinRequest === sessionStorage.getItem("userId")) === -1)
                 const requestedJams = result.filter(jam => jam.joinRequests.findIndex(joinRequest => joinRequest === sessionStorage.getItem("userId")) !== -1)
@@ -26,6 +27,8 @@ class FindJam extends Component {
                     jams: jams,
                     requestedJams: requestedJams
                 });
+                console.log(this.state.jams)
+                console.log(this.state.requestedJams)
         })
             .catch(err => console.log(err))
     }
@@ -57,17 +60,41 @@ class FindJam extends Component {
                             <p className="text-center find-jam-section-title">Check out these jams</p>
                             <hr />
                             <div className="row d-md-flex">
-                                {this.state.jams.map((jam, idx) => (
-                                    <JamCard key={idx} unrequested={true} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={() => this.joinJamEventHandler(jam._id)} />
-                                ))}
+                                {this.state.jams && this.state.jams.map((jam, idx) => {
+                                    console.log(jam.admin)
+                                    return <JamCard 
+                                        key={idx} 
+                                        unrequested={true}
+                                        creator={jam.admin} 
+                                        jamName={jam.name}
+                                        jamDate={jam.date} 
+                                        description={jam.description} 
+                                        jamId={jam._id}
+                                        instruments={jam.instruments}
+                                        genres={jam.genres} 
+                                        clickHandler={() => this.joinJamEventHandler(jam._id)}
+                                    />
+                                }
+                                )}
                             </div>
                         </div>
                         <div className="requested-jam-section col-md-5">
                             <p className="text-center find-jam-section-title">Jams you have requested</p>
                             <hr />
                             <div className="row d-md-flex">
-                                {this.state.requestedJams.map((jam, idx) => (
-                                    <JamCard key={idx} requested={true} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={() => this.joinJamEventHandler(jam._id)} />
+                                {this.state.requestedJams && this.state.requestedJams.map((jam, idx) => (
+                                    <JamCard 
+                                        key={idx} 
+                                        requested={true}
+                                        creator={jam.admin}  
+                                        jamName={jam.name} 
+                                        jamDate={jam.date} 
+                                        description={jam.description} 
+                                        jamId={jam._id}
+                                        instruments={jam.instruments}
+                                        genres={jam.genres}  
+                                        clickHandler={() => this.joinJamEventHandler(jam._id)} 
+                                    />
                                 ))}
                             </div>
                         </div>

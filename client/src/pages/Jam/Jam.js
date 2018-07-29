@@ -4,6 +4,7 @@ import md5 from "js-md5";
 import api from "../../utils/api";
 import Footer from "../../components/Footer";
 import TextareaAutosize from "react-autosize-textarea";
+import instrumentList from "../../utils/instruments.json";
 
 class Jam extends Component {
     state = {
@@ -43,40 +44,21 @@ class Jam extends Component {
     }
     getInstrumentIcon = (instruments) =>{
         // return "/instrument_icons/guitar.png"
-        let imgSrc = ""
+        
         if(instruments.length>0) {
             return (instruments.map((instrument,idx) => {
-                switch(instrument.name){
-                    case "leadGuitar":
-                        imgSrc = "/instrument_icons/guitar-black-shape.png"
-                        break;
-                    case "rhythmGuitar":
-                        imgSrc = "/instrument_icons/guitar.png"
-                        break;
-                    case "bass":
-                        imgSrc = "/instrument_icons/bass.png"
-                        break;
-                    case "keys":
-                        imgSrc = "/instrument_icons/piano.png"
-                        break;
-                    case "drums":
-                        imgSrc = "/instrument_icons/drummer-set.png"
-                        break;
-                    case "percussion":
-                        imgSrc = "/instrument_icons/drummer-set.png"
-                        break;
-                    case "vocals":
-                        imgSrc = "/instrument_icons/voice.png"
-                        break;
-                    default:
-                        imgSrc = "/instrument_icons/no-waiting.png"
-                        break;
+                let imgSrc = "/instrument_icons/no-waiting.png"
+                for(let i=0; i<instrumentList.length; i++){
+                    if(instrumentList[i].name === instrument.name){
+                        console.log("match")
+                        imgSrc = instrumentList[i].icon
                     }
+                }
+                console.log(imgSrc)
                 return <img key={idx} className="instrument-mini-pic px-1" src={imgSrc} alt="instrument"/>
-            })
-        )
-            
+            }))
         }else{
+            console.log("else")
             return <img className="instrument-mini-pic " src="/instrument_icons/no-waiting.png" alt="instrument"/>
         }
 

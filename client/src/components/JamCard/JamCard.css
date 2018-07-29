@@ -6,6 +6,10 @@
     border-radius: 15px;
 }
 
-.jam-card:hover{
+/* .jam-card:hover{
     border: white 3px double;
+} */
+
+.jam-card-subheadings{
+    color: var(--maincolor1);
 }

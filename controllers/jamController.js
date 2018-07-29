@@ -38,6 +38,7 @@ module.exports = {
     findAll: function (req, res) {
         db.Jam
             .find({})
+            .populate("admin")
             .then(dbAllJams => res.send(dbAllJams))
             .catch(err => res.send(err))
     },
