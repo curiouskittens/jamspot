@@ -13,3 +13,8 @@
 .jam-card-subheadings{
     color: var(--maincolor1);
 }
+
+.instrument-mini-pic {
+    max-height: 100%;
+    max-width: 30%;
+}

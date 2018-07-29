@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./JamCard.css";
 import md5 from "js-md5";
 import moment from "moment";
+import instrumentList from "../../utils/instruments.json";
 
 class JamCard extends Component {
     getProfilePic = (email)=>{
@@ -9,6 +10,18 @@ class JamCard extends Component {
         const gravatarHash = md5(email.trim().toLowerCase());
         // console.log(gravatarHash)
         return `https://www.gravatar.com/avatar/${gravatarHash}?d=mp&s=200`
+    }
+
+    getInstrumentIcon = (instrument) =>{
+        let imgSrc = "/instrument_icons/no-waiting.png"
+        for(let i=0; i<instrumentList.length; i++){
+            if(instrumentList[i].name === instrument.name){
+                console.log("match")
+                imgSrc = instrumentList[i].icon
+            }
+        }
+        console.log(imgSrc)
+        return <img className="instrument-mini-pic px-1" src={imgSrc} alt="instrument"/>
     }
 
     render() {
@@ -37,16 +50,19 @@ class JamCard extends Component {
 
                         <h6 className="jam-card-subheadings">Instruments:</h6>
                         <div className="row px-3">
-                            {/* <img className="user-mini-pic col-3 mx-0 px-0" src={this.getProfilePic(this.props.creator.email)} alt="Gravatar" /> */}
                             {this.props.instruments.map((instrument,idx) => (
-                                <div className="col-4">{instrument.name}</div>
+                                <div className="col-4">
+                                    <span>{instrument.name}</span>
+                                    {this.getInstrumentIcon(instrument)}
+
+                                </div>
                                 )
                             )}
                         </div>
 
                         <h6 className="jam-card-subheadings">Genres:</h6>
                         <div className="row px-3">
-                            {/* <img className="user-mini-pic col-3 mx-0 px-0" src={this.getProfilePic(this.props.creator.email)} alt="Gravatar" /> */}
+                            
                             {this.props.genres.map((genre,idx) => (
                                 <div className="col-4">{genre}</div>
                                 )
