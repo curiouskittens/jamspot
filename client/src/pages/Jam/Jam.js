@@ -8,6 +8,7 @@ import Footer from "../../components/Footer";
 import TextareaAutosize from "react-autosize-textarea";
 import sweetAlert from "../../utils/sweetAlert";
 import NoMatch from "../NoMatch";
+import Linkify from 'react-linkify';
 
 class Jam extends Component {
     state = {
@@ -188,7 +189,7 @@ class Jam extends Component {
                                                             {/* <div className="jampage-instrument-wrapper col-3">
                                                                 {this.getInstrumentIcon(member.instruments)}
                                                             </div> */}
-                                                            <div className="col-9 post-content-style">{post.content}</div>
+                                                            <div className="col-9 post-content-style"><Linkify>{post.content}</Linkify></div>
                                                         
                                                         </div>
                                                         ))
