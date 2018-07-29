@@ -7,6 +7,8 @@ import Footer from "../../components/Footer";
 import Notification from "../../components/Notification";
 import Slider from 'react-slick';
 import { Link } from "react-router-dom";
+import sweetAlert from "../../utils/sweetAlert";
+import JamCard from "../../components/JamCard";
 
 const settings = {
     infinite: true,
@@ -26,7 +28,8 @@ class Home extends Component {
         nextJam: { name: "", date: "", members: [] },
         mostRecentJam: { name: "", date: "", members: [] },
         searchJamsSubsets: [],
-        searchJams: [{ name: "", date: "", members: [] }]
+        searchJams: [{ name: "", date: "", members: [] }],
+        loggedIn: sessionStorage.getItem("userId") ? true : false
     }
 
     componentDidMount() {
@@ -64,8 +67,11 @@ class Home extends Component {
         api.getAllJams().then(dbJams => {
             const result = dbJams.data.filter(dbJam => dbJam.members.findIndex(member => member === sessionStorage.getItem("userId")) === -1)
             const searchJams = result.filter(jam => jam.joinRequests.findIndex(joinRequest => joinRequest === sessionStorage.getItem("userId")) === -1)
+            console.log(searchJams)
             if (searchJams.length) {
                 this.setState({searchJams: searchJams})
+            }else{
+                this.setState({searchJams: [{ name: "", date: "", members: [] }]})
             }
         })
     }
@@ -113,22 +119,38 @@ class Home extends Component {
         }
     }
 
+    joinJamEventHandler = jamId => {
+        console.log("join jam!\nJam ID: ", jamId)
+        if (this.state.loggedIn) {
+            console.log("you are logged in\nYour user ID is: ", sessionStorage.getItem("userId"))
+            api.joinJamRequest({
+                jamId: jamId,
+                userId: sessionStorage.getItem("userId")
+            }).then(() => {
+                console.log("success")
+                sweetAlert("success", "success-text", "You have requested to join this jam.");
+                this.getJams();
+            }).catch(err => console.log(err))
+        } else {
+            console.log("you are not logged in")
+        }
+    }
+
     renderSuggestedJams = () => {
         if(this.state.searchJams[0].name) {
             return this.state.searchJams.map((jam, idx) => (
-                            <div className="suggested-jam-box-wrapper" key={jam.name}>
-                                <div className="suggested-jam-box">
-                                    <p className="suggested-jam-title-text">{jam.name}</p>
-                                    {jam.location && <p>{jam.location.address } </p>}
-                                    <p>{moment(jam.date).format("LLL")}</p>
-                                    {jam.genres.map((genre, index) => (
-                                        <p key={index}>{genre}</p>
-                                    ))}
-                                    {jam.instruments.map((instrument, index) => (
-                                        <p key={index}>{instrument.name}: {instrument.quantity}</p>
-                                    ))}
-                                </div>
-                            </div>
+                <JamCard 
+                    key={idx} 
+                    unrequested={true}
+                    creator={jam.admin}  
+                    jamName={jam.name} 
+                    jamDate={jam.date} 
+                    description={jam.description} 
+                    jamId={jam._id}
+                    instruments={jam.instruments}
+                    genres={jam.genres}  
+                    clickHandler={() => this.joinJamEventHandler(jam._id)} 
+                />
             ))
         }
     }

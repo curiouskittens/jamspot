@@ -3,6 +3,7 @@ import "./JamCard.css";
 import md5 from "js-md5";
 import moment from "moment";
 import instrumentList from "../../utils/instruments.json";
+import { Link } from "react-router-dom";
 
 class JamCard extends Component {
     getProfilePic = (email)=>{
@@ -72,6 +73,16 @@ class JamCard extends Component {
 
                         {this.props.unrequested && <button onClick={this.props.clickHandler} data-jamid={this.props.jamId} className="btn btn-primary">Join Jam</button>}
                         {this.props.memberjam && <button onClick={this.props.clickHandler} data-jamid={this.props.jamId} className="btn btn-primary">See Jam</button>}
+                        {this.props.seeJam && <Link to={{
+                                                    pathname: ('/jam/'+this.props.jamId),
+                                                    state: {jamId: this.props.jamId}
+                                                }}
+                                                className="admin-jam-see-jam-button"
+                                            >
+                                                <button onClick={() => this.clickHandler} data-jamid={this.props.jamId} className="btn btn-primary">
+                                                    See Jam
+                                                </button>
+                                            </Link>}
                     </div>
                 </div>
             </div>

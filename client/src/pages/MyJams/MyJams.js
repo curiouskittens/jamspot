@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-// import JamCard from "../../components/JamCard";
+import JamCard from "../../components/JamCard";
 import api from "../../utils/api";
 import Footer from "../../components/Footer";
-import { Link } from "react-router-dom";
 import "./MyJam.css";
 
 
@@ -30,7 +29,7 @@ class MyJams extends Component {
             console.log("Get My Jams")
             console.log(dbUser.data)
             dbUser.data.jams.forEach((jam, idx) => {
-                if (jam.admin === sessionStorage.getItem("userId")) {
+                if (jam.admin._id === sessionStorage.getItem("userId")) {
                     this.setState({ adminJams: this.state.adminJams.concat([jam]) });
                 } else {
                     this.setState({ memberJams: this.state.memberJams.concat([jam]) });
@@ -55,26 +54,18 @@ class MyJams extends Component {
                                 <hr />
                                 <div className="row d-md-flex">
                                     {this.state.adminJams.map((jam, idx) => (
-                                        <div className="col-md-6 admin-jam-card-wrapper" key={idx}>
-                                            <div className="card admin-jam-card">
-                                                <div className="card-body" >
-                                                    <h5 className="card-title">{jam.name}</h5>
-                                                    <p className="card-text">{jam.description}</p>
-                                                    <Link to={{
-                                                            pathname: ('/jam/'+jam._id),
-                                                            state: {jamId: jam._id}
-                                                        }}
-                                                        className="admin-jam-see-jam-button"
-                                                    >
-                                                        <button onClick={() => this.clickHandler(jam._id)} data-jamid={jam._id} className="btn btn-primary">
-                                                            See Jam
-                                                        </button>
-                                                    </Link>
-                                                    <br /><br />
-
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <JamCard 
+                                            key={idx} 
+                                            seeJam={true}
+                                            creator={jam.admin}  
+                                            jamName={jam.name} 
+                                            jamDate={jam.date} 
+                                            description={jam.description} 
+                                            jamId={jam._id}
+                                            instruments={jam.instruments}
+                                            genres={jam.genres}  
+                                            clickHandler={() => this.clickHandler(jam._id)} 
+                                        />
                                     ))}
                                 </div>
                             </div>
@@ -82,24 +73,18 @@ class MyJams extends Component {
                                 <p className="my-jam-section-title text-center">I'm A Member</p>
                                 <hr />
                                 {this.state.memberJams.map((jam, idx) => (
-                                    <div className="col-md-6 admin-jam-card-wrapper" key={idx}>
-                                    <div className="card admin-jam-card">
-                                        <div className="card-body" >
-                                            <h5 className="card-title">{jam.name}</h5>
-                                            <p className="card-text">{jam.description}</p>
-                                            <Link to={{
-                                                    pathname: ('/jam/'+jam._id),
-                                                    state: {jamId: jam._id}
-                                                }}
-                                                className="admin-jam-see-jam-button"
-                                            >
-                                                <button onClick={() => this.clickHandler(jam._id)} data-jamid={jam._id} className="btn btn-primary">
-                                                    See Jam
-                                                </button>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
+                                    <JamCard 
+                                        key={idx} 
+                                        seeJam={true}
+                                        creator={jam.admin}  
+                                        jamName={jam.name} 
+                                        jamDate={jam.date} 
+                                        description={jam.description} 
+                                        jamId={jam._id}
+                                        instruments={jam.instruments}
+                                        genres={jam.genres}  
+                                        clickHandler={() => this.clickHandler(jam._id)} 
+                                    />
                                 ))}
                             </div>
                         </div>
