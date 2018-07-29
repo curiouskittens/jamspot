@@ -193,7 +193,7 @@ class Jam extends Component {
                                                             {/* <div className="jampage-instrument-wrapper col-3">
                                                                 {this.getInstrumentIcon(member.instruments)}
                                                             </div> */}
-                                                            <div className="col-9 post-content-style"><Linkify>{post.content}</Linkify></div>
+                                                            <div className="col-8 col-lg-9 post-content-style"><Linkify>{post.content}</Linkify></div>
                                                         
                                                         </div>
                                                         ))
