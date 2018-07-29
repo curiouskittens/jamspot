@@ -191,6 +191,7 @@ class Profile extends Component {
                                         value={this.state.soundcloud}
                                         disabled={this.state.soundcloudDisabled}
                                         onChange={this.handleInputChange}
+                                        className="form-control"
                                     />
                                 )}
                                 {(this.state.soundcloud && this.state.soundcloudDisabled) && (

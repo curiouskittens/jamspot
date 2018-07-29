@@ -32,9 +32,8 @@
     background: rgb(255, 255, 255);
 }
 
-.notification-home-page-wrapper{
-    padding-left: 25px;
-    padding-right: 25px;
+.specific-notification{
+    overflow-wrap: break-word !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -61,6 +60,10 @@
     padding-top: 5%;
     padding-left: 1%;
     padding-right: 1%;
+    }
+    .notification-home-page-wrapper{
+    width: 80%;
+    margin: 0 auto;
     }
 }
 
@@ -105,7 +108,7 @@
 
 @media only screen and (min-width: 1200px) {
     .home-page-content{
-        margin-top: 5%;
+    margin-top: 5%;
     }
     .suggested-jam-slider{
     width: 90%;
