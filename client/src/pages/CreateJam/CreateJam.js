@@ -67,11 +67,11 @@ class CreateJam extends Component {
         let instrumentSelected = true
         this.state.instruments.forEach((instrument)=>{
             if(!instrument.name){
-                sweetAlert("error", "warning-text", "No instrument selected")
+                sweetAlert("error", "warning-text", "Please select an instrument.")
                 instrumentSelected = false
                 return
             }else if(!instrument.quantity){
-                sweetAlert("error", "warning-text", "No instrument quantity selected")
+                sweetAlert("error", "warning-text", "Please specify the number of players needed.")
                 instrumentSelected = false
                 return
             }
@@ -116,7 +116,7 @@ class CreateJam extends Component {
         let genreSelected = true
         this.state.genres.forEach((genre)=>{
             if(!genre){
-                sweetAlert("error", "warning-text", "No genre selected")
+                sweetAlert("error", "warning-text", "Please select a genre.")
                 genreSelected = false
                 return
             }

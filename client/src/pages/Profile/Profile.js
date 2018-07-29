@@ -140,11 +140,11 @@ class Profile extends Component {
         let instrumentSelected = true
         this.state.instruments.forEach((instrument)=>{
             if(!instrument.name){
-                sweetAlert("error", "warning-text", "No instrument selected")
+                sweetAlert("error", "warning-text", "Please select an instrument.")
                 instrumentSelected = false
                 return
             }else if(!instrument.skill){
-                sweetAlert("error", "warning-text", "No skill level selected")
+                sweetAlert("error", "warning-text", "Please specify your skill level.")
                 instrumentSelected = false
                 return
             }
@@ -196,7 +196,7 @@ class Profile extends Component {
         let genreSelected = true
         this.state.genres.forEach((genre)=>{
             if(!genre){
-                sweetAlert("error", "warning-text", "No genre selected")
+                sweetAlert("error", "warning-text", "Please select a genre.")
                 genreSelected = false
                 return
             }

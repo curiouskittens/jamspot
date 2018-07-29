@@ -192,19 +192,6 @@ class Home extends Component {
                             <p className="text-center">@{this.state.username}</p>
                             <img className="img-fluid user-simple-profile-pic-style" src={this.state.image} alt="profile snapshot" />
                             <br/> <br/>
-                            <p>Location</p>
-                            <p className="home-no-margin-bottom">Genres</p>
-                                {this.state.genres[0] ?
-                                    (
-                                        <ul>
-                                            {this.state.genres.map((genre, index) => (
-                                                <li className="user-simple-profile-small-text" key={index}>{genre}</li>
-                                            ))}
-                                        </ul>
-                                    ) : (
-                                        <p className="user-simple-profile-small-text">Head to your profile to add some genres.</p>
-                                    )
-                                }
                             <p className="home-no-margin-bottom">Instruments</p>
                             <div className="instrument-box">
                                     {this.state.instruments[0].name ?
@@ -214,7 +201,7 @@ class Home extends Component {
                                                 skillLevel = "Beginner";
                                                 return (
                                                     <div key={index}>
-                                                        <p className="user-simple-profile-small-text home-no-margin-bottom">{instrument.name}: </p>
+                                                        <p className="user-simple-profile-small-text home-no-margin-bottom">{instrument.name} </p>
                                                         <div className="home-skillbar-background text-left">{skillLevel}</div>
                                                     </div>
                                                 )
@@ -222,7 +209,7 @@ class Home extends Component {
                                                 skillLevel = "Intermediate";
                                                 return (
                                                     <div key={index}>
-                                                        <p className="user-simple-profile-small-text home-no-margin-bottom">{instrument.name}: </p>
+                                                        <p className="user-simple-profile-small-text home-no-margin-bottom">{instrument.name} </p>
                                                         <div className="home-skillbar-background text-center">{skillLevel}</div>
                                                     </div>
                                                 )
@@ -230,7 +217,7 @@ class Home extends Component {
                                                 skillLevel = "Expert";
                                                 return (
                                                     <div key={index}>
-                                                        <p className="user-simple-profile-small-text home-no-margin-bottom">{instrument.name}: </p>
+                                                        <p className="user-simple-profile-small-text home-no-margin-bottom">{instrument.name} </p>
                                                         <div className="home-skillbar-background text-right">{skillLevel}</div>
                                                     </div>
                                                 )
@@ -244,6 +231,18 @@ class Home extends Component {
                                         )
                                     }
                             </div>
+                            <p className="home-no-margin-bottom">Genres</p>
+                                {this.state.genres[0] ?
+                                    (
+                                        <React.Fragment>
+                                            {this.state.genres.map((genre, index) => (
+                                                <p className="user-simple-profile-small-text" key={index}>{genre}</p>
+                                            ))}
+                                        </React.Fragment>
+                                    ) : (
+                                        <p className="user-simple-profile-small-text">Head to your profile to add some genres.</p>
+                                    )
+                                }
                         </div>
                     </div>
                     {

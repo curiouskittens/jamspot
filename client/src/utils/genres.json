@@ -1,54 +1,86 @@
 [
     {
-        "name": "Hip Hop",
-        "value": "Hip Hop"
-    },
-    {
-        "name": "Rock",
-        "value": "Rock"
+        "name": "Alternative",
+        "value": "Alternative"
     },
     {
         "name": "Bluegrass",
         "value": "Bluegrass"
     },
     {
-        "name": "Country",
-        "value": "Country"
-    },
-    {
-        "name": "Folk",
-        "value": "Folk"
-    },
-    {
-        "name": "Indie",
-        "value": "Indie"
-    },
-    {
-        "name": "Punk",
-        "value": "Punk"
-    },
-    {
-        "name": "Alternative",
-        "value": "Alternative"
+        "name": "Blues",
+        "value": "Blues"
     },
     {
         "name": "Classical",
         "value": "Classical"
     },
     {
+        "name": "Country",
+        "value": "Country"
+    },
+    {
+        "name": "Electronic",
+        "value": "Electronic"
+    },
+    {
+        "name": "Folk",
+        "value": "Folk"
+    },
+    {
+        "name": "Funk",
+        "value": "Funk"
+    },
+    {
+        "name": "Gospel",
+        "value": "Gospel"
+    },
+    {
+        "name": "Hip Hop",
+        "value": "Hip Hop"
+    },
+    {
+        "name": "Indie",
+        "value": "Indie"
+    },
+    {
         "name": "Jazz",
         "value": "Jazz"
+    },
+    {
+        "name": "K-Pop",
+        "value": "K-Pop"
+    },
+    {
+        "name": "Latin",
+        "value": "Latin"
+    },
+    {
+        "name": "Metal",
+        "value": "Metal"
+    },
+    {
+        "name": "Pop",
+        "value": "Pop"
+    },
+    {
+        "name": "Punk",
+        "value": "Punk"
+    },
+    {
+        "name": "Reggae",
+        "value": "Reggae"
+    },
+    {
+        "name": "Rock",
+        "value": "Rock"
     },
     {
         "name": "R&B",
         "value": "R&B"
     },
     {
-        "name": "Blues",
-        "value": "Blues"
-    },
-    {
-        "name": "Electronic",
-        "value": "Electronic"
+        "name": "World",
+        "value": "World"
     }
 ]

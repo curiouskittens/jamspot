@@ -22,6 +22,7 @@
     border-radius: 10px; 
     box-shadow: 2px 3px var(--maincolor2);
     background: rgb(255, 255, 255);
+    padding-bottom: 2vh;
 }
 
 .suggested-jams-section{
