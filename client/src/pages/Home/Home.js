@@ -140,7 +140,7 @@ class Home extends Component {
                     {this.renderNotifications()}
                     <br />
                     <div className="d-md-flex justify-content-around align-items-between">
-                        <div className="jam-section-wrapper d-block col-md-8">
+                        <div className="jam-section-wrapper d-block col-md-7 col-xl-8">
                             <div className="next-jam-section">
                                 <p className="text-center next-jam-title-text">Your Next Jam</p>
                                 <hr className="home-page-separator" />
@@ -187,44 +187,58 @@ class Home extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="user-simple-profile-section col-md-3">
+                        <div className="user-simple-profile-section col-md-4 col-xl-3">
                             <p className="user-simple-profile-title text-center">{this.state.name}</p>
                             <p className="text-center">@{this.state.username}</p>
                             <img className="img-fluid user-simple-profile-pic-style" src={this.state.image} alt="profile snapshot" />
                             <br/> <br/>
                             <p>Location</p>
-                            <p>Genres</p>
-                            <ul>
+                            <p className="home-no-margin-bottom">Genres</p>
                                 {this.state.genres[0] ?
-                                    this.state.genres.map((genre, index) => (
-                                        <li key={index}>{genre}</li>
-                                    )) : (
-                                        <p>Head to your profile to add some genres.</p>
+                                    (
+                                        <ul>
+                                            {this.state.genres.map((genre, index) => (
+                                                <li className="user-simple-profile-small-text" key={index}>{genre}</li>
+                                            ))}
+                                        </ul>
+                                    ) : (
+                                        <p className="user-simple-profile-small-text">Head to your profile to add some genres.</p>
                                     )
                                 }
-                            </ul>
-                            <p>Instruments</p>
+                            <p className="home-no-margin-bottom">Instruments</p>
                             <div className="instrument-box">
-                                <ul>
                                     {this.state.instruments[0].name ?
                                         this.state.instruments.map((instrument, index) => {
                                             let skillLevel = "";
                                             if (instrument.skill === 1) {
                                                 skillLevel = "Beginner";
+                                                return (
+                                                    <div key={index}>
+                                                        <p className="home-no-margin-bottom">{instrument.name}: </p>
+                                                        <div className="home-skillbar-background text-left">{skillLevel}</div>
+                                                    </div>
+                                                )
                                             } else if (instrument.skill === 2) {
                                                 skillLevel = "Intermediate";
+                                                return (
+                                                    <div key={index}>
+                                                        <p className="home-no-margin-bottom">{instrument.name}: </p>
+                                                        <div className="home-skillbar-background text-center">{skillLevel}</div>
+                                                    </div>
+                                                )
                                             } else if (instrument.skill === 3) {
                                                 skillLevel = "Expert";
+                                                return (
+                                                    <div key={index}>
+                                                        <p className="home-no-margin-bottom">{instrument.name}: </p>
+                                                        <div className="home-skillbar-background text-right">{skillLevel}</div>
+                                                    </div>
+                                                )
                                             }
-
-                                            return (
-                                                <li key={index}>{instrument.name}: {skillLevel}</li>
-                                            )
                                         }) : (
-                                            <p>Head to your profile to add some instruments.</p>
+                                            <p className="user-simple-profile-small-text">Head to your profile to add some instruments.</p>
                                         )
                                     }
-                                </ul>
                             </div>
                         </div>
                     </div>
