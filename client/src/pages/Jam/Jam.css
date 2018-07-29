@@ -31,9 +31,9 @@
     box-shadow: 2px 3px var(--maincolor2);
     background: rgb(255, 255, 255);
 }
-/* .post-textarea {
-    align-self: flex-end;
-} */
+.post-textarea {
+    max-width: 83%;
+}
 
 .suggested-jams-section{
     margin-top: 5%;
@@ -59,6 +59,10 @@
     .posts-wrapper{
     max-height: 85%;
     overflow-y: scroll;
+    border: 1px solid lightgray;
+    width: 96%;
+    margin: auto;
+    padding: 0;
     }
 }
 
@@ -77,6 +81,10 @@
     .posts-wrapper{
     max-height: 83%;
     overflow-y: scroll;
+    border: 1px solid lightgray;
+    width: 96%;
+    margin: auto;
+    padding: 0;
     }
 } 
 
@@ -125,8 +133,9 @@
     background: rgb(255, 255, 255);
 }
 
-.most-recent-jam-wrapper{
+.jam-members-wrapper{
     margin-top: 1.2vh;
+    padding: 2%;
 }
 
 .next-jam-wrapper{
@@ -179,10 +188,19 @@
 }
 
 .posting-function-wrapper{
-    margin-top: 5%;
     background: rgb(255, 255, 255);
+    width: 96%;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .posting-font-size{
     font-size: 1.9vh;
+}
+
+.single-member-wrapper{
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-bottom: 1px solid lightgray;
 }

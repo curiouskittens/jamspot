@@ -141,20 +141,17 @@ class Jam extends Component {
                                     <div className="most-recent-jam-section">
                                         <p className="text-center recent-jam-title-text">Members</p>
                                         <hr className="jam-page-separator" />
-                                        <div className="most-recent-jam-wrapper d-flex container-fluid">
+                                        <div className="jam-members-wrapper d-flex container-fluid">
                                             <div className="most-recent-jam-info col-12">
                                                 {this.state.members ?
                                                     this.state.members.map((member, idx) => (
-                                                        <React.Fragment>
-                                                            <div className="row d-flex align-items-center justify-content-between" key={idx}>
+                                                            <div className="row d-flex align-items-center justify-content-between single-member-wrapper" key={idx}>
                                                                 <img className="user-mini-pic col-3 mx-0 px-0" src={this.getProfilePic(member.email)} alt="Gravatar" />
                                                                 <div className="col-3 mx-0 px-0" key={idx}>{member.name}</div>
                                                                 <div className="jampage-instrument-wrapper col-6 d-flex flex-wrap mx-0 px-0">
                                                                     {this.getInstrumentIcon(member.instruments)}
                                                                 </div>
                                                             </div>
-                                                            <hr />
-                                                        </React.Fragment>
                                                     ))
 
                                                     : <p>Loading...</p>
@@ -185,7 +182,7 @@ class Jam extends Component {
                                                 }
                                             </div>
                                         </div>
-                                        <div className="d-flex align-items-end posting-function-wrapper">
+                                        <div className="d-flex align-items-end posting-function-wrapper justify-content-between">
                                             <TextareaAutosize
                                                 id="post-input"
                                                 name="postInput"
