@@ -120,16 +120,20 @@ class Jam extends Component {
 
     handleSubmitPost = event => {
         console.log("yay you clicked post!!")
-        api.addPost({
-            content: this.state.postInput,
-            creator: sessionStorage.getItem("userId"),
-            jamId: this.props.jamId
-        }).then(dbPost => {
-            this.setState({
-                postInput: ""
-            })
-            this.getJam();
-        }).catch(err => console.log(err))
+        if (this.state.postInput.trim()) {
+            api.addPost({
+                content: this.state.postInput,
+                creator: sessionStorage.getItem("userId"),
+                jamId: this.props.jamId
+            }).then(dbPost => {
+                this.setState({
+                    postInput: ""
+                })
+                this.getJam();
+            }).catch(err => console.log(err))
+        } else {
+            sweetAlert("error", "warning-text", "Sorry, posts cannot be empty.")
+        }
     }
 
 
