@@ -74,7 +74,7 @@ class Jam extends Component {
         
         if(instruments.length>0) {
             return (instruments.map((instrument,idx) => {
-                let imgSrc = "/instrument_icons/no-waiting.png"
+                let imgSrc = "/instrument_icons/none.png"
                 for(let i=0; i<instrumentList.length; i++){
                     if(instrumentList[i].name === instrument.name){
                         console.log("match")
@@ -86,7 +86,7 @@ class Jam extends Component {
             }))
         }else{
             console.log("else")
-            return <img className="instrument-mini-pic " src="/instrument_icons/no-waiting.png" alt="instrument"/>
+            return <img className="instrument-mini-pic " src="/instrument_icons/none.png" alt="instrument"/>
         }
 
     }

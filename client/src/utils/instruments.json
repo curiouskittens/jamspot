@@ -1,37 +1,102 @@
 [
     {
-        "name": "Lead Guitar",
-        "value": "Lead Guitar",
-        "icon": "/instrument_icons/guitar-black-shape.png"
+        "name": "Acoustic Guitar",
+        "value": "Acoustic Guitar",
+        "icon": "/instrument_icons/acoustic-guitar.png"
     },
     {
-        "name": "Rhythm Guitar",
-        "value": "Rhythm Guitar",
-        "icon": "/instrument_icons/guitar.png"
+        "name": "Banjo",
+        "value": "Banjo",
+        "icon": "/instrument_icons/banjo.png"
     },
     {
-        "name": "Bass",
-        "value": "Bass",
-        "icon": "/instrument_icons/bass.png"
+        "name": "Bass Guitar",
+        "value": "Bass Guitar",
+        "icon": "/instrument_icons/bass-guitar.png"
     },
     {
-        "name": "Keys",
-        "value": "Keys",
-        "icon": "/instrument_icons/piano.png"
+        "name": "Cello",
+        "value": "Cello",
+        "icon": "/instrument_icons/cello.png"
+    },
+    {
+        "name": "Classical Guitar",
+        "value": "Classical Guitar",
+        "icon": "/instrument_icons/classical-guitar.png"
+    },
+    {
+        "name": "Double Bass",
+        "value": "Double Bass",
+        "icon": "/instrument_icons/double-bass.png"
     },
     {
         "name": "Drums",
         "value": "Drums",
-        "icon":  "/instrument_icons/drummer-set.png"
+        "icon":  "/instrument_icons/drums.png"
+    },
+    {
+        "name": "Electric Guitar",
+        "value": "Electric Guitar",
+        "icon": "/instrument_icons/electric-guitar.png"
+    },
+    {
+        "name": "Flute",
+        "value": "Flute",
+        "icon": "/instrument_icons/flute.png"
+    },
+    {
+        "name": "French Horn",
+        "value": "French Horn",
+        "icon": "/instrument_icons/french-horn.png"
+    },
+    {
+        "name": "Harmonica",
+        "value": "Harmonica",
+        "icon": "/instrument_icons/harmonica.png"
+    },
+    {
+        "name": "Keyboard",
+        "value": "Keyboard",
+        "icon": "/instrument_icons/keyboard.png"
     },
     {
         "name": "Percussion",
         "value": "Percussion",
-        "icon":  "/instrument_icons/drummer.png"
+        "icon":  "/instrument_icons/percussion.png"
+    },
+    {
+        "name": "Piano",
+        "value": "Piano",
+        "icon": "/instrument_icons/piano.png"
+    },
+    {
+        "name": "Saxophone",
+        "value": "Saxophone",
+        "icon": "/instrument_icons/saxophone.png"
+    },
+    {
+        "name": "Trombone",
+        "value": "Trombone",
+        "icon": "/instrument_icons/trombone.png"
+    },
+    {
+        "name": "Trumpet",
+        "value": "Trumpet",
+        "icon": "/instrument_icons/trumpet.png"
+    },
+    {
+        "name": "Ukelele",
+        "value": "Ukelele",
+        "icon": "/instrument_icons/ukelele.png"
+    },
+    {
+        "name": "Violin",
+        "value": "Violin",
+        "icon": "/instrument_icons/violin.png"
     },
     {
         "name": "Vocals",
         "value": "Vocals",
-        "icon": "/instrument_icons/voice.png"
+        "icon": "/instrument_icons/vocals.png"
     }
 ]
