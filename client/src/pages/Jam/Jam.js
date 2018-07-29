@@ -145,7 +145,7 @@ class Jam extends Component {
                                         <p className="text-center next-jam-title-text">{this.state.jamName}</p>
                                         <hr className="jam-page-separator"/>
                                         <div className="next-jam-wrapper d-flex container-fluid">
-                                            <div className="next-jam-info col-12">
+                                            <div className="next-jam-info col-12 jam-page-text-size">
                                                 <p>Jam Name: {this.state.jamName}</p>
                                                 <p>Creator: {this.state.jamCreator}</p>
                                                 <p>Date: {moment(this.state.jamDate).format("LLL")}</p>
@@ -179,23 +179,22 @@ class Jam extends Component {
                                     <div className="post-content-wrapper">
                                         <div className="post-display-section">
                                             <p className="text-center recent-jam-title-text">Posts</p>
-                                            <hr className="jam-page-separator" />
                                             <div className="col-12 posts-wrapper">
-                                            {this.state.posts ?
-                                                    this.state.posts.map((post,idx)=>(
-                                                    <div className="row post" key={idx}>
-                                                        <img className="user-post-pic col-1 mx-0 px-0" src={this.getProfilePic(post.creator.email)} alt="Gravatar" />
-                                                        <div className="col-2 mx-0 px-1" key={idx}>{post.creator.name}</div>
-                                                        {/* <div className="jampage-instrument-wrapper col-3">
-                                                            {this.getInstrumentIcon(member.instruments)}
-                                                        </div> */}
-                                                        <div className="col-9 post-content-style">{post.content}</div>
+                                                {this.state.posts ?
+                                                        this.state.posts.map((post,idx)=>(
+                                                        <div className="row post" key={idx}>
+                                                            <img className="user-post-pic col-1 mx-0 px-0" src={this.getProfilePic(post.creator.email)} alt="Gravatar" />
+                                                            <div className="col-2 mx-0 px-1" key={idx}>{post.creator.name}</div>
+                                                            {/* <div className="jampage-instrument-wrapper col-3">
+                                                                {this.getInstrumentIcon(member.instruments)}
+                                                            </div> */}
+                                                            <div className="col-9 post-content-style">{post.content}</div>
+                                                        
+                                                        </div>
+                                                        ))
                                                     
-                                                    </div>
-                                                    ))
-                                                
-                                                    : <p>Loading...</p>
-                                            }
+                                                        : <p>Loading...</p>
+                                                }
                                             </div>
                                         </div>
                                         <div className="d-flex align-items-end posting-function-wrapper">
@@ -207,9 +206,9 @@ class Jam extends Component {
                                                 placeholder="write something"
                                                 // disabled={this.state.bioDisabled}
                                                 onChange={this.handleInputChange}
-                                                className="form-control post-textarea"
+                                                className="form-control post-textarea posting-font-size"
                                             />
-                                            <button className="btn btn-primary" onClick={this.handleSubmitPost}>Post</button>
+                                            <button className="btn btn-primary posting-font-size" onClick={this.handleSubmitPost}>Post</button>
                                         </div>
                                     </div>
                                 </div>

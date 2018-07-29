@@ -18,7 +18,6 @@
 }
 
 .post-display-section{
-    border: var(--maincolor2) 1px solid;
     height: 500px;
     background: rgb(255, 255, 255);
 }
@@ -57,6 +56,10 @@
     .post-mobile-responsive{
     margin-top: 5%;
     }
+    .posts-wrapper{
+    max-height: 85%;
+    overflow-y: scroll;
+    }
 }
 
 @media only screen and (min-width: 600px) {
@@ -71,6 +74,10 @@
     .post-mobile-responsive{
     margin-top: 5%;
     }
+    .posts-wrapper{
+    max-height: 83%;
+    overflow-y: scroll;
+    }
 } 
 
 @media only screen and (min-width: 768px) {
@@ -83,11 +90,23 @@
     .post-mobile-responsive{
     margin-top: 0;
     }
+    .posts-wrapper{
+    max-height: 80%;
+    }
+} 
+
+@media only screen and (min-width: 992px) {
+    .posts-wrapper{
+    max-height: 75%;
+    }
 } 
 
 @media only screen and (min-width: 1200px) {
     .jam-page-content{
         margin-top: 4.5%;
+    }
+    .posts-wrapper{
+    max-height: 85%;
     }
 }
 
@@ -130,7 +149,6 @@
 
 .jam-page-separator{
     border: var(--maincolor2) 1px solid;
-    margin-bottom: 0 !important;
 }
 
 .user-mini-pic{
@@ -151,19 +169,20 @@
 .post {
     /* border: 1px solid black; */
     margin: 2px;
-    background-color:rgb(164,255,126);
-}
-
-.posts-wrapper{
-    max-height: 83.7%;
-    overflow-y: scroll;
+    background-color:var(--maincolor3);
+    font-size: 1.9vh;
 }
 
 .post-content-style{
     white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 .posting-function-wrapper{
-    margin-top: 5.2%;
+    margin-top: 5%;
     background: rgb(255, 255, 255);
+}
+
+.posting-font-size{
+    font-size: 1.9vh;
 }
