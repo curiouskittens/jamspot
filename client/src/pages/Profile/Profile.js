@@ -8,6 +8,8 @@ import InstrumentInput from "../../components/InstrumentInput";
 import GenreInput from "../../components/GenreInput";
 import sweetAlert from "../../utils/sweetAlert";
 import TextareaAutosize from "react-autosize-textarea";
+import instrumentList from "../../utils/instruments.json";
+import genreList from "../../utils/genres.json";
 
 class Profile extends Component {
     state = {
@@ -25,6 +27,8 @@ class Profile extends Component {
         genresDisabled: true,
         soundcloudDisabled: true,
         defaultInstrumentSkillBar: "instrument-skill-change-section d-flex justify-content-around skillbar-background",
+        instrumentOptions: instrumentList.slice(),
+        genreOptions: genreList.slice()
     }
 
     componentDidMount() {
@@ -100,31 +104,65 @@ class Profile extends Component {
         this.setState({ [name]: value })
     }
 
+    // Instrument Input Handlers
+    updateInstrumentOptions = (currentInstrumentsInState) => {
+        const newInstrumentOptions = instrumentList.filter(option=>{
+            for(let i=0; i< currentInstrumentsInState.length;i++){
+                if (currentInstrumentsInState[i].name === option.name){
+                    return false
+                }
+            }
+            return true
+        })
+        return newInstrumentOptions
+    }
+
     handleInstrumentNameChange = (idx) => (evt) => {
-        const newinstruments = this.state.instruments.map((instrument, sidx) => {
-            if (idx !== sidx) return instrument;
-            return { ...instrument, name: evt.target.value };
+        const newInstruments = this.state.instruments.map((instrument, sidx) => {
+          if (idx !== sidx) return instrument;
+          return { ...instrument, name: evt.target.value };
         });
 
-        this.setState({ instruments: newinstruments });
+        const newInstrumentOptions = this.updateInstrumentOptions(newInstruments);
+        this.setState({ instruments: newInstruments, instrumentOptions: newInstrumentOptions });
     }
 
     handleInstrumentSkillChange = (idx) => (evt) => {
-        const newinstruments = this.state.instruments.map((instrument, sidx) => {
+        const newInstruments = this.state.instruments.map((instrument, sidx) => {
             if (idx !== sidx) return instrument;
             return { ...instrument, skill: evt.target.value };
         });
 
-        this.setState({ instruments: newinstruments });
+        this.setState({ instruments: newInstruments });
     }
 
     handleAddInstrument = () => {
-        this.setState({ instruments: this.state.instruments.concat([{ name: '', skill: '' }]) });
+        let instrumentSelected = true
+        this.state.instruments.forEach((instrument)=>{
+            if(!instrument.name){
+                sweetAlert("error", "warning-text", "No instrument selected")
+                instrumentSelected = false
+                return
+            }else if(!instrument.skill){
+                sweetAlert("error", "warning-text", "No skill level selected")
+                instrumentSelected = false
+                return
+            }
+        })
+        if(instrumentSelected){
+            const newInstrumentOptions = this.updateInstrumentOptions(this.state.instruments)
+            this.setState({ 
+                instruments: this.state.instruments.concat([{ name: '', skill: ''}]), 
+                instrumentOptions: newInstrumentOptions 
+            });
+        }
     }
 
     handleRemoveInstrument = (idx) => () => {
         if (this.state.instruments.length > 1) {
-            this.setState({ instruments: this.state.instruments.filter((s, sidx) => idx !== sidx) });
+            const newInstruments = this.state.instruments.filter((s, sidx) => idx !== sidx)
+            const newInstrumentOptions = this.updateInstrumentOptions(newInstruments)
+            this.setState({ instruments: newInstruments, instrumentOptions: newInstrumentOptions });
         } else {
             this.setState({ instruments: [{ name: "", skill: "" }] }, () => {
                 this.toggleEdit({ target: { id: "instrumentsDisabled", nodeName: "button", innerHTML: "forceSave" } });
@@ -132,22 +170,48 @@ class Profile extends Component {
         }
     }
 
+    // Genre Input Handlers
+    updateGenreOptions = (currentGenresInState) => {
+        const newGenreOptions = genreList.filter(option=>{
+            for(let i=0; i< currentGenresInState.length;i++){
+                if (currentGenresInState[i] === option.name){
+                    return false
+                }
+            }
+            return true
+        })
+        return newGenreOptions
+    }
+
     handleGenreNameChange = (idx) => (evt) => {
         const newGenres = this.state.genres.map((genre, sidx) => {
             if (idx !== sidx) return genre;
             return evt.target.value;
         });
-
-        this.setState({ genres: newGenres });
+        const newGenreOptions = this.updateGenreOptions(newGenres)
+        this.setState({ genres: newGenres, genreOptions: newGenreOptions});
     }
 
     handleAddGenre = () => {
-        this.setState({ genres: this.state.genres.concat([""]) });
+        let genreSelected = true
+        this.state.genres.forEach((genre)=>{
+            if(!genre){
+                sweetAlert("error", "warning-text", "No genre selected")
+                genreSelected = false
+                return
+            }
+        })
+        if(genreSelected){
+            const newGenreOptions = this.updateGenreOptions(this.state.genres)
+            this.setState({ genres: this.state.genres.concat([ "" ]), genreOptions: newGenreOptions });
+        }
     }
 
     handleRemoveGenre = (idx) => () => {
         if (this.state.genres.length > 1) {
-            this.setState({ genres: this.state.genres.filter((s, sidx) => idx !== sidx) });
+            const newGenres = this.state.genres.filter((s, sidx) => idx !== sidx)
+            const newGenreOptions = this.updateGenreOptions(newGenres)
+            this.setState({ genres: newGenres, genreOptions: newGenreOptions});
         } else {
             this.setState({ genres: [""] }, () => {
                 this.toggleEdit({ target: { id: "genresDisabled", nodeName: "button", innerHTML: "forceSave" } });
@@ -245,6 +309,7 @@ class Profile extends Component {
                                             skillChangeHandler={this.handleInstrumentSkillChange(idx)}
                                             removeHandler={this.handleRemoveInstrument(idx)}
                                             instrumentBar={this.state.defaultInstrumentSkillBar}
+                                            instrumentOptions={this.state.instrumentOptions}
                                         />
                                     </div>
                                 ))}
@@ -267,6 +332,7 @@ class Profile extends Component {
                                             genre={genre}
                                             nameChangeHandler={this.handleGenreNameChange(idx)}
                                             removeHandler={this.handleRemoveGenre(idx)}
+                                            genreOptions={this.state.genreOptions}
                                         />
                                     </div>
                                 ))}

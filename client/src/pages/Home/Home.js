@@ -23,10 +23,10 @@ class Home extends Component {
         genres: [""],
         instruments: [{ name: "", skill: "" }],
         userMessages: [],
-        nextJam: { name: "", location: "", date: "", members: [] },
-        mostRecentJam: { name: "", location: "", date: "", members: [] },
+        nextJam: { name: "", date: "", members: [] },
+        mostRecentJam: { name: "", date: "", members: [] },
         searchJamsSubsets: [],
-        searchJams: [{ name: "", location: "", date: "", members: [] }]
+        searchJams: [{ name: "", date: "", members: [] }]
     }
 
     componentDidMount() {
@@ -119,7 +119,7 @@ class Home extends Component {
                             <div className="suggested-jam-box-wrapper" key={jam.name}>
                                 <div className="suggested-jam-box">
                                     <p className="suggested-jam-title-text">{jam.name}</p>
-                                    <p>{jam.location}</p>
+                                    {jam.location && <p>{jam.location.address } </p>}
                                     <p>{moment(jam.date).format("LLL")}</p>
                                     {jam.genres.map((genre, index) => (
                                         <p key={index}>{genre}</p>
@@ -149,7 +149,7 @@ class Home extends Component {
                                         <React.Fragment>
                                             <div className="next-jam-info col-6 text-center">
                                                 <p>{this.state.nextJam.name}</p>
-                                                <p>{this.state.nextJam.location}</p>
+                                                {this.state.nextJam.location && <p>{this.state.nextJam.location.address } </p>}
                                                 <p>{moment(this.state.nextJam.date).format("LLL")}</p>
                                             </div>
                                             <div className="next-jam-members col-6 text-center">
@@ -172,7 +172,7 @@ class Home extends Component {
                                         <React.Fragment>
                                             <div className="most-recent-jam-info col-6 text-center">
                                                 <p>{this.state.mostRecentJam.name}</p>
-                                                <p>{this.state.mostRecentJam.location}</p>
+                                                {this.state.mostRecentJam.location && <p>{this.state.mostRecentJam.location.address } </p> }
                                                 <p>{moment(this.state.mostRecentJam.date).format("LLL")}</p>
                                             </div>
                                             <div className="most-recent-jam-members col-6 text-center">

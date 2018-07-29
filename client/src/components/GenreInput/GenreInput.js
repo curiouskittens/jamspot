@@ -13,19 +13,10 @@ class GenreInput extends Component {
                     disabled={this.props.disabled}
                 >
                     <option defaultValue disabled value=""> -- select a genre -- </option>
-                    <option value="Hip Hop">Hip Hop</option>
-                    <option value="Rock">Rock</option>
-                    <option value="Bluegrass">Bluegrass</option>
-                    <option value="Country">Country</option>
-                    <option value="Folk">Folk</option>
-                    <option value="Indie">Indie</option>
-                    <option value="Punk">Punk</option>
-                    <option value="Alternative">Alternative</option>
-                    <option value="Classical">Classical</option>
-                    <option value="Jazz">Jazz</option>
-                    <option value="R&B">R&B</option>
-                    <option value="Blues">Blues</option>
-                    <option value="Electronic">Electronic</option>
+                    {this.props.genre && <option value={this.props.genre}>{this.props.genre}</option>}
+                    {this.props.genreOptions.map((genre,idx) =>(
+                        <option key={idx} value={genre.value}>{genre.name}</option>
+                    ))}
                 </select>
                 {!this.props.disabled && <button type="button" onClick={this.props.removeHandler} className="btn btn-sm btn-outline-secondary genre-button-width">✖</button>}
             </div>

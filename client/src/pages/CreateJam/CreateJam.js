@@ -6,6 +6,9 @@ import Footer from "../../components/Footer";
 import InstrumentInput from "../../components/InstrumentInput"
 import GenreInput from "../../components/GenreInput"
 import sweetAlert from "../../utils/sweetAlert";
+import instrumentList from "../../utils/instruments.json";
+import genreList from "../../utils/genres.json";
+
 
 class CreateJam extends Component {
     state = {
@@ -13,10 +16,12 @@ class CreateJam extends Component {
         description: "",
         date: "",
         location: "",
-        instruments:[{ name: "", quantity: "" }],
+        instruments:[{ name: "", quantity: ""}],
         genres: [""],
         jamCreated: false,
-        createdJamId: ""
+        createdJamId: "",
+        instrumentOptions: instrumentList.slice(),
+        genreOptions: genreList.slice()
     }
 
     handleInputChange = event => {
@@ -26,30 +31,77 @@ class CreateJam extends Component {
         })
     }
 
+    // Instrument Input Handlers
+    updateInstrumentOptions = (currentInstrumentsInState) => {
+        const newInstrumentOptions = instrumentList.filter(option=>{
+            for(let i=0; i< currentInstrumentsInState.length;i++){
+                if (currentInstrumentsInState[i].name === option.name){
+                    return false
+                }
+            }
+            return true
+        })
+        return newInstrumentOptions
+    }
+
     handleInstrumentNameChange = (idx) => (evt) => {
-        const newinstruments = this.state.instruments.map((instrument, sidx) => {
+        const newInstruments = this.state.instruments.map((instrument, sidx) => {
           if (idx !== sidx) return instrument;
           return { ...instrument, name: evt.target.value };
         });
-        
-        this.setState({ instruments: newinstruments });
+
+        const newInstrumentOptions = this.updateInstrumentOptions(newInstruments)
+        this.setState({ instruments: newInstruments, instrumentOptions: newInstrumentOptions });
     }
 
     handleInstrumentQuantityChange = (idx) => (evt) => {
-        const newinstruments = this.state.instruments.map((instrument, sidx) => {
+        const newInstruments = this.state.instruments.map((instrument, sidx) => {
           if (idx !== sidx) return instrument;
           return { ...instrument, quantity: evt.target.value };
         });
         
-        this.setState({ instruments: newinstruments });
+        this.setState({ instruments: newInstruments });
     }
     
     handleAddInstrument = () => {
-        this.setState({ instruments: this.state.instruments.concat([{ name: '', quantity: '' }]) });
+        let instrumentSelected = true
+        this.state.instruments.forEach((instrument)=>{
+            if(!instrument.name){
+                sweetAlert("error", "warning-text", "No instrument selected")
+                instrumentSelected = false
+                return
+            }else if(!instrument.quantity){
+                sweetAlert("error", "warning-text", "No instrument quantity selected")
+                instrumentSelected = false
+                return
+            }
+        })
+        if(instrumentSelected){
+            const newInstrumentOptions = this.updateInstrumentOptions(this.state.instruments)
+            this.setState({ 
+                instruments: this.state.instruments.concat([{ name: '', quantity: ''}]),
+                instrumentOptions: newInstrumentOptions
+             });
+        }
     }
     
     handleRemoveInstrument = (idx) => () => {
-        this.setState({ instruments: this.state.instruments.filter((s, sidx) => idx !== sidx) });
+        const newInstruments = this.state.instruments.filter((s, sidx) => idx !== sidx)
+        const newInstrumentOptions = this.updateInstrumentOptions(newInstruments)
+        this.setState({ instruments: newInstruments, instrumentOptions: newInstrumentOptions });
+    }
+
+    // Genre Input Handlers
+    updateGenreOptions = (currentGenresInState) => {
+        const newGenreOptions = genreList.filter(option=>{
+            for(let i=0; i< currentGenresInState.length;i++){
+                if (currentGenresInState[i] === option.name){
+                    return false
+                }
+            }
+            return true
+        })
+        return newGenreOptions
     }
 
     handleGenreNameChange = (idx) => (evt) => {
@@ -57,17 +109,31 @@ class CreateJam extends Component {
           if (idx !== sidx) return genre;
           return evt.target.value;
         });
-        
-        this.setState({ genres: newGenres});
+        const newGenreOptions = this.updateGenreOptions(newGenres)
+        this.setState({ genres: newGenres, genreOptions: newGenreOptions});
     }
     handleAddGenre = () => {
-        this.setState({ genres: this.state.genres.concat([ "" ]) });
+        let genreSelected = true
+        this.state.genres.forEach((genre)=>{
+            if(!genre){
+                sweetAlert("error", "warning-text", "No genre selected")
+                genreSelected = false
+                return
+            }
+        })
+        if(genreSelected){
+            const newGenreOptions = this.updateGenreOptions(this.state.genres)
+            this.setState({ genres: this.state.genres.concat([ "" ]), genreOptions: newGenreOptions });
+        }
     }
     
     handleRemoveGenre = (idx) => () => {
-        this.setState({ genres: this.state.genres.filter((s, sidx) => idx !== sidx) });
+        const newGenres = this.state.genres.filter((s, sidx) => idx !== sidx)
+        const newGenreOptions = this.updateGenreOptions(newGenres)
+        this.setState({ genres: newGenres, genreOptions: newGenreOptions});
     }
 
+    // Form Submission
     handleFormSubmit = event => {
         event.preventDefault();
 
@@ -101,7 +167,7 @@ class CreateJam extends Component {
                 name: this.state.jamName,
                 description: this.state.description,
                 date: this.state.date,
-                location: this.state.location,
+                location: { address: this.state.location },
                 instruments: this.state.instruments,
                 genres: this.state.genres,
                 admin: sessionStorage.getItem("userId"),
@@ -192,6 +258,7 @@ class CreateJam extends Component {
                                         nameChangeHandler={this.handleInstrumentNameChange(idx)}
                                         quantityChangeHandler={this.handleInstrumentQuantityChange(idx)} 
                                         removeHandler={this.handleRemoveInstrument(idx)}
+                                        instrumentOptions={this.state.instrumentOptions}
                                     />
                                 </div>
                             ))}
@@ -207,6 +274,7 @@ class CreateJam extends Component {
                                     genre={genre} 
                                     nameChangeHandler={this.handleGenreNameChange(idx)}
                                     removeHandler={this.handleRemoveGenre(idx)}
+                                    genreOptions={this.state.genreOptions}
                                 />
                                 </div>
                             ))}

@@ -1,0 +1,20 @@
+.jam-card-wrapper{
+    padding: 3%;
+}
+
+.jam-card{
+    border-radius: 15px;
+}
+
+/* .jam-card:hover{
+    border: white 3px double;
+} */
+
+.jam-card-subheadings{
+    color: var(--maincolor1);
+}
+
+.instrument-mini-pic {
+    max-height: 100%;
+    max-width: 30%;
+}

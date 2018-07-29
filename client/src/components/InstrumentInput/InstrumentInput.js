@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./InstrumentInput.css";
 
 class InstrumentInput extends Component {
-
     render() {
         return (
             <div className="instrument">
@@ -13,13 +12,10 @@ class InstrumentInput extends Component {
                     disabled={this.props.disabled}
                 >
                     <option defaultValue disabled value=""> -- select an instrument -- </option>
-                    <option value="Lead Guitar">Lead Guitar</option>
-                    <option value="Rhythm Guitar">Rhythm Guitar</option>
-                    <option value="Bass">Bass</option>
-                    <option value="Keys">Keys</option>
-                    <option value="Drums">Drums</option>
-                    <option value="Percussion">Percussion</option>
-                    <option value="Vocals">Vocals</option>
+                    {this.props.instrument.name && <option value={this.props.instrument.name}>{this.props.instrument.name}</option>}
+                    {this.props.instrumentOptions.map((instrument, idx)=>(
+                        <option key={idx} value={instrument.value}>{instrument.name}</option>
+                    ))}
                 </select>
 
                 {this.props.quantityChangeHandler && (
