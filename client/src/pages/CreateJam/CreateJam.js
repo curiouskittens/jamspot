@@ -67,11 +67,11 @@ class CreateJam extends Component {
         let instrumentSelected = true
         this.state.instruments.forEach((instrument)=>{
             if(!instrument.name){
-                console.log("no instrument selected")
+                sweetAlert("error", "warning-text", "No instrument selected")
                 instrumentSelected = false
                 return
             }else if(!instrument.quantity){
-                console.log("no instrument quantity selected")
+                sweetAlert("error", "warning-text", "No instrument quantity selected")
                 instrumentSelected = false
                 return
             }
@@ -116,7 +116,7 @@ class CreateJam extends Component {
         let genreSelected = true
         this.state.genres.forEach((genre)=>{
             if(!genre){
-                console.log("no genre selected")
+                sweetAlert("error", "warning-text", "No genre selected")
                 genreSelected = false
                 return
             }
