@@ -7,6 +7,7 @@ import InstrumentInput from "../../components/InstrumentInput"
 import GenreInput from "../../components/GenreInput"
 import sweetAlert from "../../utils/sweetAlert";
 import instrumentList from "../../utils/instruments.json";
+import genreList from "../../utils/genres.json";
 
 
 class CreateJam extends Component {
@@ -19,7 +20,8 @@ class CreateJam extends Component {
         genres: [""],
         jamCreated: false,
         createdJamId: "",
-        instrumentOptions: instrumentList.slice()
+        instrumentOptions: instrumentList.slice(),
+        genreOptions: genreList.slice()
     }
 
     handleInputChange = event => {
@@ -29,45 +31,36 @@ class CreateJam extends Component {
         })
     }
 
+    // Instrument Input Handlers
+    updateInstrumentOptions = (currentInstrumentsInState) => {
+        const newInstrumentOptions = instrumentList.filter(option=>{
+            for(let i=0; i< currentInstrumentsInState.length;i++){
+                if (currentInstrumentsInState[i].name === option.name){
+                    return false
+                }
+            }
+            return true
+        })
+        return newInstrumentOptions
+    }
+
     handleInstrumentNameChange = (idx) => (evt) => {
-        const newinstruments = this.state.instruments.map((instrument, sidx) => {
+        const newInstruments = this.state.instruments.map((instrument, sidx) => {
           if (idx !== sidx) return instrument;
           return { ...instrument, name: evt.target.value };
         });
 
-        const newInstrumentOptions = instrumentList.filter(option=>{
-            for(let i=0; i< newinstruments.length;i++){
-                if (newinstruments[i].name === option.name){
-                    return false
-                }
-            }
-            return true
-    
-        })
-        this.setState({ instruments: newinstruments, instrumentOptions: newInstrumentOptions });
-    }
-
-    updateInstrumentOptions = () => {
-        const newInstrumentOptions = instrumentList.filter(option=>{
-            for(let i=0; i< this.state.instruments.length;i++){
-                if (this.state.instruments[i].name === option.name){
-                    return false
-                }
-            }
-            return true
-    
-        })
-        console.log(newInstrumentOptions)
-        this.setState({ instrumentOptions: newInstrumentOptions})
+        const newInstrumentOptions = this.updateInstrumentOptions(newInstruments)
+        this.setState({ instruments: newInstruments, instrumentOptions: newInstrumentOptions });
     }
 
     handleInstrumentQuantityChange = (idx) => (evt) => {
-        const newinstruments = this.state.instruments.map((instrument, sidx) => {
+        const newInstruments = this.state.instruments.map((instrument, sidx) => {
           if (idx !== sidx) return instrument;
           return { ...instrument, quantity: evt.target.value };
         });
         
-        this.setState({ instruments: newinstruments });
+        this.setState({ instruments: newInstruments });
     }
     
     handleAddInstrument = () => {
@@ -84,26 +77,31 @@ class CreateJam extends Component {
             }
         })
         if(instrumentSelected){
-            this.updateInstrumentOptions()
-            this.setState({ instruments: this.state.instruments.concat([{ name: '', quantity: ''}]) });
+            const newInstrumentOptions = this.updateInstrumentOptions(this.state.instruments)
+            this.setState({ 
+                instruments: this.state.instruments.concat([{ name: '', quantity: ''}]),
+                instrumentOptions: newInstrumentOptions
+             });
         }
-
     }
     
     handleRemoveInstrument = (idx) => () => {
-        const newinstruments = this.state.instruments.filter((s, sidx) => idx !== sidx)
-  
-        const newInstrumentOptions = instrumentList.filter(option=>{
-            for(let i=0; i< newinstruments.length;i++){
-                if (newinstruments[i].name === option.name){
+        const newInstruments = this.state.instruments.filter((s, sidx) => idx !== sidx)
+        const newInstrumentOptions = this.updateInstrumentOptions(newInstruments)
+        this.setState({ instruments: newInstruments, instrumentOptions: newInstrumentOptions });
+    }
+
+    // Genre Input Handlers
+    updateGenreOptions = (currentGenresInState) => {
+        const newGenreOptions = genreList.filter(option=>{
+            for(let i=0; i< currentGenresInState.length;i++){
+                if (currentGenresInState[i] === option.name){
                     return false
                 }
             }
             return true
-    
         })
-        this.setState({ instruments: newinstruments, instrumentOptions: newInstrumentOptions });
-        
+        return newGenreOptions
     }
 
     handleGenreNameChange = (idx) => (evt) => {
@@ -111,17 +109,31 @@ class CreateJam extends Component {
           if (idx !== sidx) return genre;
           return evt.target.value;
         });
-        
-        this.setState({ genres: newGenres});
+        const newGenreOptions = this.updateGenreOptions(newGenres)
+        this.setState({ genres: newGenres, genreOptions: newGenreOptions});
     }
     handleAddGenre = () => {
-        this.setState({ genres: this.state.genres.concat([ "" ]) });
+        let genreSelected = true
+        this.state.genres.forEach((genre)=>{
+            if(!genre){
+                console.log("no genre selected")
+                genreSelected = false
+                return
+            }
+        })
+        if(genreSelected){
+            const newGenreOptions = this.updateGenreOptions(this.state.genres)
+            this.setState({ genres: this.state.genres.concat([ "" ]), genreOptions: newGenreOptions });
+        }
     }
     
     handleRemoveGenre = (idx) => () => {
-        this.setState({ genres: this.state.genres.filter((s, sidx) => idx !== sidx) });
+        const newGenres = this.state.genres.filter((s, sidx) => idx !== sidx)
+        const newGenreOptions = this.updateGenreOptions(newGenres)
+        this.setState({ genres: newGenres, genreOptions: newGenreOptions});
     }
 
+    // Form Submission
     handleFormSubmit = event => {
         event.preventDefault();
 
@@ -241,7 +253,6 @@ class CreateJam extends Component {
                             <hr/>
                             {this.state.instruments.map((instrument, idx) => (
                                 <div className="form-group create-jam-input-size" key={`${idx}`}>
-                                    {console.log(instrument.disabled)}
                                     <InstrumentInput 
                                         instrument={instrument} 
                                         nameChangeHandler={this.handleInstrumentNameChange(idx)}
@@ -263,6 +274,7 @@ class CreateJam extends Component {
                                     genre={genre} 
                                     nameChangeHandler={this.handleGenreNameChange(idx)}
                                     removeHandler={this.handleRemoveGenre(idx)}
+                                    genreOptions={this.state.genreOptions}
                                 />
                                 </div>
                             ))}

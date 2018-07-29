@@ -1,0 +1,54 @@
+[
+    {
+        "name": "Hip Hop",
+        "value": "Hip Hop"
+    },
+    {
+        "name": "Rock",
+        "value": "Rock"
+    },
+    {
+        "name": "Bluegrass",
+        "value": "Bluegrass"
+    },
+    {
+        "name": "Country",
+        "value": "Country"
+    },
+    {
+        "name": "Folk",
+        "value": "Folk"
+    },
+    {
+        "name": "Indie",
+        "value": "Indie"
+    },
+    {
+        "name": "Punk",
+        "value": "Punk"
+    },
+    {
+        "name": "Alternative",
+        "value": "Alternative"
+    },
+    {
+        "name": "Classical",
+        "value": "Classical"
+    },
+    {
+        "name": "Jazz",
+        "value": "Jazz"
+    },
+    {
+        "name": "R&B",
+        "value": "R&B"
+    },
+    {
+        "name": "Blues",
+        "value": "Blues"
+    },
+    {
+        "name": "Electronic",
+        "value": "Electronic"
+    }
+]
