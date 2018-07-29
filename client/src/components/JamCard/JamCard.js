@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./Jam.css";
+import "./JamCard.css";
 
-class Jam extends Component {
+class JamCard extends Component {
 
     render() {
         return (
@@ -21,4 +21,4 @@ class Jam extends Component {
     
 }
 
-export default Jam;
+export default JamCard;

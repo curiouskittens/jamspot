@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Jam from "../../components/Jam";
+import JamCard from "../../components/JamCard";
 import "./FindJam.css";
 import api from "../../utils/api";
 import Footer from "../../components/Footer";
@@ -58,7 +58,7 @@ class FindJam extends Component {
                             <hr />
                             <div className="row d-md-flex">
                                 {this.state.jams.map((jam, idx) => (
-                                    <Jam key={idx} unrequested={true} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={() => this.joinJamEventHandler(jam._id)} />
+                                    <JamCard key={idx} unrequested={true} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={() => this.joinJamEventHandler(jam._id)} />
                                 ))}
                             </div>
                         </div>
@@ -67,7 +67,7 @@ class FindJam extends Component {
                             <hr />
                             <div className="row d-md-flex">
                                 {this.state.requestedJams.map((jam, idx) => (
-                                    <Jam key={idx} requested={true} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={() => this.joinJamEventHandler(jam._id)} />
+                                    <JamCard key={idx} requested={true} jamName={jam.name} description={jam.description} jamId={jam._id} clickHandler={() => this.joinJamEventHandler(jam._id)} />
                                 ))}
                             </div>
                         </div>
