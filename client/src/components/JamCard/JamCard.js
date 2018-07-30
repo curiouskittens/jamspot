@@ -64,7 +64,7 @@ class JamCard extends Component {
                         
                         <Collapse isOpened={this.state.seeMore} springConfig={{stiffness: 100, damping: 20}}>               
                         <div className="row no-gutters">
-                            <h6 className="jam-card-subheadings jamcard-info-text">Jam Description:</h6>
+                            <h6 className="jam-card-subheadings jamcard-info-text">Description:</h6>
                         </div>
                         <div className="row no-gutters mb-3 jamcard-info-text">
                             <p className="card-text">{this.props.description}</p>
