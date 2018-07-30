@@ -296,7 +296,7 @@ class Home extends Component {
                                 </div>
                                 )
                             ) : (
-                                <div className="no-suggested-jam-section"><p className="text-center">There are no jams for you to join right now. Why don't you <Link to="/createjam">create one</Link>?</p></div>
+                                <div className="mt-3"><p className="text-center">There are no jams for you to join right now. Why don't you <Link to="/createjam">create one</Link>?</p></div>
                             )
                         }
                     </div>
