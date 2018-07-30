@@ -78,7 +78,7 @@ class JamCard extends Component {
                         </div>
                         <div className="row no-gutters mb-3">
                             {this.props.instruments.map((instrument,idx) => (
-                                <div className="jam-card-instrument pr-2">
+                                <div className="jam-card-instrument pr-2" key={idx}>
                                     {this.getInstrumentIcon(instrument)}
                                     <span>{instrument.name}</span>
 
@@ -92,7 +92,7 @@ class JamCard extends Component {
                         </div> 
                         <div className="row no-gutters mb-3">
                             {this.props.genres.map((genre,idx) => (
-                                <div className="col-4">{genre}</div>
+                                <div className="col-4" key={idx}>{genre}</div>
                                 )
                             )}
                         </div>
