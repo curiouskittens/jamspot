@@ -270,6 +270,7 @@ class Home extends Component {
                                 }
                         </div>
                     </div>
+                    <p>Open Jams</p>
                     {
                         this.state.searchJams[0].name ? 
                         (

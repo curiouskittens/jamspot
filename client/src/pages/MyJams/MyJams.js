@@ -65,7 +65,7 @@ class MyJams extends Component {
                         <h4 className="text-center my-jam-section-title">Upcoming Jams</h4>
                         <hr />
                         <div className="row d-md-flex">
-                            {this.state.upcomingJams.length && this.state.upcomingJams.map((jam, idx) => 
+                            {this.state.upcomingJams.length ? ( this.state.upcomingJams.map((jam, idx) => 
                                 {
                                     if (jam.admin._id === sessionStorage.getItem("userId")) {
                                         return (<JamCard
@@ -100,12 +100,14 @@ class MyJams extends Component {
                                         />)
                                     }
                                 }
+                            )) : (
+                                <p>You don't have any upcoming jams.</p>
                             )}
                         </div>
                         <h4 className="text-center my-jam-section-title">Past Jams</h4>
                         <hr />
                         <div className="row d-md-flex">
-                            {this.state.pastJams.length && this.state.pastJams.map((jam, idx) => 
+                            {this.state.pastJams.length ? ( this.state.pastJams.map((jam, idx) => 
                                 {
                                     if (jam.admin._id === sessionStorage.getItem("userId")) {
                                         return (<JamCard
@@ -140,6 +142,8 @@ class MyJams extends Component {
                                         />)
                                     }
                                 }
+                            )) : (
+                                <p>You don't have any upcoming jams.</p>
                             )}
                         </div>
                     </div>
