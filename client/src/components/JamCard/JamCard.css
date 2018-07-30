@@ -48,7 +48,7 @@
 
 @media only screen and (max-width: 1025px) {
     .fa-star:active:after{
-    content: "I'm Admin";
+    content: "Admin";
     font-family: var(--merriweather);
     font-size: 1.2vh;
     }
@@ -56,7 +56,7 @@
 
 @media only screen and (min-width: 1025px) {
     .fa-star:hover:after{
-    content: "I'm Admin";
+    content: "Admin";
     font-family: var(--merriweather);
     font-size: 1.3vh;
     }
