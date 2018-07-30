@@ -67,9 +67,16 @@ class Home extends Component {
         api.getAllJams().then(dbJams => {
             const result = dbJams.data.filter(dbJam => dbJam.members.findIndex(member => member === sessionStorage.getItem("userId")) === -1)
             const searchJams = result.filter(jam => jam.joinRequests.findIndex(joinRequest => joinRequest === sessionStorage.getItem("userId")) === -1)
-            console.log(searchJams)
+
             if (searchJams.length) {
-                this.setState({searchJams: searchJams})
+                const sortedSearch = searchJams.sort((jamOne, jamTwo) => {
+                    const timeDifferenceOne = moment(jamOne.date) - moment();
+                    const timeDifferenceTwo = moment(jamTwo.date) - moment();
+                    return timeDifferenceOne - timeDifferenceTwo;
+                })
+                const upcomingSorted = sortedSearch.filter(jam => moment(jam.date) - moment() > 0);
+
+                this.setState({searchJams: upcomingSorted})
             }else{
                 this.setState({searchJams: [{ name: "", date: "", members: [] }]})
             }
