@@ -253,12 +253,13 @@ class Home extends Component {
                                         )
                                     }
                             </div>
+                            <br />
                             <p className="home-no-margin-bottom">Genres</p>
                                 {this.state.genres[0] ?
                                     (
                                         <React.Fragment>
                                             {this.state.genres.map((genre, index) => (
-                                                <p className="user-simple-profile-small-text" key={index}>{genre}</p>
+                                                <p className="user-simple-profile-small-text home-no-margin-bottom" key={index}>{genre}</p>
                                             ))}
                                         </React.Fragment>
                                     ) : (
