@@ -40,8 +40,8 @@ class JamCard extends Component {
         return (
             <div className="col-md-12 jam-card-wrapper">
                 <div className="card jam-card">
-                    <h5 className="card-header text-center">{this.props.jamName}</h5>
-                    <div className="card-body" >
+                    <h5 className="card-header text-center py-2">{this.props.jamName}</h5>
+                    <div className="card-body p-2" >
                         <div className="row no-gutters mb-3">
                             <div className="col-4 right-border">
                                 <h6 className="jam-card-subheadings">Created By:</h6>
@@ -53,8 +53,9 @@ class JamCard extends Component {
                             <div className="col-4 right-border">
                                 <h6 className="jam-card-subheadings">When:</h6>
                                 <div className="row no-gutters">
-                                    <p className="card-text mb-0">{moment(this.props.jamDate).format("MMMM Do YYYY")}</p>
-                                    <p className="card-text">{moment(this.props.jamDate).format("h:mm a")}</p>
+
+                                    <div className=" mb-0  row no-gutters">{moment(this.props.jamDate).format("MMMM Do YYYY")}</div>
+                                    <div className=" row no-gutters">{moment(this.props.jamDate).format("h:mm a")}</div>
                                 </div>
                             </div>
                             <div className="col-4">
@@ -99,23 +100,23 @@ class JamCard extends Component {
                         </Collapse>
 
                         <button
-                            className="btn btn-outline-secondary btn-sm btn-block" 
+                            className="btn btn-outline-secondary btn-sm btn-block toggle-collapse-button mb-2" 
                             onClick={this.toggleCollapse}
                         >
                             {this.state.seeMore? "Less Info" : "More Info"} 
                         </button> 
-                        <br/>  
+                        
                         
 
-                        {this.props.unrequested && <button onClick={this.props.clickHandler} data-jamid={this.props.jamId} className="btn btn-primary">Join Jam</button>}
-                        {this.props.memberjam && <button onClick={this.props.clickHandler} data-jamid={this.props.jamId} className="btn btn-primary">See Jam</button>}
+                        {this.props.unrequested && <button onClick={this.props.clickHandler} data-jamid={this.props.jamId} className="btn btn-primary btn-sm mx-auto">Join Jam</button>}
+                        {this.props.memberjam && <button onClick={this.props.clickHandler} data-jamid={this.props.jamId} className="btn btn-primary btn-sm mx-auto">See Jam</button>}
                         {this.props.seeJam && <Link to={{
                                                     pathname: ('/jam/'+this.props.jamId),
                                                     state: {jamId: this.props.jamId}
                                                 }}
-                                                className="admin-jam-see-jam-button"
+                                                className="admin-jam-see-jam-button mx-auto"
                                             >
-                                                <button onClick={() => this.clickHandler} data-jamid={this.props.jamId} className="btn btn-primary">
+                                                <button onClick={() => this.clickHandler} data-jamid={this.props.jamId} className="btn btn-primary btn-sm mx-auto">
                                                     See Jam
                                                 </button>
                                             </Link>}
