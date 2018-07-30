@@ -147,7 +147,7 @@ class Home extends Component {
         if(this.state.searchJams[0].name) {
             return this.state.searchJams.map((jam, idx) => (
                     <JamCard 
-                        classes={"col-12 col-md-6 col-lg-4 jam-card-wrapper"}
+                        classes={"col-12 col-md-6 col-xl-4 jam-card-wrapper"}
                         key={idx} 
                         unrequested={true}
                         creator={jam.admin}  
@@ -277,26 +277,29 @@ class Home extends Component {
                                 }
                         </div>
                     </div>
-                    <p>Open Jams</p>
-                    {
-                        this.state.searchJams[0].name ? 
-                        (
-                            this.state.searchJams.length > 3 ? 
+                    <div className="suggested-jams-section">
+                        <p className="text-center next-jam-title-text">Open Jams</p>
+                        <hr className="home-page-separator" />
+                        {
+                            this.state.searchJams[0].name ? 
                             (
-                            <div className="suggested-jams-section">
-                                <Slider className="suggested-jam-slider" {...settings}>
-                                    {this.renderSuggestedJams()}
-                                </Slider>
-                            </div>
+                                this.state.searchJams.length > 3 ? 
+                                (
+                                <div>
+                                    <Slider className="suggested-jam-slider" {...settings}>
+                                        {this.renderSuggestedJams()}
+                                    </Slider>
+                                </div>
+                                ) : (
+                                <div className="d-md-flex flex-wrap justify-content-around">
+                                        {this.renderSuggestedJams()}
+                                </div>
+                                )
                             ) : (
-                            <div className="suggested-jams-section d-md-flex justify-content-around">
-                                    {this.renderSuggestedJams()}
-                            </div>
+                                <div className="no-suggested-jam-section"><p className="text-center">There are no jams for you to join right now. Why don't you <Link to="/createjam">create one</Link>?</p></div>
                             )
-                        ) : (
-                            <div className="no-suggested-jam-section"><p className="text-center">There are no jams for you to join right now. Why don't you <Link to="/createjam">create one</Link>?</p></div>
-                        )
-                    }
+                        }
+                    </div>
                 </div>
                 <Footer />
             </div>

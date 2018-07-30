@@ -251,5 +251,12 @@
 .single-member-wrapper{
     padding-top: 1%;
     padding-bottom: 1%;
-    border-bottom: 1px solid lightgray;
+}
+
+.all-members-section .single-member-wrapper:not(:first-child){
+    border-top: 1px solid lightgray;
+}
+
+.join-requests-applicants-section{
+    border-top: 1px solid lightgray;
 }
