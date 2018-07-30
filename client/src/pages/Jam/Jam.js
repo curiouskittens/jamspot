@@ -22,6 +22,7 @@ const customStyles = {
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
         borderRadius: '15px',
+        minWidth: '35%',
     }
 };
 
@@ -36,7 +37,9 @@ class Jam extends Component {
         requests:"",
         posts:[],
         isMember: true,
-        jamFound: true
+        jamFound: true,
+        requestInstruments: [{ name: "", skill: "" }],
+        requestGenres: [""]
     }
 
     openModal = () => {
@@ -167,12 +170,18 @@ class Jam extends Component {
     
     joinRequestHandler = (event) => {
         console.log("Join Request Handler!!User Name: ", event.target.getAttribute("data-user-name"));
-        this.setState({
-            requestId: event.target.getAttribute("data-user-id"),
-            requestUsername: event.target.getAttribute("data-user-username"),
-            requestName: event.target.getAttribute("data-user-name"),
-        });
-        this.openModal()
+        api.checkUsername(event.target.getAttribute("data-user-username"))
+        .then(result => {
+            const userInfo = result.data
+            this.setState({
+                requestId: userInfo._id,
+                requestUsername: userInfo.username,
+                requestName: userInfo.name,
+                requestInstruments: userInfo.instruments,
+                requestGenres: userInfo.genres
+            });
+            this.openModal()
+        })
     }
 
     acceptJoinRequest = () => {
@@ -233,24 +242,8 @@ class Jam extends Component {
                                     <div className="most-recent-jam-section">
                                         <p className="text-center recent-jam-title-text">Members</p>
                                         <hr className="jam-page-separator" />
-                                        <div className="jam-members-wrapper d-flex container-fluid">
+                                        <div className="jam-members-wrapper container-fluid">
                                             <div className="most-recent-jam-info col-12">
-                                                
-                                                    {this.state.requests && this.state.requests.map((joinRequest, idx) => (
-                                                        <React.Fragment key={idx}>
-                                                            <h6 className="card-subtitle mb-2 text-muted">Join Requests</h6>
-                                                            <button
-                                                                onClick={this.joinRequestHandler}
-                                                                className="btn btn-secondary mb-2"
-                                                                data-user-name={joinRequest.name}
-                                                                data-user-id={joinRequest._id}
-                                                                data-user-username={joinRequest.username}
-                                                            >
-                                                                {joinRequest.name}
-                                                            </button>
-                                                        </React.Fragment>
-                                                    ))}
-                                                
                                                 {this.state.members ?
                                                     this.state.members.map((member, idx) => (
                                                             <div className="row d-flex align-items-center justify-content-between single-member-wrapper" key={idx}>
@@ -264,6 +257,22 @@ class Jam extends Component {
 
                                                     : <p>Loading...</p>
                                                 }
+                                            </div>
+                                            <div className="join-requests-applicants-section col-12">
+                                                <p className="text-center recent-jam-title-text">Join Requests</p>
+                                                <div className="d-flex flex-wrap justify-content-around">
+                                                {this.state.requests && this.state.requests.map((joinRequest, idx) => (
+                                                    <React.Fragment key={idx}>
+                                                        <button
+                                                            onClick={this.joinRequestHandler}
+                                                            className="btn btn-secondary mb-2"
+                                                            data-user-username={joinRequest.username}
+                                                        >
+                                                            {joinRequest.name}
+                                                        </button>
+                                                    </React.Fragment>
+                                                ))}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -319,11 +328,63 @@ class Jam extends Component {
                         >
                             <button onClick={this.closeModal} className="toggle-modal-button">✖</button>
                             <div className="join-request-modal-wrapper">
-                                <p ref={subtitle => this.subtitle = subtitle} className="text-center join-request-modal-title">Join Request</p>
+                                    <p ref={subtitle => this.subtitle = subtitle} className="text-center join-request-modal-title">{this.state.requestName}</p>
                                 <hr />
-                                <p className="join-request-modal-content-text">Name: {this.state.requestName}</p>
-                                <p className="join-request-modal-content-text">User Name: {this.state.requestUsername}</p>
-                                <p className="join-request-modal-content-text">User ID: {this.state.requestId}</p>
+                                <p className="join-request-modal-content-text font-weight-bold text-center">@{this.state.requestUsername}</p>
+                                <br />
+                                <p className="join-request-modal-content-text font-weight-bold">Instruments:</p>
+                                <div className="instrument-box">
+                                    {this.state.requestInstruments[0] ?
+                                        this.state.requestInstruments.map((instrument, index) => {
+                                            let skillLevel = "";
+                                            if (instrument.skill === 1) {
+                                                skillLevel = "Beginner";
+                                                return (
+                                                    <div key={index}>
+                                                        <p className="join-request-modal-content-small-text home-no-margin-bottom">{instrument.name} </p>
+                                                        <div className="home-skillbar-background text-left">{skillLevel}</div>
+                                                    </div>
+                                                )
+                                            } else if (instrument.skill === 2) {
+                                                skillLevel = "Intermediate";
+                                                return (
+                                                    <div key={index}>
+                                                        <p className="join-request-modal-content-small-text home-no-margin-bottom">{instrument.name} </p>
+                                                        <div className="home-skillbar-background text-center">{skillLevel}</div>
+                                                    </div>
+                                                )
+                                            } else if (instrument.skill === 3) {
+                                                skillLevel = "Expert";
+                                                return (
+                                                    <div key={index}>
+                                                        <p className="join-request-modal-content-small-text home-no-margin-bottom">{instrument.name} </p>
+                                                        <div className="home-skillbar-background text-right">{skillLevel}</div>
+                                                    </div>
+                                                )
+                                            } else {
+                                                return (
+                                                    <p key={index} className="join-request-modal-content-small-text">Looks like there might be an error...</p>
+                                                )
+                                            }
+                                        }) : (
+                                            <p className="join-request-modal-content-small-text">Looks like the user has not added any instrument.</p>
+                                        )
+                                    }
+                                </div>
+                                <br/>
+                                <p className="join-request-modal-content-text font-weight-bold">Genres:</p>
+                                    {this.state.requestGenres[0] ?
+                                        (
+                                            <React.Fragment>
+                                                {this.state.requestGenres.map((genre, index) => (
+                                                    <p className="join-request-modal-content-small-text home-no-margin-bottom" key={index}>{genre}</p>
+                                                ))}
+                                            </React.Fragment>
+                                        ) : (
+                                            <p className="join-request-modal-content-small-text">Looks like the user has not added any genre.</p>
+                                        )
+                                    }
+                                <br />
                                 <div className="d-flex justify-content-between">
                                 <button onClick={this.acceptJoinRequest} className="btn btn-primary">Accept</button>
                                 <button onClick={this.declineJoinRequest} className="btn btn-secondary">Decline</button>

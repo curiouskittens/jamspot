@@ -235,6 +235,13 @@
 .join-request-modal-content-text{
     font-size: 1.8vh;
     font-family: var(--merriweather);
+    margin-bottom: 0;
+}
+
+.join-request-modal-content-small-text{
+    font-size: 1.6vh;
+    font-family: var(--merriweather);
+    margin-bottom: 0;
 }
 
 .join-request-modal-wrapper{
