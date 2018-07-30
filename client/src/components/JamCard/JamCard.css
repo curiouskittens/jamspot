@@ -22,6 +22,14 @@
     max-height: 100%;
     /* max-width: 30%; */
 }
+
+.jamcard-title-text{
+    font-size: 2.1vh;
+}
+
+.jamcard-info-text{
+    font-size: 1.6vh;
+}
 /* .right-border{
     border-right: 1px solid black;
 } */

@@ -40,57 +40,51 @@ class JamCard extends Component {
         return (
             <div className={this.props.classes}>
                 <div className="card jam-card">
-                    <h5 className="card-header text-center py-2">{this.props.jamName}</h5>
+                    <h5 className="card-header text-center py-2 jamcard-title-text">{this.props.jamName}</h5>
                     <div className="card-body p-2" >
                         <div className="row no-gutters mb-3">
                             <div className="col-4 right-border">
-                                <h6 className="jam-card-subheadings">Created By:</h6>
+                                <h6 className="jam-card-subheadings text-left jamcard-info-text">Created by:</h6>
                                 <div className="row no-gutters">
-                                    <img className="user-mini-pic col-3 mx-0 px-0" src={this.getProfilePic(this.props.creator.email)} alt="Gravatar" />
-                                    <div className="col-6">{this.props.creator.name}</div>
+                                    <img className="user-mini-pic col-md-3 mx-0 px-0 text-left" src={this.getProfilePic(this.props.creator.email)} alt="Gravatar" />
+                                    <p className="col-md-6 text-left jamcard-info-text">{this.props.creator.name}</p>
                                 </div>
                             </div>
                             <div className="col-4 right-border">
-                                <h6 className="jam-card-subheadings">When:</h6>
-                                <div className="row no-gutters">
-
-                                    <div className=" mb-0  row no-gutters">{moment(this.props.jamDate).format("MMMM Do YYYY")}</div>
-                                    <div className=" row no-gutters">{moment(this.props.jamDate).format("h:mm a")}</div>
-                                </div>
+                                <h6 className="jam-card-subheadings text-center jamcard-info-text">When:</h6>
+                                <p className=" mb-0 text-center jamcard-info-text">{moment(this.props.jamDate).format("MMMM Do YYYY")}</p>
+                                <p className="text-center jamcard-info-text">{moment(this.props.jamDate).format("h:mm a")}</p>
                             </div>
                             <div className="col-4">
-                                <h6 className="jam-card-subheadings">Where:</h6>
-                                <div className="row no-gutters">
-                                    <p className="card-text mb-0">{this.props.location.address}</p>
-                                </div>
+                                <h6 className="jam-card-subheadings text-right jamcard-info-text">Where:</h6>
+                                <p className="card-text mb-0 text-right jamcard-info-text">{this.props.location.address}</p>
                             </div>
                         </div>
                         
                         <Collapse isOpened={this.state.seeMore} springConfig={{stiffness: 100, damping: 20}}>               
                         <div className="row no-gutters">
-                            <h6 className="jam-card-subheadings">Jam Description:</h6>
+                            <h6 className="jam-card-subheadings jamcard-info-text">Jam Description:</h6>
                         </div>
-                        <div className="row no-gutters mb-3">
+                        <div className="row no-gutters mb-3 jamcard-info-text">
                             <p className="card-text">{this.props.description}</p>
                         </div>
                         <div className="row no-gutters">
-                            <h6 className="jam-card-subheadings">Instruments:</h6>
+                            <h6 className="jam-card-subheadings jamcard-info-text">Instruments:</h6>
                         </div>
-                        <div className="row no-gutters mb-3">
+                        <div className="row no-gutters mb-3 jamcard-info-text">
                             {this.props.instruments.map((instrument,idx) => (
                                 <div className="jam-card-instrument pr-2" key={idx}>
                                     {this.getInstrumentIcon(instrument)}
                                     <span>{instrument.name}</span>
-
                                 </div>
                                 )
                             )}
                         </div>
                         
                         <div className="row no-gutters">
-                            <h6 className="jam-card-subheadings">Genres:</h6>
+                            <h6 className="jam-card-subheadings jamcard-info-text">Genres:</h6>
                         </div> 
-                        <div className="row no-gutters mb-3">
+                        <div className="row no-gutters mb-3 jamcard-info-text">
                             {this.props.genres.map((genre,idx) => (
                                 <div className="col-4" key={idx}>{genre}</div>
                                 )
@@ -100,26 +94,27 @@ class JamCard extends Component {
                         </Collapse>
 
                         <button
-                            className="btn btn-outline-secondary btn-sm btn-block toggle-collapse-button mb-2" 
+                            className="btn btn-outline-secondary btn-sm btn-block toggle-collapse-button mb-2 jamcard-info-text" 
                             onClick={this.toggleCollapse}
                         >
                             {this.state.seeMore? "Less Info" : "More Info"} 
                         </button> 
                         
                         
-
-                        {this.props.unrequested && <button onClick={this.props.clickHandler} data-jamid={this.props.jamId} className="btn btn-primary btn-sm mx-auto">Join Jam</button>}
-                        {this.props.memberjam && <button onClick={this.props.clickHandler} data-jamid={this.props.jamId} className="btn btn-primary btn-sm mx-auto">See Jam</button>}
+                        <div className="row"> 
+                        {this.props.unrequested && <button onClick={this.props.clickHandler} data-jamid={this.props.jamId} className="btn btn-primary btn-sm mx-auto jamcard-info-text text-center">Join Jam</button>}
+                        {this.props.memberjam && <button onClick={this.props.clickHandler} data-jamid={this.props.jamId} className="btn btn-primary btn-sm mx-auto jamcard-info-text text-center">See Jam</button>}
                         {this.props.seeJam && <Link to={{
                                                     pathname: ('/jam/'+this.props.jamId),
                                                     state: {jamId: this.props.jamId}
                                                 }}
-                                                className="admin-jam-see-jam-button mx-auto"
+                                                className="admin-jam-see-jam-button mx-auto jamcard-info-text text-center"
                                             >
-                                                <button onClick={() => this.clickHandler} data-jamid={this.props.jamId} className="btn btn-primary btn-sm mx-auto">
+                            <button onClick={() => this.clickHandler} data-jamid={this.props.jamId} className="btn btn-primary btn-sm mx-auto text-center">
                                                     See Jam
                                                 </button>
                                             </Link>}
+                        </div>
                     </div>
                 </div>
             </div>
