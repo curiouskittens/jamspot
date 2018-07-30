@@ -143,7 +143,7 @@ class MyJams extends Component {
                                     }
                                 }
                             )) : (
-                                <p>You don't have any upcoming jams.</p>
+                                <p>You don't have any past jams.</p>
                             )}
                         </div>
                     </div>
