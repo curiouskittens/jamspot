@@ -37,3 +37,25 @@
 /* .toggle-collapse-button:focus{
     box-shadow: 0 !important ;
 } */
+
+.fa-star{
+    color: #ef9b0f !important;
+    position: absolute;
+    right: 1%;
+}
+
+@media only screen and (max-width: 1025px) {
+    .fa-star:active:after{
+    content: "I'm Admin";
+    font-family: var(--merriweather);
+    font-size: 1.6vh;
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    .fa-star:hover:after{
+    content: "I'm Admin";
+    font-family: var(--merriweather);
+    font-size: 1.8vh;
+    }
+}

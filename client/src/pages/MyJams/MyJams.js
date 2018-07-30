@@ -7,8 +7,7 @@ import "./MyJam.css";
 
 class MyJams extends Component {
     state = {
-        memberJams: [],
-        adminJams: [],
+        allJams: [],
         loggedIn: sessionStorage.getItem("userId") ? true : false,
         jamId: "",
         requestName: "",
@@ -22,18 +21,20 @@ class MyJams extends Component {
 
     getJams = () => {
         this.setState({
-            memberJams: [],
-            adminJams: []
+            allJams: [],
         });
         api.getMyJams(sessionStorage.getItem("userId")).then(dbUser => {
             console.log("Get My Jams")
             console.log(dbUser.data)
             dbUser.data.jams.forEach((jam, idx) => {
-                if (jam.admin._id === sessionStorage.getItem("userId")) {
-                    this.setState({ adminJams: this.state.adminJams.concat([jam]) });
-                } else {
-                    this.setState({ memberJams: this.state.memberJams.concat([jam]) });
-                }
+                this.setState({
+                    allJams: this.state.allJams.concat([jam])
+                })
+                // if (jam.admin._id === sessionStorage.getItem("userId")) {
+                //     this.setState({ adminJams: this.state.adminJams.concat([jam]) });
+                // } else {
+                //     this.setState({ memberJams: this.state.memberJams.concat([jam]) });
+                // }
             })
         })
     }
@@ -48,49 +49,44 @@ class MyJams extends Component {
                 <div className="find-jam-page-bg">
                     <div className="find-jam-page-content container-fluid">
                         <p className="my-jam-page-title text-center">My Jams</p>
-                        <div className="d-md-flex justify-content-around">
-                            <div className="admin-jam-section col-md-5">
-                                <p className="my-jam-section-title text-center">I'm An Admin</p>
-                                <hr />
-                                <div className="row d-md-flex">
-                                    {this.state.adminJams.map((jam, idx) => (
-                                        <JamCard
-                                            classes={"col-md-12 jam-card-wrapper"}
-                                            key={idx} 
+                        <hr />
+                        <div className="row d-md-flex">
+                            {this.state.allJams.map((jam, idx) => 
+                                {
+                                    if (jam.admin._id === sessionStorage.getItem("userId")) {
+                                        return (<JamCard
+                                            classes={"col-12 col-md-6 col-xl-4 jam-card-wrapper"}
+                                            adminmarker={true}
+                                            key={idx}
                                             seeJam={true}
-                                            creator={jam.admin}  
-                                            jamName={jam.name} 
-                                            jamDate={jam.date} 
+                                            creator={jam.admin}
+                                            jamName={jam.name}
+                                            jamDate={jam.date}
                                             description={jam.description}
-                                            location={jam.location} 
+                                            location={jam.location}
                                             jamId={jam._id}
                                             instruments={jam.instruments}
-                                            genres={jam.genres}  
-                                            clickHandler={() => this.clickHandler(jam._id)} 
-                                        />
-                                    ))}
-                                </div>
-                            </div>
-                            <div className="member-jam-section col-md-5">
-                                <p className="my-jam-section-title text-center">I'm A Member</p>
-                                <hr />
-                                {this.state.memberJams.map((jam, idx) => (
-                                    <JamCard
-                                        classes={"col-md-12 jam-card-wrapper"}
-                                        key={idx} 
-                                        seeJam={true}
-                                        creator={jam.admin}  
-                                        jamName={jam.name} 
-                                        jamDate={jam.date} 
-                                        description={jam.description}
-                                        location={jam.location}  
-                                        jamId={jam._id}
-                                        instruments={jam.instruments}
-                                        genres={jam.genres}  
-                                        clickHandler={() => this.clickHandler(jam._id)} 
-                                    />
-                                ))}
-                            </div>
+                                            genres={jam.genres}
+                                            clickHandler={() => this.clickHandler(jam._id)}
+                                        />)
+                                    } else {
+                                        return (<JamCard
+                                            classes={"col-12 col-md-6 col-xl-4 jam-card-wrapper"}
+                                            key={idx}
+                                            seeJam={true}
+                                            creator={jam.admin}
+                                            jamName={jam.name}
+                                            jamDate={jam.date}
+                                            description={jam.description}
+                                            location={jam.location}
+                                            jamId={jam._id}
+                                            instruments={jam.instruments}
+                                            genres={jam.genres}
+                                            clickHandler={() => this.clickHandler(jam._id)}
+                                        />)
+                                    }
+                                }
+                            )}
                         </div>
                     </div>
 
