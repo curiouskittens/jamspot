@@ -34,6 +34,8 @@ class Jam extends Component {
         jamDate: "",
         jamLocation: "",
         members: "",
+        instruments: [],
+        genres: [],
         postInput: "",
         requests:"",
         posts:[],
@@ -63,7 +65,6 @@ class Jam extends Component {
     getJam = () => {
         api.getOneJamById(this.props.jamId)
             .then(dbJam => {
-                console.log(dbJam);
                 if (dbJam.data.name === "CastError") {
                     this.setState({ jamFound: false });
                 } else {
@@ -73,6 +74,9 @@ class Jam extends Component {
                             jamDate: dbJam.data.date,
                             jamCreator: dbJam.data.admin.name,
                             jamLocation: dbJam.data.location.address,
+                            jamDescription: dbJam.data.description,
+                            instruments: dbJam.data.instruments,
+                            genres: dbJam.data.genres,
                             members: dbJam.data.members,
                             posts: dbJam.data.posts,
                             isAdmin: true,
@@ -84,6 +88,9 @@ class Jam extends Component {
                             jamDate: dbJam.data.date,
                             jamCreator: dbJam.data.admin.name,
                             jamLocation: dbJam.data.location.address,
+                            jamDescription: dbJam.data.description,
+                            instruments: dbJam.data.instruments,
+                            genres: dbJam.data.genres,
                             members: dbJam.data.members,
                             isAdmin: false,
                             posts: dbJam.data.posts,
@@ -117,27 +124,31 @@ class Jam extends Component {
     }
 
     getProfilePic = (email) => {
-        // console.log(email.trim())
         const gravatarHash = md5(email.trim().toLowerCase());
-        // console.log(gravatarHash)
         return `https://www.gravatar.com/avatar/${gravatarHash}?d=mp&s=200`
     }
+
     getInstrumentIcon = (instruments) => {
-        // return "/instrument_icons/guitar.png"
-        if (instruments.length > 0) {
+        console.log(typeof instruments);
+        if (Array.isArray(instruments) && instruments.length > 0) {
             return (instruments.map((instrument, idx) => {
                 let imgSrc = "/instrument_icons/none.png"
                 for (let i = 0; i < instrumentList.length; i++) {
                     if (instrumentList[i].name === instrument.name) {
-                        console.log("match")
                         imgSrc = instrumentList[i].icon
                     }
                 }
-                console.log(imgSrc)
                 return <img key={idx} className="instrument-mini-pic px-1 col-2" src={imgSrc} alt="instrument" />
             }))
+        } else if (typeof instruments === "object" && instruments.name) {
+            let imgSrc = "/instrument_icons/none.png"
+                for (let i = 0; i < instrumentList.length; i++) {
+                    if (instrumentList[i].name === instruments.name) {
+                        imgSrc = instrumentList[i].icon
+                    }
+                }
+            return <img key={instruments.name} className="instrument-mini-pic px-1 col-2" src={imgSrc} alt="instrument" />
         } else {
-            console.log("else")
             return <img className="instrument-mini-pic" src="/instrument_icons/none.png" alt="instrument" />
         }
 
@@ -236,10 +247,22 @@ class Jam extends Component {
                                         <hr className="jam-page-separator" />
                                         <div className="next-jam-wrapper d-flex container-fluid">
                                             <div className="next-jam-info col-12 jam-page-text-size">
-                                                <p>Jam Name: {this.state.jamName}</p>
-                                                <p>Creator: {this.state.jamCreator}</p>
-                                                <p>Date: {moment(this.state.jamDate).format("LLL")}</p>
-                                                <p>Location: {this.state.jamLocation}</p>
+                                                <p><span className="jam-card-subheadings">Created by:</span> {this.state.jamCreator}</p>
+                                                <p><span className="jam-card-subheadings">When:</span> {moment(this.state.jamDate).format("LLL")}</p>
+                                                <p><span className="jam-card-subheadings">Where:</span> {this.state.jamLocation}</p>
+                                                <p><span className="jam-card-subheadings">Description:</span> {this.state.jamDescription}</p>
+                                                <p><span className="jam-card-subheadings">Instruments:</span></p>
+                                                {this.state.instruments.map((instrument,idx) => (
+                                                    <div className="jam-card-instrument pr-2" key={idx}>
+                                                        {this.getInstrumentIcon(instrument)}
+                                                        <span>{instrument.name}</span>
+                                                    </div>
+                                                ))}
+                                                <p><span className="jam-card-subheadings">Genres:</span></p>
+                                                {this.state.genres.map((genre, idx) => (
+                                                    <div key={idx}>{genre}</div>
+                                                ))}
+
                                             </div>
                                         </div>
                                     </div>
@@ -377,7 +400,7 @@ class Jam extends Component {
                                                 )
                                             }
                                         }) : (
-                                            <p className="join-request-modal-content-small-text">Looks like the user has not added any instrument.</p>
+                                            <p className="join-request-modal-content-small-text">Looks like this user has not added any instruments.</p>
                                         )
                                     }
                                 </div>
@@ -391,7 +414,7 @@ class Jam extends Component {
                                                 ))}
                                             </React.Fragment>
                                         ) : (
-                                            <p className="join-request-modal-content-small-text">Looks like the user has not added any genre.</p>
+                                            <p className="join-request-modal-content-small-text">Looks like this user has not added any genres.</p>
                                         )
                                     }
                                 <br />
