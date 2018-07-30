@@ -259,20 +259,26 @@ class Jam extends Component {
                                                 }
                                             </div>
                                             <div className="join-requests-applicants-section col-12">
-                                                <p className="text-center recent-jam-title-text">Join Requests</p>
-                                                <div className="d-flex flex-wrap justify-content-around">
-                                                {this.state.requests && this.state.requests.map((joinRequest, idx) => (
-                                                    <React.Fragment key={idx}>
-                                                        <button
-                                                            onClick={this.joinRequestHandler}
-                                                            className="btn btn-secondary mb-2"
-                                                            data-user-username={joinRequest.username}
-                                                        >
-                                                            {joinRequest.name}
-                                                        </button>
-                                                    </React.Fragment>
-                                                ))}
-                                                </div>
+                                            {this.state.requests[0] &&
+                                                (
+                                                <React.Fragment>
+                                                    <p className="text-center recent-jam-title-text">Join Requests</p>
+                                                    <div className="d-flex flex-wrap justify-content-around">
+                                                        {this.state.requests && this.state.requests.map((joinRequest, idx) => (
+                                                            <React.Fragment key={idx}>
+                                                                <button
+                                                                    onClick={this.joinRequestHandler}
+                                                                    className="btn btn-secondary mb-2"
+                                                                    data-user-username={joinRequest.username}
+                                                                >
+                                                                    {joinRequest.name}
+                                                                </button>
+                                                            </React.Fragment>
+                                                        ))}
+                                                    </div>
+                                                </React.Fragment>
+                                                )
+                                            }
                                             </div>
                                         </div>
                                     </div>
