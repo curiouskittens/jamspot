@@ -139,19 +139,20 @@ class Home extends Component {
     renderSuggestedJams = () => {
         if(this.state.searchJams[0].name) {
             return this.state.searchJams.map((jam, idx) => (
-                <JamCard 
-                    key={idx} 
-                    unrequested={true}
-                    creator={jam.admin}  
-                    jamName={jam.name} 
-                    jamDate={jam.date} 
-                    description={jam.description}
-                    location={jam.location} 
-                    jamId={jam._id}
-                    instruments={jam.instruments}
-                    genres={jam.genres}  
-                    clickHandler={() => this.joinJamEventHandler(jam._id)} 
-                />
+                    <JamCard 
+                        classes={"col-12 col-md-6 col-lg-4 jam-card-wrapper"}
+                        key={idx} 
+                        unrequested={true}
+                        creator={jam.admin}  
+                        jamName={jam.name} 
+                        jamDate={jam.date} 
+                        description={jam.description}
+                        location={jam.location} 
+                        jamId={jam._id}
+                        instruments={jam.instruments}
+                        genres={jam.genres}  
+                        clickHandler={() => this.joinJamEventHandler(jam._id)}
+                    />
             ))
         }
     }

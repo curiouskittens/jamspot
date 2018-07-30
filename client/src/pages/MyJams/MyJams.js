@@ -54,7 +54,8 @@ class MyJams extends Component {
                                 <hr />
                                 <div className="row d-md-flex">
                                     {this.state.adminJams.map((jam, idx) => (
-                                        <JamCard 
+                                        <JamCard
+                                            classes={"col-md-12 jam-card-wrapper"}
                                             key={idx} 
                                             seeJam={true}
                                             creator={jam.admin}  
@@ -74,7 +75,8 @@ class MyJams extends Component {
                                 <p className="my-jam-section-title text-center">I'm A Member</p>
                                 <hr />
                                 {this.state.memberJams.map((jam, idx) => (
-                                    <JamCard 
+                                    <JamCard
+                                        classes={"col-md-12 jam-card-wrapper"}
                                         key={idx} 
                                         seeJam={true}
                                         creator={jam.admin}  

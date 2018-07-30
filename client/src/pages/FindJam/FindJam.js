@@ -62,7 +62,8 @@ class FindJam extends Component {
                             <div className="row d-md-flex">
                                 {this.state.jams && this.state.jams.map((jam, idx) => {
                                     console.log(jam.admin)
-                                    return <JamCard 
+                                    return <JamCard
+                                        classes={"col-md-12 jam-card-wrapper"}
                                         key={idx} 
                                         unrequested={true}
                                         creator={jam.admin} 
@@ -84,7 +85,8 @@ class FindJam extends Component {
                             <hr />
                             <div className="row d-md-flex">
                                 {this.state.requestedJams && this.state.requestedJams.map((jam, idx) => (
-                                    <JamCard 
+                                    <JamCard
+                                        classes={"col-md-12 jam-card-wrapper"}
                                         key={idx} 
                                         requested={true}
                                         creator={jam.admin}  

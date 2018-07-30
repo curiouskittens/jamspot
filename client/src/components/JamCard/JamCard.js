@@ -38,7 +38,7 @@ class JamCard extends Component {
 
     render() {
         return (
-            <div className="col-md-12 jam-card-wrapper">
+            <div className={this.props.classes}>
                 <div className="card jam-card">
                     <h5 className="card-header text-center py-2">{this.props.jamName}</h5>
                     <div className="card-body p-2" >
