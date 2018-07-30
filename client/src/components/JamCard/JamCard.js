@@ -40,7 +40,8 @@ class JamCard extends Component {
         return (
             <div className={this.props.classes}>
                 <div className="card jam-card">
-                    <h5 className="card-header text-center py-2 jamcard-title-text">{this.props.jamName} {this.props.adminmarker && <i className="fas fa-star"></i>}</h5>
+                    {this.props.adminmarker && <i className="fas fa-star"></i>}
+                    <h5 className="card-header text-center py-3 jamcard-title-text">{this.props.jamName}</h5>
                     <div className="card-body p-2" >
                         <div className="row no-gutters mb-3">
                             <div className="col-4 right-border">
