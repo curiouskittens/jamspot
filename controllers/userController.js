@@ -27,7 +27,7 @@ module.exports = {
         const userId = req.params.id || req.query.id;
         db.User
             .findOne({ _id: userId })
-            .populate({ path: "jams", populate: { path:"joinRequests members", select: "-password" } })
+            .populate({ path: "jams", populate: { path:"joinRequests members admin", select: "-password" } })
             .then(dbUser => res.status(200).json(dbUser))
             .catch(err => res.status(422).json(err))
     },
