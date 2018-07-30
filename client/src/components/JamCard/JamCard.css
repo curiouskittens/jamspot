@@ -16,7 +16,16 @@
     color: var(--maincolor1);
 }
 
-.instrument-mini-pic {
+.instrument-jam-card-pic {
+    height: 32px;
+    width: 32px;    
     max-height: 100%;
-    max-width: 30%;
+    /* max-width: 30%; */
 }
+/* .right-border{
+    border-right: 1px solid black;
+} */
+
+/* .toggle-collapse-button:focus{
+    box-shadow: 0 !important ;
+} */

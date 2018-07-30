@@ -145,7 +145,8 @@ class Home extends Component {
                     creator={jam.admin}  
                     jamName={jam.name} 
                     jamDate={jam.date} 
-                    description={jam.description} 
+                    description={jam.description}
+                    location={jam.location} 
                     jamId={jam._id}
                     instruments={jam.instruments}
                     genres={jam.genres}  
