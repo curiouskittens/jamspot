@@ -32,6 +32,7 @@ class Jam extends Component {
         jamName: "",
         jamCreator: "",
         jamDate: "",
+        jamLocation: "",
         members: "",
         postInput: "",
         requests:"",
@@ -71,6 +72,7 @@ class Jam extends Component {
                             jamName: dbJam.data.name,
                             jamDate: dbJam.data.date,
                             jamCreator: dbJam.data.admin.name,
+                            jamLocation: dbJam.data.location.address,
                             members: dbJam.data.members,
                             posts: dbJam.data.posts,
                             isAdmin: true,
@@ -81,6 +83,7 @@ class Jam extends Component {
                             jamName: dbJam.data.name,
                             jamDate: dbJam.data.date,
                             jamCreator: dbJam.data.admin.name,
+                            jamLocation: dbJam.data.location.address,
                             members: dbJam.data.members,
                             isAdmin: false,
                             posts: dbJam.data.posts,
@@ -236,6 +239,7 @@ class Jam extends Component {
                                                 <p>Jam Name: {this.state.jamName}</p>
                                                 <p>Creator: {this.state.jamCreator}</p>
                                                 <p>Date: {moment(this.state.jamDate).format("LLL")}</p>
+                                                <p>Location: {this.state.jamLocation}</p>
                                             </div>
                                         </div>
                                     </div>
