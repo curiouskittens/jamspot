@@ -5,6 +5,7 @@ import api from "../../utils/api";
 import Footer from "../../components/Footer";
 import sweetAlert from "../../utils/sweetAlert";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 class FindJam extends Component {
     state = {
@@ -66,14 +67,14 @@ class FindJam extends Component {
                 <div className="find-jam-page-content container-fluid">
                     <p className="find-jam-page-title text-center">Find a Jam</p>
                     <div className="d-md-flex justify-content-around">
-                        <div className="new-jam-section col-md-5">
+                        <div className="new-jam-section col-12">
                             <p className="text-center find-jam-section-title">Open Jams</p>
                             <hr />
                             <div className="row d-md-flex">
-                                {this.state.openJams && this.state.openJams.map((jam, idx) => {
+                                {(this.state.openJams && this.state.openJams.length) ? (this.state.openJams.map((jam, idx) => {
                                     console.log(jam.admin)
                                     return <JamCard
-                                        classes={"col-md-12 jam-card-wrapper"}
+                                        classes={"col-12 col-md-6 col-xl-4 jam-card-wrapper"}
                                         key={idx} 
                                         unrequested={true}
                                         creator={jam.admin} 
@@ -87,16 +88,15 @@ class FindJam extends Component {
                                         clickHandler={() => this.joinJamEventHandler(jam._id)}
                                     />
                                 }
-                                )}
+                                )) : ( <p className="mx-auto">There are no jams for you to join right now. Why don't you <Link to="/createjam">create one</Link>?</p>)
+                            }
                             </div>
-                        </div>
-                        <div className="requested-jam-section col-md-5">
                             <p className="text-center find-jam-section-title">Requested Jams</p>
                             <hr />
                             <div className="row d-md-flex">
-                                {this.state.requestedJams && this.state.requestedJams.map((jam, idx) => (
+                                {this.state.requestedJams.length ? (this.state.requestedJams.map((jam, idx) => (
                                     <JamCard
-                                        classes={"col-md-12 jam-card-wrapper"}
+                                        classes={"col-12 col-md-6 col-xl-4 jam-card-wrapper"}
                                         key={idx} 
                                         requested={true}
                                         creator={jam.admin}  
@@ -109,7 +109,8 @@ class FindJam extends Component {
                                         genres={jam.genres}  
                                         clickHandler={() => this.joinJamEventHandler(jam._id)} 
                                     />
-                                ))}
+                                ))) : (<p className="mx-auto">You have no pending jam requests.</p>)
+                                }
                             </div>
                         </div>
                     </div>

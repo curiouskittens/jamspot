@@ -101,7 +101,7 @@ class MyJams extends Component {
                                     }
                                 }
                             )) : (
-                                <p>You don't have any upcoming jams.</p>
+                                <p className="mx-auto">You don't have any upcoming jams.</p>
                             )}
                         </div>
                         <h4 className="text-center my-jam-section-title">Past Jams</h4>
@@ -143,7 +143,7 @@ class MyJams extends Component {
                                     }
                                 }
                             )) : (
-                                <p>You don't have any past jams.</p>
+                                <p className="mx-auto">You don't have any past jams.</p>
                             )}
                         </div>
                     </div>
