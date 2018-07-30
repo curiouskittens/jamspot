@@ -1,5 +1,7 @@
 .jam-card-wrapper{
     padding: 3%;
+    max-height: 100%;
+    max-width:100%;
 }
 
 .jam-card{
