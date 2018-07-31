@@ -50,6 +50,10 @@ class ProfileView extends Component {
             .catch(err => console.log(err));
     }
 
+    doNothing = () => {
+        console.log("nothing");
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -102,7 +106,7 @@ class ProfileView extends Component {
                                                     radioIndex={idx}
                                                     instrument={instrument}
                                                     instrumentBar={this.state.defaultInstrumentSkillBar}
-                                                    skillChangeHandler={true}
+                                                    skillChangeHandler={this.doNothing}
                                                 />
                                             </div>
                                         )) : (
