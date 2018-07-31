@@ -118,11 +118,12 @@
     }
 }
 
-.next-jam-section{
+.next-jam-section-jampage{
     border: var(--maincolor2) 1px solid;
     border-radius: 10px; 
     box-shadow: 2px 3px var(--maincolor2);
     background: rgb(255, 255, 255);
+    padding-bottom: 3%;
 }
 
 .most-recent-jam-section{

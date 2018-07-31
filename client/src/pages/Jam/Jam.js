@@ -243,7 +243,7 @@ class Jam extends Component {
                             <br />
                             <div className="d-md-flex justify-content-around">
                                 <div className="jam-section-wrapper d-block col-md-6">
-                                    <div className="next-jam-section">
+                                    <div className="next-jam-section-jampage">
                                         <p className="text-center next-jam-title-text">{this.state.jamName}</p>
                                         <hr className="jam-page-separator" />
                                         <div className="next-jam-wrapper d-flex container-fluid">
@@ -251,7 +251,7 @@ class Jam extends Component {
                                                 <div className="row">
                                                     <div className="col-4 text-left"> 
                                                         <p className="jam-card-subheadings pb-0 mb-1">Created by:</p>
-                                                        <Link to={`/profile/${this.state.jamCreator}`}><p>{this.state.jamCreator}</p></Link>
+                                                        <p>{this.state.jamCreator}</p>
                                                     </div>
                                                     <div className="col-4 text-center">
                                                         <p className="jam-card-subheadings pb-0 mb-1">When:</p>
@@ -287,7 +287,7 @@ class Jam extends Component {
                                                     this.state.members.map((member, idx) => (
                                                             <div className="row d-flex align-items-center justify-content-between single-member-wrapper" key={idx}>
                                                                 <img className="user-mini-pic col-3 mx-0 px-0" src={this.getProfilePic(member.email)} alt="Gravatar" />
-                                                            <div className="col-3 mx-0 px-0" key={idx}><Link to={`/profile/${member.name}`}>{member.name}</Link></div>
+                                                            <div className="col-3 mx-0 px-0" key={idx}><Link to={`/profile/${member.username}`}>{member.name}</Link></div>
                                                                 <div className="jampage-instrument-wrapper col-6 d-flex flex-wrap mx-0 px-0">
                                                                     {this.getInstrumentIcon(member.instruments)}
                                                                 </div>
@@ -371,10 +371,9 @@ class Jam extends Component {
                         >
                             <button onClick={this.closeModal} className="toggle-modal-button">✖</button>
                             <div className="join-request-modal-wrapper">
-                                    <p ref={subtitle => this.subtitle = subtitle} className="text-center join-request-modal-title">{this.state.requestName}</p>
+                                <p ref={subtitle => this.subtitle = subtitle} className="text-center join-request-modal-title">{this.state.requestName}</p>
+                                <Link to={`/profile/${this.state.requestUsername}`}><p className="join-request-modal-content-text font-weight-bold text-center">@{this.state.requestUsername}</p></Link>
                                 <hr />
-                                <p className="join-request-modal-content-text font-weight-bold text-center">@{this.state.requestUsername}</p>
-                                <br />
                                 <p className="join-request-modal-content-text font-weight-bold">Instruments:</p>
                                 <div className="instrument-box">
                                     {this.state.requestInstruments[0] ?
@@ -404,10 +403,14 @@ class Jam extends Component {
                                                         <div className="home-skillbar-background text-right">{skillLevel}</div>
                                                     </div>
                                                 )
+                                            } else if (!instrument.skill) {
+                                                return (
+                                                    <p key={index} className="join-request-modal-content-small-text">Looks like this user has not added any instruments.</p>
+                                                )
                                             } else {
                                                 return (
                                                     <p key={index} className="join-request-modal-content-small-text">Looks like there might be an error...</p>
-                                                )
+                                                ) 
                                             }
                                         }) : (
                                             <p className="join-request-modal-content-small-text">Looks like this user has not added any instruments.</p>
