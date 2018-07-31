@@ -50,6 +50,10 @@ class ProfileView extends Component {
             .catch(err => console.log(err));
     }
 
+    doNothing = () => {
+        console.log("nothing");
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -71,7 +75,7 @@ class ProfileView extends Component {
                                             src={`https://w.soundcloud.com/player/?url=https://soundcloud.com/${this.state.soundcloud}`}>
                                         </iframe>
                                     ) : (
-                                        <p>{this.state.name} has not added a Soundcloud account.</p>
+                                        <p className="bio-textarea">{this.state.name} has not added a Soundcloud account.</p>
                                     )}
                                 </div>
 
@@ -88,7 +92,7 @@ class ProfileView extends Component {
                                                 className="form-control bio-textarea"
                                             />
                                         ) : (
-                                            <p>{this.state.name} has not added a bio.</p>
+                                            <p className="bio-textarea">{this.state.name} has not added a bio.</p>
                                         )}
                                     </div>
 
@@ -102,11 +106,11 @@ class ProfileView extends Component {
                                                     radioIndex={idx}
                                                     instrument={instrument}
                                                     instrumentBar={this.state.defaultInstrumentSkillBar}
-                                                    skillChangeHandler={true}
+                                                    skillChangeHandler={this.doNothing}
                                                 />
                                             </div>
                                         )) : (
-                                            <p>{this.state.name} has not added any instruments.</p>
+                                            <p className="bio-textarea">{this.state.name} has not added any instruments.</p>
                                         )}
                                     </div>
 
@@ -121,7 +125,7 @@ class ProfileView extends Component {
                                                 />
                                             </div>
                                         )) : (
-                                            <p>{this.state.name} has not added any genres.</p>
+                                            <p className="bio-textarea">{this.state.name} has not added any genres.</p>
                                         )}
                                     </div>
                                 </div>

@@ -16,7 +16,48 @@
     color: var(--maincolor1);
 }
 
-.instrument-mini-pic {
+.instrument-jam-card-pic {
+    height: 32px;
+    width: 32px;    
     max-height: 100%;
-    max-width: 30%;
+    /* max-width: 30%; */
+}
+
+.jamcard-title-text{
+    font-size: 2.5vh;
+}
+
+.jamcard-info-text{
+    font-size: 1.6vh;
+}
+/* .right-border{
+    border-right: 1px solid black;
+} */
+
+/* .toggle-collapse-button:focus{
+    box-shadow: 0 !important ;
+} */
+
+.fa-star{
+    color: #ef9b0f !important;
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    font-size: 1.7vh;
+}
+
+@media only screen and (max-width: 1025px) {
+    .fa-star:active:after{
+    content: "Admin";
+    font-family: var(--merriweather);
+    font-size: 1.2vh;
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    .fa-star:hover:after{
+    content: "Admin";
+    font-family: var(--merriweather);
+    font-size: 1.3vh;
+    }
 }

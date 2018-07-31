@@ -118,11 +118,12 @@
     }
 }
 
-.next-jam-section{
+.next-jam-section-jampage{
     border: var(--maincolor2) 1px solid;
     border-radius: 10px; 
     box-shadow: 2px 3px var(--maincolor2);
     background: rgb(255, 255, 255);
+    padding-bottom: 3%;
 }
 
 .most-recent-jam-section{
@@ -235,6 +236,13 @@
 .join-request-modal-content-text{
     font-size: 1.8vh;
     font-family: var(--merriweather);
+    margin-bottom: 0;
+}
+
+.join-request-modal-content-small-text{
+    font-size: 1.6vh;
+    font-family: var(--merriweather);
+    margin-bottom: 0;
 }
 
 .join-request-modal-wrapper{
@@ -244,5 +252,12 @@
 .single-member-wrapper{
     padding-top: 1%;
     padding-bottom: 1%;
-    border-bottom: 1px solid lightgray;
+}
+
+.all-members-section .single-member-wrapper:not(:first-child){
+    border-top: 1px solid lightgray;
+}
+
+.join-requests-applicants-section{
+    border-top: 1px solid lightgray;
 }

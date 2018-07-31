@@ -13,7 +13,7 @@ class InstrumentInput extends Component {
                 >
                     <option defaultValue disabled value=""> -- select an instrument -- </option>
                     {this.props.instrument.name && <option value={this.props.instrument.name}>{this.props.instrument.name}</option>}
-                    {this.props.instrumentOptions.map((instrument, idx)=>(
+                    {this.props.instrumentOptions && this.props.instrumentOptions.map((instrument, idx)=>(
                         <option key={idx} value={instrument.value}>{instrument.name}</option>
                     ))}
                 </select>

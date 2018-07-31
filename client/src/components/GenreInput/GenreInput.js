@@ -14,7 +14,7 @@ class GenreInput extends Component {
                 >
                     <option defaultValue disabled value=""> -- select a genre -- </option>
                     {this.props.genre && <option value={this.props.genre}>{this.props.genre}</option>}
-                    {this.props.genreOptions.map((genre,idx) =>(
+                    {this.props.genreOptions && this.props.genreOptions.map((genre,idx) =>(
                         <option key={idx} value={genre.value}>{genre.name}</option>
                     ))}
                 </select>

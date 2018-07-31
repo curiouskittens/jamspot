@@ -11,6 +11,7 @@ import NoMatch from "../NoMatch";
 import Linkify from 'react-linkify';
 import instrumentList from "../../utils/instruments.json";
 import Modal from "react-modal";
+import { Link } from "react-router-dom";
 
 // styling for modal
 const customStyles = {
@@ -22,6 +23,7 @@ const customStyles = {
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
         borderRadius: '15px',
+        minWidth: '35%',
     }
 };
 
@@ -31,12 +33,17 @@ class Jam extends Component {
         jamName: "",
         jamCreator: "",
         jamDate: "",
+        jamLocation: "",
         members: "",
+        instruments: [],
+        genres: [],
         postInput: "",
         requests:"",
         posts:[],
         isMember: true,
-        jamFound: true
+        jamFound: true,
+        requestInstruments: [{ name: "", skill: "" }],
+        requestGenres: [""]
     }
 
     openModal = () => {
@@ -59,7 +66,6 @@ class Jam extends Component {
     getJam = () => {
         api.getOneJamById(this.props.jamId)
             .then(dbJam => {
-                console.log(dbJam);
                 if (dbJam.data.name === "CastError") {
                     this.setState({ jamFound: false });
                 } else {
@@ -68,6 +74,10 @@ class Jam extends Component {
                             jamName: dbJam.data.name,
                             jamDate: dbJam.data.date,
                             jamCreator: dbJam.data.admin.name,
+                            jamLocation: dbJam.data.location.address,
+                            jamDescription: dbJam.data.description,
+                            instruments: dbJam.data.instruments,
+                            genres: dbJam.data.genres,
                             members: dbJam.data.members,
                             posts: dbJam.data.posts,
                             isAdmin: true,
@@ -78,6 +88,10 @@ class Jam extends Component {
                             jamName: dbJam.data.name,
                             jamDate: dbJam.data.date,
                             jamCreator: dbJam.data.admin.name,
+                            jamLocation: dbJam.data.location.address,
+                            jamDescription: dbJam.data.description,
+                            instruments: dbJam.data.instruments,
+                            genres: dbJam.data.genres,
                             members: dbJam.data.members,
                             isAdmin: false,
                             posts: dbJam.data.posts,
@@ -111,27 +125,31 @@ class Jam extends Component {
     }
 
     getProfilePic = (email) => {
-        // console.log(email.trim())
         const gravatarHash = md5(email.trim().toLowerCase());
-        // console.log(gravatarHash)
         return `https://www.gravatar.com/avatar/${gravatarHash}?d=mp&s=200`
     }
+
     getInstrumentIcon = (instruments) => {
-        // return "/instrument_icons/guitar.png"
-        if (instruments.length > 0) {
+        console.log(typeof instruments);
+        if (Array.isArray(instruments) && instruments.length > 0) {
             return (instruments.map((instrument, idx) => {
                 let imgSrc = "/instrument_icons/none.png"
                 for (let i = 0; i < instrumentList.length; i++) {
                     if (instrumentList[i].name === instrument.name) {
-                        console.log("match")
                         imgSrc = instrumentList[i].icon
                     }
                 }
-                console.log(imgSrc)
                 return <img key={idx} className="instrument-mini-pic px-1 col-2" src={imgSrc} alt="instrument" />
             }))
+        } else if (typeof instruments === "object" && instruments.name) {
+            let imgSrc = "/instrument_icons/none.png"
+                for (let i = 0; i < instrumentList.length; i++) {
+                    if (instrumentList[i].name === instruments.name) {
+                        imgSrc = instrumentList[i].icon
+                    }
+                }
+            return <img key={instruments.name} className="instrument-mini-pic px-1 col-2" src={imgSrc} alt="instrument" />
         } else {
-            console.log("else")
             return <img className="instrument-mini-pic" src="/instrument_icons/none.png" alt="instrument" />
         }
 
@@ -167,12 +185,18 @@ class Jam extends Component {
     
     joinRequestHandler = (event) => {
         console.log("Join Request Handler!!User Name: ", event.target.getAttribute("data-user-name"));
-        this.setState({
-            requestId: event.target.getAttribute("data-user-id"),
-            requestUsername: event.target.getAttribute("data-user-username"),
-            requestName: event.target.getAttribute("data-user-name"),
-        });
-        this.openModal()
+        api.checkUsername(event.target.getAttribute("data-user-username"))
+        .then(result => {
+            const userInfo = result.data
+            this.setState({
+                requestId: userInfo._id,
+                requestUsername: userInfo.username,
+                requestName: userInfo.name,
+                requestInstruments: userInfo.instruments,
+                requestGenres: userInfo.genres
+            });
+            this.openModal()
+        })
     }
 
     acceptJoinRequest = () => {
@@ -219,43 +243,51 @@ class Jam extends Component {
                             <br />
                             <div className="d-md-flex justify-content-around">
                                 <div className="jam-section-wrapper d-block col-md-6">
-                                    <div className="next-jam-section">
+                                    <div className="next-jam-section-jampage">
                                         <p className="text-center next-jam-title-text">{this.state.jamName}</p>
                                         <hr className="jam-page-separator" />
                                         <div className="next-jam-wrapper d-flex container-fluid">
                                             <div className="next-jam-info col-12 jam-page-text-size">
-                                                <p>Jam Name: {this.state.jamName}</p>
-                                                <p>Creator: {this.state.jamCreator}</p>
-                                                <p>Date: {moment(this.state.jamDate).format("LLL")}</p>
+                                                <div className="row">
+                                                    <div className="col-4 text-left"> 
+                                                        <p className="jam-card-subheadings pb-0 mb-1">Created by:</p>
+                                                        <p>{this.state.jamCreator}</p>
+                                                    </div>
+                                                    <div className="col-4 text-center">
+                                                        <p className="jam-card-subheadings pb-0 mb-1">When:</p>
+                                                        <p>{moment(this.state.jamDate).format("LLL")}</p>
+                                                    </div>
+                                                    <div className="col-4 text-right">
+                                                        <p className="jam-card-subheadings pb-0 mb-1">Where:</p>
+                                                        <p>{this.state.jamLocation}</p>
+                                                    </div>
+                                                </div>
+                                                <p><span className="jam-card-subheadings">Description:</span> {this.state.jamDescription}</p>
+                                                <p className="jam-card-subheadings pb-0 mb-1">Instruments:</p>
+                                                {this.state.instruments.map((instrument,idx) => (
+                                                    <div className="jam-card-instrument pr-2" key={idx}>
+                                                        {this.getInstrumentIcon(instrument)}
+                                                        <span>{instrument.name}</span>
+                                                    </div>
+                                                ))}
+                                                <p className="jam-card-subheadings pb-0 mt-3 mb-1">Genres:</p>
+                                                {this.state.genres.map((genre, idx) => (
+                                                    <div key={idx}>{genre}</div>
+                                                ))}
+
                                             </div>
                                         </div>
                                     </div>
                                     <div className="most-recent-jam-section">
                                         <p className="text-center recent-jam-title-text">Members</p>
                                         <hr className="jam-page-separator" />
-                                        <div className="jam-members-wrapper d-flex container-fluid">
-                                            <div className="most-recent-jam-info col-12">
-                                                
-                                                    {this.state.requests && this.state.requests.map((joinRequest, idx) => (
-                                                        <React.Fragment key={idx}>
-                                                            <h6 className="card-subtitle mb-2 text-muted">Join Requests</h6>
-                                                            <button
-                                                                onClick={this.joinRequestHandler}
-                                                                className="btn btn-secondary mb-2"
-                                                                data-user-name={joinRequest.name}
-                                                                data-user-id={joinRequest._id}
-                                                                data-user-username={joinRequest.username}
-                                                            >
-                                                                {joinRequest.name}
-                                                            </button>
-                                                        </React.Fragment>
-                                                    ))}
-                                                
+                                        <div className="jam-members-wrapper container-fluid">
+                                            <div className="most-recent-jam-info all-members-section col-12">
                                                 {this.state.members ?
                                                     this.state.members.map((member, idx) => (
                                                             <div className="row d-flex align-items-center justify-content-between single-member-wrapper" key={idx}>
                                                                 <img className="user-mini-pic col-3 mx-0 px-0" src={this.getProfilePic(member.email)} alt="Gravatar" />
-                                                                <div className="col-3 mx-0 px-0" key={idx}>{member.name}</div>
+                                                            <div className="col-3 mx-0 px-0" key={idx}><Link to={`/profile/${member.username}`}>{member.name}</Link></div>
                                                                 <div className="jampage-instrument-wrapper col-6 d-flex flex-wrap mx-0 px-0">
                                                                     {this.getInstrumentIcon(member.instruments)}
                                                                 </div>
@@ -265,6 +297,26 @@ class Jam extends Component {
                                                     : <p>Loading...</p>
                                                 }
                                             </div>
+                                            {this.state.requests[0] &&
+                                                (
+                                                <div className="join-requests-applicants-section col-12">
+                                                    <p className="text-center recent-jam-title-text">Join Requests</p>
+                                                    <div className="d-flex flex-wrap justify-content-around">
+                                                        {this.state.requests && this.state.requests.map((joinRequest, idx) => (
+                                                            <React.Fragment key={idx}>
+                                                                <button
+                                                                    onClick={this.joinRequestHandler}
+                                                                    className="btn btn-secondary mb-2"
+                                                                    data-user-username={joinRequest.username}
+                                                                >
+                                                                    {joinRequest.name}
+                                                                </button>
+                                                            </React.Fragment>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                                )
+                                            }
                                         </div>
                                     </div>
                                 </div>
@@ -319,11 +371,66 @@ class Jam extends Component {
                         >
                             <button onClick={this.closeModal} className="toggle-modal-button">✖</button>
                             <div className="join-request-modal-wrapper">
-                                <p ref={subtitle => this.subtitle = subtitle} className="text-center join-request-modal-title">Join Request</p>
+                                <p ref={subtitle => this.subtitle = subtitle} className="text-center join-request-modal-title">{this.state.requestName}</p>
+                                <Link to={`/profile/${this.state.requestUsername}`}><p className="join-request-modal-content-text font-weight-bold text-center">@{this.state.requestUsername}</p></Link>
                                 <hr />
-                                <p className="join-request-modal-content-text">Name: {this.state.requestName}</p>
-                                <p className="join-request-modal-content-text">User Name: {this.state.requestUsername}</p>
-                                <p className="join-request-modal-content-text">User ID: {this.state.requestId}</p>
+                                <p className="join-request-modal-content-text font-weight-bold">Instruments:</p>
+                                <div className="instrument-box">
+                                    {this.state.requestInstruments[0] ?
+                                        this.state.requestInstruments.map((instrument, index) => {
+                                            let skillLevel = "";
+                                            if (instrument.skill === 1) {
+                                                skillLevel = "Beginner";
+                                                return (
+                                                    <div key={index}>
+                                                        <p className="join-request-modal-content-small-text home-no-margin-bottom">{instrument.name} </p>
+                                                        <div className="home-skillbar-background text-left">{skillLevel}</div>
+                                                    </div>
+                                                )
+                                            } else if (instrument.skill === 2) {
+                                                skillLevel = "Intermediate";
+                                                return (
+                                                    <div key={index}>
+                                                        <p className="join-request-modal-content-small-text home-no-margin-bottom">{instrument.name} </p>
+                                                        <div className="home-skillbar-background text-center">{skillLevel}</div>
+                                                    </div>
+                                                )
+                                            } else if (instrument.skill === 3) {
+                                                skillLevel = "Expert";
+                                                return (
+                                                    <div key={index}>
+                                                        <p className="join-request-modal-content-small-text home-no-margin-bottom">{instrument.name} </p>
+                                                        <div className="home-skillbar-background text-right">{skillLevel}</div>
+                                                    </div>
+                                                )
+                                            } else if (!instrument.skill) {
+                                                return (
+                                                    <p key={index} className="join-request-modal-content-small-text">Looks like this user has not added any instruments.</p>
+                                                )
+                                            } else {
+                                                return (
+                                                    <p key={index} className="join-request-modal-content-small-text">Looks like there might be an error...</p>
+                                                ) 
+                                            }
+                                        }) : (
+                                            <p className="join-request-modal-content-small-text">Looks like this user has not added any instruments.</p>
+                                        )
+                                    }
+                                </div>
+                                <br/>
+                                <p className="join-request-modal-content-text font-weight-bold">Genres:</p>
+                                    {this.state.requestGenres[0] ?
+                                        (
+                                            <React.Fragment>
+                                                {this.state.requestGenres.map((genre, index) => (
+                                                    <p className="join-request-modal-content-small-text home-no-margin-bottom" key={index}>{genre}</p>
+                                                ))}
+                                            </React.Fragment>
+                                        ) : (
+                                            <p className="join-request-modal-content-small-text">Looks like this user has not added any genres.</p>
+                                        )
+                                    }
+                                <br />
                                 <div className="d-flex justify-content-between">
                                 <button onClick={this.acceptJoinRequest} className="btn btn-primary">Accept</button>
                                 <button onClick={this.declineJoinRequest} className="btn btn-secondary">Decline</button>

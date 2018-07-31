@@ -25,8 +25,8 @@ class Home extends Component {
         genres: [""],
         instruments: [{ name: "", skill: "" }],
         userMessages: [],
-        nextJam: { name: "", date: "", members: [] },
-        mostRecentJam: { name: "", date: "", members: [] },
+        nextJam: { _id: "", name: "", date: "", members: [] },
+        mostRecentJam: { _id: "", name: "", date: "", members: [] },
         searchJamsSubsets: [],
         searchJams: [{ name: "", date: "", members: [] }],
         loggedIn: sessionStorage.getItem("userId") ? true : false
@@ -67,9 +67,16 @@ class Home extends Component {
         api.getAllJams().then(dbJams => {
             const result = dbJams.data.filter(dbJam => dbJam.members.findIndex(member => member === sessionStorage.getItem("userId")) === -1)
             const searchJams = result.filter(jam => jam.joinRequests.findIndex(joinRequest => joinRequest === sessionStorage.getItem("userId")) === -1)
-            console.log(searchJams)
+
             if (searchJams.length) {
-                this.setState({searchJams: searchJams})
+                const sortedSearch = searchJams.sort((jamOne, jamTwo) => {
+                    const timeDifferenceOne = moment(jamOne.date) - moment();
+                    const timeDifferenceTwo = moment(jamTwo.date) - moment();
+                    return timeDifferenceOne - timeDifferenceTwo;
+                })
+                const upcomingSorted = sortedSearch.filter(jam => moment(jam.date) - moment() > 0);
+
+                this.setState({searchJams: upcomingSorted})
             }else{
                 this.setState({searchJams: [{ name: "", date: "", members: [] }]})
             }
@@ -139,18 +146,20 @@ class Home extends Component {
     renderSuggestedJams = () => {
         if(this.state.searchJams[0].name) {
             return this.state.searchJams.map((jam, idx) => (
-                <JamCard 
-                    key={idx} 
-                    unrequested={true}
-                    creator={jam.admin}  
-                    jamName={jam.name} 
-                    jamDate={jam.date} 
-                    description={jam.description} 
-                    jamId={jam._id}
-                    instruments={jam.instruments}
-                    genres={jam.genres}  
-                    clickHandler={() => this.joinJamEventHandler(jam._id)} 
-                />
+                    <JamCard 
+                        classes={"col-12 col-md-6 col-xl-4 jam-card-wrapper"}
+                        key={idx} 
+                        unrequested={true}
+                        creator={jam.admin}  
+                        jamName={jam.name} 
+                        jamDate={jam.date} 
+                        description={jam.description}
+                        location={jam.location} 
+                        jamId={jam._id}
+                        instruments={jam.instruments}
+                        genres={jam.genres}  
+                        clickHandler={() => this.joinJamEventHandler(jam._id)}
+                    />
             ))
         }
     }
@@ -170,13 +179,13 @@ class Home extends Component {
                                     {this.state.nextJam.name ? (
                                         <React.Fragment>
                                             <div className="next-jam-info col-6 text-center">
-                                                <p>{this.state.nextJam.name}</p>
+                                                <Link to={`/jam/${this.state.nextJam._id}`}><p>{this.state.nextJam.name}</p></Link>
                                                 {this.state.nextJam.location && <p>{this.state.nextJam.location.address } </p>}
                                                 <p>{moment(this.state.nextJam.date).format("LLL")}</p>
                                             </div>
                                             <div className="next-jam-members col-6 text-center">
                                                 {this.state.nextJam.members.map((member, index) => (
-                                                    <p key={index}>{member.name} {!index && <span>(Host)</span>}</p>
+                                                    <p key={index}><Link to={`/profile/${member.username}`}>{member.name}</Link> {!index && <i className="fas fa-star" style={{position: "relative"}}></i>}</p>
                                                 ))}
                                             </div>
                                         </React.Fragment>
@@ -193,13 +202,13 @@ class Home extends Component {
                                     {this.state.mostRecentJam.name ? (
                                         <React.Fragment>
                                             <div className="most-recent-jam-info col-6 text-center">
-                                                <p>{this.state.mostRecentJam.name}</p>
+                                                <Link to={`/jam/${this.state.mostRecentJam._id}`}><p>{this.state.mostRecentJam.name}</p></Link>
                                                 {this.state.mostRecentJam.location && <p>{this.state.mostRecentJam.location.address } </p> }
                                                 <p>{moment(this.state.mostRecentJam.date).format("LLL")}</p>
                                             </div>
                                             <div className="most-recent-jam-members col-6 text-center">
                                                 {this.state.mostRecentJam.members.map((member, index) => (
-                                                    <p key={index}>{member.name} {!index && <span>(Host)</span>}</p>
+                                                    <p key={index}><Link to={`/profile/${member.username}`}>{member.name}</Link> {!index && <i className="fas fa-star" style={{ position: "relative" }}></i>}</p>
                                                 ))}
                                             </div>
                                         </React.Fragment>
@@ -211,7 +220,7 @@ class Home extends Component {
                         </div>
                         <div className="user-simple-profile-section col-md-4 col-xl-3">
                             <p className="user-simple-profile-title text-center">{this.state.name}</p>
-                            <p className="text-center">@{this.state.username}</p>
+                            <Link to="/profile"><p className="text-center">@{this.state.username}</p></Link>
                             <img className="img-fluid user-simple-profile-pic-style" src={this.state.image} alt="profile snapshot" />
                             <br/> <br/>
                             <p className="home-no-margin-bottom">Instruments</p>
@@ -249,7 +258,7 @@ class Home extends Component {
                                                 )
                                             }
                                         }) : (
-                                            <p className="user-simple-profile-small-text">Head to your profile to add some instruments.</p>
+                                            <p className="user-simple-profile-small-text">Head to <Link to="/profile">your profile</Link> to add some instruments.</p>
                                         )
                                     }
                             </div>
@@ -263,30 +272,34 @@ class Home extends Component {
                                             ))}
                                         </React.Fragment>
                                     ) : (
-                                        <p className="user-simple-profile-small-text">Head to your profile to add some genres.</p>
+                                        <p className="user-simple-profile-small-text">Head to <Link to="/profile">your profile</Link> to add some genres.</p>
                                     )
                                 }
                         </div>
                     </div>
-                    {
-                        this.state.searchJams[0].name ? 
-                        (
-                            this.state.searchJams.length > 3 ? 
+                    <div className="suggested-jams-section">
+                        <p className="text-center next-jam-title-text">Open Jams</p>
+                        <hr className="home-page-separator" />
+                        {
+                            this.state.searchJams[0].name ? 
                             (
-                            <div className="suggested-jams-section">
-                                <Slider className="suggested-jam-slider" {...settings}>
-                                    {this.renderSuggestedJams()}
-                                </Slider>
-                            </div>
+                                this.state.searchJams.length > 3 ? 
+                                (
+                                <div>
+                                    <Slider className="suggested-jam-slider" {...settings}>
+                                        {this.renderSuggestedJams()}
+                                    </Slider>
+                                </div>
+                                ) : (
+                                <div className="d-md-flex flex-wrap justify-content-around">
+                                        {this.renderSuggestedJams()}
+                                </div>
+                                )
                             ) : (
-                            <div className="suggested-jams-section d-md-flex justify-content-around">
-                                    {this.renderSuggestedJams()}
-                            </div>
+                                <div className="mt-3"><p className="text-center no-info-yet-text">There are no jams for you to join right now. Why don't you <Link to="/createjam">create one</Link>?</p></div>
                             )
-                        ) : (
-                            <div className="no-suggested-jam-section"><p className="text-center">There are no jams for you to join right now. Why don't you <Link to="/createjam">create one</Link>?</p></div>
-                        )
-                    }
+                        }
+                    </div>
                 </div>
                 <Footer />
             </div>
