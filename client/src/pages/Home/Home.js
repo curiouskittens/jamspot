@@ -54,7 +54,7 @@ class Home extends Component {
                 this.setState({
                     name: user.data.name,
                     username: user.data.username,
-                    image: `https://www.gravatar.com/avatar/${gravatarHash}?d=mp&s=200`,
+                    image: `https://www.gravatar.com/avatar/${gravatarHash}?d=mp&s=300`,
                 })
 
                 if (user.data.genres[0]) this.setState({ genres: user.data.genres })
