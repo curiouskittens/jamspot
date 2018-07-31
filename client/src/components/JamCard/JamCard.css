@@ -8,10 +8,6 @@
     border-radius: 15px;
 }
 
-/* .jam-card:hover{
-    border: white 3px double;
-} */
-
 .jam-card-subheadings{
     color: var(--maincolor1);
 }
@@ -20,7 +16,6 @@
     height: 32px;
     width: 32px;    
     max-height: 100%;
-    /* max-width: 30%; */
 }
 
 .jamcard-title-text{
@@ -30,13 +25,6 @@
 .jamcard-info-text{
     font-size: 1.6vh;
 }
-/* .right-border{
-    border-right: 1px solid black;
-} */
-
-/* .toggle-collapse-button:focus{
-    box-shadow: 0 !important ;
-} */
 
 .fa-star{
     color: #ef9b0f !important;

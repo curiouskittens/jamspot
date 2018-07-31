@@ -13,7 +13,6 @@
     display: grid;
     grid-template-rows: 1fr auto;
     font-family: var(--merriweather);
-    /* background: lightgray; */;
     background-image: url("../Home/homeGradient/homeGradient.jpg")
 }
 

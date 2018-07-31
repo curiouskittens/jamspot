@@ -45,19 +45,14 @@ class FindJam extends Component {
     }
 
     joinJamEventHandler = jamId => {
-        console.log("join jam!\nJam ID: ", jamId)
         if (this.state.loggedIn) {
-            console.log("you are logged in\nYour user ID is: ", sessionStorage.getItem("userId"))
             api.joinJamRequest({
                 jamId: jamId,
                 userId: sessionStorage.getItem("userId")
             }).then(() => {
-                console.log("success")
                 sweetAlert("success", "success-text", "You have requested to join this jam.");
                 this.getJams();
             }).catch(err => console.log(err))
-        } else {
-            console.log("you are not logged in")
         }
     }
 
@@ -72,7 +67,6 @@ class FindJam extends Component {
                             <hr />
                             <div className="row d-md-flex">
                                 {(this.state.openJams && this.state.openJams.length) ? (this.state.openJams.map((jam, idx) => {
-                                    console.log(jam.admin)
                                     return <JamCard
                                         classes={"col-12 col-md-6 col-xl-4 jam-card-wrapper"}
                                         key={idx} 

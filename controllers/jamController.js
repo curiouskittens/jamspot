@@ -49,7 +49,6 @@ module.exports = {
             .catch(err => res.send(err))
     },
     joinRequest: function (req, res) {
-        console.log("join request controller method hit")
         db.Jam
             .findOneAndUpdate(
                 { _id: req.body.jamId },

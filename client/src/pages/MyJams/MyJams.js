@@ -27,8 +27,6 @@ class MyJams extends Component {
             allJams: [],
         });
         api.getMyJams(sessionStorage.getItem("userId")).then(dbUser => {
-            console.log("Get My Jams")
-            console.log(dbUser.data)
             dbUser.data.jams.forEach((jam, idx) => {
                 this.setState({
                     allJams: this.state.allJams.concat([jam])

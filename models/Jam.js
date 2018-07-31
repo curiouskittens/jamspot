@@ -5,12 +5,10 @@ const JamSchema = new Schema({
     name: {
         type: String,
         required: true,
-        // unique: true
     },
     description: String,
     date: {
         type: Date,
-        // required: true,
         default: Date.now
     },
     status: {
@@ -32,7 +30,6 @@ const JamSchema = new Schema({
     admin: {
           type: Schema.Types.ObjectId,
           ref: "User",
-          //required: true
     },
     members: [{
           type: Schema.Types.ObjectId,

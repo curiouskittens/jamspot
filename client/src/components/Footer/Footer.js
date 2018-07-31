@@ -17,7 +17,6 @@ class Footer extends Component {
     toggleFooter = () => {
         if (this.state.footerShown === false) {
             let htmlBody = document.getElementsByTagName("html");
-            console.log(htmlBody)
             htmlBody[0].style.height = "116%";
             this.setState({
                 footer: "footer-click",
@@ -26,7 +25,6 @@ class Footer extends Component {
             });
         } else {
             let htmlBody = document.getElementsByTagName("html");
-            console.log(htmlBody)
             htmlBody[0].style.height = "100%";
             this.setState({
                 footer: "footer",
