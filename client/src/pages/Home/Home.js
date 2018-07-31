@@ -185,7 +185,7 @@ class Home extends Component {
                                             </div>
                                             <div className="next-jam-members col-6 text-center">
                                                 {this.state.nextJam.members.map((member, index) => (
-                                                    <p key={index}><Link to={`/profile/${member.name}`}>{member.name}</Link> {!index && <i className="fas fa-star" style={{position: "relative"}}></i>}</p>
+                                                    <p key={index}><Link to={`/profile/${member.username}`}>{member.name}</Link> {!index && <i className="fas fa-star" style={{position: "relative"}}></i>}</p>
                                                 ))}
                                             </div>
                                         </React.Fragment>
@@ -208,7 +208,7 @@ class Home extends Component {
                                             </div>
                                             <div className="most-recent-jam-members col-6 text-center">
                                                 {this.state.mostRecentJam.members.map((member, index) => (
-                                                    <p key={index}><Link to={`/profile/${member.name}`}>{member.name}</Link> {!index && <i className="fas fa-star" style={{ position: "relative" }}></i>}</p>
+                                                    <p key={index}><Link to={`/profile/${member.username}`}>{member.name}</Link> {!index && <i className="fas fa-star" style={{ position: "relative" }}></i>}</p>
                                                 ))}
                                             </div>
                                         </React.Fragment>
