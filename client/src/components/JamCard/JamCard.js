@@ -12,9 +12,7 @@ class JamCard extends Component {
     }
 
     getProfilePic = (email)=>{
-        // console.log(email.trim())
         const gravatarHash = md5(email.trim().toLowerCase());
-        // console.log(gravatarHash)
         return `https://www.gravatar.com/avatar/${gravatarHash}?d=mp&s=200`
     }
 
@@ -22,11 +20,9 @@ class JamCard extends Component {
         let imgSrc = "/instrument_icons/no-waiting.png"
         for(let i=0; i<instrumentList.length; i++){
             if(instrumentList[i].name === instrument.name){
-                console.log("match")
                 imgSrc = instrumentList[i].icon
             }
         }
-        console.log(imgSrc)
         return <img className="instrument-jam-card-pic px-1" src={imgSrc} alt="instrument"/>
     }
 

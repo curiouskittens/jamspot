@@ -130,7 +130,6 @@ class Jam extends Component {
     }
 
     getInstrumentIcon = (instruments) => {
-        console.log(typeof instruments);
         if (Array.isArray(instruments) && instruments.length > 0) {
             return (instruments.map((instrument, idx) => {
                 let imgSrc = "/instrument_icons/none.png"
@@ -165,7 +164,6 @@ class Jam extends Component {
     }
 
     handleSubmitPost = event => {
-        console.log("yay you clicked post!!")
         if (this.state.postInput.trim()) {
             api.addPost({
                 content: this.state.postInput,
@@ -184,7 +182,6 @@ class Jam extends Component {
 
     
     joinRequestHandler = (event) => {
-        console.log("Join Request Handler!!User Name: ", event.target.getAttribute("data-user-name"));
         api.checkUsername(event.target.getAttribute("data-user-username"))
         .then(result => {
             const userInfo = result.data
@@ -200,8 +197,6 @@ class Jam extends Component {
     }
 
     acceptJoinRequest = () => {
-        console.log("Accept: ", this.state.requestId)
-        console.log("Jam Id: ", this.props.jamId)
         api.acceptJoinRequest({
             userId: this.state.requestId,
             jamId: this.props.jamId
@@ -217,8 +212,6 @@ class Jam extends Component {
     }
 
     declineJoinRequest = () => {
-        console.log("Decline: ", this.state.requestId)
-        console.log("Jam Id: ", this.props.jamId)
         api.declineJoinRequest({
             userId: this.state.requestId,
             jamId: this.props.jamId
