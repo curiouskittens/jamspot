@@ -2,14 +2,42 @@ import React from "react";
 import "./AppIntro.css";
 
 const AppIntro = () => (
-    <div className="app-intro-wrapper container d-xl-flex justify-content-around align-items-center">
-        <div className="text-intro-section text-center col-xl-5">
+    <div className="app-intro-wrapper container justify-content-around align-items-center">
+        <div className="text-intro-section text-center">
             <p className="app-intro-title-style">What is Jamspot?</p>
-            <p className="app-intro-body-text-style">There's nothing like playing live music with others who share your passion.</p>
-            <p className="app-intro-body-text-style">Whether you're a newbie or a pro, Jamspot helps you find the coolest musicians around.</p>
-            <p className="app-intro-body-text-style">Join a Jam to meet new friends, play some tunes and create the next musical masterpiece!</p>
+            <p className="app-intro-body-text-style">Whether you're a newbie or a pro, there's nothing like playing live music with others who share your passion.</p>
         </div>
-        <iframe className="col-xl-6 app-intro-iframe-style" title="Pentatonix Youtube" src="https://www.youtube.com/embed/_NWs7ntMRBA" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+
+        <div className="row justify-content-around pt-4">
+
+            {/* connect */}
+            <div className="col-md-4">
+                <div className="text-center">
+                    <i className="far fa-handshake landing-icon pb-3"></i>
+                    <p className="landing-icon-text">Connect</p>
+                    <p className="landing-icon-small-text">Create or join a jam to find the coolest musicians around.</p>
+                </div>
+            </div>
+
+            {/* collaborate */}
+            <div className="col-md-4">
+                <div className="text-center">
+                    <i className="far fa-comment-dots landing-icon pb-3"></i>
+                    <p className="landing-icon-text">Collaborate</p>
+                    <p className="landing-icon-small-text">Use the jam page to discuss ideas and inspirations.</p>
+                </div>
+            </div>
+
+            {/* create */}
+            <div className="col-md-4">
+                <div className="text-center">
+                    <i className="fas fa-music landing-icon pb-3"></i>
+                    <p className="landing-icon-text">Create</p>
+                    <p className="landing-icon-small-text">Meet up and make the next musical masterpiece!</p>
+                </div>
+            </div>
+
+        </div>
     </div>
 )
 
