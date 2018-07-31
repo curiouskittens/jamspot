@@ -88,10 +88,10 @@ class FindJam extends Component {
                                         clickHandler={() => this.joinJamEventHandler(jam._id)}
                                     />
                                 }
-                                )) : ( <p className="mx-auto">There are no jams for you to join right now. Why don't you <Link to="/createjam">create one</Link>?</p>)
+                                )) : (<p className="mx-auto no-info-yet-text">There are no jams for you to join right now. Why don't you <Link to="/createjam">create one</Link>?</p>)
                             }
                             </div>
-                            <p className="text-center find-jam-section-title">Requested Jams</p>
+                            <p className="text-center find-jam-section-title mt-3">Requested Jams</p>
                             <hr />
                             <div className="row d-md-flex">
                                 {this.state.requestedJams.length ? (this.state.requestedJams.map((jam, idx) => (
@@ -109,7 +109,7 @@ class FindJam extends Component {
                                         genres={jam.genres}  
                                         clickHandler={() => this.joinJamEventHandler(jam._id)} 
                                     />
-                                ))) : (<p className="mx-auto">You have no pending jam requests.</p>)
+                                ))) : (<p className="mx-auto no-info-yet-text">You have no pending jam requests.</p>)
                                 }
                             </div>
                         </div>

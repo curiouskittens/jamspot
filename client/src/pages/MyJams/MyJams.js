@@ -101,10 +101,10 @@ class MyJams extends Component {
                                     }
                                 }
                             )) : (
-                                <p className="mx-auto">You don't have any upcoming jams.</p>
+                                <p className="mx-auto no-info-yet-text">You don't have any upcoming jams.</p>
                             )}
                         </div>
-                        <h4 className="text-center my-jam-section-title">Past Jams</h4>
+                        <h4 className="text-center my-jam-section-title mt-3">Past Jams</h4>
                         <hr />
                         <div className="row d-md-flex">
                             {this.state.pastJams.length ? ( this.state.pastJams.map((jam, idx) => 
@@ -143,7 +143,7 @@ class MyJams extends Component {
                                     }
                                 }
                             )) : (
-                                <p className="mx-auto">You don't have any past jams.</p>
+                                <p className="mx-auto no-info-yet-text">You don't have any past jams.</p>
                             )}
                         </div>
                     </div>

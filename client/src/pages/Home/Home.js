@@ -25,8 +25,8 @@ class Home extends Component {
         genres: [""],
         instruments: [{ name: "", skill: "" }],
         userMessages: [],
-        nextJam: { name: "", date: "", members: [] },
-        mostRecentJam: { name: "", date: "", members: [] },
+        nextJam: { _id: "", name: "", date: "", members: [] },
+        mostRecentJam: { _id: "", name: "", date: "", members: [] },
         searchJamsSubsets: [],
         searchJams: [{ name: "", date: "", members: [] }],
         loggedIn: sessionStorage.getItem("userId") ? true : false
@@ -179,13 +179,13 @@ class Home extends Component {
                                     {this.state.nextJam.name ? (
                                         <React.Fragment>
                                             <div className="next-jam-info col-6 text-center">
-                                                <p>{this.state.nextJam.name}</p>
+                                                <Link to={`/jam/${this.state.nextJam._id}`}><p>{this.state.nextJam.name}</p></Link>
                                                 {this.state.nextJam.location && <p>{this.state.nextJam.location.address } </p>}
                                                 <p>{moment(this.state.nextJam.date).format("LLL")}</p>
                                             </div>
                                             <div className="next-jam-members col-6 text-center">
                                                 {this.state.nextJam.members.map((member, index) => (
-                                                    <p key={index}>{member.name} {!index && <span>(Host)</span>}</p>
+                                                    <p key={index}><Link to={`/profile/${member.name}`}>{member.name}</Link> {!index && <i className="fas fa-star" style={{position: "relative"}}></i>}</p>
                                                 ))}
                                             </div>
                                         </React.Fragment>
@@ -202,13 +202,13 @@ class Home extends Component {
                                     {this.state.mostRecentJam.name ? (
                                         <React.Fragment>
                                             <div className="most-recent-jam-info col-6 text-center">
-                                                <p>{this.state.mostRecentJam.name}</p>
+                                                <Link to={`/jam/${this.state.mostRecentJam._id}`}><p>{this.state.mostRecentJam.name}</p></Link>
                                                 {this.state.mostRecentJam.location && <p>{this.state.mostRecentJam.location.address } </p> }
                                                 <p>{moment(this.state.mostRecentJam.date).format("LLL")}</p>
                                             </div>
                                             <div className="most-recent-jam-members col-6 text-center">
                                                 {this.state.mostRecentJam.members.map((member, index) => (
-                                                    <p key={index}>{member.name} {!index && <span>(Host)</span>}</p>
+                                                    <p key={index}><Link to={`/profile/${member.name}`}>{member.name}</Link> {!index && <i className="fas fa-star" style={{ position: "relative" }}></i>}</p>
                                                 ))}
                                             </div>
                                         </React.Fragment>
@@ -296,7 +296,7 @@ class Home extends Component {
                                 </div>
                                 )
                             ) : (
-                                <div className="mt-3"><p className="text-center">There are no jams for you to join right now. Why don't you <Link to="/createjam">create one</Link>?</p></div>
+                                <div className="mt-3"><p className="text-center no-info-yet-text">There are no jams for you to join right now. Why don't you <Link to="/createjam">create one</Link>?</p></div>
                             )
                         }
                     </div>
