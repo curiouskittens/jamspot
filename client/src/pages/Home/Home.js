@@ -220,7 +220,7 @@ class Home extends Component {
                         </div>
                         <div className="user-simple-profile-section col-md-4 col-xl-3">
                             <p className="user-simple-profile-title text-center">{this.state.name}</p>
-                            <p className="text-center">@{this.state.username}</p>
+                            <Link to="/profile"><p className="text-center">@{this.state.username}</p></Link>
                             <img className="img-fluid user-simple-profile-pic-style" src={this.state.image} alt="profile snapshot" />
                             <br/> <br/>
                             <p className="home-no-margin-bottom">Instruments</p>
@@ -258,7 +258,7 @@ class Home extends Component {
                                                 )
                                             }
                                         }) : (
-                                            <p className="user-simple-profile-small-text">Head to your profile to add some instruments.</p>
+                                            <p className="user-simple-profile-small-text">Head to <Link to="/profile">your profile</Link> to add some instruments.</p>
                                         )
                                     }
                             </div>
@@ -272,7 +272,7 @@ class Home extends Component {
                                             ))}
                                         </React.Fragment>
                                     ) : (
-                                        <p className="user-simple-profile-small-text">Head to your profile to add some genres.</p>
+                                        <p className="user-simple-profile-small-text">Head to <Link to="/profile">your profile</Link> to add some genres.</p>
                                     )
                                 }
                         </div>

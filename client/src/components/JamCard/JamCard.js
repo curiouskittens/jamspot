@@ -48,7 +48,7 @@ class JamCard extends Component {
                                 <h6 className="jam-card-subheadings text-left jamcard-info-text">Created by:</h6>
                                 <div className="row no-gutters">
                                     <img className="user-mini-pic col-md-3 mx-0 px-0 text-left" src={this.getProfilePic(this.props.creator.email)} alt="Gravatar" />
-                                    <p className="col-md-6 text-left jamcard-info-text">{this.props.creator.name}</p>
+                                    <p className="col-md-6 text-left jamcard-info-text"><Link to={`/profile/${this.props.creator.name}`}>{this.props.creator.name}</Link></p>
                                 </div>
                             </div>
                             <div className="col-4 right-border">
