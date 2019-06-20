@@ -91,6 +91,7 @@ class Login extends Component {
                 type="text"
                 id="username"
                 name="username"
+                autoComplete="username"
                 value={this.state.username}
                 onChange={this.handleInputChange}
               />
@@ -104,6 +105,7 @@ class Login extends Component {
                 type="password"
                 id="password"
                 name="password"
+                autoComplete="current-password"
                 value={this.state.password}
                 onChange={this.handleInputChange}
               />

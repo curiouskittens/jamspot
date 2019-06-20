@@ -56,7 +56,7 @@ class Profile extends Component {
         if (profile.data.soundcloud)
           this.setState({ soundcloud: profile.data.soundcloud });
       })
-      .catch(err => console.log(err));
+      .catch(err => {});
   };
 
   toggleEdit = event => {
@@ -422,13 +422,13 @@ class Profile extends Component {
                   )}
                 </p>
                 <hr className="profile-page-separator" />
-                {this.state.instruments[0].name !== undefined && (
+                {this.state.instruments[0].length === 0 && (
                   <p className="profile-no-input-text">
                     Hmm, looks like there's nothing here. Why don't you tell us
                     what instruments you play?
                   </p>
                 )}
-                {(this.state.instruments[0].name !== undefined ||
+                {(this.state.instruments[0].length === 0 ||
                   !this.state.instrumentsDisabled) &&
                   this.state.instruments.map((instrument, idx) => (
                     <div key={`${idx}`} id="instruments">
