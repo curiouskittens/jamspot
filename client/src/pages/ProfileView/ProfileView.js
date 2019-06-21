@@ -134,7 +134,7 @@ class ProfileView extends Component {
                   <div className="profile-instrument-section">
                     <p className="profile-info-sub-title">Instruments</p>
                     <hr className="profile-page-separator" />
-                    {this.state.instruments[0].name !== undefined ? (
+                    {this.state.instruments[0].name !== "" ? (
                       this.state.instruments.map((instrument, idx) => (
                         <div key={`${idx}`} id="instruments">
                           <InstrumentInput

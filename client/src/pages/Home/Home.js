@@ -315,7 +315,7 @@ class Home extends Component {
               <br /> <br />
               <p className="home-no-margin-bottom">Instruments</p>
               <div className="instrument-box">
-                {this.state.instruments[0].name !== undefined ? (
+                {this.state.instruments[0].name !== "" ? (
                   this.state.instruments.map((instrument, index) => {
                     let skillLevel = "";
                     if (instrument.skill === 1) {

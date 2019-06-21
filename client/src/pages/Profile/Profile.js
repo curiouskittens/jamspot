@@ -56,7 +56,7 @@ class Profile extends Component {
         if (profile.data.soundcloud)
           this.setState({ soundcloud: profile.data.soundcloud });
       })
-      .catch(err => {});
+      .catch(err => console.log(err));
   };
 
   toggleEdit = event => {
@@ -126,6 +126,7 @@ class Profile extends Component {
   };
 
   focusInput = inputId => {
+    console.log(inputId);
     document.getElementById(inputId).focus();
   };
 
@@ -422,13 +423,14 @@ class Profile extends Component {
                   )}
                 </p>
                 <hr className="profile-page-separator" />
-                {this.state.instruments[0].length === 0 && (
+                {/* {console.log(this.state.instruments)} */}
+                {this.state.instruments[0].name === "" && (
                   <p className="profile-no-input-text">
                     Hmm, looks like there's nothing here. Why don't you tell us
                     what instruments you play?
                   </p>
                 )}
-                {(this.state.instruments[0].length === 0 ||
+                {(this.state.instruments[0].name !== "" ||
                   !this.state.instrumentsDisabled) &&
                   this.state.instruments.map((instrument, idx) => (
                     <div key={`${idx}`} id="instruments">
@@ -482,7 +484,7 @@ class Profile extends Component {
                 {!this.state.genres[0] && (
                   <p className="profile-no-input-text">
                     Hmm, looks like there's nothing here. Why don't you tell us
-                    what instruments you play?
+                    what genres you play?
                   </p>
                 )}
                 {(this.state.genres[0] || !this.state.genresDisabled) &&
