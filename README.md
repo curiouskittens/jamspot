@@ -63,7 +63,7 @@ Use the Post feature to share ideas beforehand, communicate when it's time to me
 
 # Development :paw_prints:
 
-This project was built for the Northwestern University Coding Boot Camp by the **curiouskittens**:
+This project was built by the **curiouskittens**:
 * [Carla Garcia](https://github.com/carladdg)
 * [David Binstock](https://github.com/davidbinstock)
 * [Guan He](https://github.com/heguanelvis)
